@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NXO Header Responsive</title>
+
+  <!-- Google Fonts - Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Flag Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../components/components.css">
+
+  <style>
+    /* Demo-only styles */
+    .demo-content {
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .demo-content h1 {
+      font-size: 28px;
+      margin-bottom: 16px;
+      color: #333;
+    }
+
+    .demo-content p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .demo-content code {
+      background-color: #e8e8e8;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    .breakpoint-info {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--nxo-header-bg);
+      color: white;
+      padding: 12px 20px;
+      border-radius: var(--nxo-radius-md);
+      font-size: var(--nxo-font-size-sm);
+      font-weight: var(--nxo-font-weight-semibold);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header NXO Responsive -->
+  <header class="nxo-header">
+    <div class="nxo-header__zone-left">
+      <!-- App icon (desktop) -->
+      <button class="nxo-header__icon nxo-header__icon--apps" aria-label="Applications">
+        <img src="../assets/icons/grip-vertical-solid-full.svg" alt="Apps">
+      </button>
+      <!-- Burger icon (tablet/mobile) -->
+      <button class="nxo-header__icon nxo-header__icon--burger" aria-label="Menu">
+        <img src="../assets/icons/bars-solid-full.svg" alt="Menu">
+      </button>
+      <!-- Logo (left zone on desktop, hidden on mobile) -->
+      <div class="nxo-header__logo">
+        <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO">
+      </div>
+      <!-- Service name (hidden on tablet/mobile) -->
+      <span class="nxo-header__service-name">Nom Service</span>
+    </div>
+
+    <div class="nxo-header__zone-center">
+      <!-- Search bar (hidden on tablet/mobile) -->
+      <div class="nxo-header__search">
+        <img src="../assets/icons/magnifying-glass-solid-full.svg" alt="Rechercher">
+        <span>Rechercher...</span>
+      </div>
+      <!-- Logo (center zone on mobile only) -->
+      <div class="nxo-header__logo nxo-header__logo--mobile">
+        <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO">
+      </div>
+    </div>
+
+    <div class="nxo-header__zone-right">
+      <!-- Search icon (visible on tablet only) -->
+      <button class="nxo-header__icon nxo-header__icon--search" aria-label="Rechercher">
+        <img src="../assets/icons/magnifying-glass-solid-full.svg" alt="Rechercher">
+      </button>
+      <!-- Language selector -->
+      <div class="nxo-header__lang">
+        <button class="nxo-header__lang-btn" aria-label="Changer de langue" onclick="toggleLangDropdown()">
+          <span class="nxo-header__lang-flag fi fi-fr"></span>
+          <span class="nxo-header__lang-code">FR</span>
+        </button>
+        <div class="nxo-header__lang-dropdown" id="lang-dropdown">
+          <button class="nxo-header__lang-option" onclick="selectLang('fr', 'FR')">
+            <span class="fi fi-fr"></span> Français
+          </button>
+          <button class="nxo-header__lang-option" onclick="selectLang('gb', 'EN')">
+            <span class="fi fi-gb"></span> English
+          </button>
+          <button class="nxo-header__lang-option" onclick="selectLang('es', 'ES')">
+            <span class="fi fi-es"></span> Español
+          </button>
+          <button class="nxo-header__lang-option" onclick="selectLang('de', 'DE')">
+            <span class="fi fi-de"></span> Deutsch
+          </button>
+        </div>
+      </div>
+      <!-- Expand icon (hidden on mobile) -->
+      <button class="nxo-header__icon nxo-header__icon--expand" aria-label="Plein ecran">
+        <img src="../assets/icons/expand-solid-full.svg" alt="Expand">
+      </button>
+      <!-- Help icon -->
+      <button class="nxo-header__icon nxo-header__icon--help" aria-label="Aide">
+        <img src="../assets/icons/question-solid-full.svg" alt="Aide">
+      </button>
+      <!-- Profile icon -->
+      <button class="nxo-header__icon nxo-header__icon--profile" aria-label="Profil">
+        <img src="../assets/icons/circle-user-regular-full.svg" alt="Profil">
+      </button>
+    </div>
+  </header>
+
+  <!-- Demo content -->
+  <main class="demo-content">
+    <h1>Header NXO Responsive</h1>
+    <p>
+      Redimensionne la fenetre de ton navigateur pour voir le header s'adapter automatiquement.
+    </p>
+    <p>
+      <strong>Breakpoints :</strong>
+    </p>
+    <ul style="color: #666; line-height: 2;">
+      <li><code>&gt; 1440px</code> : Desktop XL - Grip + Logo + Nom + Search bar + 3 icones (80px)</li>
+      <li><code>1024px - 1440px</code> : Desktop - Meme layout, tailles reduites (80px)</li>
+      <li><code>768px - 1024px</code> : Tablet - Hamburger + Logo + Nom + Search bar + 3 icones (72px)</li>
+      <li><code>480px - 768px</code> : Tablet Small - Hamburger + Logo + 4 icones (64px)</li>
+      <li><code>&lt; 480px</code> : Mobile - Hamburger + Logo centre + 2 icones (56px)</li>
+    </ul>
+
+    <h2 style="margin-top: 40px; margin-bottom: 16px; color: #333;">Comment utiliser</h2>
+    <p>
+      Importe <code>tokens.css</code> et <code>components.css</code> dans ton projet.
+      Toutes les classes <code>.nxo-header__*</code> sont disponibles dans le theme.
+    </p>
+  </main>
+
+  <!-- Breakpoint indicator -->
+  <div class="breakpoint-info" id="breakpoint-info">
+    Desktop XL (&gt; 1440px)
+  </div>
+
+  <script>
+    // Update breakpoint indicator
+    function updateBreakpointInfo() {
+      const width = window.innerWidth;
+      const info = document.getElementById('breakpoint-info');
+
+      if (width > 1440) {
+        info.textContent = 'Desktop XL (' + width + 'px)';
+      } else if (width > 1024) {
+        info.textContent = 'Desktop (' + width + 'px)';
+      } else if (width > 768) {
+        info.textContent = 'Tablet (' + width + 'px)';
+      } else if (width > 480) {
+        info.textContent = 'Tablet Small (' + width + 'px)';
+      } else {
+        info.textContent = 'Mobile (' + width + 'px)';
+      }
+    }
+
+    // Update on load and resize
+    updateBreakpointInfo();
+    window.addEventListener('resize', updateBreakpointInfo);
+
+    // Language dropdown functions
+    function toggleLangDropdown() {
+      const dropdown = document.getElementById('lang-dropdown');
+      dropdown.classList.toggle('open');
+    }
+
+    function selectLang(countryCode, langCode) {
+      const flag = document.querySelector('.nxo-header__lang-flag');
+      flag.className = 'nxo-header__lang-flag fi fi-' + countryCode;
+      document.querySelector('.nxo-header__lang-code').textContent = langCode;
+      document.getElementById('lang-dropdown').classList.remove('open');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+      const langSelector = document.querySelector('.nxo-header__lang');
+      if (langSelector && !langSelector.contains(e.target)) {
+        document.getElementById('lang-dropdown').classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+</html>

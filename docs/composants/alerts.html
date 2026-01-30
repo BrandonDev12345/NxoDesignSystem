@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alertes - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link active"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-bell"></i> Alertes</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Messages d'alerte pour informer, avertir ou signaler des erreurs aux utilisateurs.
+        </p>
+
+        <!-- Variantes -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Variantes</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div class="nxo-alert nxo-alert-info">
+                  <i class="fa-solid fa-info-circle nxo-alert-icon"></i>
+                  <div class="nxo-alert-content">
+                    <strong>Information</strong> - Ceci est un message d'information.
+                  </div>
+                </div>
+                <div class="nxo-alert nxo-alert-success">
+                  <i class="fa-solid fa-check-circle nxo-alert-icon"></i>
+                  <div class="nxo-alert-content">
+                    <strong>Succes</strong> - L'operation a ete effectuee avec succes.
+                  </div>
+                </div>
+                <div class="nxo-alert nxo-alert-warning">
+                  <i class="fa-solid fa-exclamation-triangle nxo-alert-icon"></i>
+                  <div class="nxo-alert-content">
+                    <strong>Attention</strong> - Veuillez verifier les informations.
+                  </div>
+                </div>
+                <div class="nxo-alert nxo-alert-error">
+                  <i class="fa-solid fa-times-circle nxo-alert-icon"></i>
+                  <div class="nxo-alert-content">
+                    <strong>Erreur</strong> - Une erreur est survenue lors du traitement.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-alert nxo-alert-info"&gt;
+  &lt;i class="fa-solid fa-info-circle nxo-alert-icon"&gt;&lt;/i&gt;
+  &lt;div class="nxo-alert-content"&gt;
+    &lt;strong&gt;Information&lt;/strong&gt; - Ceci est un message d'information.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-alert nxo-alert-success"&gt;
+  &lt;i class="fa-solid fa-check-circle nxo-alert-icon"&gt;&lt;/i&gt;
+  &lt;div class="nxo-alert-content"&gt;
+    &lt;strong&gt;Succes&lt;/strong&gt; - L'operation a ete effectuee avec succes.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-alert nxo-alert-warning"&gt;
+  &lt;i class="fa-solid fa-exclamation-triangle nxo-alert-icon"&gt;&lt;/i&gt;
+  &lt;div class="nxo-alert-content"&gt;
+    &lt;strong&gt;Attention&lt;/strong&gt; - Veuillez verifier les informations.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-alert nxo-alert-error"&gt;
+  &lt;i class="fa-solid fa-times-circle nxo-alert-icon"&gt;&lt;/i&gt;
+  &lt;div class="nxo-alert-content"&gt;
+    &lt;strong&gt;Erreur&lt;/strong&gt; - Une erreur est survenue lors du traitement.
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+
+import { Alert as MuiAlert } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle, faCheckCircle, faExclamationTriangle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+
+function AlertVariants() {
+  return (
+    &lt;&gt;
+      {/* Option 1: Classes NXO natives */}
+      &lt;div className="nxo-alert nxo-alert-info"&gt;
+        &lt;FontAwesomeIcon icon={faInfoCircle} className="nxo-alert-icon" /&gt;
+        &lt;div className="nxo-alert-content"&gt;
+          &lt;strong&gt;Information&lt;/strong&gt; - Ceci est un message d'information.
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      {/* Option 2: MUI Alert */}
+      &lt;MuiAlert severity="success" className="nxo-alert"&gt;
+        &lt;strong&gt;Succes&lt;/strong&gt; - L'operation a ete effectuee avec succes.
+      &lt;/MuiAlert&gt;
+
+      &lt;MuiAlert severity="warning" className="nxo-alert"&gt;
+        &lt;strong&gt;Attention&lt;/strong&gt; - Veuillez verifier les informations.
+      &lt;/MuiAlert&gt;
+
+      &lt;MuiAlert severity="error" className="nxo-alert"&gt;
+        &lt;strong&gt;Erreur&lt;/strong&gt; - Une erreur est survenue.
+      &lt;/MuiAlert&gt;
+    &lt;/&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { Component } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+@Component({
+  selector: 'app-alert-variants',
+  template: `
+    &lt;!-- Classes NXO natives --&gt;
+    &lt;div class="nxo-alert nxo-alert-info"&gt;
+      &lt;fa-icon icon="info-circle" class="nxo-alert-icon"&gt;&lt;/fa-icon&gt;
+      &lt;div class="nxo-alert-content"&gt;
+        &lt;strong&gt;Information&lt;/strong&gt; - Ceci est un message d'information.
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="nxo-alert nxo-alert-success"&gt;
+      &lt;fa-icon icon="check-circle" class="nxo-alert-icon"&gt;&lt;/fa-icon&gt;
+      &lt;div class="nxo-alert-content"&gt;
+        &lt;strong&gt;Succes&lt;/strong&gt; - L'operation a ete effectuee avec succes.
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="nxo-alert nxo-alert-warning"&gt;
+      &lt;fa-icon icon="exclamation-triangle" class="nxo-alert-icon"&gt;&lt;/fa-icon&gt;
+      &lt;div class="nxo-alert-content"&gt;
+        &lt;strong&gt;Attention&lt;/strong&gt; - Veuillez verifier les informations.
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="nxo-alert nxo-alert-error"&gt;
+      &lt;fa-icon icon="times-circle" class="nxo-alert-icon"&gt;&lt;/fa-icon&gt;
+      &lt;div class="nxo-alert-content"&gt;
+        &lt;strong&gt;Erreur&lt;/strong&gt; - Une erreur est survenue lors du traitement.
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class AlertVariantsComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# templates/alerts.html.twig #}
+{% include '@nxo/alert.html.twig' with {
+  variant: 'info',
+  icon: 'fa-info-circle',
+  content: '&lt;strong&gt;Information&lt;/strong&gt; - Ceci est un message d\'information.'
+} %}
+
+{% include '@nxo/alert.html.twig' with {
+  variant: 'success',
+  icon: 'fa-check-circle',
+  content: '&lt;strong&gt;Succes&lt;/strong&gt; - L\'operation a ete effectuee avec succes.'
+} %}
+
+{% include '@nxo/alert.html.twig' with {
+  variant: 'warning',
+  icon: 'fa-exclamation-triangle',
+  content: '&lt;strong&gt;Attention&lt;/strong&gt; - Veuillez verifier les informations.'
+} %}
+
+{% include '@nxo/alert.html.twig' with {
+  variant: 'error',
+  icon: 'fa-times-circle',
+  content: '&lt;strong&gt;Erreur&lt;/strong&gt; - Une erreur est survenue lors du traitement.'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avec fermeture -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec bouton fermer</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-alert nxo-alert-info">
+                <i class="fa-solid fa-info-circle nxo-alert-icon"></i>
+                <div class="nxo-alert-content">
+                  Cette alerte peut etre fermee par l'utilisateur.
+                </div>
+                <button class="nxo-alert-close"><i class="fa-solid fa-times"></i></button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-alert nxo-alert-info"&gt;
+  &lt;i class="fa-solid fa-info-circle nxo-alert-icon"&gt;&lt;/i&gt;
+  &lt;div class="nxo-alert-content"&gt;
+    Cette alerte peut etre fermee par l'utilisateur.
+  &lt;/div&gt;
+  &lt;button class="nxo-alert-close"&gt;
+    &lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+
+import { Alert, IconButton, Collapse } from '@mui/material';
+import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+function DismissibleAlert() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  return (
+    &lt;Collapse in={isVisible}&gt;
+      &lt;Alert
+        severity="info"
+        className="nxo-alert"
+        action={
+          &lt;IconButton size="small" onClick={() =&gt; setIsVisible(false)}&gt;
+            &lt;FontAwesomeIcon icon={faTimes} /&gt;
+          &lt;/IconButton&gt;
+        }
+      &gt;
+        Cette alerte peut etre fermee par l'utilisateur.
+      &lt;/Alert&gt;
+    &lt;/Collapse&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { Component } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+@Component({
+  selector: 'app-dismissible-alert',
+  template: `
+    &lt;div class="nxo-alert nxo-alert-info" *ngIf="isVisible"&gt;
+      &lt;fa-icon icon="info-circle" class="nxo-alert-icon"&gt;&lt;/fa-icon&gt;
+      &lt;div class="nxo-alert-content"&gt;
+        Cette alerte peut etre fermee par l'utilisateur.
+      &lt;/div&gt;
+      &lt;button class="nxo-alert-close" (click)="handleClose()"&gt;
+        &lt;fa-icon icon="times"&gt;&lt;/fa-icon&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  `
+})
+export class DismissibleAlertComponent {
+  isVisible = true;
+
+  handleClose() {
+    this.isVisible = false;
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# templates/alert-dismissible.html.twig #}
+{% include '@nxo/alert.html.twig' with {
+  variant: 'info',
+  icon: 'fa-info-circle',
+  content: 'Cette alerte peut etre fermee par l\'utilisateur.',
+  dismissible: true
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avec action -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec action</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-alert nxo-alert-warning">
+                <i class="fa-solid fa-exclamation-triangle nxo-alert-icon"></i>
+                <div class="nxo-alert-content">
+                  <strong>Session expirante</strong><br>
+                  Votre session expire dans 5 minutes.
+                </div>
+                <button class="nxo-btn nxo-btn-warning nxo-btn-sm">Prolonger</button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-alert nxo-alert-warning"&gt;
+  &lt;i class="fa-solid fa-exclamation-triangle nxo-alert-icon"&gt;&lt;/i&gt;
+  &lt;div class="nxo-alert-content"&gt;
+    &lt;strong&gt;Session expirante&lt;/strong&gt;&lt;br&gt;
+    Votre session expire dans 5 minutes.
+  &lt;/div&gt;
+  &lt;button class="nxo-btn nxo-btn-warning nxo-btn-sm"&gt;Prolonger&lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+
+import { Alert, Button } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+
+function AlertWithAction() {
+  const handleExtend = () =&gt; {
+    console.log('Session prolongee');
+  };
+
+  return (
+    &lt;Alert
+      severity="warning"
+      className="nxo-alert nxo-alert-warning"
+      action={
+        &lt;Button
+          color="warning"
+          size="small"
+          className="nxo-btn nxo-btn-warning nxo-btn-sm"
+          onClick={handleExtend}
+        &gt;
+          Prolonger
+        &lt;/Button&gt;
+      }
+    &gt;
+      &lt;strong&gt;Session expirante&lt;/strong&gt;&lt;br /&gt;
+      Votre session expire dans 5 minutes.
+    &lt;/Alert&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+@Component({
+  selector: 'app-alert-with-action',
+  template: `
+    &lt;div class="nxo-alert nxo-alert-warning"&gt;
+      &lt;fa-icon icon="exclamation-triangle" class="nxo-alert-icon"&gt;&lt;/fa-icon&gt;
+      &lt;div class="nxo-alert-content"&gt;
+        &lt;strong&gt;Session expirante&lt;/strong&gt;&lt;br&gt;
+        Votre session expire dans 5 minutes.
+      &lt;/div&gt;
+      &lt;button mat-button class="nxo-btn nxo-btn-warning nxo-btn-sm" (click)="handleExtend()"&gt;
+        Prolonger
+      &lt;/button&gt;
+    &lt;/div&gt;
+  `
+})
+export class AlertWithActionComponent {
+  handleExtend() {
+    console.log('Session prolongee');
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# templates/alert-action.html.twig #}
+{% include '@nxo/alert.html.twig' with {
+  variant: 'warning',
+  icon: 'fa-exclamation-triangle',
+  content: '&lt;strong&gt;Session expirante&lt;/strong&gt;&lt;br&gt;Votre session expire dans 5 minutes.',
+  action: {
+    label: 'Prolonger',
+    variant: 'warning',
+    size: 'sm',
+    url: path('session_extend')
+  }
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toast notifications -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Toast notifications</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview doc-demo__preview--gray">
+              <div style="display: flex; flex-direction: column; gap: 12px; max-width: 350px;">
+                <div class="nxo-toast nxo-toast-success">
+                  <i class="fa-solid fa-check-circle"></i>
+                  <span>Fichier enregistre avec succes</span>
+                </div>
+                <div class="nxo-toast nxo-toast-error">
+                  <i class="fa-solid fa-times-circle"></i>
+                  <span>Erreur lors de l'envoi</span>
+                </div>
+                <div class="nxo-toast nxo-toast-info">
+                  <i class="fa-solid fa-info-circle"></i>
+                  <span>Nouvelle mise a jour disponible</span>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-toast nxo-toast-success"&gt;
+  &lt;i class="fa-solid fa-check-circle"&gt;&lt;/i&gt;
+  &lt;span&gt;Fichier enregistre avec succes&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-toast nxo-toast-error"&gt;
+  &lt;i class="fa-solid fa-times-circle"&gt;&lt;/i&gt;
+  &lt;span&gt;Erreur lors de l'envoi&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-toast nxo-toast-info"&gt;
+  &lt;i class="fa-solid fa-info-circle"&gt;&lt;/i&gt;
+  &lt;span&gt;Nouvelle mise a jour disponible&lt;/span&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+
+import { Snackbar, Alert } from '@mui/material';
+import { useState } from 'react';
+
+function ToastExample() {
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [severity, setSeverity] = useState('success');
+
+  const showToast = (msg, sev) =&gt; {
+    setMessage(msg);
+    setSeverity(sev);
+    setOpen(true);
+  };
+
+  return (
+    &lt;&gt;
+      &lt;button onClick={() =&gt; showToast('Fichier enregistre avec succes', 'success')}&gt;
+        Show Success
+      &lt;/button&gt;
+      &lt;button onClick={() =&gt; showToast('Erreur lors de l\'envoi', 'error')}&gt;
+        Show Error
+      &lt;/button&gt;
+      &lt;button onClick={() =&gt; showToast('Nouvelle mise a jour disponible', 'info')}&gt;
+        Show Info
+      &lt;/button&gt;
+
+      &lt;Snackbar open={open} autoHideDuration={4000} onClose={() =&gt; setOpen(false)}&gt;
+        &lt;Alert severity={severity} className="nxo-toast"&gt;{message}&lt;/Alert&gt;
+      &lt;/Snackbar&gt;
+    &lt;/&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { Component } from '@angular/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
+@Component({
+  selector: 'app-toast-example',
+  template: `
+    &lt;button (click)="showSuccess()"&gt;Show Success&lt;/button&gt;
+    &lt;button (click)="showError()"&gt;Show Error&lt;/button&gt;
+    &lt;button (click)="showInfo()"&gt;Show Info&lt;/button&gt;
+  `
+})
+export class ToastExampleComponent {
+  constructor(private snackBar: MatSnackBar) {}
+
+  showSuccess() {
+    this.snackBar.open('Fichier enregistre avec succes', 'Fermer', {
+      duration: 4000,
+      panelClass: ['nxo-toast', 'nxo-toast-success']
+    });
+  }
+
+  showError() {
+    this.snackBar.open('Erreur lors de l\'envoi', 'Fermer', {
+      duration: 4000,
+      panelClass: ['nxo-toast', 'nxo-toast-error']
+    });
+  }
+
+  showInfo() {
+    this.snackBar.open('Nouvelle mise a jour disponible', 'Fermer', {
+      duration: 4000,
+      panelClass: ['nxo-toast', 'nxo-toast-info']
+    });
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# templates/toast.html.twig #}
+{% include '@nxo/toast.html.twig' with {
+  variant: 'success',
+  icon: 'fa-check-circle',
+  message: 'Fichier enregistre avec succes'
+} %}
+
+{% include '@nxo/toast.html.twig' with {
+  variant: 'error',
+  icon: 'fa-times-circle',
+  message: 'Erreur lors de l\'envoi'
+} %}
+
+{% include '@nxo/toast.html.twig' with {
+  variant: 'info',
+  icon: 'fa-info-circle',
+  message: 'Nouvelle mise a jour disponible'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            Les alertes reduisent leur padding sur mobile pour maximiser l'espace de contenu.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 768px</code></td>
+                <td>Le padding de <code>.nxo-alert</code> passe a <code>spacing-sm spacing-md</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Close alert
+    document.querySelectorAll('.nxo-alert-close').forEach(btn => {
+      btn.addEventListener('click', () => btn.parentElement.remove());
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

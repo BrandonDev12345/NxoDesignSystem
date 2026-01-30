@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Headers - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link active"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-window-maximize"></i> Headers</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Patterns de header pour les portails et applications NXO.
+        </p>
+
+        <!-- Header Responsive Officiel -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Header Responsive Officiel</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">
+            Header unifie pour l'Espace Client NXO avec 5 breakpoints responsive.
+            <strong>C'est le header a utiliser pour tous les portails clients.</strong>
+          </p>
+
+          <div class="nxo-alert nxo-alert-info nxo-mb-lg">
+            <i class="fa-solid fa-info-circle"></i>
+            <div>
+              <strong>Demos interactives disponibles :</strong><br>
+              <a href="../demo/header-responsive.html" target="_blank" style="color: inherit; text-decoration: underline;">Header Responsive (resize la fenetre)</a> |
+              <a href="../demo/headers.html" target="_blank" style="color: inherit; text-decoration: underline;">Tous les breakpoints cote a cote</a>
+            </div>
+          </div>
+
+          <!-- Breakpoints Table -->
+          <table class="doc-tokens nxo-mb-lg">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Largeur</th>
+                <th>Hauteur</th>
+                <th>Caracteristiques</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code class="doc-tokens__var">Desktop XL</code></td>
+                <td>> 1440px</td>
+                <td>80px</td>
+                <td>Grip + Logo + Nom service + Search bar + Lang + 3 icones</td>
+              </tr>
+              <tr>
+                <td><code class="doc-tokens__var">Desktop</code></td>
+                <td>1024px - 1440px</td>
+                <td>80px</td>
+                <td>Meme layout, tailles reduites</td>
+              </tr>
+              <tr>
+                <td><code class="doc-tokens__var">Tablet</code></td>
+                <td>768px - 1024px</td>
+                <td>72px</td>
+                <td>Hamburger + Logo + Nom + Search bar reduite</td>
+              </tr>
+              <tr>
+                <td><code class="doc-tokens__var">Tablet Small</code></td>
+                <td>480px - 768px</td>
+                <td>64px</td>
+                <td>Hamburger + Logo + Icone search + 3 icones</td>
+              </tr>
+              <tr>
+                <td><code class="doc-tokens__var">Mobile</code></td>
+                <td>< 480px</td>
+                <td>56px</td>
+                <td>Hamburger + Logo centre + 2 icones (aide, profil)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Preview Desktop XL -->
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Desktop XL (1920px)</span>
+            </div>
+            <div class="doc-demo__preview doc-demo__preview--dark" style="overflow-x: auto; padding: 20px;">
+              <div style="background: #0055a0; display: flex; align-items: center; height: 80px; min-width: 1200px; border-radius: 8px;">
+                <div style="display: flex; align-items: center; padding-left: 32px; gap: 48px; width: 400px;">
+                  <button style="background: none; border: none; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-grip-vertical" style="color: white; font-size: 20px;"></i>
+                  </button>
+                  <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 40px;">
+                  <span style="color: rgba(255,255,255,0.9); font-weight: 600; font-size: 16px; white-space: nowrap;">Nom Service</span>
+                </div>
+                <div style="flex: 1; display: flex; justify-content: center;">
+                  <div style="background: rgba(255,255,255,0.15); display: flex; align-items: center; width: 550px; height: 44px; border-radius: 22px; padding: 0 16px; gap: 12px;">
+                    <i class="fa-solid fa-search" style="color: rgba(255,255,255,0.7); font-size: 16px;"></i>
+                    <span style="color: rgba(255,255,255,0.5); font-size: 14px;">Rechercher...</span>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; padding-right: 32px; gap: 20px; width: 250px;">
+                  <div style="display: flex; align-items: center; gap: 6px; padding: 6px 10px; cursor: pointer;">
+                    <span class="fi fi-fr" style="width: 24px; height: 18px; border-radius: 2px;"></span>
+                    <span style="color: white; font-size: 13px; font-weight: 600;">FR</span>
+                  </div>
+                  <button style="background: none; border: none; cursor: pointer;"><i class="fa-solid fa-expand" style="color: white; font-size: 18px;"></i></button>
+                  <button style="background: none; border: none; cursor: pointer;"><i class="fa-solid fa-question-circle" style="color: white; font-size: 18px;"></i></button>
+                  <button style="background: none; border: none; cursor: pointer;"><i class="fa-solid fa-user-circle" style="color: white; font-size: 24px;"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview Mobile -->
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Mobile (375px)</span>
+            </div>
+            <div class="doc-demo__preview doc-demo__preview--dark" style="display: flex; justify-content: center; padding: 20px;">
+              <div style="background: #0055a0; display: flex; align-items: center; height: 56px; width: 375px; border-radius: 8px;">
+                <div style="display: flex; align-items: center; padding-left: 12px; width: 50px;">
+                  <button style="background: none; border: none; cursor: pointer; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fa-solid fa-bars" style="color: white; font-size: 18px;"></i>
+                  </button>
+                </div>
+                <div style="flex: 1; display: flex; justify-content: center;">
+                  <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 28px;">
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; gap: 8px; width: 90px;">
+                  <button style="background: none; border: none; cursor: pointer;"><i class="fa-solid fa-question-circle" style="color: white; font-size: 16px;"></i></button>
+                  <button style="background: none; border: none; cursor: pointer;"><i class="fa-solid fa-user-circle" style="color: white; font-size: 20px;"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Structure zones -->
+          <h4 style="margin-top: 24px; margin-bottom: 12px;">Structure en 3 zones</h4>
+          <div class="doc-demo">
+            <div class="doc-demo__code">
+              <pre><span class="comment">&lt;!-- Header NXO Responsive --&gt;</span>
+&lt;header class="<span class="value">nxo-header</span>"&gt;
+  <span class="comment">&lt;!-- Zone gauche: Menu + Logo + Nom service --&gt;</span>
+  &lt;div class="<span class="value">nxo-header__zone-left</span>"&gt;
+    &lt;button class="nxo-header__icon nxo-header__icon--apps"&gt;...&lt;/button&gt;
+    &lt;button class="nxo-header__icon nxo-header__icon--burger"&gt;...&lt;/button&gt;
+    &lt;div class="nxo-header__logo"&gt;&lt;img src="logo.png"&gt;&lt;/div&gt;
+    &lt;span class="nxo-header__service-name"&gt;Nom Service&lt;/span&gt;
+  &lt;/div&gt;
+
+  <span class="comment">&lt;!-- Zone centre: Search bar (ou logo sur mobile) --&gt;</span>
+  &lt;div class="<span class="value">nxo-header__zone-center</span>"&gt;
+    &lt;div class="nxo-header__search"&gt;...&lt;/div&gt;
+    &lt;div class="nxo-header__logo nxo-header__logo--mobile"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+
+  <span class="comment">&lt;!-- Zone droite: Lang + Actions + Profil --&gt;</span>
+  &lt;div class="<span class="value">nxo-header__zone-right</span>"&gt;
+    &lt;div class="nxo-header__lang"&gt;...&lt;/div&gt;
+    &lt;button class="nxo-header__icon nxo-header__icon--search"&gt;...&lt;/button&gt;
+    &lt;button class="nxo-header__icon nxo-header__icon--expand"&gt;...&lt;/button&gt;
+    &lt;button class="nxo-header__icon nxo-header__icon--help"&gt;...&lt;/button&gt;
+    &lt;button class="nxo-header__icon nxo-header__icon--profile"&gt;...&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</pre>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--nxo-border-color); margin: 40px 0;">
+
+        <!-- Tous les breakpoints -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tous les breakpoints</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Scroll horizontalement pour voir les headers en entier.</p>
+
+          <!-- Header 1920 -->
+          <div class="doc-demo" style="margin-bottom: 32px;">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Desktop XL - 1920 x 80</span>
+            </div>
+            <div class="doc-demo__preview doc-demo__preview--dark" style="overflow-x: auto; padding: 16px;">
+              <header style="background-color: #0055a0; display: flex; align-items: center; width: 1920px; height: 80px; border-radius: 8px;">
+                <div style="display: flex; align-items: center; height: 100%; width: 400px; padding-left: 32px; gap: 48px;">
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 40px; height: 40px;">
+                    <img src="../../assets/icons/grip-vertical-solid-full.svg" alt="Apps" style="filter: brightness(0) invert(1); width: 24px; height: 24px;">
+                  </button>
+                  <div style="height: 40px;"><img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 100%; width: auto;"></div>
+                  <span style="color: rgba(255,255,255,0.9); font-weight: 600; font-size: 16px; white-space: nowrap;">Nom Service</span>
+                </div>
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center; height: 100%;">
+                  <div style="background-color: rgba(255,255,255,0.15); display: flex; align-items: center; width: 550px; height: 44px; border-radius: 22px; padding: 0 16px; gap: 12px;">
+                    <img src="../../assets/icons/magnifying-glass-solid-full.svg" alt="Search" style="filter: brightness(0) invert(1); opacity: 0.7; width: 18px; height: 18px;">
+                    <span style="color: rgba(255,255,255,0.5); font-size: 14px;">Rechercher...</span>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; height: 100%; width: 250px; padding-right: 32px; gap: 20px;">
+                  <button style="display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 6px 10px;">
+                    <span class="fi fi-fr" style="width: 24px; height: 18px; border-radius: 2px;"></span>
+                    <span style="color: #ffffff; font-size: 13px; font-weight: 600;">FR</span>
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 40px; height: 40px;">
+                    <img src="../../assets/icons/expand-solid-full.svg" alt="Expand" style="filter: brightness(0) invert(1); width: 20px; height: 20px;">
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 40px; height: 40px;">
+                    <img src="../../assets/icons/question-solid-full.svg" alt="Help" style="filter: brightness(0) invert(1); width: 20px; height: 20px;">
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 40px; height: 40px;">
+                    <img src="../../assets/icons/circle-user-regular-full.svg" alt="Profile" style="filter: brightness(0) invert(1); width: 28px; height: 28px;">
+                  </button>
+                </div>
+              </header>
+            </div>
+          </div>
+
+          <!-- Header 1440 -->
+          <div class="doc-demo" style="margin-bottom: 32px;">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Desktop - 1440 x 80</span>
+            </div>
+            <div class="doc-demo__preview doc-demo__preview--dark" style="overflow-x: auto; padding: 16px;">
+              <header style="background-color: #0055a0; display: flex; align-items: center; width: 1440px; height: 80px; border-radius: 8px;">
+                <div style="display: flex; align-items: center; height: 100%; width: 350px; padding-left: 20px; gap: 40px;">
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 36px; height: 36px;">
+                    <img src="../../assets/icons/grip-vertical-solid-full.svg" alt="Apps" style="filter: brightness(0) invert(1); width: 22px; height: 22px;">
+                  </button>
+                  <div style="height: 36px;"><img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 100%; width: auto;"></div>
+                  <span style="color: rgba(255,255,255,0.9); font-weight: 600; font-size: 15px; white-space: nowrap;">Nom Service</span>
+                </div>
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center; height: 100%;">
+                  <div style="background-color: rgba(255,255,255,0.15); display: flex; align-items: center; width: 450px; height: 42px; border-radius: 21px; padding: 0 16px; gap: 12px;">
+                    <img src="../../assets/icons/magnifying-glass-solid-full.svg" alt="Search" style="filter: brightness(0) invert(1); opacity: 0.7; width: 16px; height: 16px;">
+                    <span style="color: rgba(255,255,255,0.5); font-size: 13px;">Rechercher...</span>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; height: 100%; width: 220px; padding-right: 24px; gap: 18px;">
+                  <button style="display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 6px 10px;">
+                    <span class="fi fi-fr" style="width: 24px; height: 18px; border-radius: 2px;"></span>
+                    <span style="color: #ffffff; font-size: 13px; font-weight: 600;">FR</span>
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 36px; height: 36px;">
+                    <img src="../../assets/icons/expand-solid-full.svg" alt="Expand" style="filter: brightness(0) invert(1); width: 18px; height: 18px;">
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 36px; height: 36px;">
+                    <img src="../../assets/icons/question-solid-full.svg" alt="Help" style="filter: brightness(0) invert(1); width: 18px; height: 18px;">
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 36px; height: 36px;">
+                    <img src="../../assets/icons/circle-user-regular-full.svg" alt="Profile" style="filter: brightness(0) invert(1); width: 26px; height: 26px;">
+                  </button>
+                </div>
+              </header>
+            </div>
+          </div>
+
+          <!-- Header 1024 -->
+          <div class="doc-demo" style="margin-bottom: 32px;">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Tablet - 1024 x 72 (avec hamburger)</span>
+            </div>
+            <div class="doc-demo__preview doc-demo__preview--dark" style="overflow-x: auto; padding: 16px;">
+              <header style="background-color: #0055a0; display: flex; align-items: center; width: 1024px; height: 72px; border-radius: 8px;">
+                <div style="display: flex; align-items: center; height: 100%; width: 320px; padding-left: 16px; gap: 24px;">
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 32px; height: 32px;">
+                    <img src="../../assets/icons/bars-solid-full.svg" alt="Menu" style="filter: brightness(0) invert(1); width: 20px; height: 20px;">
+                  </button>
+                  <div style="height: 32px;"><img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 100%; width: auto;"></div>
+                  <span style="color: rgba(255,255,255,0.9); font-weight: 600; font-size: 14px; white-space: nowrap;">Nom Service</span>
+                </div>
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center; height: 100%;">
+                  <div style="background-color: rgba(255,255,255,0.15); display: flex; align-items: center; width: 280px; height: 38px; border-radius: 19px; padding: 0 12px; gap: 10px;">
+                    <img src="../../assets/icons/magnifying-glass-solid-full.svg" alt="Search" style="filter: brightness(0) invert(1); opacity: 0.7; width: 14px; height: 14px;">
+                    <span style="color: rgba(255,255,255,0.5); font-size: 12px;">Rechercher...</span>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; height: 100%; width: 160px; padding-right: 16px; gap: 12px;">
+                  <button style="display: flex; align-items: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 6px 10px;">
+                    <span class="fi fi-fr" style="width: 24px; height: 18px; border-radius: 2px;"></span>
+                    <span style="color: #ffffff; font-size: 13px; font-weight: 600;">FR</span>
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 32px; height: 32px;">
+                    <img src="../../assets/icons/expand-solid-full.svg" alt="Expand" style="filter: brightness(0) invert(1); width: 16px; height: 16px;">
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 32px; height: 32px;">
+                    <img src="../../assets/icons/question-solid-full.svg" alt="Help" style="filter: brightness(0) invert(1); width: 16px; height: 16px;">
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 32px; height: 32px;">
+                    <img src="../../assets/icons/circle-user-regular-full.svg" alt="Profile" style="filter: brightness(0) invert(1); width: 22px; height: 22px;">
+                  </button>
+                </div>
+              </header>
+            </div>
+          </div>
+
+          <!-- Header 768 -->
+          <div class="doc-demo" style="margin-bottom: 32px;">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Tablet Small - 768 x 64 (sans search bar)</span>
+            </div>
+            <div class="doc-demo__preview doc-demo__preview--dark" style="padding: 16px;">
+              <header style="background-color: #0055a0; display: flex; align-items: center; width: 768px; height: 64px; border-radius: 8px;">
+                <div style="display: flex; align-items: center; height: 100%; width: 200px; padding-left: 12px; gap: 16px;">
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 28px; height: 28px;">
+                    <img src="../../assets/icons/bars-solid-full.svg" alt="Menu" style="filter: brightness(0) invert(1); width: 18px; height: 18px;">
+                  </button>
+                  <div style="height: 28px;"><img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 100%; width: auto;"></div>
+                </div>
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center; height: 100%;"></div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; height: 100%; width: 180px; padding-right: 12px; gap: 8px;">
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 32px; height: 32px;">
+                    <img src="../../assets/icons/magnifying-glass-solid-full.svg" alt="Search" style="filter: brightness(0) invert(1); width: 18px; height: 18px;">
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 32px; height: 32px;">
+                    <img src="../../assets/icons/expand-solid-full.svg" alt="Expand" style="filter: brightness(0) invert(1); width: 16px; height: 16px;">
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 32px; height: 32px;">
+                    <img src="../../assets/icons/question-solid-full.svg" alt="Help" style="filter: brightness(0) invert(1); width: 16px; height: 16px;">
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 32px; height: 32px;">
+                    <img src="../../assets/icons/circle-user-regular-full.svg" alt="Profile" style="filter: brightness(0) invert(1); width: 22px; height: 22px;">
+                  </button>
+                </div>
+              </header>
+            </div>
+          </div>
+
+          <!-- Header 375 (Mobile) -->
+          <div class="doc-demo" style="margin-bottom: 32px;">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Mobile - 375 x 56 (logo centre)</span>
+            </div>
+            <div class="doc-demo__preview doc-demo__preview--dark" style="padding: 16px; display: flex; justify-content: center;">
+              <header style="background-color: #0055a0; display: flex; align-items: center; width: 375px; height: 56px; border-radius: 8px;">
+                <div style="display: flex; align-items: center; height: 100%; width: 50px; padding-left: 12px;">
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 28px; height: 28px;">
+                    <img src="../../assets/icons/bars-solid-full.svg" alt="Menu" style="filter: brightness(0) invert(1); width: 20px; height: 20px;">
+                  </button>
+                </div>
+                <div style="flex: 1; display: flex; align-items: center; justify-content: center; height: 100%;">
+                  <div style="height: 28px;"><img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 100%; width: auto;"></div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: flex-end; height: 100%; width: 90px; padding-right: 12px; gap: 8px;">
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 28px; height: 28px;">
+                    <img src="../../assets/icons/question-solid-full.svg" alt="Help" style="filter: brightness(0) invert(1); width: 16px; height: 16px;">
+                  </button>
+                  <button style="display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; width: 28px; height: 28px;">
+                    <img src="../../assets/icons/circle-user-regular-full.svg" alt="Profile" style="filter: brightness(0) invert(1); width: 20px; height: 20px;">
+                  </button>
+                </div>
+              </header>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

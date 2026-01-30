@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Patterns - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link active"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-layer-group"></i> Page Patterns</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Modeles de pages et layouts recurrents pour les applications NXO.
+        </p>
+
+        <!-- Login Page -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Page de connexion</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Layout centre avec formulaire de connexion.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__preview doc-demo__preview--full" style="min-height: 400px;">
+              <div style="background: var(--fayat-blue); padding: 48px 24px; border-radius: 8px; display: flex; align-items: center; justify-content: center; min-height: 350px;">
+                <div style="background: white; padding: 40px; border-radius: 16px; width: 100%; max-width: 400px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
+                  <div style="text-align: center; margin-bottom: 32px;">
+                    <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 48px; margin-bottom: 16px; background: var(--fayat-blue); padding: 8px 16px; border-radius: 8px;">
+                    <h2 style="margin: 0; font-size: 24px; color: var(--nxo-text-color);">Connexion</h2>
+                    <p style="margin: 8px 0 0; color: var(--nxo-text-muted); font-size: 14px;">Accedez a votre espace</p>
+                  </div>
+                  <div style="margin-bottom: 16px;">
+                    <label style="display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px;">Email</label>
+                    <input type="email" class="nxo-input" placeholder="votre@email.fr" style="width: 100%;">
+                  </div>
+                  <div style="margin-bottom: 24px;">
+                    <label style="display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px;">Mot de passe</label>
+                    <input type="password" class="nxo-input" placeholder="••••••••" style="width: 100%;">
+                  </div>
+                  <button class="nxo-btn nxo-btn-primary nxo-btn-block">Se connecter</button>
+                  <p style="text-align: center; margin-top: 16px; font-size: 14px;">
+                    <a href="#" style="color: var(--fayat-blue);">Mot de passe oublie ?</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Layout -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Layout Dashboard</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Structure avec sidebar et contenu principal.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__preview doc-demo__preview--full" style="min-height: 350px;">
+              <div style="display: flex; background: var(--nxo-bg-color); border-radius: 8px; overflow: hidden; border: 1px solid var(--nxo-border-color); min-height: 300px;">
+                <!-- Sidebar -->
+                <div style="width: 220px; background: var(--nxo-card-bg); border-right: 1px solid var(--nxo-border-color); padding: 16px;">
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 24px;">
+                    <div style="width: 32px; height: 32px; background: var(--fayat-blue); border-radius: 8px;"></div>
+                    <span style="font-weight: 600;">Mon App</span>
+                  </div>
+                  <nav style="display: flex; flex-direction: column; gap: 4px;">
+                    <a href="#" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: var(--nxo-hover-bg); border-radius: 8px; color: var(--fayat-blue); text-decoration: none; font-weight: 500;">
+                      <i class="fa-solid fa-home"></i> Dashboard
+                    </a>
+                    <a href="#" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; color: var(--nxo-text-muted); text-decoration: none;">
+                      <i class="fa-solid fa-users"></i> Utilisateurs
+                    </a>
+                    <a href="#" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; color: var(--nxo-text-muted); text-decoration: none;">
+                      <i class="fa-solid fa-folder"></i> Projets
+                    </a>
+                    <a href="#" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; color: var(--nxo-text-muted); text-decoration: none;">
+                      <i class="fa-solid fa-chart-bar"></i> Rapports
+                    </a>
+                    <a href="#" style="display: flex; align-items: center; gap: 8px; padding: 10px 12px; color: var(--nxo-text-muted); text-decoration: none;">
+                      <i class="fa-solid fa-cog"></i> Parametres
+                    </a>
+                  </nav>
+                </div>
+                <!-- Content -->
+                <div style="flex: 1; padding: 24px;">
+                  <h2 style="margin: 0 0 24px; font-size: 20px;">Dashboard</h2>
+                  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                    <div style="background: var(--nxo-card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--nxo-border-color);">
+                      <p style="margin: 0 0 8px; color: var(--nxo-text-muted); font-size: 14px;">Utilisateurs</p>
+                      <p style="margin: 0; font-size: 28px; font-weight: 700;">1,234</p>
+                    </div>
+                    <div style="background: var(--nxo-card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--nxo-border-color);">
+                      <p style="margin: 0 0 8px; color: var(--nxo-text-muted); font-size: 14px;">Projets</p>
+                      <p style="margin: 0; font-size: 28px; font-weight: 700;">56</p>
+                    </div>
+                    <div style="background: var(--nxo-card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--nxo-border-color);">
+                      <p style="margin: 0 0 8px; color: var(--nxo-text-muted); font-size: 14px;">Taches</p>
+                      <p style="margin: 0; font-size: 28px; font-weight: 700;">892</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code">
+              <pre>&lt;div class="<span class="value">nxo-layout</span>"&gt;
+  &lt;aside class="<span class="value">nxo-sidebar</span>"&gt;
+    &lt;div class="nxo-sidebar__logo"&gt;...&lt;/div&gt;
+    &lt;nav class="nxo-sidebar__nav"&gt;
+      &lt;a href="#" class="nxo-sidebar__link active"&gt;Dashboard&lt;/a&gt;
+      &lt;a href="#" class="nxo-sidebar__link"&gt;Utilisateurs&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+  &lt;main class="<span class="value">nxo-main</span>"&gt;
+    &lt;!-- Contenu --&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Etat vide</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Affichage quand il n'y a pas de donnees.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="text-align: center; padding: 48px 24px;">
+                <div style="width: 80px; height: 80px; background: var(--nxo-hover-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                  <i class="fa-solid fa-folder-open fa-2x" style="color: var(--nxo-text-muted);"></i>
+                </div>
+                <h3 style="margin: 0 0 8px; font-size: 18px;">Aucun projet</h3>
+                <p style="margin: 0 0 24px; color: var(--nxo-text-muted);">Vous n'avez pas encore cree de projet.</p>
+                <button class="nxo-btn nxo-btn-primary"><i class="fa-solid fa-plus"></i> Creer un projet</button>
+              </div>
+            </div>
+            <div class="doc-demo__code">
+              <pre>&lt;div class="<span class="value">nxo-empty-state</span>"&gt;
+  &lt;div class="nxo-empty-state__icon"&gt;
+    &lt;i class="fa-solid fa-folder-open"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;h3&gt;Aucun projet&lt;/h3&gt;
+  &lt;p&gt;Vous n'avez pas encore cree de projet.&lt;/p&gt;
+  &lt;button class="nxo-btn nxo-btn-primary"&gt;Creer un projet&lt;/button&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Error Page -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Page d'erreur 404</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview doc-demo__preview--full">
+              <div style="text-align: center; padding: 64px 24px; background: var(--nxo-card-bg); border-radius: 8px;">
+                <p style="font-size: 80px; font-weight: 700; color: var(--fayat-blue); margin: 0; line-height: 1;">404</p>
+                <h2 style="margin: 16px 0 8px; font-size: 24px;">Page introuvable</h2>
+                <p style="margin: 0 0 32px; color: var(--nxo-text-muted);">La page que vous recherchez n'existe pas ou a ete deplacee.</p>
+                <div style="display: flex; gap: 12px; justify-content: center;">
+                  <button class="nxo-btn nxo-btn-outline"><i class="fa-solid fa-arrow-left"></i> Retour</button>
+                  <button class="nxo-btn nxo-btn-primary"><i class="fa-solid fa-home"></i> Accueil</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Etat de chargement</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <!-- Skeleton card -->
+                <div style="background: var(--nxo-card-bg); padding: 20px; border-radius: 12px; border: 1px solid var(--nxo-border-color);">
+                  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                    <div style="width: 48px; height: 48px; background: var(--nxo-hover-bg); border-radius: 50%; animation: pulse 1.5s infinite;"></div>
+                    <div style="flex: 1;">
+                      <div style="height: 16px; width: 60%; background: var(--nxo-hover-bg); border-radius: 4px; margin-bottom: 8px; animation: pulse 1.5s infinite;"></div>
+                      <div style="height: 12px; width: 40%; background: var(--nxo-hover-bg); border-radius: 4px; animation: pulse 1.5s infinite;"></div>
+                    </div>
+                  </div>
+                  <div style="height: 12px; width: 100%; background: var(--nxo-hover-bg); border-radius: 4px; margin-bottom: 8px; animation: pulse 1.5s infinite;"></div>
+                  <div style="height: 12px; width: 80%; background: var(--nxo-hover-bg); border-radius: 4px; animation: pulse 1.5s infinite;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code">
+              <pre>&lt;div class="<span class="value">nxo-skeleton</span>"&gt;
+  &lt;div class="nxo-skeleton__avatar"&gt;&lt;/div&gt;
+  &lt;div class="nxo-skeleton__text"&gt;&lt;/div&gt;
+  &lt;div class="nxo-skeleton__text nxo-skeleton__text--short"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Page de parametres</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Layout avec navigation laterale pour les parametres.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__preview doc-demo__preview--full">
+              <div style="display: flex; gap: 32px; padding: 24px; background: var(--nxo-card-bg); border-radius: 8px; border: 1px solid var(--nxo-border-color);">
+                <!-- Settings nav -->
+                <nav style="width: 200px; flex-shrink: 0;">
+                  <a href="#" style="display: block; padding: 10px 16px; background: var(--nxo-hover-bg); border-radius: 8px; color: var(--fayat-blue); text-decoration: none; font-weight: 500; margin-bottom: 4px;">
+                    <i class="fa-solid fa-user" style="margin-right: 8px;"></i> Profil
+                  </a>
+                  <a href="#" style="display: block; padding: 10px 16px; color: var(--nxo-text-muted); text-decoration: none; margin-bottom: 4px;">
+                    <i class="fa-solid fa-lock" style="margin-right: 8px;"></i> Securite
+                  </a>
+                  <a href="#" style="display: block; padding: 10px 16px; color: var(--nxo-text-muted); text-decoration: none; margin-bottom: 4px;">
+                    <i class="fa-solid fa-bell" style="margin-right: 8px;"></i> Notifications
+                  </a>
+                  <a href="#" style="display: block; padding: 10px 16px; color: var(--nxo-text-muted); text-decoration: none;">
+                    <i class="fa-solid fa-palette" style="margin-right: 8px;"></i> Apparence
+                  </a>
+                </nav>
+                <!-- Settings content -->
+                <div style="flex: 1;">
+                  <h3 style="margin: 0 0 24px; font-size: 18px;">Profil</h3>
+                  <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+                    <div style="width: 72px; height: 72px; border-radius: 50%; background: var(--fayat-blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 600;">JD</div>
+                    <div>
+                      <button class="nxo-btn nxo-btn-outline nxo-btn-sm">Changer la photo</button>
+                    </div>
+                  </div>
+                  <div class="nxo-form-group" style="margin-bottom: 16px;">
+                    <label class="nxo-label">Nom complet</label>
+                    <input type="text" class="nxo-input" value="Jean Dupont" style="max-width: 400px;">
+                  </div>
+                  <div class="nxo-form-group" style="margin-bottom: 24px;">
+                    <label class="nxo-label">Email</label>
+                    <input type="email" class="nxo-input" value="jean.dupont@nxo.fr" style="max-width: 400px;">
+                  </div>
+                  <button class="nxo-btn nxo-btn-primary">Enregistrer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NXO Design System - Documentation v2.0</title>
+
+  <!-- Theme loader - MUST be first to prevent flash -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <!-- Google Fonts - Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Flag Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="tokens/tokens.css">
+  <link rel="stylesheet" href="components/components.css">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════════════════
+       DOCUMENTATION LAYOUT
+       ═══════════════════════════════════════════════════════════════════════════ */
+
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--nxo-bg-page);
+    }
+
+    /* Doc Header */
+    .doc-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background-color: var(--fayat-blue);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--nxo-spacing-lg);
+      z-index: 1000;
+      gap: var(--nxo-spacing-lg);
+    }
+
+    .doc-header__logo {
+      display: flex;
+      align-items: center;
+      gap: var(--nxo-spacing-sm);
+      color: white;
+      text-decoration: none;
+    }
+
+    .doc-header__logo img {
+      height: 32px;
+    }
+
+    .doc-header__title {
+      font-size: var(--nxo-font-size-lg);
+      font-weight: var(--nxo-font-weight-bold);
+      color: white;
+    }
+
+    .doc-header__version {
+      background: rgba(255,255,255,0.2);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: var(--nxo-font-size-xs);
+      color: white;
+    }
+
+    .doc-header__search {
+      flex: 1;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* Hamburger Menu Button */
+    .doc-header__hamburger {
+      display: none;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all var(--nxo-transition-fast);
+    }
+
+    .doc-header__hamburger:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 1024px) {
+      .doc-header__hamburger {
+        display: flex;
+      }
+    }
+
+    /* Command Palette Trigger (shadcn style) */
+    .cmd-trigger {
+      display: flex;
+      align-items: center;
+      gap: var(--nxo-spacing-sm);
+      width: 100%;
+      height: 40px;
+      padding: 0 var(--nxo-spacing-md);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--nxo-radius-md);
+      color: rgba(255,255,255,0.7);
+      font-family: var(--nxo-font-family);
+      font-size: var(--nxo-font-size-sm);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .cmd-trigger:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .cmd-trigger__text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .cmd-trigger__kbd {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-family: var(--nxo-font-family);
+    }
+
+    .cmd-trigger__kbd kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
+      font-size: 11px;
+      font-family: inherit;
+    }
+
+    /* Command Palette Modal */
+    .cmd-palette {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      padding: 20vh 16px 16px;
+    }
+
+    .cmd-palette.open {
+      display: block;
+    }
+
+    .cmd-palette__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+    }
+
+    .cmd-palette__dialog {
+      position: relative;
+      max-width: 640px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 16px 70px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      animation: cmdSlideIn 0.15s ease-out;
+    }
+
+    @keyframes cmdSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.96) translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .cmd-palette__header {
+      display: flex;
+      align-items: center;
+      padding: var(--nxo-spacing-md);
+      border-bottom: 1px solid var(--nxo-border-color);
+    }
+
+    .cmd-palette__header i {
+      color: var(--nxo-text-muted);
+      margin-right: var(--nxo-spacing-sm);
+    }
+
+    .cmd-palette__input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: var(--nxo-font-family);
+      font-size: var(--nxo-font-size-base);
+      color: var(--nxo-text-body);
+      background: transparent;
+    }
+
+    .cmd-palette__input::placeholder {
+      color: var(--nxo-text-muted);
+    }
+
+    .cmd-palette__close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--nxo-bg-page);
+      border: 1px solid var(--nxo-border-color);
+      border-radius: 4px;
+      color: var(--nxo-text-muted);
+      font-size: 10px;
+      cursor: pointer;
+    }
+
+    .cmd-palette__close:hover {
+      background: var(--nxo-border-color);
+    }
+
+    .cmd-palette__body {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .cmd-palette__empty {
+      padding: var(--nxo-spacing-xl);
+      text-align: center;
+      color: var(--nxo-text-muted);
+    }
+
+    .cmd-palette__group {
+      padding: var(--nxo-spacing-sm) 0;
+    }
+
+    .cmd-palette__group-title {
+      padding: var(--nxo-spacing-xs) var(--nxo-spacing-md);
+      font-size: var(--nxo-font-size-xs);
+      font-weight: var(--nxo-font-weight-semibold);
+      color: var(--nxo-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cmd-palette__item {
+      display: flex;
+      align-items: center;
+      gap: var(--nxo-spacing-sm);
+      padding: var(--nxo-spacing-sm) var(--nxo-spacing-md);
+      color: var(--nxo-text-body);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.1s ease;
+    }
+
+    .cmd-palette__item:hover,
+    .cmd-palette__item.selected {
+      background: var(--nxo-bg-page);
+    }
+
+    .cmd-palette__item.selected {
+      background: var(--fayat-blue);
+      color: white;
+    }
+
+    .cmd-palette__item.selected .cmd-palette__item-category {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .cmd-palette__item-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--nxo-bg-page);
+      border-radius: var(--nxo-radius-sm);
+      color: var(--nxo-text-muted);
+      font-size: 14px;
+    }
+
+    .cmd-palette__item.selected .cmd-palette__item-icon {
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .cmd-palette__item-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cmd-palette__item-title {
+      font-size: var(--nxo-font-size-sm);
+      font-weight: var(--nxo-font-weight-medium);
+    }
+
+    .cmd-palette__item-category {
+      font-size: var(--nxo-font-size-xs);
+      color: var(--nxo-text-muted);
+    }
+
+    .cmd-palette__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--nxo-spacing-sm) var(--nxo-spacing-md);
+      border-top: 1px solid var(--nxo-border-color);
+      background: var(--nxo-bg-page);
+      font-size: var(--nxo-font-size-xs);
+      color: var(--nxo-text-muted);
+    }
+
+    .cmd-palette__footer-keys {
+      display: flex;
+      gap: var(--nxo-spacing-md);
+    }
+
+    .cmd-palette__footer-key {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cmd-palette__footer-key kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
+      background: white;
+      border: 1px solid var(--nxo-border-color);
+      border-radius: 3px;
+      font-size: 10px;
+      font-family: var(--nxo-font-family);
+    }
+
+    /* Sidebar */
+    .doc-sidebar {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      bottom: 0;
+      width: 280px;
+      background: white;
+      border-right: 1px solid var(--nxo-border-color);
+      overflow-y: auto;
+      padding: var(--nxo-spacing-md) 0;
+      z-index: 100;
+    }
+
+    .doc-sidebar__section {
+      margin-bottom: var(--nxo-spacing-sm);
+    }
+
+    .doc-sidebar__title {
+      padding: var(--nxo-spacing-sm) var(--nxo-spacing-lg);
+      font-size: var(--nxo-font-size-xs);
+      font-weight: var(--nxo-font-weight-bold);
+      color: var(--nxo-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .doc-sidebar__link {
+      display: flex;
+      align-items: center;
+      gap: var(--nxo-spacing-sm);
+      padding: var(--nxo-spacing-sm) var(--nxo-spacing-lg);
+      color: var(--nxo-text-body);
+      text-decoration: none;
+      font-size: var(--nxo-font-size-sm);
+      transition: all var(--nxo-transition-fast);
+    }
+
+    .doc-sidebar__link:hover {
+      background: var(--nxo-bg-page);
+      color: var(--nxo-blue-dark);
+    }
+
+    .doc-sidebar__link.active {
+      background: rgba(0, 85, 160, 0.1);
+      color: var(--nxo-blue-dark);
+      border-left: 3px solid var(--nxo-blue-dark);
+      font-weight: var(--nxo-font-weight-semibold);
+    }
+
+    .doc-sidebar__link i {
+      width: 20px;
+      text-align: center;
+      color: var(--nxo-text-muted);
+    }
+
+    .doc-sidebar__link.active i {
+      color: var(--nxo-blue-dark);
+    }
+
+    /* Sidebar Overlay for Mobile */
+    .doc-sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(2px);
+      z-index: 999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .doc-sidebar-overlay.open {
+      display: block;
+      opacity: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .doc-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 1001;
+      }
+
+      .doc-sidebar.open {
+        transform: translateX(0);
+      }
+
+      .doc-main {
+        margin-left: 0;
+      }
+    }
+
+    /* Main content */
+    .doc-main {
+      margin-left: 280px;
+      margin-top: 64px;
+      min-height: calc(100vh - 64px);
+    }
+
+    .doc-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--nxo-spacing-xl);
+    }
+
+    /* Sections */
+    .doc-section {
+      margin-bottom: var(--nxo-spacing-2xl);
+      scroll-margin-top: 80px;
+    }
+
+    .doc-section__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--nxo-spacing-lg);
+      padding-bottom: var(--nxo-spacing-md);
+      border-bottom: 2px solid var(--nxo-border-color);
+    }
+
+    .doc-section__title {
+      font-size: var(--nxo-font-size-2xl);
+      font-weight: var(--nxo-font-weight-bold);
+      color: var(--nxo-text-heading);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--nxo-spacing-sm);
+    }
+
+    .doc-section__title i {
+      font-size: var(--nxo-font-size-xl);
+    }
+
+    .doc-section__badge {
+      background: var(--nxo-color-success);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: var(--nxo-font-size-xs);
+      font-weight: var(--nxo-font-weight-semibold);
+    }
+
+    .doc-subsection__title {
+      font-size: var(--nxo-font-size-lg);
+      font-weight: var(--nxo-font-weight-semibold);
+      color: var(--nxo-text-heading);
+      margin: 0 0 var(--nxo-spacing-md) 0;
+    }
+
+    /* Demo boxes */
+    .doc-demo {
+      background: white;
+      border: 1px solid var(--nxo-border-color);
+      border-radius: var(--nxo-radius-md);
+      margin-bottom: var(--nxo-spacing-md);
+      overflow: hidden;
+    }
+
+    .doc-demo__preview {
+      padding: var(--nxo-spacing-lg);
+    }
+
+    .doc-demo__code {
+      background: #1e1e1e;
+      padding: var(--nxo-spacing-md);
+      border-top: 1px solid var(--nxo-border-color);
+      overflow-x: auto;
+    }
+
+    .doc-demo__code pre {
+      margin: 0;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 13px;
+      color: #d4d4d4;
+      line-height: 1.5;
+    }
+
+    .doc-demo__code .comment { color: #6a9955; }
+    .doc-demo__code .property { color: #9cdcfe; }
+    .doc-demo__code .value { color: #ce9178; }
+
+    /* Grid helpers */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--nxo-spacing-md);
+    }
+
+    .doc-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 1024px) {
+      .doc-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .doc-header__title,
+      .doc-header__version {
+        display: none;
+      }
+
+      .doc-grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Progress Bar */
+    .doc-progress {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--nxo-border-color);
+      z-index: 999;
+    }
+
+    .doc-progress__bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--fayat-blue), var(--nxo-blue-light));
+      width: 0%;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Help Button */
+    .doc-help-btn {
+      position: fixed;
+      bottom: 80px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      background: white;
+      border: 1px solid var(--nxo-border-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 20px;
+      color: var(--nxo-text-muted);
+      z-index: 99;
+      transition: all 0.15s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .doc-help-btn:hover {
+      background: var(--fayat-blue);
+      color: white;
+      border-color: var(--fayat-blue);
+    }
+
+    /* Keyboard Shortcuts Panel */
+    .doc-shortcuts {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      padding: 10vh 16px;
+    }
+
+    .doc-shortcuts.open {
+      display: block;
+    }
+
+    .doc-shortcuts__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+    }
+
+    .doc-shortcuts__dialog {
+      position: relative;
+      max-width: 500px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 16px 70px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      animation: cmdSlideIn 0.15s ease-out;
+    }
+
+    .doc-shortcuts__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--nxo-spacing-md) var(--nxo-spacing-lg);
+      border-bottom: 1px solid var(--nxo-border-color);
+    }
+
+    .doc-shortcuts__title {
+      font-size: var(--nxo-font-size-lg);
+      font-weight: var(--nxo-font-weight-semibold);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--nxo-spacing-sm);
+    }
+
+    .doc-shortcuts__close {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--nxo-bg-page);
+      border: 1px solid var(--nxo-border-color);
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--nxo-text-muted);
+    }
+
+    .doc-shortcuts__close:hover {
+      background: var(--nxo-border-color);
+    }
+
+    .doc-shortcuts__body {
+      padding: var(--nxo-spacing-lg);
+    }
+
+    .doc-shortcuts__group {
+      margin-bottom: var(--nxo-spacing-lg);
+    }
+
+    .doc-shortcuts__group:last-child {
+      margin-bottom: 0;
+    }
+
+    .doc-shortcuts__group-title {
+      font-size: var(--nxo-font-size-xs);
+      font-weight: var(--nxo-font-weight-semibold);
+      color: var(--nxo-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: var(--nxo-spacing-sm);
+    }
+
+    .doc-shortcut {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--nxo-spacing-sm) 0;
+    }
+
+    .doc-shortcut__label {
+      font-size: var(--nxo-font-size-sm);
+      color: var(--nxo-text-body);
+    }
+
+    .doc-shortcut__keys {
+      display: flex;
+      gap: 4px;
+    }
+
+    .doc-shortcut__keys kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 24px;
+      height: 24px;
+      padding: 0 8px;
+      background: var(--nxo-bg-page);
+      border: 1px solid var(--nxo-border-color);
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: var(--nxo-font-family);
+      color: var(--nxo-text-body);
+    }
+
+    /* Toast Container */
+    .doc-toast-container {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: var(--nxo-spacing-sm);
+    }
+
+    .doc-toast {
+      display: flex;
+      align-items: center;
+      gap: var(--nxo-spacing-sm);
+      padding: var(--nxo-spacing-sm) var(--nxo-spacing-md);
+      background: #333;
+      color: white;
+      border-radius: var(--nxo-radius-md);
+      font-size: var(--nxo-font-size-sm);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      animation: toastSlideUp 0.3s ease-out;
+    }
+
+    .doc-toast--success {
+      background: var(--nxo-color-success);
+    }
+
+    @keyframes toastSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Theme Toggle Button */
+    .doc-theme-toggle {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: var(--nxo-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: white;
+      font-size: 18px;
+      transition: all 0.15s ease;
+      position: relative;
+    }
+
+    .doc-theme-toggle:hover {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    .doc-theme-toggle #themeIconLight {
+      display: block;
+    }
+
+    .doc-theme-toggle #themeIconDark {
+      display: none;
+    }
+
+    /* Dark Mode Styles */
+    [data-theme="dark"] {
+      --dm-bg: #0f172a;
+      --dm-bg-secondary: #1e293b;
+      --dm-bg-elevated: #334155;
+      --dm-border: #475569;
+      --dm-text: #f1f5f9;
+      --dm-text-muted: #94a3b8;
+      --nxo-border-color: #475569;
+      --nxo-bg-page: #0f172a;
+      --nxo-card-bg: #1e293b;
+      --nxo-text-body: #cbd5e1;
+      --nxo-text-heading: #f1f5f9;
+      --nxo-text-muted: #94a3b8;
+    }
+
+    [data-theme="dark"] body {
+      background-color: var(--dm-bg);
+    }
+
+    [data-theme="dark"] .doc-header {
+      background-color: #0f172a !important;
+      border-bottom: 1px solid var(--dm-border);
+    }
+
+    [data-theme="dark"] .doc-sidebar {
+      background-color: #0f172a;
+      border-right-color: #334155;
+    }
+
+    [data-theme="dark"] .doc-sidebar__link {
+      color: #cbd5e1 !important;
+    }
+
+    [data-theme="dark"] .doc-sidebar__link.active {
+      color: #60a5fa !important;
+      background: rgba(96, 165, 250, 0.15);
+    }
+
+    [data-theme="dark"] .doc-sidebar__link.active i {
+      color: #60a5fa !important;
+    }
+
+    [data-theme="dark"] .doc-theme-toggle #themeIconLight {
+      display: none;
+    }
+
+    [data-theme="dark"] .doc-theme-toggle #themeIconDark {
+      display: block;
+    }
+
+    [data-theme="dark"] .cmd-palette__dialog {
+      background: var(--dm-bg-secondary);
+      border-color: var(--dm-border);
+    }
+
+    [data-theme="dark"] .cmd-palette__input {
+      color: var(--dm-text);
+    }
+
+    [data-theme="dark"] .doc-shortcuts__dialog {
+      background: var(--dm-bg-secondary);
+      border-color: var(--dm-border);
+    }
+
+    [data-theme="dark"] .doc-shortcuts__title {
+      color: var(--dm-text);
+    }
+
+    [data-theme="dark"] .doc-section__title,
+    [data-theme="dark"] .doc-subsection__title {
+      color: var(--dm-text);
+    }
+
+    [data-theme="dark"] .nxo-text,
+    [data-theme="dark"] p {
+      color: var(--dm-text-muted);
+    }
+
+    [data-theme="dark"] .doc-demo {
+      background: var(--dm-bg-elevated);
+      border-color: var(--dm-border);
+    }
+
+    [data-theme="dark"] .nxo-card {
+      background: var(--dm-bg-elevated);
+      border-color: var(--dm-border);
+    }
+
+    [data-theme="dark"] .nxo-table {
+      background: var(--dm-bg-elevated);
+    }
+
+    [data-theme="dark"] .nxo-table th {
+      background: var(--dm-bg);
+      color: var(--dm-text);
+      border-color: var(--dm-border);
+    }
+
+    [data-theme="dark"] .nxo-table td {
+      border-color: var(--dm-border);
+      color: var(--dm-text-muted);
+    }
+
+    .doc-spec {
+      display: inline-block;
+      background: #fff3e0;
+      color: #e65100;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: var(--nxo-font-size-xs);
+      font-weight: var(--nxo-font-weight-medium);
+      font-family: 'Monaco', 'Menlo', monospace;
+    }
+
+    [data-theme="dark"] .doc-spec {
+      background: var(--dm-bg);
+      color: var(--dm-text-muted);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="doc-header">
+    <!-- Mobile Menu Toggle -->
+    <button class="doc-header__hamburger" id="hamburgerBtn" onclick="toggleSidebar()" title="Menu">
+      <i class="fa-solid fa-bars" id="hamburgerIcon"></i>
+      <i class="fa-solid fa-times" id="closeIcon" style="display: none;"></i>
+    </button>
+
+    <a href="index.html" class="doc-header__logo">
+      <img src="assets/logos/nxo-fayat-logo.png" alt="NXO">
+    </a>
+    <span class="doc-header__title">Design System</span>
+    <span class="doc-header__version">v2.0</span>
+
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger" onclick="openCommandPalette()">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="doc-theme-toggle" id="themeToggle" onclick="toggleDarkMode()" title="Changer de theme">
+      <i class="fa-solid fa-sun" id="themeIconLight"></i>
+      <i class="fa-solid fa-moon" id="themeIconDark"></i>
+    </button>
+
+  </header>
+
+  <!-- Command Palette Modal (shadcn style) -->
+  <div class="cmd-palette" id="cmdPalette">
+    <div class="cmd-palette__backdrop" onclick="closeCommandPalette()"></div>
+    <div class="cmd-palette__dialog">
+      <div class="cmd-palette__header">
+        <i class="fa-solid fa-search"></i>
+        <input type="text" class="cmd-palette__input" id="cmdInput" placeholder="Rechercher composants, tokens, documentation..." autofocus>
+        <button class="cmd-palette__close" onclick="closeCommandPalette()">Esc</button>
+      </div>
+      <div class="cmd-palette__body" id="cmdBody">
+        <!-- Results will be injected here -->
+      </div>
+      <div class="cmd-palette__footer">
+        <div class="cmd-palette__footer-keys">
+          <span class="cmd-palette__footer-key"><kbd>↑</kbd><kbd>↓</kbd> Naviguer</span>
+          <span class="cmd-palette__footer-key"><kbd>↵</kbd> Selectionner</span>
+          <span class="cmd-palette__footer-key"><kbd>Esc</kbd> Fermer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="doc-progress">
+    <div class="doc-progress__bar" id="progressBar"></div>
+  </div>
+
+  <!-- Help Button -->
+  <button class="doc-help-btn" onclick="openShortcuts()" title="Raccourcis clavier (?)">
+    <i class="fa-solid fa-keyboard"></i>
+  </button>
+
+  <!-- Keyboard Shortcuts Modal -->
+  <div class="doc-shortcuts" id="shortcutsPanel">
+    <div class="doc-shortcuts__backdrop" onclick="closeShortcuts()"></div>
+    <div class="doc-shortcuts__dialog">
+      <div class="doc-shortcuts__header">
+        <h3 class="doc-shortcuts__title"><i class="fa-solid fa-keyboard"></i> Raccourcis clavier</h3>
+        <button class="doc-shortcuts__close" onclick="closeShortcuts()"><i class="fa-solid fa-times"></i></button>
+      </div>
+      <div class="doc-shortcuts__body">
+        <div class="doc-shortcuts__group">
+          <div class="doc-shortcuts__group-title">Navigation</div>
+          <div class="doc-shortcut">
+            <span class="doc-shortcut__label">Rechercher</span>
+            <span class="doc-shortcut__keys"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+          </div>
+          <div class="doc-shortcut">
+            <span class="doc-shortcut__label">Haut de page</span>
+            <span class="doc-shortcut__keys"><kbd>Home</kbd></span>
+          </div>
+          <div class="doc-shortcut">
+            <span class="doc-shortcut__label">Bas de page</span>
+            <span class="doc-shortcut__keys"><kbd>End</kbd></span>
+          </div>
+        </div>
+        <div class="doc-shortcuts__group">
+          <div class="doc-shortcuts__group-title">Actions</div>
+          <div class="doc-shortcut">
+            <span class="doc-shortcut__label">Afficher ce panel</span>
+            <span class="doc-shortcut__keys"><kbd>?</kbd></span>
+          </div>
+          <div class="doc-shortcut">
+            <span class="doc-shortcut__label">Fermer les modales</span>
+            <span class="doc-shortcut__keys"><kbd>Esc</kbd></span>
+          </div>
+        </div>
+        <div class="doc-shortcuts__group">
+          <div class="doc-shortcuts__group-title">Theme</div>
+          <div class="doc-shortcut">
+            <span class="doc-shortcut__label">Basculer Dark/Light</span>
+            <span class="doc-shortcut__keys"><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>D</kbd></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="doc-toast-container" id="toastContainer"></div>
+
+  <!-- Sidebar Overlay for Mobile -->
+  <div class="doc-sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="#overview" class="doc-sidebar__link active"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="#getting-started" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="docs/fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="docs/fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="docs/fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="docs/fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="docs/composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="docs/composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-keyboard"></i> Formulaires</a>
+      <a href="docs/composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="docs/composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="docs/composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="docs/composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="docs/composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Modales</a>
+      <a href="docs/composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="docs/composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="docs/composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="docs/composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="docs/composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="docs/composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="docs/composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="docs/composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="docs/composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-bars-staggered"></i> Accordion</a>
+      <a href="docs/composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="docs/composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="docs/composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="docs/composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-timeline"></i> Timeline</a>
+      <a href="docs/composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-magnifying-glass"></i> Search</a>
+      <a href="docs/composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="docs/composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="docs/composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-message"></i> Toasts</a>
+      <a href="docs/composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="docs/composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="docs/composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="docs/patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="docs/patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="docs/ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <!-- OVERVIEW -->
+      <section id="overview" class="doc-section" data-search="overview vue ensemble accueil home introduction">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-home"></i> NXO Design System</h1>
+          <span class="doc-section__badge">v2.0 Valide</span>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Design System officiel pour l'harmonisation des interfaces des portails clients NXO.
+          <strong>Version 2.0 validee par le Marketing - Decembre 2025.</strong>
+        </p>
+
+        <div class="doc-grid" style="margin-bottom: var(--nxo-spacing-xl);">
+          <div class="nxo-card">
+            <div class="nxo-card-body" style="text-align: center;">
+              <i class="fa-solid fa-palette" style="font-size: 32px; color: var(--nxo-blue-dark); margin-bottom: 12px;"></i>
+              <h3 class="nxo-h4">31 Composants</h3>
+              <p class="nxo-text-sm nxo-text-muted">Prets a l'emploi</p>
+            </div>
+          </div>
+          <div class="nxo-card">
+            <div class="nxo-card-body" style="text-align: center;">
+              <i class="fa-solid fa-code" style="font-size: 32px; color: var(--nxo-color-success); margin-bottom: 12px;"></i>
+              <h3 class="nxo-h4">100+ Tokens</h3>
+              <p class="nxo-text-sm nxo-text-muted">Variables CSS</p>
+            </div>
+          </div>
+          <div class="nxo-card">
+            <div class="nxo-card-body" style="text-align: center;">
+              <i class="fa-solid fa-check-circle" style="font-size: 32px; color: var(--nxo-color-info); margin-bottom: 12px;"></i>
+              <h3 class="nxo-h4">Marketing Valide</h3>
+              <p class="nxo-text-sm nxo-text-muted">Decembre 2025</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="doc-subsection__title">Decisions validees</h3>
+        <div class="doc-demo">
+          <div class="doc-demo__preview">
+            <table class="nxo-table">
+              <thead>
+                <tr>
+                  <th>Element</th>
+                  <th>Decision</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Police</td><td><strong>Montserrat</strong></td></tr>
+                <tr><td>Couleur texte</td><td><code class="doc-spec">#212b36</code></td></tr>
+                <tr><td>Boutons</td><td>Forme <strong>capsule</strong>, hauteur 40px, bordure 1px</td></tr>
+                <tr><td>Badges</td><td>Forme <strong>carree</strong> (radius 4px)</td></tr>
+                <tr><td>Bordures</td><td>1px fine, couleur <code class="doc-spec">#e0e0e0</code></td></tr>
+                <tr><td>Arrondis</td><td>8px standard (cards, inputs)</td></tr>
+                <tr><td>Ombres</td><td><strong>Pas d'ombre</strong></td></tr>
+                <tr><td>Tableaux</td><td>Header gris + texte bleu Fayat</td></tr>
+                <tr><td>Footer</td><td>Fond bleu Fayat, pas d'arrondi</td></tr>
+                <tr><td>Avatars</td><td>32px small, forme ronde</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- GETTING STARTED -->
+      <section id="getting-started" class="doc-section" data-search="getting started demarrage installation import usage utilisation">
+        <div class="doc-section__header">
+          <h2 class="doc-section__title"><i class="fa-solid fa-rocket"></i> Demarrage</h2>
+        </div>
+
+        <h3 class="doc-subsection__title">1. Importer les fichiers</h3>
+        <div class="doc-demo">
+          <div class="doc-demo__code">
+            <pre><span class="comment">&lt;!-- Dans votre HTML --&gt;</span>
+&lt;link rel="stylesheet" href="<span class="value">tokens/tokens.css</span>"&gt;
+&lt;link rel="stylesheet" href="<span class="value">components/components.css</span>"&gt;</pre>
+          </div>
+        </div>
+
+        <h3 class="doc-subsection__title">2. Utiliser les classes</h3>
+        <div class="doc-demo">
+          <div class="doc-demo__code">
+            <pre><span class="comment">&lt;!-- Bouton primaire --&gt;</span>
+&lt;button class="<span class="value">nxo-btn nxo-btn-primary</span>"&gt;Action&lt;/button&gt;
+
+<span class="comment">&lt;!-- Card --&gt;</span>
+&lt;div class="<span class="value">nxo-card</span>"&gt;
+  &lt;div class="<span class="value">nxo-card-body</span>"&gt;Contenu&lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <h3 class="doc-subsection__title">3. Utiliser les tokens CSS</h3>
+        <div class="doc-demo">
+          <div class="doc-demo__code">
+            <pre><span class="comment">/* Dans votre CSS */</span>
+.mon-element {
+  <span class="property">color</span>: <span class="value">var(--nxo-text-body)</span>;
+  <span class="property">background</span>: <span class="value">var(--nxo-card-bg)</span>;
+  <span class="property">border-radius</span>: <span class="value">var(--nxo-radius-md)</span>;
+  <span class="property">padding</span>: <span class="value">var(--nxo-spacing-md)</span>;
+}</pre>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════════════════════
+    // COMMAND PALETTE (shadcn style)
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    const cmdPalette = document.getElementById('cmdPalette');
+    const cmdInput = document.getElementById('cmdInput');
+    const cmdBody = document.getElementById('cmdBody');
+    const sections = document.querySelectorAll('[data-search]');
+
+    // Build search index
+    const searchIndex = [
+      // Introduction
+      { id: 'overview', title: 'Vue d\'ensemble', category: 'Introduction', icon: 'fa-home', keywords: 'accueil home start', url: 'index.html#overview' },
+      { id: 'getting-started', title: 'Demarrage', category: 'Introduction', icon: 'fa-rocket', keywords: 'installation setup start', url: 'index.html#getting-started' },
+      // Fondations
+      { id: 'colors', title: 'Couleurs', category: 'Fondations', icon: 'fa-palette', keywords: 'color palette fayat blue', url: 'docs/fondations/colors.html' },
+      { id: 'typography', title: 'Typographie', category: 'Fondations', icon: 'fa-font', keywords: 'font montserrat text', url: 'docs/fondations/typography.html' },
+      { id: 'spacing', title: 'Espacements', category: 'Fondations', icon: 'fa-arrows-alt', keywords: 'margin padding gap', url: 'docs/fondations/spacing.html' },
+      { id: 'tokens', title: 'Tous les tokens CSS', category: 'Fondations', icon: 'fa-code', keywords: 'variables css custom properties', url: 'docs/fondations/tokens.html' },
+      // Composants
+      { id: 'buttons', title: 'Boutons', category: 'Composants', icon: 'fa-square', keywords: 'button btn primary secondary', url: 'docs/composants/buttons.html' },
+      { id: 'forms', title: 'Formulaires', category: 'Composants', icon: 'fa-keyboard', keywords: 'input select textarea checkbox radio', url: 'docs/composants/forms.html' },
+      { id: 'cards', title: 'Cards', category: 'Composants', icon: 'fa-id-card', keywords: 'card box container', url: 'docs/composants/cards.html' },
+      { id: 'tables', title: 'Tableaux', category: 'Composants', icon: 'fa-table', keywords: 'table grid data', url: 'docs/composants/tables.html' },
+      { id: 'badges', title: 'Badges', category: 'Composants', icon: 'fa-tag', keywords: 'badge label status', url: 'docs/composants/badges.html' },
+      { id: 'alerts', title: 'Alertes', category: 'Composants', icon: 'fa-bell', keywords: 'alert warning error success info', url: 'docs/composants/alerts.html' },
+      { id: 'modals', title: 'Modales', category: 'Composants', icon: 'fa-window-maximize', keywords: 'modal dialog popup', url: 'docs/composants/modals.html' },
+      { id: 'breadcrumb', title: 'Breadcrumb', category: 'Composants', icon: 'fa-angle-right', keywords: 'breadcrumb navigation fil ariane', url: 'docs/composants/breadcrumb.html' },
+      { id: 'pagination', title: 'Pagination', category: 'Composants', icon: 'fa-ellipsis-h', keywords: 'pagination pages navigation', url: 'docs/composants/pagination.html' },
+      { id: 'tabs', title: 'Tabs / Onglets', category: 'Composants', icon: 'fa-folder', keywords: 'tabs onglets navigation', url: 'docs/composants/tabs.html' },
+      { id: 'nav', title: 'Navigation', category: 'Composants', icon: 'fa-bars', keywords: 'nav menu navigation', url: 'docs/composants/nav.html' },
+      { id: 'avatars', title: 'Avatars', category: 'Composants', icon: 'fa-user-circle', keywords: 'avatar user profile picture', url: 'docs/composants/avatars.html' },
+      { id: 'spinners', title: 'Spinners', category: 'Composants', icon: 'fa-spinner', keywords: 'spinner loading loader', url: 'docs/composants/spinners.html' },
+      { id: 'progress', title: 'Progress', category: 'Composants', icon: 'fa-tasks', keywords: 'progress bar loading', url: 'docs/composants/progress.html' },
+      { id: 'stepper', title: 'Stepper', category: 'Composants', icon: 'fa-shoe-prints', keywords: 'stepper wizard steps', url: 'docs/composants/stepper.html' },
+      { id: 'accordion', title: 'Accordion', category: 'Composants', icon: 'fa-bars-staggered', keywords: 'accordion collapse expand', url: 'docs/composants/accordion.html' },
+      { id: 'skeleton', title: 'Skeleton', category: 'Composants', icon: 'fa-bone', keywords: 'skeleton loading placeholder', url: 'docs/composants/skeleton.html' },
+      { id: 'empty', title: 'Empty State', category: 'Composants', icon: 'fa-inbox', keywords: 'empty state vide no data', url: 'docs/composants/empty.html' },
+      { id: 'list', title: 'Listes', category: 'Composants', icon: 'fa-list', keywords: 'list liste items', url: 'docs/composants/list.html' },
+      { id: 'timeline', title: 'Timeline', category: 'Composants', icon: 'fa-timeline', keywords: 'timeline chronologie history', url: 'docs/composants/timeline.html' },
+      { id: 'search', title: 'Recherche', category: 'Composants', icon: 'fa-search', keywords: 'search recherche find', url: 'docs/composants/search.html' },
+      { id: 'fileupload', title: 'File Upload', category: 'Composants', icon: 'fa-upload', keywords: 'upload file fichier drag drop', url: 'docs/composants/fileupload.html' },
+      { id: 'divider', title: 'Dividers', category: 'Composants', icon: 'fa-minus', keywords: 'divider separator ligne', url: 'docs/composants/divider.html' },
+      { id: 'toasts', title: 'Toasts', category: 'Composants', icon: 'fa-comment-alt', keywords: 'toast notification snackbar', url: 'docs/composants/toasts.html' },
+      { id: 'dropdown', title: 'Dropdown', category: 'Composants', icon: 'fa-caret-down', keywords: 'dropdown menu select', url: 'docs/composants/dropdown.html' },
+      { id: 'sidebar-comp', title: 'Sidebar', category: 'Composants', icon: 'fa-columns', keywords: 'sidebar menu lateral', url: 'docs/composants/sidebar-comp.html' },
+      { id: 'footer', title: 'Footer', category: 'Composants', icon: 'fa-window-minimize', keywords: 'footer pied de page', url: 'docs/composants/footer-comp.html' },
+      // Patterns
+      { id: 'headers', title: 'Headers', category: 'Patterns', icon: 'fa-heading', keywords: 'header navbar entete', url: 'docs/patterns/headers.html' },
+      { id: 'page-patterns', title: 'Page Patterns', category: 'Patterns', icon: 'fa-layer-group', keywords: 'login connexion dashboard tableau de bord templates page', url: 'docs/patterns/page-patterns.html' },
+      // Ressources
+      { id: 'assets', title: 'Assets & Logos', category: 'Ressources', icon: 'fa-images', keywords: 'logo image asset nxo fayat', url: 'docs/ressources/assets.html' },
+    ];
+
+    let selectedIndex = 0;
+    let filteredResults = [...searchIndex];
+
+    function openCommandPalette() {
+      cmdPalette.classList.add('open');
+      cmdInput.value = '';
+      cmdInput.focus();
+      selectedIndex = 0;
+      filteredResults = [...searchIndex];
+      renderResults();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCommandPalette() {
+      cmdPalette.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function renderResults(query = '') {
+      if (query.length === 0) {
+        // Show all grouped by category
+        const grouped = {};
+        filteredResults.forEach(item => {
+          if (!grouped[item.category]) grouped[item.category] = [];
+          grouped[item.category].push(item);
+        });
+
+        let html = '';
+        for (const [category, items] of Object.entries(grouped)) {
+          html += `<div class="cmd-palette__group">
+            <div class="cmd-palette__group-title">${category}</div>`;
+          items.forEach((item, idx) => {
+            const globalIdx = filteredResults.indexOf(item);
+            html += `
+              <a href="${item.url}" class="cmd-palette__item ${globalIdx === selectedIndex ? 'selected' : ''}"
+                 data-index="${globalIdx}">
+                <div class="cmd-palette__item-icon"><i class="fa-solid ${item.icon}"></i></div>
+                <div class="cmd-palette__item-content">
+                  <div class="cmd-palette__item-title">${item.title}</div>
+                  <div class="cmd-palette__item-category">${item.category}</div>
+                </div>
+              </a>`;
+          });
+          html += '</div>';
+        }
+        cmdBody.innerHTML = html;
+      } else {
+        // Show filtered results
+        if (filteredResults.length === 0) {
+          cmdBody.innerHTML = `<div class="cmd-palette__empty">
+            <i class="fa-solid fa-search" style="font-size: 24px; margin-bottom: 8px; display: block;"></i>
+            Aucun resultat pour "${query}"
+          </div>`;
+        } else {
+          let html = '<div class="cmd-palette__group">';
+          filteredResults.forEach((item, idx) => {
+            html += `
+              <a href="${item.url}" class="cmd-palette__item ${idx === selectedIndex ? 'selected' : ''}"
+                 data-index="${idx}">
+                <div class="cmd-palette__item-icon"><i class="fa-solid ${item.icon}"></i></div>
+                <div class="cmd-palette__item-content">
+                  <div class="cmd-palette__item-title">${highlightMatch(item.title, query)}</div>
+                  <div class="cmd-palette__item-category">${item.category}</div>
+                </div>
+              </a>`;
+          });
+          html += '</div>';
+          cmdBody.innerHTML = html;
+        }
+      }
+
+      // Add hover listeners
+      document.querySelectorAll('.cmd-palette__item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+          selectedIndex = parseInt(item.dataset.index);
+          updateSelection();
+        });
+      });
+    }
+
+    function highlightMatch(text, query) {
+      const regex = new RegExp(`(${query})`, 'gi');
+      return text.replace(regex, '<strong>$1</strong>');
+    }
+
+    function updateSelection() {
+      document.querySelectorAll('.cmd-palette__item').forEach((item, idx) => {
+        item.classList.toggle('selected', parseInt(item.dataset.index) === selectedIndex);
+      });
+      // Scroll into view
+      const selected = document.querySelector('.cmd-palette__item.selected');
+      if (selected) {
+        selected.scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    // Input handling
+    cmdInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      selectedIndex = 0;
+
+      if (query.length === 0) {
+        filteredResults = [...searchIndex];
+      } else {
+        filteredResults = searchIndex.filter(item =>
+          item.title.toLowerCase().includes(query) ||
+          item.keywords.toLowerCase().includes(query) ||
+          item.category.toLowerCase().includes(query)
+        );
+      }
+
+      renderResults(query);
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      // Ctrl/Cmd + K to open
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        if (cmdPalette.classList.contains('open')) {
+          closeCommandPalette();
+        } else {
+          openCommandPalette();
+        }
+        return;
+      }
+
+      // Only handle these if palette is open
+      if (!cmdPalette.classList.contains('open')) return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeCommandPalette();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedIndex = Math.min(selectedIndex + 1, filteredResults.length - 1);
+        updateSelection();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedIndex = Math.max(selectedIndex - 1, 0);
+        updateSelection();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (filteredResults[selectedIndex]) {
+          window.location.href = filteredResults[selectedIndex].url;
+        }
+      }
+    });
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // SIDEBAR & NAVIGATION
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    const sidebarLinks = document.querySelectorAll('.doc-sidebar__link');
+
+    function updateActiveLink() {
+      const scrollPos = window.scrollY + 100;
+
+      let currentSection = null;
+      sections.forEach(section => {
+        if (section.offsetTop <= scrollPos) {
+          currentSection = section.id;
+        }
+      });
+
+      sidebarLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink();
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // PROGRESS BAR (scroll indicator)
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    const progressBar = document.getElementById('progressBar');
+
+    function updateProgressBar() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      progressBar.style.width = progress + '%';
+    }
+
+    window.addEventListener('scroll', updateProgressBar);
+    updateProgressBar();
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // KEYBOARD SHORTCUTS PANEL
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    const shortcutsPanel = document.getElementById('shortcutsPanel');
+
+    function openShortcuts() {
+      shortcutsPanel.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeShortcuts() {
+      shortcutsPanel.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Open shortcuts with ? key
+    document.addEventListener('keydown', (e) => {
+      // ? key (shift + /)
+      if (e.key === '?' && !e.ctrlKey && !e.metaKey) {
+        const isInputFocused = document.activeElement.tagName === 'INPUT' ||
+                               document.activeElement.tagName === 'TEXTAREA';
+        if (!isInputFocused) {
+          e.preventDefault();
+          if (shortcutsPanel.classList.contains('open')) {
+            closeShortcuts();
+          } else {
+            openShortcuts();
+          }
+        }
+      }
+
+      // Escape to close shortcuts
+      if (e.key === 'Escape' && shortcutsPanel.classList.contains('open')) {
+        closeShortcuts();
+      }
+    });
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // TOAST NOTIFICATIONS
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    const toastContainer = document.getElementById('toastContainer');
+
+    function showToast(message, type = 'default') {
+      const toast = document.createElement('div');
+      toast.className = `doc-toast ${type === 'success' ? 'doc-toast--success' : ''}`;
+
+      const icon = type === 'success' ? 'fa-check-circle' :
+                   type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+
+      toast.innerHTML = `<i class="fa-solid ${icon}"></i> ${message}`;
+      toastContainer.appendChild(toast);
+
+      // Remove after 3s
+      setTimeout(() => {
+        toast.style.animation = 'toastSlideUp 0.3s ease-out reverse';
+        setTimeout(() => {
+          toast.remove();
+        }, 300);
+      }, 3000);
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // MOBILE SIDEBAR TOGGLE
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    function toggleSidebar() {
+      const sidebar = document.querySelector('.doc-sidebar');
+      const overlay = document.getElementById('sidebarOverlay');
+      const hamburgerIcon = document.getElementById('hamburgerIcon');
+      const closeIcon = document.getElementById('closeIcon');
+
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('open');
+
+      if (sidebar.classList.contains('open')) {
+        hamburgerIcon.style.display = 'none';
+        closeIcon.style.display = 'inline';
+        document.body.style.overflow = 'hidden';
+      } else {
+        hamburgerIcon.style.display = 'inline';
+        closeIcon.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Close sidebar when clicking on a link (mobile)
+    document.querySelectorAll('.doc-sidebar__link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+          const sidebar = document.querySelector('.doc-sidebar');
+          const overlay = document.getElementById('sidebarOverlay');
+          const hamburgerIcon = document.getElementById('hamburgerIcon');
+          const closeIcon = document.getElementById('closeIcon');
+
+          sidebar.classList.remove('open');
+          overlay.classList.remove('open');
+          hamburgerIcon.style.display = 'inline';
+          closeIcon.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // DARK MODE TOGGLE
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+
+      if (currentTheme === 'dark') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('nxo-theme', 'light');
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('nxo-theme', 'dark');
+      }
+    }
+
+    // Load saved theme on page load
+    (function() {
+      const savedTheme = localStorage.getItem('nxo-theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+
+      // Also check system preference if no saved preference
+      if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('nxo-theme')) {
+        if (e.matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+        }
+      }
+    });
+
+    // Ctrl+Shift+D for dark mode toggle
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+        e.preventDefault();
+        toggleDarkMode();
+      }
+    });
+  </script>
+
+</body>
+</html>

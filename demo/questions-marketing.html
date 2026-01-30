@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NXO Design System - Questions Marketing (Visuels)</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Krub:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .page-header {
+      background: linear-gradient(135deg, #002f60 0%, #0055a0 100%);
+      color: white;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .page-header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Main */
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    /* Question Card */
+    .question-card {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .question-card h2 {
+      color: #0055a0;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .question-card h2 .badge {
+      background: #ffd800;
+      color: #002f60;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .question-card .subtitle {
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .question-card h3 {
+      color: #002f60;
+      font-size: 1.1rem;
+      margin: 24px 0 16px 0;
+    }
+
+    /* Visual comparison boxes */
+    .visual-comparison {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .option-box {
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .option-box:hover {
+      border-color: #0055a0;
+      background: #f8fafc;
+    }
+
+    .option-box.selected {
+      border-color: #0055a0;
+      background: #e8f4fc;
+    }
+
+    .option-box label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #002f60;
+    }
+
+    .option-box input[type="radio"] {
+      margin-bottom: 12px;
+      transform: scale(1.3);
+    }
+
+    /* Typography demo */
+    .font-demo {
+      padding: 24px;
+      background: #fafafa;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .font-demo.krub {
+      font-family: 'Krub', sans-serif;
+    }
+
+    .font-demo.montserrat {
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .font-demo.arial {
+      font-family: Arial, sans-serif;
+    }
+
+    .font-demo h4 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .font-demo p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Color swatches */
+    .color-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px;
+      background: #fafafa;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .color-swatch {
+      width: 60px;
+      height: 40px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .color-info {
+      flex: 1;
+    }
+
+    .color-info strong {
+      display: block;
+    }
+
+    .color-info code {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    /* Button demos */
+    .button-demo {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 24px;
+      background: #fafafa;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+
+    .demo-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .demo-btn-primary {
+      background: #002f60;
+      color: white;
+    }
+
+    .demo-btn-primary:hover {
+      background: #5692ce;
+    }
+
+    .demo-btn-secondary {
+      background: transparent;
+      color: #002f60;
+      border: 2px solid #002f60;
+    }
+
+    /* Spacing demo */
+    .spacing-visual {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding: 24px;
+      background: #fafafa;
+      border-radius: 8px;
+    }
+
+    .spacing-item {
+      text-align: center;
+    }
+
+    .spacing-box {
+      background: #5692ce;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .spacing-label {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    /* Border radius demo */
+    .radius-demo {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding: 24px;
+      background: #fafafa;
+      border-radius: 8px;
+    }
+
+    .radius-box {
+      width: 80px;
+      height: 80px;
+      background: #002f60;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.85rem;
+    }
+
+    /* Shadow demo */
+    .shadow-demo {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      padding: 32px;
+      background: #fafafa;
+      border-radius: 8px;
+    }
+
+    .shadow-box {
+      width: 120px;
+      height: 80px;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    /* Icons grid */
+    .icons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 16px;
+    }
+
+    .icon-item {
+      text-align: center;
+      padding: 16px;
+      background: #fafafa;
+      border-radius: 8px;
+    }
+
+    .icon-item i {
+      font-size: 28px;
+      color: #002f60;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .icon-item span {
+      font-size: 0.75rem;
+      color: #666;
+    }
+
+    /* Response input */
+    .response-area {
+      margin-top: 24px;
+      padding: 20px;
+      background: #fffbeb;
+      border: 2px dashed #ffd800;
+      border-radius: 8px;
+    }
+
+    .response-area label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #002f60;
+    }
+
+    .response-area textarea,
+    .response-area input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .response-area textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    /* Table */
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .comparison-table th {
+      background: #f5f5f5;
+      font-weight: 600;
+      color: #002f60;
+    }
+
+    .comparison-table tr:hover td {
+      background: #fafafa;
+    }
+
+    /* Print styles */
+    @media print {
+      .page-header {
+        background: #002f60 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .question-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <h1>Questions pour le Marketing</h1>
+    <p>Design System NXO - Espace Client<br>Visuels pour aider a la decision</p>
+  </header>
+
+  <main>
+
+    <!-- QUESTION 1.0 - POLICE -->
+    <section class="question-card">
+      <h2>
+        <span>1. Choix de la police</span>
+        <span class="badge">PRIORITAIRE</span>
+      </h2>
+      <p class="subtitle">Quelle police utiliser pour les interfaces web ?</p>
+
+      <div class="visual-comparison">
+        <div class="option-box">
+          <input type="radio" name="font" id="font-krub">
+          <label for="font-krub">Option A : Krub</label>
+          <div class="font-demo krub">
+            <h4>Titre en Krub</h4>
+            <p>Corps de texte en Krub. Cette police est utilisee dans la charte FAYAT pour les brochures.</p>
+          </div>
+        </div>
+
+        <div class="option-box">
+          <input type="radio" name="font" id="font-montserrat">
+          <label for="font-montserrat">Option B : Montserrat</label>
+          <div class="font-demo montserrat">
+            <h4>Titre en Montserrat</h4>
+            <p>Corps de texte en Montserrat. Cette police est actuellement utilisee dans le design system.</p>
+          </div>
+        </div>
+
+        <div class="option-box">
+          <input type="radio" name="font" id="font-arial">
+          <label for="font-arial">Option C : Arial</label>
+          <div class="font-demo arial">
+            <h4>Titre en Arial</h4>
+            <p>Corps de texte en Arial. Cette police est utilisee pour la bureautique (Word, PPT).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Votre choix :</label>
+        <input type="text" placeholder="Indiquez votre choix (A, B ou C) et commentaires eventuels...">
+      </div>
+    </section>
+
+    <!-- QUESTION 1.1 - TAILLES -->
+    <section class="question-card">
+      <h2>2. Tailles de police</h2>
+      <p class="subtitle">Voici les tailles proposees. Validez ou modifiez.</p>
+
+      <div style="font-family: Montserrat, sans-serif; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <p style="font-size: 40px; font-weight: 700; margin-bottom: 12px; color: #0055a0;">Titre principal H1 (40px)</p>
+        <p style="font-size: 32px; font-weight: 600; margin-bottom: 12px; color: #002f60;">Titre secondaire H2 (32px)</p>
+        <p style="font-size: 24px; font-weight: 600; margin-bottom: 12px; color: #333;">Titre tertiaire H3 (24px)</p>
+        <p style="font-size: 16px; margin-bottom: 12px;">Corps de texte standard (16px) - Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p style="font-size: 14px; color: #666; margin-bottom: 12px;">Texte secondaire (14px) - Information complementaire</p>
+        <p style="font-size: 12px; color: #999;">Labels et legendes (12px)</p>
+      </div>
+
+      <div class="response-area">
+        <label>Modifications souhaitees :</label>
+        <textarea placeholder="Indiquez les modifications de tailles si necessaire..."></textarea>
+      </div>
+    </section>
+
+    <!-- QUESTION 1.2 - GRAISSES -->
+    <section class="question-card">
+      <h2>2b. Graisses de police (font-weight)</h2>
+      <p class="subtitle">Quelles epaisseurs de texte utiliser selon le contexte ?</p>
+
+      <div style="font-family: Montserrat, sans-serif; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <p style="font-weight: 700; font-size: 24px; margin-bottom: 16px; color: #002f60;">Bold (700) - Pour les titres principaux</p>
+        <p style="font-weight: 600; font-size: 20px; margin-bottom: 16px; color: #333;">Semibold (600) - Pour les sous-titres</p>
+        <p style="font-weight: 500; font-size: 16px; margin-bottom: 16px; color: #333;">Medium (500) - Pour les boutons et labels importants</p>
+        <p style="font-weight: 400; font-size: 16px; color: #333;">Regular (400) - Pour le corps de texte courant</p>
+      </div>
+
+      <table class="comparison-table" style="margin-top: 16px;">
+        <thead>
+          <tr>
+            <th>Usage</th>
+            <th>Proposition</th>
+            <th>Votre choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Titres (H1, H2)</td>
+            <td>Bold (700)</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Sous-titres (H3, H4)</td>
+            <td>Semibold (600)</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Boutons</td>
+            <td>Medium (500) ou Semibold (600)</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Corps de texte</td>
+            <td>Regular (400)</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="response-area">
+        <label>Validation :</label>
+        <input type="text" placeholder="OK / Modifications souhaitees...">
+      </div>
+    </section>
+
+    <!-- QUESTION 1.3 - HAUTEUR DE LIGNE -->
+    <section class="question-card">
+      <h2>2c. Hauteur de ligne (line-height)</h2>
+      <p class="subtitle">L'espace entre les lignes de texte. Important pour la lisibilite.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <!-- Titres -->
+        <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0;">
+          <div style="font-size: 12px; color: #0055a0; font-weight: 600; margin-bottom: 12px;">TITRES - line-height: 1.2</div>
+          <h3 style="font-size: 24px; font-weight: 700; line-height: 1.2; color: #002f60;">Titre avec hauteur de ligne serree pour les grands textes</h3>
+        </div>
+        <!-- Corps -->
+        <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0;">
+          <div style="font-size: 12px; color: #0055a0; font-weight: 600; margin-bottom: 12px;">CORPS DE TEXTE - line-height: 1.5</div>
+          <p style="font-size: 16px; line-height: 1.5; color: #333;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <!-- Paragraphes longs -->
+        <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0;">
+          <div style="font-size: 12px; color: #0055a0; font-weight: 600; margin-bottom: 12px;">PARAGRAPHES LONGS - line-height: 1.75</div>
+          <p style="font-size: 14px; line-height: 1.75; color: #333;">Pour les longs blocs de texte explicatif, une hauteur de ligne plus grande ameliore significativement le confort de lecture sur ecran.</p>
+        </div>
+      </div>
+
+      <table class="comparison-table" style="margin-top: 16px;">
+        <thead>
+          <tr>
+            <th>Usage</th>
+            <th>Proposition</th>
+            <th>Votre choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Titres (H1, H2, H3)</td>
+            <td>1.2</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Corps de texte</td>
+            <td>1.5</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Paragraphes longs / Articles</td>
+            <td>1.75</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="response-area">
+        <label>Validation :</label>
+        <input type="text" placeholder="OK / Modifications souhaitees...">
+      </div>
+    </section>
+
+    <!-- QUESTION 2 - COULEURS -->
+    <section class="question-card">
+      <h2>3. Couleurs du texte et des fonds</h2>
+      <p class="subtitle">La charte ne precise pas ces couleurs. Validez nos propositions.</p>
+
+      <h3>Couleur du corps de texte</h3>
+      <div class="visual-comparison">
+        <div class="option-box">
+          <input type="radio" name="text-color" id="text-333">
+          <label for="text-333">Gris fonce #333333</label>
+          <div style="padding: 16px; background: white; border-radius: 4px;">
+            <p style="color: #333333;">Voici un exemple de texte en gris fonce. Plus doux que le noir pur.</p>
+          </div>
+        </div>
+        <div class="option-box">
+          <input type="radio" name="text-color" id="text-000">
+          <label for="text-000">Noir #000000</label>
+          <div style="padding: 16px; background: white; border-radius: 4px;">
+            <p style="color: #000000;">Voici un exemple de texte en noir pur. Contraste maximum.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Couleur de fond des pages</h3>
+      <div class="visual-comparison">
+        <div class="option-box">
+          <input type="radio" name="bg-color" id="bg-fff">
+          <label for="bg-fff">Blanc #ffffff</label>
+          <div style="padding: 24px; background: #ffffff; border: 1px solid #ddd; border-radius: 4px;">
+            <p>Fond blanc pur</p>
+          </div>
+        </div>
+        <div class="option-box">
+          <input type="radio" name="bg-color" id="bg-f5">
+          <label for="bg-f5">Gris clair #f5f5f5</label>
+          <div style="padding: 24px; background: #f5f5f5; border: 1px solid #ddd; border-radius: 4px;">
+            <p>Fond gris tres clair</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Vos choix :</label>
+        <textarea placeholder="Texte: #333333 ou #000000 ?&#10;Fond: #ffffff ou #f5f5f5 ?"></textarea>
+      </div>
+    </section>
+
+    <!-- QUESTION 3 - BOUTONS -->
+    <section class="question-card">
+      <h2>4. Style des boutons</h2>
+      <p class="subtitle">Validez les dimensions et arrondis des boutons.</p>
+
+      <h3>Hauteur des boutons</h3>
+      <div class="button-demo">
+        <button class="demo-btn demo-btn-primary" style="height: 32px; padding: 0 16px; font-size: 14px; border-radius: 4px;">Petit (32px)</button>
+        <button class="demo-btn demo-btn-primary" style="height: 40px; padding: 0 24px; font-size: 16px; border-radius: 4px;">Standard (40px)</button>
+        <button class="demo-btn demo-btn-primary" style="height: 48px; padding: 0 32px; font-size: 16px; border-radius: 4px;">Grand (48px)</button>
+      </div>
+
+      <h3>Arrondi des boutons</h3>
+      <div class="button-demo">
+        <button class="demo-btn demo-btn-primary" style="height: 40px; padding: 0 24px; border-radius: 0;">Pas d'arrondi (0px)</button>
+        <button class="demo-btn demo-btn-primary" style="height: 40px; padding: 0 24px; border-radius: 4px;">Arrondi leger (4px)</button>
+        <button class="demo-btn demo-btn-primary" style="height: 40px; padding: 0 24px; border-radius: 8px;">Arrondi moyen (8px)</button>
+        <button class="demo-btn demo-btn-primary" style="height: 40px; padding: 0 24px; border-radius: 20px;">Capsule (20px)</button>
+      </div>
+
+      <h3>Bordure du bouton secondaire</h3>
+      <div class="button-demo">
+        <button class="demo-btn demo-btn-secondary" style="height: 40px; padding: 0 24px; border-radius: 4px; border-width: 1px;">Bordure fine (1px)</button>
+        <button class="demo-btn demo-btn-secondary" style="height: 40px; padding: 0 24px; border-radius: 4px; border-width: 2px;">Bordure standard (2px)</button>
+      </div>
+
+      <h3>Taille de police des boutons</h3>
+      <div class="button-demo">
+        <button class="demo-btn demo-btn-primary" style="height: 40px; padding: 0 24px; border-radius: 4px; font-size: 14px;">Police 14px</button>
+        <button class="demo-btn demo-btn-primary" style="height: 40px; padding: 0 24px; border-radius: 4px; font-size: 16px;">Police 16px</button>
+      </div>
+
+      <h3>Padding interne des boutons</h3>
+      <div style="padding: 24px; background: #fafafa; border-radius: 8px;">
+        <p style="font-size: 14px; color: #666; margin-bottom: 16px;">Le padding definit l'espace entre le texte et les bords du bouton.</p>
+        <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: center;">
+          <div style="text-align: center;">
+            <button class="demo-btn demo-btn-primary" style="height: 40px; padding: 8px 16px; border-radius: 4px; font-size: 14px;">Padding 16px</button>
+            <div style="font-size: 12px; color: #666; margin-top: 8px;">Horizontal: 16px</div>
+          </div>
+          <div style="text-align: center;">
+            <button class="demo-btn demo-btn-primary" style="height: 40px; padding: 8px 24px; border-radius: 4px; font-size: 14px;">Padding 24px</button>
+            <div style="font-size: 12px; color: #666; margin-top: 8px;">Horizontal: 24px</div>
+          </div>
+          <div style="text-align: center;">
+            <button class="demo-btn demo-btn-primary" style="height: 40px; padding: 8px 32px; border-radius: 4px; font-size: 14px;">Padding 32px</button>
+            <div style="font-size: 12px; color: #666; margin-top: 8px;">Horizontal: 32px</div>
+          </div>
+        </div>
+      </div>
+
+      <table class="comparison-table" style="margin-top: 16px;">
+        <thead>
+          <tr>
+            <th>Propriete</th>
+            <th>Proposition</th>
+            <th>Votre choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hauteur standard</td>
+            <td>40px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Arrondi</td>
+            <td>4px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Bordure secondaire</td>
+            <td>2px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Taille police</td>
+            <td>14px ou 16px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Padding horizontal</td>
+            <td>24px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Padding vertical</td>
+            <td>8px (auto selon hauteur)</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="response-area">
+        <label>Vos choix :</label>
+        <textarea placeholder="Hauteur: 32px / 40px / 48px ?&#10;Arrondi: 0px / 4px / 8px ?&#10;Bordure secondaire: 1px / 2px ?&#10;Taille police: 14px / 16px ?&#10;Padding horizontal: 16px / 24px / 32px ?"></textarea>
+      </div>
+    </section>
+
+    <!-- QUESTION 4 - ESPACEMENTS -->
+    <section class="question-card">
+      <h2>5. Grille d'espacements</h2>
+      <p class="subtitle">Les espacements sont les "espaces vides" entre les elements de l'interface. Voici l'echelle proposee avec des exemples concrets d'utilisation.</p>
+
+      <h3>Visualisation de l'echelle</h3>
+      <div class="spacing-visual" style="align-items: flex-end;">
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 30px; height: 4px;"></div>
+          <div class="spacing-label"><strong>xs</strong><br>4px</div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 30px; height: 8px;"></div>
+          <div class="spacing-label"><strong>sm</strong><br>8px</div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 30px; height: 16px;"></div>
+          <div class="spacing-label"><strong>md</strong><br>16px</div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 30px; height: 24px;"></div>
+          <div class="spacing-label"><strong>lg</strong><br>24px</div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 30px; height: 32px;"></div>
+          <div class="spacing-label"><strong>xl</strong><br>32px</div>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: 30px; height: 48px;"></div>
+          <div class="spacing-label"><strong>2xl</strong><br>48px</div>
+        </div>
+      </div>
+
+      <h3>Exemples concrets d'utilisation</h3>
+      <div style="background: #fafafa; border-radius: 8px; padding: 24px; margin-top: 16px;">
+
+        <!-- Exemple xs -->
+        <div style="margin-bottom: 32px;">
+          <div style="font-weight: 600; color: #002f60; margin-bottom: 12px;">xs (4px) - Micro-espace</div>
+          <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: center;">
+            <div style="text-align: center;">
+              <div style="display: inline-flex; align-items: center; gap: 4px; background: white; padding: 8px 12px; border-radius: 6px; border: 1px solid #ddd;">
+                <i class="fa-solid fa-check" style="color: #00a486;"></i>
+                <span>Valide</span>
+              </div>
+              <div style="font-size: 12px; color: #666; margin-top: 8px;">Entre icone et texte</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="background: white; padding: 8px 12px; border-radius: 6px; border: 1px solid #ddd;">
+                <span>Ligne 1</span><br>
+                <span style="margin-top: 4px; display: inline-block;">Ligne 2</span>
+              </div>
+              <div style="font-size: 12px; color: #666; margin-top: 8px;">Entre lignes de texte</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exemple sm -->
+        <div style="margin-bottom: 32px;">
+          <div style="font-weight: 600; color: #002f60; margin-bottom: 12px;">sm (8px) - Petit espace</div>
+          <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: center;">
+            <div style="text-align: center;">
+              <div style="display: inline-flex; gap: 8px;">
+                <button style="padding: 8px 16px; border: 1px solid #002f60; background: white; border-radius: 6px;">Annuler</button>
+                <button style="padding: 8px 16px; border: none; background: #002f60; color: white; border-radius: 6px;">Valider</button>
+              </div>
+              <div style="font-size: 12px; color: #666; margin-top: 8px;">Entre 2 boutons</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="background: white; padding: 12px; border-radius: 6px; border: 1px solid #ddd;">
+                <div style="font-weight: 600;">Titre</div>
+                <div style="margin-top: 8px; color: #666;">Description courte</div>
+              </div>
+              <div style="font-size: 12px; color: #666; margin-top: 8px;">Entre titre et texte</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exemple md -->
+        <div style="margin-bottom: 32px;">
+          <div style="font-weight: 600; color: #002f60; margin-bottom: 12px;">md (16px) - Espace moyen</div>
+          <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: center;">
+            <div style="text-align: center;">
+              <div style="display: flex; gap: 16px;">
+                <div style="background: white; padding: 16px; border-radius: 8px; border: 1px solid #ddd; width: 100px; text-align: center;">Card 1</div>
+                <div style="background: white; padding: 16px; border-radius: 8px; border: 1px solid #ddd; width: 100px; text-align: center;">Card 2</div>
+              </div>
+              <div style="font-size: 12px; color: #666; margin-top: 8px;">Entre 2 cartes</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="background: white; padding: 16px; border-radius: 8px; border: 1px solid #ddd;">
+                <div style="padding: 16px; background: #f0f0f0; border-radius: 4px;">Contenu avec padding</div>
+              </div>
+              <div style="font-size: 12px; color: #666; margin-top: 8px;">Padding interne d'une carte</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exemple lg -->
+        <div style="margin-bottom: 32px;">
+          <div style="font-weight: 600; color: #002f60; margin-bottom: 12px;">lg (24px) - Grand espace</div>
+          <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start;">
+            <div style="text-align: center;">
+              <div style="background: white; padding: 24px; border-radius: 8px; border: 1px solid #ddd; width: 200px;">
+                <div style="font-size: 18px; font-weight: 600; margin-bottom: 24px;">Section A</div>
+                <div style="font-size: 18px; font-weight: 600;">Section B</div>
+              </div>
+              <div style="font-size: 12px; color: #666; margin-top: 8px;">Entre sections dans une page</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exemple xl et 2xl -->
+        <div style="margin-bottom: 16px;">
+          <div style="font-weight: 600; color: #002f60; margin-bottom: 12px;">xl (32px) et 2xl (48px) - Tres grands espaces</div>
+          <div style="background: white; border-radius: 8px; border: 1px solid #ddd; overflow: hidden;">
+            <div style="background: #002f60; color: white; padding: 16px 24px;">Header de page</div>
+            <div style="padding: 32px 24px; border-bottom: 1px solid #eee;">
+              <div style="font-size: 12px; color: #666; margin-bottom: 8px;">↑ 32px (xl) - Marge apres le header</div>
+              <div style="font-size: 18px; font-weight: 600;">Premier bloc de contenu</div>
+            </div>
+            <div style="padding: 48px 24px;">
+              <div style="font-size: 12px; color: #666; margin-bottom: 8px;">↑ 48px (2xl) - Grande separation entre blocs majeurs</div>
+              <div style="font-size: 18px; font-weight: 600;">Deuxieme bloc de contenu</div>
+            </div>
+          </div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Separation entre grandes sections de page, marges laterales importantes</div>
+        </div>
+
+      </div>
+
+      <h3 style="margin-top: 24px;">Resume - Quand utiliser chaque espacement</h3>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Taille</th>
+            <th>Valeur</th>
+            <th>Utilisation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>xs</strong></td>
+            <td>4px</td>
+            <td>Entre icone et texte, entre lignes de texte compact</td>
+          </tr>
+          <tr>
+            <td><strong>sm</strong></td>
+            <td>8px</td>
+            <td>Entre elements proches (boutons, champs de formulaire)</td>
+          </tr>
+          <tr>
+            <td><strong>md</strong></td>
+            <td>16px</td>
+            <td>Padding standard des cartes, gap entre elements de liste</td>
+          </tr>
+          <tr>
+            <td><strong>lg</strong></td>
+            <td>24px</td>
+            <td>Entre sections dans une carte, padding de grands blocs</td>
+          </tr>
+          <tr>
+            <td><strong>xl</strong></td>
+            <td>32px</td>
+            <td>Entre blocs majeurs, marges de page sur tablette</td>
+          </tr>
+          <tr>
+            <td><strong>2xl</strong></td>
+            <td>48px</td>
+            <td>Grandes separations (header/contenu), marges de page desktop</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="response-area">
+        <label>Validation :</label>
+        <input type="text" placeholder="OK / Modifications souhaitees...">
+      </div>
+    </section>
+
+    <!-- QUESTION 5 - BORDURES ET ARRONDIS -->
+    <section class="question-card">
+      <h2>6. Bordures et Arrondis</h2>
+      <p class="subtitle">Epaisseur des bordures et arrondis des elements.</p>
+
+      <h3>Epaisseur de bordure standard</h3>
+      <div style="display: flex; gap: 32px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <div style="text-align: center;">
+          <div style="width: 120px; height: 80px; background: white; border: 1px solid #002f60; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: #666;">Contenu</span>
+          </div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Bordure fine (1px)</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 120px; height: 80px; background: white; border: 2px solid #002f60; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <span style="color: #666;">Contenu</span>
+          </div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Bordure standard (2px)</div>
+        </div>
+      </div>
+
+      <h3>Arrondis des elements</h3>
+      <div class="radius-demo">
+        <div style="text-align: center;">
+          <div class="radius-box" style="border-radius: 0;">0px</div>
+          <div class="spacing-label">Pas d'arrondi</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="radius-box" style="border-radius: 4px;">4px</div>
+          <div class="spacing-label">Leger</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="radius-box" style="border-radius: 8px;">8px</div>
+          <div class="spacing-label">Moyen</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="radius-box" style="border-radius: 12px;">12px</div>
+          <div class="spacing-label">Grand</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="radius-box" style="border-radius: 16px;">16px</div>
+          <div class="spacing-label">Tres grand</div>
+        </div>
+      </div>
+
+      <h3>Forme capsule (pill)</h3>
+      <p style="font-size: 14px; color: #666; margin-bottom: 16px;">La charte autorise la forme "capsule". Pour quels elements l'utiliser ?</p>
+      <div style="display: flex; gap: 24px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <div style="text-align: center;">
+          <span style="display: inline-block; background: #00a486; color: white; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500;">Tag actif</span>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Tags / Badges</div>
+        </div>
+        <div style="text-align: center;">
+          <button style="background: #0055a0; color: white; border: none; padding: 10px 24px; border-radius: 25px; font-size: 14px; font-weight: 600; cursor: pointer;">Bouton pill</button>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Boutons speciaux</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="display: inline-flex; background: #e0e0e0; border-radius: 20px; padding: 4px;">
+            <button style="background: white; border: none; padding: 8px 16px; border-radius: 16px; font-size: 13px; font-weight: 600; color: #002f60;">Actif</button>
+            <button style="background: transparent; border: none; padding: 8px 16px; border-radius: 16px; font-size: 13px; color: #666;">Inactif</button>
+          </div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Toggle / Segmented control</div>
+        </div>
+      </div>
+
+      <table class="comparison-table" style="margin-top: 16px;">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Proposition</th>
+            <th>Votre choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Epaisseur bordure standard</td>
+            <td>1px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Cards (encadres)</td>
+            <td>8px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Champs de formulaire</td>
+            <td>4px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Fenetres modales</td>
+            <td>12px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Boutons</td>
+            <td>4px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="response-area">
+        <label>Forme capsule - Quels elements ?</label>
+        <textarea placeholder="Cochez ou precisez:&#10;[ ] Tags / Badges&#10;[ ] Boutons speciaux (CTA)&#10;[ ] Toggle / Segmented controls&#10;[ ] Barre de recherche&#10;[ ] Autres : ___"></textarea>
+      </div>
+    </section>
+
+    <!-- QUESTION 6 - OMBRES -->
+    <section class="question-card">
+      <h2>7. Ombres</h2>
+      <p class="subtitle">La charte mentionne "ombrage pour modales" sans valeur precise.</p>
+
+      <div class="shadow-demo">
+        <div style="text-align: center;">
+          <div class="shadow-box" style="box-shadow: none;">Aucune</div>
+          <div class="spacing-label">Sans ombre</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="shadow-box" style="box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Legere</div>
+          <div class="spacing-label">Cards</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="shadow-box" style="box-shadow: 0 4px 12px rgba(0,0,0,0.15);">Moyenne</div>
+          <div class="spacing-label">Dropdowns</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="shadow-box" style="box-shadow: 0 10px 25px rgba(0,0,0,0.2);">Forte</div>
+          <div class="spacing-label">Modales</div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Validation :</label>
+        <input type="text" placeholder="OK / Pas d'ombres / Modifications...">
+      </div>
+    </section>
+
+    <!-- QUESTION 7 - ICONES -->
+    <section class="question-card">
+      <h2>8. Icones Font Awesome</h2>
+      <p class="subtitle">Validez les icones proposees pour chaque fonction.</p>
+
+      <h3>Icones du header</h3>
+      <div class="icons-grid">
+        <div class="icon-item">
+          <i class="fa-solid fa-grip"></i>
+          <span>Applications</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Recherche</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-expand"></i>
+          <span>Plein ecran</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-question"></i>
+          <span>Aide</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-regular fa-circle-user"></i>
+          <span>Profil</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-bars"></i>
+          <span>Menu (mobile)</span>
+        </div>
+      </div>
+
+      <h3>Icones des applications</h3>
+      <div class="icons-grid">
+        <div class="icon-item">
+          <i class="fa-solid fa-headset"></i>
+          <span>Support</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-server"></i>
+          <span>Infogerance</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>Vulnerabilites</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-house"></i>
+          <span>Mon espace</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Supervision</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-lock"></i>
+          <span>Service SOC</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>Vente en ligne</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-folder-open"></i>
+          <span>Documents</span>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Modifications d'icones :</label>
+        <textarea placeholder="Indiquez les icones a changer et les alternatives souhaitees..."></textarea>
+      </div>
+    </section>
+
+    <!-- QUESTION 8 - FORMULAIRES -->
+    <section class="question-card">
+      <h2>9. Champs de formulaire</h2>
+      <p class="subtitle">Validez le style des champs de saisie (inputs, selects, textareas).</p>
+
+      <h3>Hauteur des champs</h3>
+      <div style="padding: 24px; background: #fafafa; border-radius: 8px; display: flex; gap: 24px; flex-wrap: wrap; align-items: flex-end;">
+        <div style="text-align: center;">
+          <input type="text" placeholder="Petit" style="height: 32px; padding: 0 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; width: 150px;">
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">32px</div>
+        </div>
+        <div style="text-align: center;">
+          <input type="text" placeholder="Standard" style="height: 40px; padding: 0 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; width: 150px;">
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">40px (propose)</div>
+        </div>
+        <div style="text-align: center;">
+          <input type="text" placeholder="Grand" style="height: 48px; padding: 0 16px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; width: 150px;">
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">48px</div>
+        </div>
+      </div>
+
+      <h3>Style des labels</h3>
+      <div style="padding: 24px; background: #fafafa; border-radius: 8px; display: flex; gap: 40px; flex-wrap: wrap;">
+        <div>
+          <label style="display: block; margin-bottom: 6px; color: #333; font-weight: 600; font-size: 14px;">Label en gris fonce #333</label>
+          <input type="text" placeholder="Valeur..." style="height: 40px; padding: 0 12px; border: 1px solid #ccc; border-radius: 4px; width: 200px;">
+        </div>
+        <div>
+          <label style="display: block; margin-bottom: 6px; color: #6c757d; font-weight: 500; font-size: 14px;">Label en gris #6c757d</label>
+          <input type="text" placeholder="Valeur..." style="height: 40px; padding: 0 12px; border: 1px solid #ccc; border-radius: 4px; width: 200px;">
+        </div>
+        <div>
+          <label style="display: block; margin-bottom: 6px; color: #002f60; font-weight: 600; font-size: 14px;">Label en bleu NXO</label>
+          <input type="text" placeholder="Valeur..." style="height: 40px; padding: 0 12px; border: 1px solid #ccc; border-radius: 4px; width: 200px;">
+        </div>
+      </div>
+
+      <h3>Couleur des bordures</h3>
+      <div style="padding: 24px; background: #fafafa; border-radius: 8px; display: flex; gap: 24px; flex-wrap: wrap;">
+        <div style="text-align: center;">
+          <input type="text" placeholder="Bordure claire" style="height: 40px; padding: 0 12px; border: 1px solid #e0e0e0; border-radius: 4px; width: 150px;">
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">#e0e0e0 (propose)</div>
+        </div>
+        <div style="text-align: center;">
+          <input type="text" placeholder="Bordure grise" style="height: 40px; padding: 0 12px; border: 1px solid #ccc; border-radius: 4px; width: 150px;">
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">#cccccc</div>
+        </div>
+        <div style="text-align: center;">
+          <input type="text" placeholder="Bordure NXO" style="height: 40px; padding: 0 12px; border: 1px solid #cfd1d2; border-radius: 4px; width: 150px;">
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">#cfd1d2 (Gris NXO)</div>
+        </div>
+      </div>
+
+      <h3>Etats des champs</h3>
+      <div style="padding: 24px; background: #fafafa; border-radius: 8px; display: flex; gap: 24px; flex-wrap: wrap;">
+        <div style="text-align: center;">
+          <input type="text" value="Normal" style="height: 40px; padding: 0 12px; border: 1px solid #ccc; border-radius: 4px; width: 130px;">
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Normal</div>
+        </div>
+        <div style="text-align: center;">
+          <input type="text" value="Focus" style="height: 40px; padding: 0 12px; border: 2px solid #0055a0; border-radius: 4px; width: 130px; outline: none; box-shadow: 0 0 0 3px rgba(0,85,160,0.2);">
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Focus (actif)</div>
+        </div>
+        <div style="text-align: center;">
+          <input type="text" value="Erreur" style="height: 40px; padding: 0 12px; border: 2px solid #e53138; border-radius: 4px; width: 130px; background: #fef2f2;">
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Erreur</div>
+        </div>
+        <div style="text-align: center;">
+          <input type="text" value="Desactive" disabled style="height: 40px; padding: 0 12px; border: 1px solid #e0e0e0; border-radius: 4px; width: 130px; background: #f5f5f5; color: #999; cursor: not-allowed;">
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Desactive</div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Vos choix :</label>
+        <textarea placeholder="Hauteur: 32px / 40px / 48px ?&#10;Couleur label: #333 / #6c757d / bleu ?&#10;Bordure: #e0e0e0 / #ccc ?&#10;Style focus: OK ?"></textarea>
+      </div>
+    </section>
+
+    <!-- QUESTION 9 - LIENS -->
+    <section class="question-card">
+      <h2>10. Style des liens</h2>
+      <p class="subtitle">Comment doivent apparaitre les liens cliquables dans le contenu ?</p>
+
+      <h3>Couleur des liens</h3>
+      <div style="padding: 24px; background: white; border-radius: 8px; border: 1px solid #e0e0e0;">
+        <p style="margin-bottom: 16px;">Voici un texte avec <a href="#" style="color: #0055a0; text-decoration: underline;">un lien en bleu Fayat souligne</a> dans le contenu.</p>
+        <p style="margin-bottom: 16px;">Voici un texte avec <a href="#" style="color: #0055a0; text-decoration: none;">un lien en bleu Fayat non souligne</a> dans le contenu.</p>
+        <p style="margin-bottom: 16px;">Voici un texte avec <a href="#" style="color: #002f60; text-decoration: underline;">un lien en bleu NXO fonce souligne</a> dans le contenu.</p>
+        <p>Voici un texte avec <a href="#" style="color: #5692ce; text-decoration: underline;">un lien en bleu NXO clair souligne</a> dans le contenu.</p>
+      </div>
+
+      <table class="comparison-table" style="margin-top: 16px;">
+        <thead>
+          <tr>
+            <th>Propriete</th>
+            <th>Options</th>
+            <th>Votre choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Couleur des liens</td>
+            <td>#0055a0 (Fayat) / #002f60 (NXO fonce) / #5692ce (NXO clair)</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Soulignement</td>
+            <td>Toujours / Au survol seulement / Jamais</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Couleur au survol</td>
+            <td>#5692ce (NXO clair) / Meme couleur</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- QUESTION 10 - HEADER -->
+    <section class="question-card">
+      <h2>11. Header</h2>
+      <p class="subtitle">Voici le header propose. Voir <a href="header-responsive.html" style="color: #0055a0;">la demo interactive</a> pour tester.</p>
+
+      <div style="border-radius: 8px; overflow: hidden; margin: 16px 0;">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='80' viewBox='0 0 800 80'%3E%3Crect fill='%230055a0' width='800' height='80'/%3E%3Ctext x='24' y='45' fill='white' font-family='sans-serif' font-size='14'%3E%E2%8B%AE%E2%8B%AE%E2%8B%AE%3C/text%3E%3Ctext x='60' y='45' fill='%23ffd800' font-family='sans-serif' font-size='16' font-weight='bold'%3ENXO%3C/text%3E%3Ctext x='110' y='45' fill='white' font-family='sans-serif' font-size='14'%3ENom Service%3C/text%3E%3Crect x='250' y='20' width='300' height='40' rx='20' fill='rgba(255,255,255,0.15)'/%3E%3Ctext x='280' y='45' fill='rgba(255,255,255,0.5)' font-family='sans-serif' font-size='13'%3ERechercher...%3C/text%3E%3Ctext x='620' y='45' fill='white' font-family='sans-serif' font-size='12'%3EFR%3C/text%3E%3Ctext x='680' y='45' fill='white' font-family='sans-serif' font-size='16'%3E%E2%9B%B6 %3F %F0%9F%91%A4%3C/text%3E%3C/svg%3E" alt="Apercu header" style="width: 100%; height: auto;">
+      </div>
+
+      <h3>Espacements dans le header</h3>
+      <div style="padding: 24px; background: #fafafa; border-radius: 8px; margin-bottom: 16px;">
+        <div style="background: #0055a0; border-radius: 8px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between;">
+          <!-- Zone gauche -->
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="color: white; font-size: 20px;">&#9776;</div>
+            <div style="background: #ffd800; padding: 4px 8px; border-radius: 4px; font-weight: 700; color: #002f60; font-size: 14px;">NXO</div>
+            <div style="color: white; font-size: 13px;">Service</div>
+          </div>
+          <!-- Zone droite -->
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white;">&#9776;</div>
+            <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white;">?</div>
+            <div style="width: 32px; height: 32px; background: rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white;">&#128100;</div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: #666;">
+          <span>← gap: 16px entre elements de la zone gauche</span>
+          <span>gap: 8px entre icones →</span>
+        </div>
+      </div>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Proposition</th>
+            <th>Votre choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hauteur du header</td>
+            <td>80px (desktop), 56px (mobile)</td>
+            <td><input type="text" style="width: 120px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Hauteur du logo</td>
+            <td>40px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Gap entre icones (zone droite)</td>
+            <td>8px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Gap entre elements (zone gauche)</td>
+            <td>16px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Padding horizontal du header</td>
+            <td>24px</td>
+            <td><input type="text" style="width: 80px; padding: 4px;"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="response-area">
+        <label>Validation :</label>
+        <input type="text" placeholder="OK / Modifications souhaitees...">
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════════════════ -->
+    <!-- COMPOSANTS AVANCES                                                                  -->
+    <!-- ══════════════════════════════════════════════════════════════════════════════════ -->
+
+    <!-- QUESTION 12 - TABLEAUX -->
+    <section class="question-card">
+      <h2>12. Tableaux de donnees</h2>
+      <p class="subtitle">Style des tableaux pour afficher des listes de donnees.</p>
+
+      <h3>Style de tableau</h3>
+      <div style="padding: 24px; background: #fafafa; border-radius: 8px; overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+          <thead>
+            <tr style="background: #002f60; color: white;">
+              <th style="padding: 12px 16px; text-align: left; font-weight: 600;">Nom</th>
+              <th style="padding: 12px 16px; text-align: left; font-weight: 600;">Statut</th>
+              <th style="padding: 12px 16px; text-align: left; font-weight: 600;">Date</th>
+              <th style="padding: 12px 16px; text-align: right; font-weight: 600;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #e0e0e0;">
+              <td style="padding: 12px 16px;">Ticket #1234</td>
+              <td style="padding: 12px 16px;"><span style="background: #00a486; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">Resolu</span></td>
+              <td style="padding: 12px 16px; color: #666;">12/12/2025</td>
+              <td style="padding: 12px 16px; text-align: right;"><a href="#" style="color: #0055a0;">Voir</a></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e0e0e0; background: #f9f9f9;">
+              <td style="padding: 12px 16px;">Ticket #1235</td>
+              <td style="padding: 12px 16px;"><span style="background: #ffd300; color: #002f60; padding: 4px 8px; border-radius: 4px; font-size: 12px;">En cours</span></td>
+              <td style="padding: 12px 16px; color: #666;">11/12/2025</td>
+              <td style="padding: 12px 16px; text-align: right;"><a href="#" style="color: #0055a0;">Voir</a></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #e0e0e0;">
+              <td style="padding: 12px 16px;">Ticket #1236</td>
+              <td style="padding: 12px 16px;"><span style="background: #e53138; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">Urgent</span></td>
+              <td style="padding: 12px 16px; color: #666;">10/12/2025</td>
+              <td style="padding: 12px 16px; text-align: right;"><a href="#" style="color: #0055a0;">Voir</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table class="comparison-table" style="margin-top: 16px;">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Proposition</th>
+            <th>Votre choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fond header tableau</td>
+            <td>#002f60 (NXO fonce) / #0055a0 (Fayat) / #f5f5f5 (gris)</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Lignes alternees</td>
+            <td>Oui (zebre) / Non</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Bordures</td>
+            <td>Horizontales seulement / Toutes / Aucune</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- QUESTION 13 - CARDS -->
+    <section class="question-card">
+      <h2>13. Cards (Encadres)</h2>
+      <p class="subtitle">Style des encadres pour grouper du contenu.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; padding: 24px; background: #f0f0f0; border-radius: 8px;">
+        <!-- Card simple -->
+        <div style="background: white; border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+          <h4 style="color: #002f60; margin-bottom: 8px; font-size: 16px;">Card avec ombre</h4>
+          <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Contenu de la card avec une ombre legere.</p>
+          <button style="background: #002f60; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Action</button>
+        </div>
+        <!-- Card bordure -->
+        <div style="background: white; border-radius: 8px; padding: 24px; border: 1px solid #e0e0e0;">
+          <h4 style="color: #002f60; margin-bottom: 8px; font-size: 16px;">Card avec bordure</h4>
+          <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Contenu de la card avec une bordure simple.</p>
+          <button style="background: #002f60; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Action</button>
+        </div>
+        <!-- Card header colore -->
+        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+          <div style="background: #0055a0; color: white; padding: 16px 24px; font-weight: 600;">Header colore</div>
+          <div style="padding: 24px;">
+            <p style="color: #666; font-size: 14px; margin-bottom: 16px;">Card avec un header en couleur.</p>
+            <button style="background: #002f60; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Action</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Vos preferences :</label>
+        <textarea placeholder="Style prefere: ombre / bordure / header colore ?&#10;Arrondi des cards: 4px / 8px / 12px ?&#10;Padding interne: 16px / 24px ?"></textarea>
+      </div>
+    </section>
+
+    <!-- QUESTION 14 - ALERTES -->
+    <section class="question-card">
+      <h2>14. Alertes et Notifications</h2>
+      <p class="subtitle">Messages d'information, succes, avertissement et erreur.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <!-- Info -->
+        <div style="display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: #e8f4fc; border-left: 4px solid #0055a0; border-radius: 4px;">
+          <i class="fa-solid fa-circle-info" style="color: #0055a0; font-size: 20px; margin-top: 2px;"></i>
+          <div>
+            <strong style="color: #002f60;">Information</strong>
+            <p style="color: #333; font-size: 14px; margin-top: 4px;">Voici un message d'information pour l'utilisateur.</p>
+          </div>
+        </div>
+        <!-- Succes -->
+        <div style="display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: #e6f7f3; border-left: 4px solid #00a486; border-radius: 4px;">
+          <i class="fa-solid fa-circle-check" style="color: #00a486; font-size: 20px; margin-top: 2px;"></i>
+          <div>
+            <strong style="color: #006b57;">Succes</strong>
+            <p style="color: #333; font-size: 14px; margin-top: 4px;">L'operation a ete realisee avec succes.</p>
+          </div>
+        </div>
+        <!-- Warning -->
+        <div style="display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: #fff9e6; border-left: 4px solid #ffd300; border-radius: 4px;">
+          <i class="fa-solid fa-triangle-exclamation" style="color: #cc9900; font-size: 20px; margin-top: 2px;"></i>
+          <div>
+            <strong style="color: #806000;">Avertissement</strong>
+            <p style="color: #333; font-size: 14px; margin-top: 4px;">Attention, cette action peut avoir des consequences.</p>
+          </div>
+        </div>
+        <!-- Erreur -->
+        <div style="display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: #fef2f2; border-left: 4px solid #e53138; border-radius: 4px;">
+          <i class="fa-solid fa-circle-xmark" style="color: #e53138; font-size: 20px; margin-top: 2px;"></i>
+          <div>
+            <strong style="color: #b91c1c;">Erreur</strong>
+            <p style="color: #333; font-size: 14px; margin-top: 4px;">Une erreur s'est produite. Veuillez reessayer.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Validation :</label>
+        <input type="text" placeholder="OK / Modifications souhaitees...">
+      </div>
+    </section>
+
+    <!-- QUESTION 15 - BADGES/TAGS -->
+    <section class="question-card">
+      <h2>15. Badges et Tags</h2>
+      <p class="subtitle">Indicateurs de statut, compteurs et etiquettes.</p>
+
+      <h3>Badges de statut</h3>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <span style="background: #00a486; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600;">Actif</span>
+        <span style="background: #ffd300; color: #002f60; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600;">En attente</span>
+        <span style="background: #e53138; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600;">Urgent</span>
+        <span style="background: #0055a0; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600;">Nouveau</span>
+        <span style="background: #6c757d; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600;">Archive</span>
+      </div>
+
+      <h3>Style des badges</h3>
+      <div style="display: flex; gap: 24px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px; margin-top: 16px;">
+        <div style="text-align: center;">
+          <span style="background: #0055a0; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px;">Carre</span>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">radius: 4px</div>
+        </div>
+        <div style="text-align: center;">
+          <span style="background: #0055a0; color: white; padding: 6px 12px; border-radius: 20px; font-size: 12px;">Pill</span>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">radius: 20px</div>
+        </div>
+        <div style="text-align: center;">
+          <span style="background: transparent; color: #0055a0; padding: 5px 11px; border-radius: 4px; font-size: 12px; border: 1px solid #0055a0;">Outline</span>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Bordure</div>
+        </div>
+      </div>
+
+      <h3>Compteurs (notifications)</h3>
+      <div style="display: flex; gap: 32px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px; margin-top: 16px;">
+        <div style="position: relative; display: inline-block;">
+          <i class="fa-solid fa-bell" style="font-size: 24px; color: #002f60;"></i>
+          <span style="position: absolute; top: -8px; right: -8px; background: #e53138; color: white; font-size: 10px; font-weight: 600; min-width: 18px; height: 18px; border-radius: 9px; display: flex; align-items: center; justify-content: center;">3</span>
+        </div>
+        <div style="position: relative; display: inline-block;">
+          <i class="fa-solid fa-envelope" style="font-size: 24px; color: #002f60;"></i>
+          <span style="position: absolute; top: -8px; right: -8px; background: #e53138; color: white; font-size: 10px; font-weight: 600; min-width: 18px; height: 18px; border-radius: 9px; display: flex; align-items: center; justify-content: center;">12</span>
+        </div>
+        <div style="position: relative; display: inline-block;">
+          <i class="fa-solid fa-comment" style="font-size: 24px; color: #002f60;"></i>
+          <span style="position: absolute; top: -8px; right: -8px; background: #e53138; color: white; font-size: 10px; font-weight: 600; min-width: 18px; height: 18px; border-radius: 9px; display: flex; align-items: center; justify-content: center;">99+</span>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Vos preferences :</label>
+        <textarea placeholder="Style badges: carre / pill / outline ?&#10;Couleur compteur: rouge / bleu ?"></textarea>
+      </div>
+    </section>
+
+    <!-- QUESTION 16 - MODALES -->
+    <section class="question-card">
+      <h2>16. Fenetres modales</h2>
+      <p class="subtitle">Popups de confirmation, formulaires, messages.</p>
+
+      <div style="padding: 24px; background: rgba(0,0,0,0.5); border-radius: 8px;">
+        <!-- Modale -->
+        <div style="background: white; border-radius: 12px; max-width: 500px; margin: 0 auto; box-shadow: 0 25px 50px rgba(0,0,0,0.25); overflow: hidden;">
+          <!-- Header modale -->
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid #e0e0e0;">
+            <h4 style="color: #002f60; font-size: 18px; margin: 0;">Titre de la modale</h4>
+            <button style="background: none; border: none; font-size: 20px; color: #666; cursor: pointer;">&times;</button>
+          </div>
+          <!-- Body modale -->
+          <div style="padding: 24px;">
+            <p style="color: #333; font-size: 14px; line-height: 1.6;">Contenu de la fenetre modale. Ceci est un exemple de texte qui pourrait apparaitre dans une popup de confirmation ou d'information.</p>
+          </div>
+          <!-- Footer modale -->
+          <div style="display: flex; justify-content: flex-end; gap: 12px; padding: 16px 24px; background: #f5f5f5; border-top: 1px solid #e0e0e0;">
+            <button style="padding: 10px 20px; border: 1px solid #ccc; background: white; border-radius: 6px; cursor: pointer;">Annuler</button>
+            <button style="padding: 10px 20px; border: none; background: #002f60; color: white; border-radius: 6px; cursor: pointer;">Confirmer</button>
+          </div>
+        </div>
+      </div>
+
+      <table class="comparison-table" style="margin-top: 16px;">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Proposition</th>
+            <th>Votre choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Largeur max modale</td>
+            <td>400px (petite) / 500px (moyenne) / 700px (grande)</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Arrondi</td>
+            <td>8px / 12px / 16px</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Fond overlay</td>
+            <td>Noir 50% / Noir 70% / Flou (blur)</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- QUESTION 17 - TABS/ONGLETS -->
+    <section class="question-card">
+      <h2>17. Onglets (Tabs)</h2>
+      <p class="subtitle">Navigation par onglets dans une page ou section.</p>
+
+      <h3>Style ligne (underline)</h3>
+      <div style="padding: 24px; background: #fafafa; border-radius: 8px;">
+        <div style="display: flex; gap: 0; border-bottom: 2px solid #e0e0e0;">
+          <button style="padding: 12px 24px; background: none; border: none; border-bottom: 2px solid #0055a0; margin-bottom: -2px; color: #0055a0; font-weight: 600; cursor: pointer;">Onglet actif</button>
+          <button style="padding: 12px 24px; background: none; border: none; color: #666; cursor: pointer;">Onglet 2</button>
+          <button style="padding: 12px 24px; background: none; border: none; color: #666; cursor: pointer;">Onglet 3</button>
+        </div>
+        <div style="padding: 24px 0;">Contenu de l'onglet selectionne...</div>
+      </div>
+
+      <h3>Style boutons</h3>
+      <div style="padding: 24px; background: #fafafa; border-radius: 8px; margin-top: 16px;">
+        <div style="display: inline-flex; gap: 4px; background: #e0e0e0; padding: 4px; border-radius: 8px;">
+          <button style="padding: 10px 20px; background: white; border: none; border-radius: 6px; color: #002f60; font-weight: 600; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">Actif</button>
+          <button style="padding: 10px 20px; background: transparent; border: none; border-radius: 6px; color: #666; cursor: pointer;">Onglet 2</button>
+          <button style="padding: 10px 20px; background: transparent; border: none; border-radius: 6px; color: #666; cursor: pointer;">Onglet 3</button>
+        </div>
+      </div>
+
+      <h3>Style encadre</h3>
+      <div style="padding: 24px; background: #fafafa; border-radius: 8px; margin-top: 16px;">
+        <div style="display: flex; gap: 0;">
+          <button style="padding: 12px 24px; background: white; border: 1px solid #e0e0e0; border-bottom: none; border-radius: 8px 8px 0 0; color: #002f60; font-weight: 600; cursor: pointer; margin-bottom: -1px; position: relative; z-index: 1;">Actif</button>
+          <button style="padding: 12px 24px; background: #f5f5f5; border: 1px solid #e0e0e0; border-bottom: none; border-radius: 8px 8px 0 0; color: #666; cursor: pointer; margin-left: -1px;">Onglet 2</button>
+          <button style="padding: 12px 24px; background: #f5f5f5; border: 1px solid #e0e0e0; border-bottom: none; border-radius: 8px 8px 0 0; color: #666; cursor: pointer; margin-left: -1px;">Onglet 3</button>
+        </div>
+        <div style="border: 1px solid #e0e0e0; padding: 24px; background: white;">Contenu...</div>
+      </div>
+
+      <div class="response-area">
+        <label>Votre preference :</label>
+        <input type="text" placeholder="Ligne / Boutons / Encadre ?">
+      </div>
+    </section>
+
+    <!-- QUESTION 18 - SIDEBAR/NAVIGATION -->
+    <section class="question-card">
+      <h2>18. Menu lateral (Sidebar)</h2>
+      <p class="subtitle">Navigation principale de l'application.</p>
+
+      <div style="display: flex; gap: 24px; padding: 24px; background: #fafafa; border-radius: 8px; overflow-x: auto;">
+        <!-- Sidebar sombre -->
+        <div style="min-width: 220px;">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Option A: Fond sombre</div>
+          <div style="background: #002f60; border-radius: 8px; padding: 16px 0; color: white;">
+            <div style="padding: 12px 20px; background: rgba(255,255,255,0.1); display: flex; align-items: center; gap: 12px; font-weight: 500;">
+              <i class="fa-solid fa-house"></i> Accueil
+            </div>
+            <div style="padding: 12px 20px; display: flex; align-items: center; gap: 12px; opacity: 0.7;">
+              <i class="fa-solid fa-ticket"></i> Tickets
+            </div>
+            <div style="padding: 12px 20px; display: flex; align-items: center; gap: 12px; opacity: 0.7;">
+              <i class="fa-solid fa-chart-line"></i> Rapports
+            </div>
+            <div style="padding: 12px 20px; display: flex; align-items: center; gap: 12px; opacity: 0.7;">
+              <i class="fa-solid fa-gear"></i> Parametres
+            </div>
+          </div>
+        </div>
+        <!-- Sidebar claire -->
+        <div style="min-width: 220px;">
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Option B: Fond clair</div>
+          <div style="background: white; border-radius: 8px; padding: 16px 0; border: 1px solid #e0e0e0;">
+            <div style="padding: 12px 20px; background: #e8f4fc; color: #0055a0; display: flex; align-items: center; gap: 12px; font-weight: 600; border-left: 3px solid #0055a0;">
+              <i class="fa-solid fa-house"></i> Accueil
+            </div>
+            <div style="padding: 12px 20px; display: flex; align-items: center; gap: 12px; color: #333;">
+              <i class="fa-solid fa-ticket" style="color: #666;"></i> Tickets
+            </div>
+            <div style="padding: 12px 20px; display: flex; align-items: center; gap: 12px; color: #333;">
+              <i class="fa-solid fa-chart-line" style="color: #666;"></i> Rapports
+            </div>
+            <div style="padding: 12px 20px; display: flex; align-items: center; gap: 12px; color: #333;">
+              <i class="fa-solid fa-gear" style="color: #666;"></i> Parametres
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table class="comparison-table" style="margin-top: 16px;">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Proposition</th>
+            <th>Votre choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Style sidebar</td>
+            <td>Fond sombre (#002f60) / Fond clair (blanc)</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Largeur</td>
+            <td>220px / 260px / 280px</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Mode compact</td>
+            <td>Oui (icones seules) / Non</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- QUESTION 19 - BREADCRUMB -->
+    <section class="question-card">
+      <h2>19. Fil d'Ariane (Breadcrumb)</h2>
+      <p class="subtitle">Indication du chemin de navigation.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <!-- Style slash -->
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Style avec slash</div>
+          <nav style="font-size: 14px;">
+            <a href="#" style="color: #0055a0;">Accueil</a>
+            <span style="color: #999; margin: 0 8px;">/</span>
+            <a href="#" style="color: #0055a0;">Tickets</a>
+            <span style="color: #999; margin: 0 8px;">/</span>
+            <span style="color: #333;">Ticket #1234</span>
+          </nav>
+        </div>
+        <!-- Style chevron -->
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Style avec chevron</div>
+          <nav style="font-size: 14px; display: flex; align-items: center;">
+            <a href="#" style="color: #0055a0;">Accueil</a>
+            <i class="fa-solid fa-chevron-right" style="color: #ccc; margin: 0 10px; font-size: 10px;"></i>
+            <a href="#" style="color: #0055a0;">Tickets</a>
+            <i class="fa-solid fa-chevron-right" style="color: #ccc; margin: 0 10px; font-size: 10px;"></i>
+            <span style="color: #333;">Ticket #1234</span>
+          </nav>
+        </div>
+        <!-- Style avec icone home -->
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Style avec icone accueil</div>
+          <nav style="font-size: 14px; display: flex; align-items: center;">
+            <a href="#" style="color: #0055a0;"><i class="fa-solid fa-house"></i></a>
+            <i class="fa-solid fa-chevron-right" style="color: #ccc; margin: 0 10px; font-size: 10px;"></i>
+            <a href="#" style="color: #0055a0;">Tickets</a>
+            <i class="fa-solid fa-chevron-right" style="color: #ccc; margin: 0 10px; font-size: 10px;"></i>
+            <span style="color: #333;">Ticket #1234</span>
+          </nav>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Votre preference :</label>
+        <input type="text" placeholder="Slash / Chevron / Icone accueil ?">
+      </div>
+    </section>
+
+    <!-- QUESTION 20 - PAGINATION -->
+    <section class="question-card">
+      <h2>20. Pagination</h2>
+      <p class="subtitle">Navigation entre pages de resultats.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 24px; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <!-- Style boutons -->
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Style boutons</div>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <button style="width: 36px; height: 36px; border: 1px solid #e0e0e0; background: white; border-radius: 6px; cursor: pointer; color: #666;"><i class="fa-solid fa-chevron-left"></i></button>
+            <button style="width: 36px; height: 36px; border: none; background: #0055a0; color: white; border-radius: 6px; cursor: pointer; font-weight: 600;">1</button>
+            <button style="width: 36px; height: 36px; border: 1px solid #e0e0e0; background: white; border-radius: 6px; cursor: pointer;">2</button>
+            <button style="width: 36px; height: 36px; border: 1px solid #e0e0e0; background: white; border-radius: 6px; cursor: pointer;">3</button>
+            <span style="color: #666;">...</span>
+            <button style="width: 36px; height: 36px; border: 1px solid #e0e0e0; background: white; border-radius: 6px; cursor: pointer;">10</button>
+            <button style="width: 36px; height: 36px; border: 1px solid #e0e0e0; background: white; border-radius: 6px; cursor: pointer; color: #666;"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+        <!-- Style simple -->
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Style simple (texte)</div>
+          <div style="display: flex; gap: 16px; align-items: center; font-size: 14px;">
+            <a href="#" style="color: #0055a0; display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-chevron-left"></i> Precedent</a>
+            <span style="color: #666;">Page 1 sur 10</span>
+            <a href="#" style="color: #0055a0; display: flex; align-items: center; gap: 6px;">Suivant <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Votre preference :</label>
+        <input type="text" placeholder="Boutons / Simple texte ?">
+      </div>
+    </section>
+
+    <!-- QUESTION 21 - CHECKBOX/RADIO -->
+    <section class="question-card">
+      <h2>21. Cases a cocher et boutons radio</h2>
+      <p class="subtitle">Elements de selection dans les formulaires.</p>
+
+      <h3>Checkboxes</h3>
+      <div style="display: flex; gap: 32px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+          <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: #0055a0;">
+          <span>Option cochee</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+          <input type="checkbox" style="width: 18px; height: 18px; accent-color: #0055a0;">
+          <span>Option non cochee</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 10px; cursor: not-allowed; opacity: 0.5;">
+          <input type="checkbox" disabled style="width: 18px; height: 18px;">
+          <span>Option desactivee</span>
+        </label>
+      </div>
+
+      <h3>Boutons radio</h3>
+      <div style="display: flex; gap: 32px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px; margin-top: 16px;">
+        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+          <input type="radio" name="demo-radio" checked style="width: 18px; height: 18px; accent-color: #0055a0;">
+          <span>Option A</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+          <input type="radio" name="demo-radio" style="width: 18px; height: 18px; accent-color: #0055a0;">
+          <span>Option B</span>
+        </label>
+        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+          <input type="radio" name="demo-radio" style="width: 18px; height: 18px; accent-color: #0055a0;">
+          <span>Option C</span>
+        </label>
+      </div>
+
+      <h3>Switch (Toggle)</h3>
+      <div style="display: flex; gap: 32px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px; margin-top: 16px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 44px; height: 24px; background: #0055a0; border-radius: 12px; position: relative; cursor: pointer;">
+            <div style="width: 20px; height: 20px; background: white; border-radius: 50%; position: absolute; top: 2px; right: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div>
+          </div>
+          <span>Active</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 44px; height: 24px; background: #ccc; border-radius: 12px; position: relative; cursor: pointer;">
+            <div style="width: 20px; height: 20px; background: white; border-radius: 50%; position: absolute; top: 2px; left: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div>
+          </div>
+          <span>Desactive</span>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Validation :</label>
+        <input type="text" placeholder="OK / Modifications...">
+      </div>
+    </section>
+
+    <!-- QUESTION 22 - DROPDOWN/SELECT -->
+    <section class="question-card">
+      <h2>22. Menus deroulants (Select/Dropdown)</h2>
+      <p class="subtitle">Listes de selection.</p>
+
+      <div style="display: flex; gap: 32px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <!-- Select natif style -->
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Select standard</div>
+          <select style="height: 40px; padding: 0 40px 0 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; background: white url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"%23666\"><path d=\"M7 10l5 5 5-5z\"/></svg>') no-repeat right 12px center; background-size: 16px; appearance: none; min-width: 200px; cursor: pointer;">
+            <option>Selectionnez une option</option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+        <!-- Dropdown custom ouvert -->
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Dropdown personnalise (ouvert)</div>
+          <div style="position: relative; min-width: 200px;">
+            <div style="height: 40px; padding: 0 40px 0 12px; border: 1px solid #0055a0; border-radius: 6px 6px 0 0; font-size: 14px; background: white; display: flex; align-items: center; cursor: pointer;">
+              Option selectionnee
+              <i class="fa-solid fa-chevron-up" style="position: absolute; right: 12px; color: #666;"></i>
+            </div>
+            <div style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 6px 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 10;">
+              <div style="padding: 10px 12px; background: #e8f4fc; color: #0055a0;">Option selectionnee</div>
+              <div style="padding: 10px 12px; cursor: pointer;">Option 2</div>
+              <div style="padding: 10px 12px; cursor: pointer;">Option 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Validation :</label>
+        <input type="text" placeholder="OK / Modifications...">
+      </div>
+    </section>
+
+    <!-- QUESTION 23 - LOADING/SPINNER -->
+    <section class="question-card">
+      <h2>23. Indicateurs de chargement</h2>
+      <p class="subtitle">Spinners et barres de progression.</p>
+
+      <h3>Spinners</h3>
+      <div style="display: flex; gap: 48px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px; align-items: center;">
+        <div style="text-align: center;">
+          <div style="width: 32px; height: 32px; border: 3px solid #e0e0e0; border-top-color: #0055a0; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Petit</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 48px; height: 48px; border: 4px solid #e0e0e0; border-top-color: #0055a0; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Moyen</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 64px; height: 64px; border: 5px solid #e0e0e0; border-top-color: #0055a0; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Grand</div>
+        </div>
+      </div>
+      <style>@keyframes spin { to { transform: rotate(360deg); } }</style>
+
+      <h3>Barres de progression</h3>
+      <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; background: #fafafa; border-radius: 8px; margin-top: 16px;">
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 6px;">25%</div>
+          <div style="height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;">
+            <div style="width: 25%; height: 100%; background: #0055a0; border-radius: 4px;"></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 6px;">50%</div>
+          <div style="height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;">
+            <div style="width: 50%; height: 100%; background: #0055a0; border-radius: 4px;"></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 6px;">75%</div>
+          <div style="height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden;">
+            <div style="width: 75%; height: 100%; background: #00a486; border-radius: 4px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Validation :</label>
+        <input type="text" placeholder="Couleur spinner: bleu Fayat / NXO ?&#10;Hauteur barre: 4px / 8px ?">
+      </div>
+    </section>
+
+    <!-- QUESTION 24 - TOOLTIPS -->
+    <section class="question-card">
+      <h2>24. Infobulles (Tooltips)</h2>
+      <p class="subtitle">Informations au survol.</p>
+
+      <div style="display: flex; gap: 48px; flex-wrap: wrap; padding: 48px 24px; background: #fafafa; border-radius: 8px; justify-content: center;">
+        <!-- Tooltip sombre -->
+        <div style="position: relative; text-align: center;">
+          <div style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 8px; background: #333; color: white; padding: 8px 12px; border-radius: 6px; font-size: 13px; white-space: nowrap;">
+            Tooltip sombre
+            <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: #333;"></div>
+          </div>
+          <button style="padding: 10px 20px; background: #002f60; color: white; border: none; border-radius: 6px; cursor: pointer;">Survol (sombre)</button>
+        </div>
+        <!-- Tooltip clair -->
+        <div style="position: relative; text-align: center;">
+          <div style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 8px; background: white; color: #333; padding: 8px 12px; border-radius: 6px; font-size: 13px; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.15); border: 1px solid #e0e0e0;">
+            Tooltip clair
+            <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: white;"></div>
+          </div>
+          <button style="padding: 10px 20px; background: #002f60; color: white; border: none; border-radius: 6px; cursor: pointer;">Survol (clair)</button>
+        </div>
+        <!-- Tooltip bleu -->
+        <div style="position: relative; text-align: center;">
+          <div style="position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 8px; background: #0055a0; color: white; padding: 8px 12px; border-radius: 6px; font-size: 13px; white-space: nowrap;">
+            Tooltip bleu
+            <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: #0055a0;"></div>
+          </div>
+          <button style="padding: 10px 20px; background: #002f60; color: white; border: none; border-radius: 6px; cursor: pointer;">Survol (bleu)</button>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Votre preference :</label>
+        <input type="text" placeholder="Sombre / Clair / Bleu ?">
+      </div>
+    </section>
+
+    <!-- QUESTION 25 - FOOTER -->
+    <section class="question-card">
+      <h2>25. Pied de page (Footer)</h2>
+      <p class="subtitle">Bas de page de l'application.</p>
+
+      <div style="display: flex; flex-direction: column; gap: 24px; padding: 24px; background: #fafafa; border-radius: 8px;">
+        <!-- Footer simple -->
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Option A: Footer simple</div>
+          <div style="background: #f5f5f5; padding: 16px 24px; border-top: 1px solid #e0e0e0; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #666;">
+            <span>&copy; 2025 NXO - Groupe FAYAT</span>
+            <div style="display: flex; gap: 24px;">
+              <a href="#" style="color: #0055a0;">Mentions legales</a>
+              <a href="#" style="color: #0055a0;">Contact</a>
+            </div>
+          </div>
+        </div>
+        <!-- Footer bleu -->
+        <div>
+          <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Option B: Footer couleur</div>
+          <div style="background: #002f60; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: white; border-radius: 0 0 8px 8px;">
+            <span>&copy; 2025 NXO - Groupe FAYAT</span>
+            <div style="display: flex; gap: 24px;">
+              <a href="#" style="color: #b4dfe7;">Mentions legales</a>
+              <a href="#" style="color: #b4dfe7;">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Votre preference :</label>
+        <input type="text" placeholder="Simple (gris) / Couleur (bleu) ?">
+      </div>
+    </section>
+
+    <!-- QUESTION 26 - TOAST NOTIFICATIONS -->
+    <section class="question-card">
+      <h2>26. Notifications toast</h2>
+      <p class="subtitle">Messages temporaires qui apparaissent brievement.</p>
+
+      <div style="padding: 24px; background: #333; border-radius: 8px; min-height: 200px; position: relative;">
+        <!-- Toast en haut a droite -->
+        <div style="position: absolute; top: 16px; right: 16px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="background: white; padding: 16px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 12px; min-width: 280px;">
+            <i class="fa-solid fa-circle-check" style="color: #00a486; font-size: 20px;"></i>
+            <div>
+              <div style="font-weight: 600; color: #333;">Succes</div>
+              <div style="font-size: 13px; color: #666;">Operation realisee avec succes</div>
+            </div>
+            <button style="margin-left: auto; background: none; border: none; color: #999; cursor: pointer; font-size: 18px;">&times;</button>
+          </div>
+          <div style="background: #e53138; padding: 16px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 12px; min-width: 280px; color: white;">
+            <i class="fa-solid fa-circle-xmark" style="font-size: 20px;"></i>
+            <div>
+              <div style="font-weight: 600;">Erreur</div>
+              <div style="font-size: 13px; opacity: 0.9;">Une erreur s'est produite</div>
+            </div>
+            <button style="margin-left: auto; background: none; border: none; color: white; cursor: pointer; font-size: 18px;">&times;</button>
+          </div>
+        </div>
+      </div>
+
+      <table class="comparison-table" style="margin-top: 16px;">
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>Options</th>
+            <th>Votre choix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Position</td>
+            <td>Haut droite / Bas droite / Haut centre</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Style</td>
+            <td>Fond blanc / Fond colore</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+          <tr>
+            <td>Duree affichage</td>
+            <td>3 sec / 5 sec / Manuel</td>
+            <td><input type="text" style="width: 100px; padding: 4px;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- QUESTION 27 - AVATAR -->
+    <section class="question-card">
+      <h2>27. Avatars utilisateurs</h2>
+      <p class="subtitle">Representation visuelle des utilisateurs.</p>
+
+      <div style="display: flex; gap: 32px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px; align-items: flex-end;">
+        <!-- Tailles -->
+        <div style="text-align: center;">
+          <div style="width: 32px; height: 32px; background: #0055a0; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; margin: 0 auto;">JD</div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Small (32px)</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 40px; height: 40px; background: #0055a0; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; margin: 0 auto;">JD</div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Medium (40px)</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 56px; height: 56px; background: #0055a0; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 600; margin: 0 auto;">JD</div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Large (56px)</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 80px; height: 80px; background: #0055a0; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 600; margin: 0 auto;">JD</div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">XLarge (80px)</div>
+        </div>
+      </div>
+
+      <h3>Forme</h3>
+      <div style="display: flex; gap: 32px; flex-wrap: wrap; padding: 24px; background: #fafafa; border-radius: 8px; margin-top: 16px;">
+        <div style="text-align: center;">
+          <div style="width: 48px; height: 48px; background: #00a486; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; margin: 0 auto;">AB</div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Rond</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 48px; height: 48px; background: #e95e3f; color: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 600; margin: 0 auto;">CD</div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Carre arrondi</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="width: 48px; height: 48px; background: #ccc; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+            <i class="fa-solid fa-user" style="font-size: 24px;"></i>
+          </div>
+          <div style="font-size: 12px; color: #666; margin-top: 8px;">Icone (defaut)</div>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <label>Vos preferences :</label>
+        <textarea placeholder="Forme: Rond / Carre arrondi ?&#10;Couleur: Bleu unique / Couleurs variees ?"></textarea>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>NXO Design System - Questions Marketing - Decembre 2025</p>
+    <p style="margin-top: 4px; font-size: 0.85rem;">29 questions couvrant tous les composants du design system</p>
+    <p style="margin-top: 8px;">
+      <a href="index.html" style="color: #0055a0;">Voir la demo complete</a> |
+      <a href="headers.html" style="color: #0055a0;">Voir les headers</a> |
+      <a href="header-responsive.html" style="color: #0055a0;">Header interactif</a>
+    </p>
+  </footer>
+
+</body>
+</html>

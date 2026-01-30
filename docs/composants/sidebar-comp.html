@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sidebar - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link active"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-bars"></i> Sidebar</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Navigation laterale pour les applications.
+        </p>
+
+        <!-- Sidebar basique -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Sidebar basique</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: 0; min-height: 400px;">
+              <div style="display: flex; height: 100%;">
+                <aside class="nxo-sidebar" style="position: relative; width: 250px; height: 400px;">
+                  <div class="nxo-sidebar-header">
+                    <span style="font-weight: 600; color: var(--fayat-blue);">Mon Application</span>
+                  </div>
+                  <nav class="nxo-sidebar-nav">
+                    <a href="#" class="nxo-sidebar-link active">
+                      <i class="fa-solid fa-home"></i>
+                      <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nxo-sidebar-link">
+                      <i class="fa-solid fa-users"></i>
+                      <span>Utilisateurs</span>
+                    </a>
+                    <a href="#" class="nxo-sidebar-link">
+                      <i class="fa-solid fa-chart-bar"></i>
+                      <span>Rapports</span>
+                    </a>
+                    <a href="#" class="nxo-sidebar-link">
+                      <i class="fa-solid fa-cog"></i>
+                      <span>Parametres</span>
+                    </a>
+                  </nav>
+                </aside>
+                <div style="flex: 1; padding: 24px;">
+                  <p class="nxo-text-muted">Contenu principal</p>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;aside class="nxo-sidebar"&gt;
+  &lt;div class="nxo-sidebar-header"&gt;
+    &lt;span&gt;Mon Application&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;nav class="nxo-sidebar-nav"&gt;
+    &lt;a href="#" class="nxo-sidebar-link active"&gt;
+      &lt;i class="fa-solid fa-home"&gt;&lt;/i&gt;
+      &lt;span&gt;Dashboard&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-sidebar-link"&gt;
+      &lt;i class="fa-solid fa-users"&gt;&lt;/i&gt;
+      &lt;span&gt;Utilisateurs&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-sidebar-link"&gt;
+      &lt;i class="fa-solid fa-chart-bar"&gt;&lt;/i&gt;
+      &lt;span&gt;Rapports&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-sidebar-link"&gt;
+      &lt;i class="fa-solid fa-cog"&gt;&lt;/i&gt;
+      &lt;span&gt;Parametres&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import React from 'react';
+import { Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Box } from '@mui/material';
+import { Home, People, BarChart, Settings } from '@mui/icons-material';
+
+const Sidebar = () => {
+  const [activeLink, setActiveLink] = React.useState('dashboard');
+
+  const navItems = [
+    { id: 'dashboard', icon: Home, label: 'Dashboard' },
+    { id: 'users', icon: People, label: 'Utilisateurs' },
+    { id: 'reports', icon: BarChart, label: 'Rapports' },
+    { id: 'settings', icon: Settings, label: 'Parametres' }
+  ];
+
+  return (
+    &lt;Drawer
+      variant="permanent"
+      className="nxo-sidebar"
+      sx={{ width: 250 }}
+    &gt;
+      &lt;Box className="nxo-sidebar-header" sx={{ p: 2 }}&gt;
+        &lt;span&gt;Mon Application&lt;/span&gt;
+      &lt;/Box&gt;
+      &lt;List className="nxo-sidebar-nav"&gt;
+        {navItems.map(item =&gt; (
+          &lt;ListItem key={item.id} disablePadding&gt;
+            &lt;ListItemButton
+              className={`nxo-sidebar-link ${activeLink === item.id ? 'active' : ''}`}
+              onClick={() =&gt; setActiveLink(item.id)}
+            &gt;
+              &lt;ListItemIcon&gt;
+                &lt;item.icon /&gt;
+              &lt;/ListItemIcon&gt;
+              &lt;ListItemText primary={item.label} /&gt;
+            &lt;/ListItemButton&gt;
+          &lt;/ListItem&gt;
+        ))}
+      &lt;/List&gt;
+    &lt;/Drawer&gt;
+  );
+};
+
+export default Sidebar;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+
+interface NavItem {
+  id: string;
+  icon: string;
+  label: string;
+}
+
+@Component({
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [CommonModule, MatSidenavModule, MatListModule, MatIconModule],
+  template: `
+    &lt;mat-drawer-container class="nxo-sidebar-container"&gt;
+      &lt;mat-drawer mode="side" opened class="nxo-sidebar"&gt;
+        &lt;div class="nxo-sidebar-header"&gt;
+          &lt;span&gt;Mon Application&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;mat-nav-list class="nxo-sidebar-nav"&gt;
+          &lt;a
+            mat-list-item
+            *ngFor="let item of navItems"
+            [class.active]="activeLink === item.id"
+            class="nxo-sidebar-link"
+            (click)="setActive(item.id)"
+          &gt;
+            &lt;mat-icon matListItemIcon&gt;{{ item.icon }}&lt;/mat-icon&gt;
+            &lt;span matListItemTitle&gt;{{ item.label }}&lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/mat-nav-list&gt;
+      &lt;/mat-drawer&gt;
+    &lt;/mat-drawer-container&gt;
+  `
+})
+export class SidebarComponent {
+  activeLink = 'dashboard';
+
+  navItems: NavItem[] = [
+    { id: 'dashboard', icon: 'home', label: 'Dashboard' },
+    { id: 'users', icon: 'people', label: 'Utilisateurs' },
+    { id: 'reports', icon: 'bar_chart', label: 'Rapports' },
+    { id: 'settings', icon: 'settings', label: 'Parametres' }
+  ];
+
+  setActive(id: string): void {
+    this.activeLink = id;
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>&lt;?php
+$navItems = [
+  ['id' =&gt; 'dashboard', 'icon' =&gt; 'fa-home', 'label' =&gt; 'Dashboard'],
+  ['id' =&gt; 'users', 'icon' =&gt; 'fa-users', 'label' =&gt; 'Utilisateurs'],
+  ['id' =&gt; 'reports', 'icon' =&gt; 'fa-chart-bar', 'label' =&gt; 'Rapports'],
+  ['id' =&gt; 'settings', 'icon' =&gt; 'fa-cog', 'label' =&gt; 'Parametres']
+];
+$activeLink = 'dashboard';
+?&gt;
+
+&lt;aside class="nxo-sidebar"&gt;
+  &lt;div class="nxo-sidebar-header"&gt;
+    &lt;span&gt;Mon Application&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;nav class="nxo-sidebar-nav"&gt;
+    &lt;?php foreach ($navItems as $item): ?&gt;
+      &lt;a href="#" class="nxo-sidebar-link &lt;?= $activeLink === $item['id'] ? 'active' : '' ?&gt;"&gt;
+        &lt;i class="fa-solid &lt;?= $item['icon'] ?&gt;"&gt;&lt;/i&gt;
+        &lt;span&gt;&lt;?= $item['label'] ?&gt;&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;?php endforeach; ?&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;
+
+&lt;!-- Twig Template --&gt;
+&lt;aside class="nxo-sidebar"&gt;
+  &lt;div class="nxo-sidebar-header"&gt;
+    &lt;span&gt;Mon Application&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;nav class="nxo-sidebar-nav"&gt;
+    {% for item in navItems %}
+      &lt;a href="#" class="nxo-sidebar-link {{ activeLink == item.id ? 'active' : '' }}"&gt;
+        &lt;i class="fa-solid {{ item.icon }}"&gt;&lt;/i&gt;
+        &lt;span&gt;{{ item.label }}&lt;/span&gt;
+      &lt;/a&gt;
+    {% endfor %}
+  &lt;/nav&gt;
+&lt;/aside&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar avec sections -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec sections</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: 0; min-height: 450px;">
+              <aside class="nxo-sidebar" style="position: relative; width: 250px; height: 450px;">
+                <div class="nxo-sidebar-header">
+                  <span style="font-weight: 600; color: var(--fayat-blue);">NXO Portal</span>
+                </div>
+                <nav class="nxo-sidebar-nav">
+                  <div class="nxo-sidebar-section">
+                    <div class="nxo-sidebar-section-title">Principal</div>
+                    <a href="#" class="nxo-sidebar-link active">
+                      <i class="fa-solid fa-home"></i>
+                      <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nxo-sidebar-link">
+                      <i class="fa-solid fa-inbox"></i>
+                      <span>Messages</span>
+                      <span class="nxo-badge nxo-badge-error" style="margin-left: auto;">3</span>
+                    </a>
+                  </div>
+                  <div class="nxo-sidebar-section">
+                    <div class="nxo-sidebar-section-title">Gestion</div>
+                    <a href="#" class="nxo-sidebar-link">
+                      <i class="fa-solid fa-users"></i>
+                      <span>Equipes</span>
+                    </a>
+                    <a href="#" class="nxo-sidebar-link">
+                      <i class="fa-solid fa-folder"></i>
+                      <span>Projets</span>
+                    </a>
+                  </div>
+                </nav>
+              </aside>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;aside class="nxo-sidebar"&gt;
+  &lt;div class="nxo-sidebar-header"&gt;
+    &lt;span&gt;NXO Portal&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;nav class="nxo-sidebar-nav"&gt;
+    &lt;div class="nxo-sidebar-section"&gt;
+      &lt;div class="nxo-sidebar-section-title"&gt;Principal&lt;/div&gt;
+      &lt;a href="#" class="nxo-sidebar-link active"&gt;
+        &lt;i class="fa-solid fa-home"&gt;&lt;/i&gt;
+        &lt;span&gt;Dashboard&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a href="#" class="nxo-sidebar-link"&gt;
+        &lt;i class="fa-solid fa-inbox"&gt;&lt;/i&gt;
+        &lt;span&gt;Messages&lt;/span&gt;
+        &lt;span class="nxo-badge nxo-badge-error"&gt;3&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class="nxo-sidebar-section"&gt;
+      &lt;div class="nxo-sidebar-section-title"&gt;Gestion&lt;/div&gt;
+      &lt;a href="#" class="nxo-sidebar-link"&gt;
+        &lt;i class="fa-solid fa-users"&gt;&lt;/i&gt;
+        &lt;span&gt;Equipes&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;a href="#" class="nxo-sidebar-link"&gt;
+        &lt;i class="fa-solid fa-folder"&gt;&lt;/i&gt;
+        &lt;span&gt;Projets&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>import React from 'react';
+import { Home, Inbox, Users, Folder } from 'react-icons/fa';
+
+const SidebarWithSections = () => {
+  const [activeLink, setActiveLink] = React.useState('dashboard');
+  const [messageCount] = React.useState(3);
+
+  const sections = [
+    {
+      title: 'Principal',
+      items: [
+        { id: 'dashboard', icon: Home, label: 'Dashboard' },
+        { id: 'messages', icon: Inbox, label: 'Messages', badge: messageCount }
+      ]
+    },
+    {
+      title: 'Gestion',
+      items: [
+        { id: 'teams', icon: Users, label: 'Equipes' },
+        { id: 'projects', icon: Folder, label: 'Projets' }
+      ]
+    }
+  ];
+
+  return (
+    &lt;aside className="nxo-sidebar"&gt;
+      &lt;div className="nxo-sidebar-header"&gt;
+        &lt;span&gt;NXO Portal&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;nav className="nxo-sidebar-nav"&gt;
+        {sections.map((section, idx) =&gt; (
+          &lt;div key={idx} className="nxo-sidebar-section"&gt;
+            &lt;div className="nxo-sidebar-section-title"&gt;
+              {section.title}
+            &lt;/div&gt;
+            {section.items.map(item =&gt; (
+              &lt;a
+                key={item.id}
+                href="#"
+                className={`nxo-sidebar-link ${activeLink === item.id ? 'active' : ''}`}
+                onClick={(e) =&gt; {
+                  e.preventDefault();
+                  setActiveLink(item.id);
+                }}
+              &gt;
+                &lt;item.icon /&gt;
+                &lt;span&gt;{item.label}&lt;/span&gt;
+                {item.badge &amp;&amp; (
+                  &lt;span className="nxo-badge nxo-badge-error"&gt;
+                    {item.badge}
+                  &lt;/span&gt;
+                )}
+              &lt;/a&gt;
+            ))}
+          &lt;/div&gt;
+        ))}
+      &lt;/nav&gt;
+    &lt;/aside&gt;
+  );
+};
+
+export default SidebarWithSections;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>import { Component } from '@angular/core';
+
+interface NavItem {
+  id: string;
+  icon: string;
+  label: string;
+  badge?: number;
+}
+
+interface NavSection {
+  title: string;
+  items: NavItem[];
+}
+
+@Component({
+  selector: 'app-sidebar-sections',
+  template: `
+    &lt;aside class="nxo-sidebar"&gt;
+      &lt;div class="nxo-sidebar-header"&gt;
+        &lt;span&gt;NXO Portal&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;nav class="nxo-sidebar-nav"&gt;
+        &lt;div *ngFor="let section of sections" class="nxo-sidebar-section"&gt;
+          &lt;div class="nxo-sidebar-section-title"&gt;
+            {{ section.title }}
+          &lt;/div&gt;
+          &lt;a
+            *ngFor="let item of section.items"
+            href="#"
+            [class.active]="activeLink === item.id"
+            class="nxo-sidebar-link"
+            (click)="setActive($event, item.id)"
+          &gt;
+            &lt;i [class]="'fa-solid ' + item.icon"&gt;&lt;/i&gt;
+            &lt;span&gt;{{ item.label }}&lt;/span&gt;
+            &lt;span *ngIf="item.badge" class="nxo-badge nxo-badge-error"&gt;
+              {{ item.badge }}
+            &lt;/span&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/nav&gt;
+    &lt;/aside&gt;
+  `
+})
+export class SidebarSectionsComponent {
+  activeLink = 'dashboard';
+  messageCount = 3;
+
+  sections: NavSection[] = [
+    {
+      title: 'Principal',
+      items: [
+        { id: 'dashboard', icon: 'fa-home', label: 'Dashboard' },
+        { id: 'messages', icon: 'fa-inbox', label: 'Messages', badge: this.messageCount }
+      ]
+    },
+    {
+      title: 'Gestion',
+      items: [
+        { id: 'teams', icon: 'fa-users', label: 'Equipes' },
+        { id: 'projects', icon: 'fa-folder', label: 'Projets' }
+      ]
+    }
+  ];
+
+  setActive(event: Event, id: string): void {
+    event.preventDefault();
+    this.activeLink = id;
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>&lt;?php
+$sections = [
+  [
+    'title' =&gt; 'Principal',
+    'items' =&gt; [
+      ['id' =&gt; 'dashboard', 'icon' =&gt; 'fa-home', 'label' =&gt; 'Dashboard'],
+      ['id' =&gt; 'messages', 'icon' =&gt; 'fa-inbox', 'label' =&gt; 'Messages', 'badge' =&gt; 3]
+    ]
+  ],
+  [
+    'title' =&gt; 'Gestion',
+    'items' =&gt; [
+      ['id' =&gt; 'teams', 'icon' =&gt; 'fa-users', 'label' =&gt; 'Equipes'],
+      ['id' =&gt; 'projects', 'icon' =&gt; 'fa-folder', 'label' =&gt; 'Projets']
+    ]
+  ]
+];
+$activeLink = 'dashboard';
+?&gt;
+
+&lt;aside class="nxo-sidebar"&gt;
+  &lt;div class="nxo-sidebar-header"&gt;
+    &lt;span&gt;NXO Portal&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;nav class="nxo-sidebar-nav"&gt;
+    &lt;?php foreach ($sections as $section): ?&gt;
+      &lt;div class="nxo-sidebar-section"&gt;
+        &lt;div class="nxo-sidebar-section-title"&gt;
+          &lt;?= $section['title'] ?&gt;
+        &lt;/div&gt;
+        &lt;?php foreach ($section['items'] as $item): ?&gt;
+          &lt;a href="#" class="nxo-sidebar-link &lt;?= $activeLink === $item['id'] ? 'active' : '' ?&gt;"&gt;
+            &lt;i class="fa-solid &lt;?= $item['icon'] ?&gt;"&gt;&lt;/i&gt;
+            &lt;span&gt;&lt;?= $item['label'] ?&gt;&lt;/span&gt;
+            &lt;?php if (isset($item['badge'])): ?&gt;
+              &lt;span class="nxo-badge nxo-badge-error"&gt;&lt;?= $item['badge'] ?&gt;&lt;/span&gt;
+            &lt;?php endif; ?&gt;
+          &lt;/a&gt;
+        &lt;?php endforeach; ?&gt;
+      &lt;/div&gt;
+    &lt;?php endforeach; ?&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;
+
+&lt;!-- Twig Template --&gt;
+&lt;aside class="nxo-sidebar"&gt;
+  &lt;div class="nxo-sidebar-header"&gt;
+    &lt;span&gt;NXO Portal&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;nav class="nxo-sidebar-nav"&gt;
+    {% for section in sections %}
+      &lt;div class="nxo-sidebar-section"&gt;
+        &lt;div class="nxo-sidebar-section-title"&gt;
+          {{ section.title }}
+        &lt;/div&gt;
+        {% for item in section.items %}
+          &lt;a href="#" class="nxo-sidebar-link {{ activeLink == item.id ? 'active' : '' }}"&gt;
+            &lt;i class="fa-solid {{ item.icon }}"&gt;&lt;/i&gt;
+            &lt;span&gt;{{ item.label }}&lt;/span&gt;
+            {% if item.badge is defined %}
+              &lt;span class="nxo-badge nxo-badge-error"&gt;{{ item.badge }}&lt;/span&gt;
+            {% endif %}
+          &lt;/a&gt;
+        {% endfor %}
+      &lt;/div&gt;
+    {% endfor %}
+  &lt;/nav&gt;
+&lt;/aside&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Sidebar responsive</h3>
+          <p class="nxo-text nxo-mb-md">
+            Sur mobile (< 768px), la sidebar se masque et devient accessible via un bouton hamburger.
+            Elle apparait en slide-in avec un overlay sombre en arriere-plan.
+          </p>
+
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: 0; min-height: 400px; position: relative; overflow: hidden;">
+              <!-- Simulation responsive : on force le comportement mobile dans la preview -->
+              <style>
+                .demo-responsive-overlay {
+                  display: none;
+                  position: absolute;
+                  top: 0; left: 0; right: 0; bottom: 0;
+                  background-color: rgba(0, 0, 0, 0.5);
+                  z-index: 9;
+                }
+                .demo-responsive-overlay.open { display: block; }
+                .demo-responsive-sidebar {
+                  position: absolute;
+                  top: 0; left: 0;
+                  width: 250px; height: 100%;
+                  z-index: 10;
+                  transform: translateX(-100%);
+                  transition: transform 0.3s ease;
+                }
+                .demo-responsive-sidebar.open {
+                  transform: translateX(0);
+                  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+                }
+              </style>
+
+              <div style="padding: 16px;">
+                <button class="nxo-sidebar-toggle" style="display: flex;" id="demoToggle">
+                  <i class="fa-solid fa-bars"></i>
+                </button>
+                <p class="nxo-text-muted" style="margin-top: 16px;">Cliquez sur le bouton hamburger pour ouvrir la sidebar.</p>
+              </div>
+
+              <div class="demo-responsive-overlay" id="demoOverlay"></div>
+
+              <aside class="nxo-sidebar demo-responsive-sidebar" id="demoSidebar">
+                <div class="nxo-sidebar-header">
+                  <span style="font-weight: 600; color: var(--fayat-blue);">Mon Application</span>
+                </div>
+                <nav class="nxo-sidebar-nav">
+                  <a href="#" class="nxo-sidebar-link active" onclick="event.preventDefault()">
+                    <i class="fa-solid fa-home"></i>
+                    <span>Dashboard</span>
+                  </a>
+                  <a href="#" class="nxo-sidebar-link" onclick="event.preventDefault()">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Utilisateurs</span>
+                  </a>
+                  <a href="#" class="nxo-sidebar-link" onclick="event.preventDefault()">
+                    <i class="fa-solid fa-chart-bar"></i>
+                    <span>Rapports</span>
+                  </a>
+                  <a href="#" class="nxo-sidebar-link" onclick="event.preventDefault()">
+                    <i class="fa-solid fa-cog"></i>
+                    <span>Parametres</span>
+                  </a>
+                </nav>
+              </aside>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;!-- 1. Bouton hamburger (visible uniquement en mobile) --&gt;
+&lt;button class="nxo-sidebar-toggle" id="sidebarToggle"&gt;
+  &lt;i class="fa-solid fa-bars"&gt;&lt;/i&gt;
+&lt;/button&gt;
+
+&lt;!-- 2. Overlay sombre --&gt;
+&lt;div class="nxo-sidebar-overlay" id="sidebarOverlay"&gt;&lt;/div&gt;
+
+&lt;!-- 3. Sidebar (meme markup que d'habitude) --&gt;
+&lt;aside class="nxo-sidebar" id="sidebar"&gt;
+  &lt;div class="nxo-sidebar-header"&gt;
+    &lt;span&gt;Mon Application&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;nav class="nxo-sidebar-nav"&gt;
+    &lt;a href="#" class="nxo-sidebar-link active"&gt;
+      &lt;i class="fa-solid fa-home"&gt;&lt;/i&gt;
+      &lt;span&gt;Dashboard&lt;/span&gt;
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-sidebar-link"&gt;
+      &lt;i class="fa-solid fa-users"&gt;&lt;/i&gt;
+      &lt;span&gt;Utilisateurs&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;
+
+&lt;!-- 4. JavaScript pour le toggle --&gt;
+&lt;script&gt;
+  const toggle = document.getElementById('sidebarToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+
+  // Ouvrir / fermer la sidebar
+  toggle.addEventListener('click', () =&gt; {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  });
+
+  // Fermer en cliquant sur l'overlay
+  overlay.addEventListener('click', () =&gt; {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+  });
+&lt;/script&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>import React, { useState } from 'react';
+
+const ResponsiveSidebar = () =&gt; {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navItems = [
+    { id: 'dashboard', icon: 'fa-home', label: 'Dashboard' },
+    { id: 'users', icon: 'fa-users', label: 'Utilisateurs' },
+    { id: 'reports', icon: 'fa-chart-bar', label: 'Rapports' },
+    { id: 'settings', icon: 'fa-cog', label: 'Parametres' }
+  ];
+
+  return (
+    &lt;&gt;
+      {/* Bouton hamburger */}
+      &lt;button
+        className="nxo-sidebar-toggle"
+        onClick={() =&gt; setIsOpen(true)}
+      &gt;
+        &lt;i className="fa-solid fa-bars" /&gt;
+      &lt;/button&gt;
+
+      {/* Overlay */}
+      &lt;div
+        className={`nxo-sidebar-overlay ${isOpen ? 'open' : ''}`}
+        onClick={() =&gt; setIsOpen(false)}
+      /&gt;
+
+      {/* Sidebar */}
+      &lt;aside className={`nxo-sidebar ${isOpen ? 'open' : ''}`}&gt;
+        &lt;div className="nxo-sidebar-header"&gt;
+          &lt;span&gt;Mon Application&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;nav className="nxo-sidebar-nav"&gt;
+          {navItems.map(item =&gt; (
+            &lt;a key={item.id} href="#" className="nxo-sidebar-link"&gt;
+              &lt;i className={`fa-solid ${item.icon}`} /&gt;
+              &lt;span&gt;{item.label}&lt;/span&gt;
+            &lt;/a&gt;
+          ))}
+        &lt;/nav&gt;
+      &lt;/aside&gt;
+    &lt;/&gt;
+  );
+};
+
+export default ResponsiveSidebar;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-responsive-sidebar',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    &lt;!-- Bouton hamburger --&gt;
+    &lt;button
+      class="nxo-sidebar-toggle"
+      (click)="isOpen = true"
+    &gt;
+      &lt;i class="fa-solid fa-bars"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+
+    &lt;!-- Overlay --&gt;
+    &lt;div
+      class="nxo-sidebar-overlay"
+      [class.open]="isOpen"
+      (click)="isOpen = false"
+    &gt;&lt;/div&gt;
+
+    &lt;!-- Sidebar --&gt;
+    &lt;aside class="nxo-sidebar" [class.open]="isOpen"&gt;
+      &lt;div class="nxo-sidebar-header"&gt;
+        &lt;span&gt;Mon Application&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;nav class="nxo-sidebar-nav"&gt;
+        &lt;a
+          *ngFor="let item of navItems"
+          href="#"
+          class="nxo-sidebar-link"
+          (click)="$event.preventDefault()"
+        &gt;
+          &lt;i [class]="'fa-solid ' + item.icon"&gt;&lt;/i&gt;
+          &lt;span&gt;{{ item.label }}&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/nav&gt;
+    &lt;/aside&gt;
+  `
+})
+export class ResponsiveSidebarComponent {
+  isOpen = false;
+
+  navItems = [
+    { id: 'dashboard', icon: 'fa-home', label: 'Dashboard' },
+    { id: 'users', icon: 'fa-users', label: 'Utilisateurs' },
+    { id: 'reports', icon: 'fa-chart-bar', label: 'Rapports' },
+    { id: 'settings', icon: 'fa-cog', label: 'Parametres' }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>&lt;!-- Bouton hamburger --&gt;
+&lt;button class="nxo-sidebar-toggle" id="sidebarToggle"&gt;
+  &lt;i class="fa-solid fa-bars"&gt;&lt;/i&gt;
+&lt;/button&gt;
+
+&lt;!-- Overlay --&gt;
+&lt;div class="nxo-sidebar-overlay" id="sidebarOverlay"&gt;&lt;/div&gt;
+
+&lt;!-- Sidebar --&gt;
+&lt;aside class="nxo-sidebar" id="sidebar"&gt;
+  &lt;div class="nxo-sidebar-header"&gt;
+    &lt;span&gt;Mon Application&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;nav class="nxo-sidebar-nav"&gt;
+    &lt;?php foreach ($navItems as $item): ?&gt;
+      &lt;a href="#" class="nxo-sidebar-link"&gt;
+        &lt;i class="fa-solid &lt;?= $item['icon'] ?&gt;"&gt;&lt;/i&gt;
+        &lt;span&gt;&lt;?= $item['label'] ?&gt;&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;?php endforeach; ?&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;
+
+&lt;script&gt;
+  const toggle = document.getElementById('sidebarToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+
+  toggle.addEventListener('click', () =&gt; {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  });
+
+  overlay.addEventListener('click', () =&gt; {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+  });
+&lt;/script&gt;
+
+&lt;!-- Twig --&gt;
+&lt;button class="nxo-sidebar-toggle" id="sidebarToggle"&gt;
+  &lt;i class="fa-solid fa-bars"&gt;&lt;/i&gt;
+&lt;/button&gt;
+
+&lt;div class="nxo-sidebar-overlay" id="sidebarOverlay"&gt;&lt;/div&gt;
+
+&lt;aside class="nxo-sidebar" id="sidebar"&gt;
+  &lt;div class="nxo-sidebar-header"&gt;
+    &lt;span&gt;{{ appName }}&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;nav class="nxo-sidebar-nav"&gt;
+    {% for item in navItems %}
+      &lt;a href="{{ item.url }}" class="nxo-sidebar-link"&gt;
+        &lt;i class="fa-solid {{ item.icon }}"&gt;&lt;/i&gt;
+        &lt;span&gt;{{ item.label }}&lt;/span&gt;
+      &lt;/a&gt;
+    {% endfor %}
+  &lt;/nav&gt;
+&lt;/aside&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Classes CSS reference -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Classes CSS</h3>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Classe</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>.nxo-sidebar</code></td>
+                <td>Conteneur principal de la sidebar</td>
+              </tr>
+              <tr>
+                <td><code>.nxo-sidebar-header</code></td>
+                <td>En-tete de la sidebar (logo, nom de l'app)</td>
+              </tr>
+              <tr>
+                <td><code>.nxo-sidebar-nav</code></td>
+                <td>Conteneur de la navigation</td>
+              </tr>
+              <tr>
+                <td><code>.nxo-sidebar-link</code></td>
+                <td>Lien de navigation. Ajouter <code>.active</code> pour l'etat actif.</td>
+              </tr>
+              <tr>
+                <td><code>.nxo-sidebar-section</code></td>
+                <td>Groupe de liens avec un titre</td>
+              </tr>
+              <tr>
+                <td><code>.nxo-sidebar-section-title</code></td>
+                <td>Titre d'une section</td>
+              </tr>
+              <tr>
+                <td><code>.nxo-sidebar-toggle</code></td>
+                <td>Bouton hamburger (visible en mobile < 768px)</td>
+              </tr>
+              <tr>
+                <td><code>.nxo-sidebar-overlay</code></td>
+                <td>Overlay sombre derriere la sidebar en mobile</td>
+              </tr>
+              <tr>
+                <td><code>.open</code></td>
+                <td>Classe a ajouter via JS sur <code>.nxo-sidebar</code>, <code>.nxo-sidebar-overlay</code> pour ouvrir</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            <div>
+              <strong>Breakpoint : 768px</strong><br>
+              En dessous de 768px, la sidebar passe en <code>position: fixed</code> et se cache via <code>transform: translateX(-100%)</code>.
+              Le bouton <code>.nxo-sidebar-toggle</code> devient visible automatiquement.
+              Il suffit d'ajouter la classe <code>.open</code> via JavaScript pour l'afficher.
+            </div>
+          </div>
+
+          <h4 style="margin-bottom: 8px;">Implementation minimale</h4>
+          <div style="background: var(--nxo-bg-card); border: 1px solid var(--nxo-border-color); border-radius: var(--nxo-radius-md); padding: var(--nxo-spacing-md); margin-bottom: var(--nxo-spacing-lg);">
+<pre style="margin: 0; font-size: 13px; white-space: pre-wrap;">// 1. Importer les CSS du theme
+&lt;link rel="stylesheet" href="tokens/tokens.css"&gt;
+&lt;link rel="stylesheet" href="components/components.css"&gt;
+
+// 2. HTML : ajouter le toggle + overlay avant la sidebar
+&lt;button class="nxo-sidebar-toggle" id="sidebarToggle"&gt;
+  &lt;i class="fa-solid fa-bars"&gt;&lt;/i&gt;
+&lt;/button&gt;
+&lt;div class="nxo-sidebar-overlay" id="sidebarOverlay"&gt;&lt;/div&gt;
+&lt;aside class="nxo-sidebar" id="sidebar"&gt;...&lt;/aside&gt;
+
+// 3. JS : toggle open/close
+const toggle = document.getElementById('sidebarToggle');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+
+toggle.addEventListener('click', () =&gt; {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('open');
+});
+
+overlay.addEventListener('click', () =&gt; {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('open');
+});</pre>
+          </div>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Demo responsive sidebar
+    const demoToggle = document.getElementById('demoToggle');
+    const demoSidebar = document.getElementById('demoSidebar');
+    const demoOverlay = document.getElementById('demoOverlay');
+
+    if (demoToggle && demoSidebar && demoOverlay) {
+      demoToggle.addEventListener('click', () => {
+        demoSidebar.classList.toggle('open');
+        demoOverlay.classList.toggle('open');
+      });
+
+      demoOverlay.addEventListener('click', () => {
+        demoSidebar.classList.remove('open');
+        demoOverlay.classList.remove('open');
+      });
+    }
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+/**
+ * NXO Design System - Design Tokens
+ * Version: 2.0.0
+ * Dernière mise à jour: Décembre 2025
+ *
+ * ╔═══════════════════════════════════════════════════════════════════════════╗
+ * ║  STATUT: VALIDÉ PAR LE MARKETING - Décembre 2025                          ║
+ * ║  Toutes les valeurs ci-dessous ont été approuvées.                        ║
+ * ╚═══════════════════════════════════════════════════════════════════════════╝
+ */
+
+:root {
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ COULEURS FAYAT (Groupe parent)
+     Source: Charte NXO - Page "Couleurs Fayat"
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --fayat-blue: #0055a0;       /* R0 V85 B160 - Pantone 286 C - RAL 5017 */
+  --fayat-yellow: #ffd800;     /* R255 V216 B0 - Pantone 116 C - RAL 1018 */
+  --fayat-gray: #66757e;       /* R102 V117 B126 - Pantone 7545 C - RAL 7031 */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ COULEURS NXO CORPORATE (Dominantes)
+     Source: Charte NXO - Page "Couleurs NXO"
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-blue-dark: #002f60;    /* R0 V47 B96 - Couleur principale */
+  --nxo-blue-light: #5692ce;   /* R86 V146 B206 - Accents, hover */
+  --nxo-gray: #cfd1d2;         /* R207 V209 B210 - Lignes sélectionnées */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ COULEURS NXO ACCOMPAGNEMENT
+     Source: Charte NXO - Page "Couleurs NXO"
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-blue-very-light: #b4dfe7;  /* R180 V223 B231 */
+  --nxo-green: #00a486;            /* R0 V164 B134 */
+  --nxo-teal: #008a9b;             /* R0 V138 B155 */
+  --nxo-yellow: #ffd300;           /* R255 V216 B0 */
+  --nxo-orange: #e95e3f;           /* R233 V94 B63 */
+  --nxo-red: #e53138;              /* R229 V49 B56 */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ TYPOGRAPHIE
+     Police: Montserrat (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Tailles de police (validées) */
+  --nxo-font-size-xs: 0.75rem;    /* 12px - Labels, légendes */
+  --nxo-font-size-sm: 0.875rem;   /* 14px - Texte secondaire */
+  --nxo-font-size-base: 1rem;     /* 16px - Corps de texte */
+  --nxo-font-size-md: 1.125rem;   /* 18px */
+  --nxo-font-size-lg: 1.25rem;    /* 20px */
+  --nxo-font-size-xl: 1.5rem;     /* 24px - H3 */
+  --nxo-font-size-2xl: 2rem;      /* 32px - H2 */
+  --nxo-font-size-3xl: 2.5rem;    /* 40px - H1 */
+  --nxo-font-size-4xl: 3rem;      /* 48px */
+
+  /* Graisses de police (validées) */
+  --nxo-font-weight-light: 300;
+  --nxo-font-weight-regular: 400;   /* Corps de texte */
+  --nxo-font-weight-medium: 500;    /* Boutons, labels importants */
+  --nxo-font-weight-semibold: 600;  /* Sous-titres */
+  --nxo-font-weight-bold: 700;      /* Titres */
+
+  /* Hauteur de ligne (validées) */
+  --nxo-line-height-tight: 1.2;     /* Titres */
+  --nxo-line-height-normal: 1.5;    /* Corps de texte */
+  --nxo-line-height-relaxed: 1.75;  /* Paragraphes longs */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ COULEURS TEXTE
+     Corps de texte: #212b36 (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-text-body: #212b36;           /* Corps de texte principal */
+  --nxo-text-heading: #0055a0;        /* Titres = Bleu Fayat */
+  --nxo-text-muted: #6c757d;          /* Texte secondaire */
+  --nxo-text-label: #212b36;          /* Labels formulaires */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ COULEURS DE FOND
+     Blanc ou gris clair selon contexte (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-color-white: #ffffff;
+  --nxo-color-black: #000000;
+  --nxo-bg-page: #f5f5f5;             /* Fond de page gris clair */
+  --nxo-bg-page-white: #ffffff;       /* Fond de page blanc */
+  --nxo-bg-card: #ffffff;             /* Fond des cartes */
+  --nxo-bg-selected: #cfd1d2;         /* Ligne sélectionnée = Gris NXO */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ BORDURES
+     Épaisseur: 1px fine (validé)
+     Couleur: #e0e0e0 (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-border-width: 1px;            /* Épaisseur fine */
+  --nxo-border-color: #e0e0e0;        /* Bordures standards */
+  --nxo-border-color-dark: #cfd1d2;   /* Gris NXO */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ ARRONDIS (Border Radius)
+     Standard: 8px moyen (validé)
+     Boutons: capsule/pill (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-radius-none: 0;
+  --nxo-radius-sm: 4px;               /* Badges, petits éléments */
+  --nxo-radius-md: 8px;               /* Cards, modales, inputs - STANDARD */
+  --nxo-radius-lg: 12px;              /* Grands conteneurs */
+  --nxo-radius-xl: 16px;
+  --nxo-radius-full: 9999px;          /* Capsule/Pill - Boutons, toggles */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ OMBRES - PAS D'OMBRE (validé)
+     Le marketing a choisi de ne pas utiliser d'ombres
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-shadow-none: none;
+  --nxo-shadow-sm: none;
+  --nxo-shadow-md: none;
+  --nxo-shadow-lg: none;
+  --nxo-shadow-xl: none;
+  --nxo-shadow-modal: none;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ ESPACEMENTS
+     Échelle validée
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-spacing-xs: 4px;      /* Entre icône et texte */
+  --nxo-spacing-sm: 8px;      /* Entre éléments proches */
+  --nxo-spacing-md: 16px;     /* Padding standard */
+  --nxo-spacing-lg: 24px;     /* Entre sections */
+  --nxo-spacing-xl: 32px;     /* Grands espaces */
+  --nxo-spacing-2xl: 48px;    /* Entre blocs majeurs */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ HEADER
+     Existant conservé (validé - on ne touche pas)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-header-bg: #0055a0;           /* Bleu Fayat */
+  --nxo-header-text: #ffffff;         /* Texte blanc */
+  --nxo-header-height: 80px;          /* Desktop */
+  --nxo-header-height-mobile: 56px;   /* Mobile */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ BOUTONS
+     Forme: Capsule (validé)
+     Hauteur: Standard 40px privilégié (validé)
+     Bordure: Fine 1px (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+
+  /* Dimensions */
+  --nxo-btn-height-sm: 32px;          /* Petit */
+  --nxo-btn-height: 40px;             /* Standard - PRIVILÉGIÉ */
+  --nxo-btn-height-lg: 48px;          /* Grand */
+
+  /* Padding - Variable selon taille (validé) */
+  --nxo-btn-padding-x-sm: 16px;       /* Petit bouton */
+  --nxo-btn-padding-x: 24px;          /* Standard */
+  --nxo-btn-padding-x-lg: 24px;       /* Grand bouton */
+
+  /* Police - Variable selon taille (validé) */
+  --nxo-btn-font-size-sm: 14px;       /* Petit bouton */
+  --nxo-btn-font-size: 14px;          /* Standard */
+  --nxo-btn-font-size-lg: 16px;       /* Grand bouton */
+
+  /* Style */
+  --nxo-btn-radius: 9999px;           /* CAPSULE - validé */
+  --nxo-btn-border-width: 1px;        /* Bordure fine - validé */
+  --nxo-btn-font-weight: 600;         /* Semibold */
+
+  /* Bouton Primaire - États */
+  --nxo-btn-primary-bg: #002f60;              /* Regular: Bleu foncé NXO */
+  --nxo-btn-primary-text: #ffffff;            /* Texte blanc */
+  --nxo-btn-primary-hover-bg: #5692ce;        /* Hover: Bleu clair NXO */
+  --nxo-btn-primary-disabled-bg: #b4dfe7;     /* Disabled: Bleu très clair */
+  --nxo-btn-primary-disabled-text: #002f60;   /* Disabled: Texte bleu foncé */
+  --nxo-btn-primary-disabled-border: #002f60; /* Disabled: Contour bleu foncé */
+
+  /* Bouton Secondaire - États */
+  --nxo-btn-secondary-bg: transparent;        /* Fond transparent */
+  --nxo-btn-secondary-text: #002f60;          /* Texte bleu foncé */
+  --nxo-btn-secondary-border: #002f60;        /* Contour bleu foncé */
+  --nxo-btn-secondary-hover-bg: #b4dfe7;      /* Hover: Bleu très clair */
+
+  /* Bouton Tertiaire - États */
+  --nxo-btn-tertiary-text: #002f60;           /* Texte souligné bleu foncé */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ FORMULAIRES (Inputs)
+     Hauteur: Standard 40px (validé)
+     Label: #212b36 (validé)
+     Bordure: #e0e0e0 (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-input-height: 40px;                   /* Hauteur standard */
+  --nxo-input-bg: #ffffff;
+  --nxo-input-border: #e0e0e0;                /* Bordure normale */
+  --nxo-input-border-focus: #0055a0;          /* Bordure au focus */
+  --nxo-input-border-error: #e53138;          /* Bordure en erreur */
+  --nxo-input-bg-disabled: #f5f5f5;           /* Fond désactivé */
+  --nxo-input-text-disabled: #999999;         /* Texte désactivé */
+  --nxo-input-placeholder: #999999;           /* Placeholder */
+  --nxo-input-focus-ring: rgba(0, 85, 160, 0.2);  /* Halo de focus */
+  --nxo-input-radius: 8px;                    /* Arrondi moyen */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ LIENS
+     Couleur: Bleu Fayat souligné (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-link-color: #0055a0;                  /* Bleu Fayat */
+  --nxo-link-hover: #5692ce;                  /* Bleu clair au survol */
+  --nxo-link-decoration: underline;           /* Souligné */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ TABLEAUX
+     Header: Fond gris avec texte bleu Fayat (validé)
+     Pas de header fond bleu
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-table-header-bg: #f5f5f5;             /* Fond gris */
+  --nxo-table-header-text: #0055a0;           /* Texte bleu Fayat */
+  --nxo-table-border: #e0e0e0;
+  --nxo-table-row-hover: #f9f9f9;
+  --nxo-table-row-stripe: #fafafa;            /* Alternance zebra */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ CARDS
+     Avec bordure (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-card-bg: #ffffff;
+  --nxo-card-border: #e0e0e0;
+  --nxo-card-radius: 8px;
+  --nxo-card-padding: 24px;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ BADGES
+     Style: Carré radius 4px (validé) - PAS capsule
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-badge-radius: 4px;                    /* Carré arrondi, pas pill */
+  --nxo-badge-padding-x: 8px;
+  --nxo-badge-padding-y: 4px;
+  --nxo-badge-font-size: 12px;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ ALERTES / NOTIFICATIONS
+     Validées telles que proposées
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-alert-radius: 8px;
+  --nxo-alert-padding: 16px;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ MODALES
+     Validées telles que proposées
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-modal-radius: 12px;
+  --nxo-modal-backdrop: rgba(0, 0, 0, 0.5);
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ TOOLTIPS
+     Styles sombre et clair validés (pas bleu)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-tooltip-bg-dark: #333333;
+  --nxo-tooltip-text-dark: #ffffff;
+  --nxo-tooltip-bg-light: #ffffff;
+  --nxo-tooltip-text-light: #333333;
+  --nxo-tooltip-radius: 4px;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ BREADCRUMB
+     Avec chevron (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-breadcrumb-separator: "›";            /* Chevron */
+  --nxo-breadcrumb-color: #6c757d;
+  --nxo-breadcrumb-active-color: #212b36;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ FOOTER
+     Fond bleu Fayat clair, texte blanc, pas d'arrondi (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-footer-bg: #0055a0;                   /* Bleu Fayat */
+  --nxo-footer-text: #ffffff;                 /* Texte blanc */
+  --nxo-footer-radius: 0;                     /* Pas d'arrondi */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ AVATARS
+     Taille: Small 32px, forme ronde (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-avatar-size-sm: 32px;                 /* Small - DÉFAUT */
+  --nxo-avatar-size-md: 40px;
+  --nxo-avatar-size-lg: 56px;
+  --nxo-avatar-size-xl: 80px;
+  --nxo-avatar-radius: 9999px;                /* Rond */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ SPINNERS / LOADERS
+     Couleur: Bleu Fayat (validé)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-spinner-color: #0055a0;               /* Bleu Fayat */
+  --nxo-spinner-size: 24px;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ TOAST NOTIFICATIONS
+     Validées telles que proposées
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-toast-radius: 8px;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ COULEURS ÉTATS (Feedback)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-color-success: #00a486;               /* Vert NXO */
+  --nxo-color-info: #5692ce;                  /* Bleu clair NXO */
+  --nxo-color-warning: #ffd300;               /* Jaune NXO */
+  --nxo-color-danger: #e53138;                /* Rouge NXO */
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ TRANSITIONS
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-transition-fast: 150ms ease;
+  --nxo-transition-normal: 300ms ease;
+
+
+  /* ═══════════════════════════════════════════════════════════════════════════
+     ✅ Z-INDEX (Layers)
+     ═══════════════════════════════════════════════════════════════════════════ */
+  --nxo-z-dropdown: 100;
+  --nxo-z-sticky: 200;
+  --nxo-z-header: 300;
+  --nxo-z-modal-backdrop: 400;
+  --nxo-z-modal: 500;
+  --nxo-z-tooltip: 600;
+
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK MODE
+   Activé via data-theme="dark" sur <html>
+   Exemple: document.documentElement.setAttribute('data-theme', 'dark');
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+[data-theme="dark"] {
+
+  /* Palette dark mode */
+  --nxo-dm-bg: #0f172a;
+  --nxo-dm-bg-secondary: #1e293b;
+  --nxo-dm-bg-elevated: #334155;
+  --nxo-dm-border: #475569;
+  --nxo-dm-text: #f1f5f9;
+  --nxo-dm-text-muted: #94a3b8;
+
+  /* Override des tokens existants */
+  --nxo-bg-page: #0f172a;
+  --nxo-bg-page-white: #0f172a;
+  --nxo-bg-selected: #334155;
+  --nxo-gray: #334155;
+
+  --nxo-text-body: #cbd5e1;
+  --nxo-text-heading: #f1f5f9;
+  --nxo-text-muted: #94a3b8;
+  --nxo-text-label: #f1f5f9;
+
+  --nxo-border-color: #475569;
+  --nxo-border-color-dark: #64748b;
+
+  --nxo-card-bg: #1e293b;
+  --nxo-card-border: #334155;
+
+  --nxo-input-bg: #1e293b;
+  --nxo-input-border: #475569;
+  --nxo-input-bg-disabled: #0f172a;
+  --nxo-input-text-disabled: #64748b;
+  --nxo-input-placeholder: #64748b;
+  --nxo-input-focus-ring: rgba(86, 146, 206, 0.3);
+
+  --nxo-link-color: #60a5fa;
+  --nxo-link-hover: #93c5fd;
+
+  --nxo-table-header-bg: #0f172a;
+  --nxo-table-header-text: #f1f5f9;
+  --nxo-table-border: #475569;
+  --nxo-table-row-hover: #0f172a;
+  --nxo-table-row-stripe: #172033;
+
+  --nxo-tooltip-bg-dark: #334155;
+  --nxo-tooltip-text-dark: #f1f5f9;
+  --nxo-tooltip-bg-light: #1e293b;
+  --nxo-tooltip-text-light: #f1f5f9;
+
+  --nxo-breadcrumb-color: #94a3b8;
+  --nxo-breadcrumb-active-color: #f1f5f9;
+
+  --nxo-footer-bg: #0f172a;
+  --nxo-footer-text: #cbd5e1;
+
+  --nxo-modal-backdrop: rgba(0, 0, 0, 0.7);
+
+  --nxo-spinner-color: #60a5fa;
+}

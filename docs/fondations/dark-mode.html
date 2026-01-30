@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dark Mode - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+  <style>
+    .doc-code {
+      background: var(--nxo-bg-page);
+      border: 1px solid var(--nxo-border-color);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      overflow-x: auto;
+      color: var(--nxo-text-body);
+      margin-bottom: 24px;
+    }
+    .doc-code code {
+      font-family: inherit;
+    }
+    .doc-step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .doc-step__number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--nxo-blue-dark);
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .doc-step__content {
+      flex: 1;
+    }
+    .doc-step__title {
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--nxo-text-heading);
+      margin-bottom: 8px;
+    }
+    .doc-step__desc {
+      font-size: 14px;
+      color: var(--nxo-text-muted);
+      margin-bottom: 12px;
+    }
+    .doc-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .doc-token-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--nxo-border-color);
+      font-size: 13px;
+    }
+    .doc-token-row:last-child {
+      border-bottom: none;
+    }
+    .doc-token-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      border: 1px solid var(--nxo-border-color);
+      flex-shrink: 0;
+    }
+    .doc-token-name {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 12px;
+      color: var(--nxo-text-body);
+      flex: 1;
+    }
+    .doc-token-value {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 12px;
+      color: var(--nxo-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="dark-mode.html" class="doc-sidebar__link active"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-moon"></i> Dark Mode</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Le dark mode est integre au theme NXO. Tous les composants basculent automatiquement
+          via l'attribut <code>data-theme="dark"</code> sur la balise <code>&lt;html&gt;</code>.
+          Aucun fichier CSS supplementaire n'est necessaire.
+        </p>
+
+        <!-- How it works -->
+        <div class="doc-subsection">
+          <h2 class="doc-subsection__title">Comment ca marche</h2>
+          <p class="nxo-text-sm nxo-text-muted nxo-mb-lg">
+            Le dark mode repose sur le mecanisme CSS natif de surcharge de variables.
+            Quand <code>data-theme="dark"</code> est present sur <code>&lt;html&gt;</code>,
+            les tokens definis dans <code>tokens.css</code> sont remplaces par leurs
+            equivalents sombres. Les composants de <code>components.css</code> utilisent
+            ces memes variables, donc ils s'adaptent automatiquement.
+          </p>
+        </div>
+
+        <!-- Implementation steps -->
+        <div class="doc-subsection">
+          <h2 class="doc-subsection__title">Mise en place</h2>
+
+          <!-- Step 1 -->
+          <div class="doc-step">
+            <div class="doc-step__number">1</div>
+            <div class="doc-step__content">
+              <div class="doc-step__title">Imports CSS (inchanges)</div>
+              <div class="doc-step__desc">Les memes deux fichiers que d'habitude. Le dark mode est inclus dedans.</div>
+              <pre class="doc-code"><code>&lt;link rel="stylesheet" href="tokens/tokens.css"&gt;
+&lt;link rel="stylesheet" href="components/components.css"&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="doc-step">
+            <div class="doc-step__number">2</div>
+            <div class="doc-step__content">
+              <div class="doc-step__title">Script anti-flash (dans le &lt;head&gt;)</div>
+              <div class="doc-step__desc">
+                Place ce script <strong>avant</strong> les liens CSS pour eviter le flash blanc
+                au chargement quand l'utilisateur a choisi le dark mode.
+              </div>
+              <pre class="doc-code"><code>&lt;script&gt;
+(function() {
+  var theme = localStorage.getItem('nxo-theme');
+  if (theme === 'dark' || (!theme &amp;&amp;
+      window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+&lt;/script&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="doc-step">
+            <div class="doc-step__number">3</div>
+            <div class="doc-step__content">
+              <div class="doc-step__title">Fonction de toggle</div>
+              <div class="doc-step__desc">
+                Ajoute cette fonction et lie-la a un bouton. Elle bascule le theme
+                et sauvegarde le choix dans <code>localStorage</code>.
+              </div>
+              <pre class="doc-code"><code>function toggleDarkMode() {
+  const html = document.documentElement;
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    localStorage.setItem('nxo-theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('nxo-theme', 'dark');
+  }
+}
+
+// Exemple de bouton
+&lt;button onclick="toggleDarkMode()"&gt;
+  Changer de theme
+&lt;/button&gt;</code></pre>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="doc-step">
+            <div class="doc-step__number">4</div>
+            <div class="doc-step__content">
+              <div class="doc-step__title">Ecouter le changement systeme (optionnel)</div>
+              <div class="doc-step__desc">
+                Si l'utilisateur n'a pas fait de choix explicite, le theme suit
+                la preference systeme (Windows/macOS/navigateur).
+              </div>
+              <pre class="doc-code"><code>window.matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', function(e) {
+    if (!localStorage.getItem('nxo-theme')) {
+      if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    }
+  });</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live demo -->
+        <div class="doc-subsection">
+          <h2 class="doc-subsection__title">Demo interactive</h2>
+          <p class="nxo-text-sm nxo-text-muted nxo-mb-md">
+            Clique sur le bouton pour voir cette page entiere basculer. Tu peux aussi utiliser le toggle
+            <i class="fa-solid fa-moon"></i> / <i class="fa-solid fa-sun"></i> dans le header.
+          </p>
+
+          <button class="nxo-btn nxo-btn-primary nxo-mb-lg" onclick="document.getElementById('themeToggle').click()" style="gap: 8px;">
+            <i class="fa-solid fa-moon"></i> Basculer le theme
+          </button>
+
+          <div class="doc-preview-grid">
+            <!-- Card -->
+            <div class="nxo-card">
+              <div class="nxo-card-header">
+                <h3 class="nxo-card-title">Card</h3>
+              </div>
+              <div class="nxo-card-body">
+                <p style="margin: 0; font-size: 14px;">Fond, bordures et texte s'adaptent via les tokens.</p>
+              </div>
+            </div>
+
+            <!-- Alerts -->
+            <div>
+              <div class="nxo-alert nxo-alert-info" style="margin-bottom: 8px;">
+                <div class="nxo-alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+                <div class="nxo-alert-content">
+                  <div class="nxo-alert-title">Info</div>
+                  <div class="nxo-alert-message">Fond semi-transparent adapte.</div>
+                </div>
+              </div>
+              <div class="nxo-alert nxo-alert-success">
+                <div class="nxo-alert-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="nxo-alert-content">
+                  <div class="nxo-alert-title">Succes</div>
+                  <div class="nxo-alert-message">Couleurs ajustees en dark.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <div>
+              <div class="nxo-form-group">
+                <label class="nxo-label">Champ texte</label>
+                <input class="nxo-input" type="text" placeholder="Placeholder...">
+              </div>
+              <div class="nxo-form-group" style="margin-bottom: 0;">
+                <label class="nxo-label">Select</label>
+                <select class="nxo-select">
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <button class="nxo-btn nxo-btn-primary">Primaire</button>
+              <button class="nxo-btn nxo-btn-secondary">Secondaire</button>
+              <button class="nxo-btn nxo-btn-tertiary">Tertiaire</button>
+            </div>
+
+            <!-- Badges -->
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start;">
+              <span class="nxo-badge nxo-badge-primary">Primary</span>
+              <span class="nxo-badge nxo-badge-success">Success</span>
+              <span class="nxo-badge nxo-badge-warning">Warning</span>
+              <span class="nxo-badge nxo-badge-danger">Danger</span>
+              <span class="nxo-badge nxo-badge-neutral">Neutral</span>
+            </div>
+
+            <!-- Table -->
+            <div style="grid-column: 1 / -1;">
+              <table class="nxo-table">
+                <thead>
+                  <tr><th>Nom</th><th>Role</th><th>Statut</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Alice Martin</td><td>Developpeur</td><td><span class="nxo-badge nxo-badge-success">Actif</span></td></tr>
+                  <tr><td>Bob Dupont</td><td>Designer</td><td><span class="nxo-badge nxo-badge-warning">En pause</span></td></tr>
+                  <tr><td>Claire Moreau</td><td>Chef de projet</td><td><span class="nxo-badge nxo-badge-neutral">Hors ligne</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tokens reference -->
+        <div class="doc-subsection">
+          <h2 class="doc-subsection__title">Tokens surcharges en dark mode</h2>
+          <p class="nxo-text-sm nxo-text-muted nxo-mb-md">
+            Ces tokens sont automatiquement remplaces quand <code>data-theme="dark"</code> est actif.
+            Ils sont definis dans <code>tokens.css</code>.
+          </p>
+
+          <div class="nxo-card">
+            <div class="nxo-card-body" style="padding: 16px;">
+
+              <h4 style="font-size: 13px; font-weight: 600; color: var(--nxo-text-heading); margin-bottom: 12px;">Fonds</h4>
+              <div class="doc-token-row">
+                <div class="doc-token-swatch" style="background: #0f172a;"></div>
+                <div class="doc-token-name">--nxo-bg-page</div>
+                <div class="doc-token-value">#0f172a</div>
+              </div>
+              <div class="doc-token-row">
+                <div class="doc-token-swatch" style="background: #1e293b;"></div>
+                <div class="doc-token-name">--nxo-card-bg</div>
+                <div class="doc-token-value">#1e293b</div>
+              </div>
+              <div class="doc-token-row">
+                <div class="doc-token-swatch" style="background: #334155;"></div>
+                <div class="doc-token-name">--nxo-card-border</div>
+                <div class="doc-token-value">#334155</div>
+              </div>
+              <div class="doc-token-row" style="margin-bottom: 20px;">
+                <div class="doc-token-swatch" style="background: #1e293b;"></div>
+                <div class="doc-token-name">--nxo-input-bg</div>
+                <div class="doc-token-value">#1e293b</div>
+              </div>
+
+              <h4 style="font-size: 13px; font-weight: 600; color: var(--nxo-text-heading); margin-bottom: 12px;">Textes</h4>
+              <div class="doc-token-row">
+                <div class="doc-token-swatch" style="background: #cbd5e1;"></div>
+                <div class="doc-token-name">--nxo-text-body</div>
+                <div class="doc-token-value">#cbd5e1</div>
+              </div>
+              <div class="doc-token-row">
+                <div class="doc-token-swatch" style="background: #f1f5f9;"></div>
+                <div class="doc-token-name">--nxo-text-heading</div>
+                <div class="doc-token-value">#f1f5f9</div>
+              </div>
+              <div class="doc-token-row" style="margin-bottom: 20px;">
+                <div class="doc-token-swatch" style="background: #94a3b8;"></div>
+                <div class="doc-token-name">--nxo-text-muted</div>
+                <div class="doc-token-value">#94a3b8</div>
+              </div>
+
+              <h4 style="font-size: 13px; font-weight: 600; color: var(--nxo-text-heading); margin-bottom: 12px;">Bordures</h4>
+              <div class="doc-token-row">
+                <div class="doc-token-swatch" style="background: #475569;"></div>
+                <div class="doc-token-name">--nxo-border-color</div>
+                <div class="doc-token-value">#475569</div>
+              </div>
+              <div class="doc-token-row" style="margin-bottom: 20px;">
+                <div class="doc-token-swatch" style="background: #475569;"></div>
+                <div class="doc-token-name">--nxo-input-border</div>
+                <div class="doc-token-value">#475569</div>
+              </div>
+
+              <h4 style="font-size: 13px; font-weight: 600; color: var(--nxo-text-heading); margin-bottom: 12px;">Liens</h4>
+              <div class="doc-token-row">
+                <div class="doc-token-swatch" style="background: #60a5fa;"></div>
+                <div class="doc-token-name">--nxo-link-color</div>
+                <div class="doc-token-value">#60a5fa</div>
+              </div>
+              <div class="doc-token-row">
+                <div class="doc-token-swatch" style="background: #93c5fd;"></div>
+                <div class="doc-token-name">--nxo-link-hover</div>
+                <div class="doc-token-value">#93c5fd</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+          <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+        </footer>
+
+      </section>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <script src="../_assets/docs-search.js"></script>
+
+</body>
+</html>

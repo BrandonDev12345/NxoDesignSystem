@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skeleton - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link active"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-bone"></i> Skeleton</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Placeholders animes pour indiquer le chargement du contenu.
+        </p>
+
+        <!-- Skeleton basique -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Elements basiques</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+                <div class="nxo-skeleton" style="height: 20px; width: 80%;"></div>
+                <div class="nxo-skeleton" style="height: 20px; width: 60%;"></div>
+                <div class="nxo-skeleton" style="height: 20px; width: 70%;"></div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-skeleton" style="height: 20px; width: 80%;"&gt;&lt;/div&gt;
+&lt;div class="nxo-skeleton" style="height: 20px; width: 60%;"&gt;&lt;/div&gt;
+&lt;div class="nxo-skeleton" style="height: 20px; width: 70%;"&gt;&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Skeleton } from '@mui/material';
+
+const SkeletonBasic = () =&gt; {
+  return (
+    &lt;div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}&gt;
+      &lt;Skeleton variant="text" width="80%" height={20} className="nxo-skeleton" /&gt;
+      &lt;Skeleton variant="text" width="60%" height={20} className="nxo-skeleton" /&gt;
+      &lt;Skeleton variant="text" width="70%" height={20} className="nxo-skeleton" /&gt;
+    &lt;/div&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+@Component({
+  selector: 'app-skeleton-basic',
+  standalone: true,
+  imports: [MatProgressSpinnerModule],
+  template: `
+    &lt;div style="display: flex; flex-direction: column; gap: 12px; width: 100%;"&gt;
+      &lt;div class="nxo-skeleton" style="height: 20px; width: 80%;"&gt;&lt;/div&gt;
+      &lt;div class="nxo-skeleton" style="height: 20px; width: 60%;"&gt;&lt;/div&gt;
+      &lt;div class="nxo-skeleton" style="height: 20px; width: 70%;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class SkeletonBasicComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>&lt;div class="nxo-skeleton" style="height: 20px; width: 80%;"&gt;&lt;/div&gt;
+&lt;div class="nxo-skeleton" style="height: 20px; width: 60%;"&gt;&lt;/div&gt;
+&lt;div class="nxo-skeleton" style="height: 20px; width: 70%;"&gt;&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton avatar -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avatar skeleton</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row">
+                <div class="nxo-skeleton nxo-skeleton-circle" style="width: 32px; height: 32px;"></div>
+                <div class="nxo-skeleton nxo-skeleton-circle" style="width: 40px; height: 40px;"></div>
+                <div class="nxo-skeleton nxo-skeleton-circle" style="width: 48px; height: 48px;"></div>
+                <div class="nxo-skeleton nxo-skeleton-circle" style="width: 64px; height: 64px;"></div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-skeleton nxo-skeleton-circle" style="width: 32px; height: 32px;"&gt;&lt;/div&gt;
+&lt;div class="nxo-skeleton nxo-skeleton-circle" style="width: 40px; height: 40px;"&gt;&lt;/div&gt;
+&lt;div class="nxo-skeleton nxo-skeleton-circle" style="width: 48px; height: 48px;"&gt;&lt;/div&gt;
+&lt;div class="nxo-skeleton nxo-skeleton-circle" style="width: 64px; height: 64px;"&gt;&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Skeleton } from '@mui/material';
+
+const SkeletonAvatar = ({ size = 40 }) =&gt; {
+  return (
+    &lt;Skeleton
+      variant="circular"
+      width={size}
+      height={size}
+      className="nxo-skeleton nxo-skeleton-circle"
+    /&gt;
+  );
+};
+
+// Usage:
+&lt;&gt;
+  &lt;SkeletonAvatar size={32} /&gt;
+  &lt;SkeletonAvatar size={40} /&gt;
+  &lt;SkeletonAvatar size={48} /&gt;
+  &lt;SkeletonAvatar size={64} /&gt;
+&lt;/&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component, Input } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+@Component({
+  selector: 'app-skeleton-avatar',
+  standalone: true,
+  imports: [MatProgressSpinnerModule],
+  template: `
+    &lt;div class="nxo-skeleton nxo-skeleton-circle"
+         [ngStyle]="{width: size + 'px', height: size + 'px'}"&gt;&lt;/div&gt;
+  `
+})
+export class SkeletonAvatarComponent {
+  @Input() size: number = 40;
+}
+
+// Usage:
+&lt;app-skeleton-avatar [size]="32"&gt;&lt;/app-skeleton-avatar&gt;
+&lt;app-skeleton-avatar [size]="40"&gt;&lt;/app-skeleton-avatar&gt;
+&lt;app-skeleton-avatar [size]="48"&gt;&lt;/app-skeleton-avatar&gt;
+&lt;app-skeleton-avatar [size]="64"&gt;&lt;/app-skeleton-avatar&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>&lt;div class="nxo-skeleton nxo-skeleton-circle" style="width: {{ size }}px; height: {{ size }}px;"&gt;&lt;/div&gt;
+
+{# Usage in Twig: #}
+{% set sizes = [32, 40, 48, 64] %}
+{% for size in sizes %}
+  &lt;div class="nxo-skeleton nxo-skeleton-circle" style="width: {{ size }}px; height: {{ size }}px;"&gt;&lt;/div&gt;
+{% endfor %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton card -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Card skeleton</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-card" style="width: 300px;">
+                <div class="nxo-skeleton" style="height: 150px; border-radius: 8px 8px 0 0;"></div>
+                <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px;">
+                  <div class="nxo-skeleton" style="height: 24px; width: 70%;"></div>
+                  <div class="nxo-skeleton" style="height: 16px; width: 100%;"></div>
+                  <div class="nxo-skeleton" style="height: 16px; width: 90%;"></div>
+                  <div class="nxo-skeleton" style="height: 36px; width: 120px; margin-top: 8px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-card" style="width: 300px;"&gt;
+  &lt;div class="nxo-skeleton" style="height: 150px; border-radius: 8px 8px 0 0;"&gt;&lt;/div&gt;
+  &lt;div style="padding: 16px; display: flex; flex-direction: column; gap: 12px;"&gt;
+    &lt;div class="nxo-skeleton" style="height: 24px; width: 70%;"&gt;&lt;/div&gt;
+    &lt;div class="nxo-skeleton" style="height: 16px; width: 100%;"&gt;&lt;/div&gt;
+    &lt;div class="nxo-skeleton" style="height: 16px; width: 90%;"&gt;&lt;/div&gt;
+    &lt;div class="nxo-skeleton" style="height: 36px; width: 120px; margin-top: 8px;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Skeleton } from '@mui/material';
+
+const SkeletonCard = () =&gt; {
+  return (
+    &lt;div className="nxo-card" style={{ width: '300px' }}&gt;
+      &lt;Skeleton
+        variant="rectangular"
+        height={150}
+        className="nxo-skeleton"
+        style={{ borderRadius: '8px 8px 0 0' }}
+      /&gt;
+      &lt;div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}&gt;
+        &lt;Skeleton variant="text" width="70%" height={24} className="nxo-skeleton" /&gt;
+        &lt;Skeleton variant="text" width="100%" height={16} className="nxo-skeleton" /&gt;
+        &lt;Skeleton variant="text" width="90%" height={16} className="nxo-skeleton" /&gt;
+        &lt;Skeleton
+          variant="rectangular"
+          width={120}
+          height={36}
+          className="nxo-skeleton"
+          style={{ marginTop: '8px' }}
+        /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+@Component({
+  selector: 'app-skeleton-card',
+  standalone: true,
+  imports: [MatProgressSpinnerModule],
+  template: `
+    &lt;div class="nxo-card" style="width: 300px;"&gt;
+      &lt;div class="nxo-skeleton" style="height: 150px; border-radius: 8px 8px 0 0;"&gt;&lt;/div&gt;
+      &lt;div style="padding: 16px; display: flex; flex-direction: column; gap: 12px;"&gt;
+        &lt;div class="nxo-skeleton" style="height: 24px; width: 70%;"&gt;&lt;/div&gt;
+        &lt;div class="nxo-skeleton" style="height: 16px; width: 100%;"&gt;&lt;/div&gt;
+        &lt;div class="nxo-skeleton" style="height: 16px; width: 90%;"&gt;&lt;/div&gt;
+        &lt;div class="nxo-skeleton" style="height: 36px; width: 120px; margin-top: 8px;"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class SkeletonCardComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>&lt;div class="nxo-card" style="width: 300px;"&gt;
+  &lt;div class="nxo-skeleton" style="height: 150px; border-radius: 8px 8px 0 0;"&gt;&lt;/div&gt;
+  &lt;div style="padding: 16px; display: flex; flex-direction: column; gap: 12px;"&gt;
+    &lt;div class="nxo-skeleton" style="height: 24px; width: 70%;"&gt;&lt;/div&gt;
+    &lt;div class="nxo-skeleton" style="height: 16px; width: 100%;"&gt;&lt;/div&gt;
+    &lt;div class="nxo-skeleton" style="height: 16px; width: 90%;"&gt;&lt;/div&gt;
+    &lt;div class="nxo-skeleton" style="height: 36px; width: 120px; margin-top: 8px;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeleton liste -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Liste skeleton</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div class="nxo-skeleton nxo-skeleton-circle" style="width: 40px; height: 40px; flex-shrink: 0;"></div>
+                  <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                    <div class="nxo-skeleton" style="height: 16px; width: 60%;"></div>
+                    <div class="nxo-skeleton" style="height: 14px; width: 40%;"></div>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div class="nxo-skeleton nxo-skeleton-circle" style="width: 40px; height: 40px; flex-shrink: 0;"></div>
+                  <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                    <div class="nxo-skeleton" style="height: 16px; width: 50%;"></div>
+                    <div class="nxo-skeleton" style="height: 14px; width: 35%;"></div>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <div class="nxo-skeleton nxo-skeleton-circle" style="width: 40px; height: 40px; flex-shrink: 0;"></div>
+                  <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                    <div class="nxo-skeleton" style="height: 16px; width: 70%;"></div>
+                    <div class="nxo-skeleton" style="height: 14px; width: 45%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div style="display: flex; align-items: center; gap: 12px;"&gt;
+  &lt;div class="nxo-skeleton nxo-skeleton-circle" style="width: 40px; height: 40px; flex-shrink: 0;"&gt;&lt;/div&gt;
+  &lt;div style="flex: 1; display: flex; flex-direction: column; gap: 8px;"&gt;
+    &lt;div class="nxo-skeleton" style="height: 16px; width: 60%;"&gt;&lt;/div&gt;
+    &lt;div class="nxo-skeleton" style="height: 14px; width: 40%;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Skeleton } from '@mui/material';
+
+const SkeletonListItem = () =&gt; {
+  return (
+    &lt;div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}&gt;
+      &lt;Skeleton
+        variant="circular"
+        width={40}
+        height={40}
+        className="nxo-skeleton nxo-skeleton-circle"
+        style={{ flexShrink: 0 }}
+      /&gt;
+      &lt;div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '8px' }}&gt;
+        &lt;Skeleton variant="text" width="60%" height={16} className="nxo-skeleton" /&gt;
+        &lt;Skeleton variant="text" width="40%" height={14} className="nxo-skeleton" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+const SkeletonList = ({ count = 3 }) =&gt; {
+  return (
+    &lt;div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}&gt;
+      {Array.from({ length: count }).map((_, i) =&gt; (
+        &lt;SkeletonListItem key={i} /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+@Component({
+  selector: 'app-skeleton-list-item',
+  standalone: true,
+  imports: [MatProgressSpinnerModule],
+  template: `
+    &lt;div style="display: flex; align-items: center; gap: 12px;"&gt;
+      &lt;div class="nxo-skeleton nxo-skeleton-circle"
+           style="width: 40px; height: 40px; flex-shrink: 0;"&gt;&lt;/div&gt;
+      &lt;div style="flex: 1; display: flex; flex-direction: column; gap: 8px;"&gt;
+        &lt;div class="nxo-skeleton" style="height: 16px; width: 60%;"&gt;&lt;/div&gt;
+        &lt;div class="nxo-skeleton" style="height: 14px; width: 40%;"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class SkeletonListItemComponent {}
+
+@Component({
+  selector: 'app-skeleton-list',
+  standalone: true,
+  imports: [CommonModule, SkeletonListItemComponent],
+  template: `
+    &lt;div style="display: flex; flex-direction: column; gap: 16px;"&gt;
+      &lt;app-skeleton-list-item *ngFor="let item of items"&gt;&lt;/app-skeleton-list-item&gt;
+    &lt;/div&gt;
+  `
+})
+export class SkeletonListComponent {
+  @Input() count: number = 3;
+  get items() { return Array(this.count).fill(0); }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>&lt;div style="display: flex; align-items: center; gap: 12px;"&gt;
+  &lt;div class="nxo-skeleton nxo-skeleton-circle" style="width: 40px; height: 40px; flex-shrink: 0;"&gt;&lt;/div&gt;
+  &lt;div style="flex: 1; display: flex; flex-direction: column; gap: 8px;"&gt;
+    &lt;div class="nxo-skeleton" style="height: 16px; width: 60%;"&gt;&lt;/div&gt;
+    &lt;div class="nxo-skeleton" style="height: 14px; width: 40%;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+{# Usage in Twig: #}
+{% for i in 1..3 %}
+  &lt;div style="display: flex; align-items: center; gap: 12px;"&gt;
+    &lt;div class="nxo-skeleton nxo-skeleton-circle" style="width: 40px; height: 40px; flex-shrink: 0;"&gt;&lt;/div&gt;
+    &lt;div style="flex: 1; display: flex; flex-direction: column; gap: 8px;"&gt;
+      &lt;div class="nxo-skeleton" style="height: 16px; width: 60%;"&gt;&lt;/div&gt;
+      &lt;div class="nxo-skeleton" style="height: 14px; width: 40%;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+{% endfor %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-success nxo-mb-md">
+            <i class="fa-solid fa-check-circle"></i>
+            Les Skeletons sont <strong>naturellement flexibles</strong>. Ils occupent 100% de la largeur disponible et s'adaptent au layout parent. Aucune adaptation specifique n'est necessaire.
+          </div>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

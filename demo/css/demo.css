@@ -1,0 +1,250 @@
+/**
+ * NXO Design System - Demo Styles
+ * Styles spécifiques à la page de démonstration
+ */
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--nxo-font-family);
+  background-color: var(--nxo-bg-page);
+  color: var(--nxo-text-body);
+  line-height: var(--nxo-line-height-normal);
+}
+
+/* Demo Header */
+.demo-header {
+  background-color: var(--nxo-blue-dark, #002f60);
+  color: #ffffff;
+  padding: var(--nxo-spacing-2xl, 48px) var(--nxo-spacing-xl, 32px);
+  text-align: center;
+}
+
+.demo-header h1 {
+  font-size: var(--nxo-font-size-3xl, 2.5rem);
+  font-weight: var(--nxo-font-weight-bold, 700);
+  margin-bottom: var(--nxo-spacing-sm, 8px);
+  color: #ffffff;
+}
+
+.demo-header p {
+  font-size: var(--nxo-font-size-lg, 1.25rem);
+  opacity: 0.9;
+  color: #ffffff;
+}
+
+/* Main Content */
+.demo-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--nxo-spacing-xl);
+}
+
+/* Sections */
+.demo-section {
+  background-color: var(--nxo-bg-card);
+  border-radius: var(--nxo-radius-lg);
+  padding: var(--nxo-spacing-xl);
+  margin-bottom: var(--nxo-spacing-xl);
+  box-shadow: var(--nxo-shadow-sm);
+}
+
+.demo-section h2 {
+  font-size: var(--nxo-font-size-2xl);
+  color: var(--nxo-text-heading);
+  margin-bottom: var(--nxo-spacing-lg);
+  padding-bottom: var(--nxo-spacing-sm);
+  border-bottom: 2px solid var(--nxo-border-color);
+}
+
+.demo-section h3 {
+  font-size: var(--nxo-font-size-lg);
+  color: var(--nxo-text-heading);
+  margin-top: var(--nxo-spacing-lg);
+  margin-bottom: var(--nxo-spacing-md);
+}
+
+/* Color Swatches */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--nxo-spacing-md);
+}
+
+.color-swatch {
+  height: 100px;
+  border-radius: var(--nxo-radius-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--nxo-spacing-sm);
+  color: white;
+  font-size: var(--nxo-font-size-sm);
+}
+
+.color-name {
+  font-weight: var(--nxo-font-weight-semibold);
+}
+
+.color-value {
+  font-family: monospace;
+  opacity: 0.9;
+}
+
+/* Typography Demo */
+.typo-demo {
+  margin-bottom: var(--nxo-spacing-md);
+}
+
+.typo-sample {
+  margin-bottom: var(--nxo-spacing-sm);
+  color: var(--nxo-text-primary);
+}
+
+/* Buttons Demo Layout */
+.buttons-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nxo-spacing-md);
+  align-items: center;
+  margin-bottom: var(--nxo-spacing-md);
+}
+
+.buttons-dialog {
+  justify-content: flex-end;
+  background-color: var(--nxo-bg-page);
+  padding: var(--nxo-spacing-md);
+  border-radius: var(--nxo-radius-md);
+}
+
+/* Icons Grid */
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--nxo-spacing-md);
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nxo-spacing-sm);
+  padding: var(--nxo-spacing-md);
+  background-color: var(--nxo-bg-page);
+  border-radius: var(--nxo-radius-md);
+}
+
+.icon-item i {
+  font-size: var(--nxo-font-size-2xl);
+  color: var(--nxo-blue-dark);
+}
+
+.icon-item span {
+  font-size: var(--nxo-font-size-sm);
+  color: var(--nxo-text-muted);
+}
+
+.icon-success i { color: var(--nxo-color-success); }
+.icon-info i { color: var(--nxo-color-info); }
+.icon-warning i { color: var(--nxo-color-warning); }
+.icon-danger i { color: var(--nxo-color-danger); }
+
+/* Header Demo */
+.header-demo {
+  border-radius: var(--nxo-radius-md);
+  overflow: hidden;
+}
+
+/* Spacing Demo */
+.spacing-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nxo-spacing-lg);
+  align-items: flex-end;
+}
+
+.spacing-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--nxo-spacing-sm);
+}
+
+.spacing-box {
+  background-color: var(--nxo-blue-light);
+  border-radius: var(--nxo-radius-sm);
+}
+
+.spacing-item span {
+  font-size: var(--nxo-font-size-sm);
+  color: var(--nxo-text-muted);
+}
+
+/* Radius Demo */
+.radius-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nxo-spacing-lg);
+}
+
+.radius-item {
+  width: 100px;
+  height: 100px;
+  background-color: var(--nxo-blue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: var(--nxo-font-size-sm);
+}
+
+.radius-pill {
+  width: 150px;
+}
+
+/* Shadow Demo */
+.shadow-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nxo-spacing-xl);
+}
+
+.shadow-item {
+  width: 150px;
+  height: 100px;
+  background-color: var(--nxo-color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--nxo-radius-md);
+  font-size: var(--nxo-font-size-sm);
+  color: var(--nxo-text-muted);
+}
+
+/* Footer */
+.demo-footer {
+  text-align: center;
+  padding: var(--nxo-spacing-xl);
+  color: var(--nxo-text-muted);
+  font-size: var(--nxo-font-size-sm);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .demo-main {
+    padding: var(--nxo-spacing-md);
+  }
+
+  .demo-section {
+    padding: var(--nxo-spacing-md);
+  }
+
+  .color-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

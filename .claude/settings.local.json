@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(powershell:*)",
+      "Bash(powershell.exe -NoProfile -Command:*)",
+      "Bash(powershell.exe -NoProfile -File -:*)",
+      "Bash(python3:*)",
+      "Bash(printf:*)",
+      "Bash(bash:*)",
+      "Bash(git init:*)",
+      "Bash(git branch:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

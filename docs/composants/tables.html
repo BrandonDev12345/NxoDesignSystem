@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableaux - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link active"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-table"></i> Tableaux</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Tableaux de donnees avec tri, hover et styles accessibles.
+        </p>
+
+        <!-- Tableau basique -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tableau basique</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <table class="nxo-table">
+                <thead>
+                  <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Statut</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Jean Dupont</td>
+                    <td>jean.dupont@nxo.fr</td>
+                    <td>Admin</td>
+                    <td><span class="nxo-badge nxo-badge-success">Actif</span></td>
+                  </tr>
+                  <tr>
+                    <td>Marie Martin</td>
+                    <td>marie.martin@nxo.fr</td>
+                    <td>Utilisateur</td>
+                    <td><span class="nxo-badge nxo-badge-success">Actif</span></td>
+                  </tr>
+                  <tr>
+                    <td>Pierre Durand</td>
+                    <td>pierre.durand@nxo.fr</td>
+                    <td>Utilisateur</td>
+                    <td><span class="nxo-badge nxo-badge-neutral">Inactif</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;table class="nxo-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nom&lt;/th&gt;
+      &lt;th&gt;Email&lt;/th&gt;
+      &lt;th&gt;Role&lt;/th&gt;
+      &lt;th&gt;Statut&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Jean Dupont&lt;/td&gt;
+      &lt;td&gt;jean.dupont@nxo.fr&lt;/td&gt;
+      &lt;td&gt;Admin&lt;/td&gt;
+      &lt;td&gt;&lt;span class="nxo-badge nxo-badge-success"&gt;Actif&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Marie Martin&lt;/td&gt;
+      &lt;td&gt;marie.martin@nxo.fr&lt;/td&gt;
+      &lt;td&gt;Utilisateur&lt;/td&gt;
+      &lt;td&gt;&lt;span class="nxo-badge nxo-badge-success"&gt;Actif&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Pierre Durand&lt;/td&gt;
+      &lt;td&gt;pierre.durand@nxo.fr&lt;/td&gt;
+      &lt;td&gt;Utilisateur&lt;/td&gt;
+      &lt;td&gt;&lt;span class="nxo-badge nxo-badge-neutral"&gt;Inactif&lt;/span&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec classes NXO (compatible React/Material UI)
+// Les tables HTML natives avec classes NXO fonctionnent parfaitement
+
+const BasicTable = () =&gt; {
+  const users = [
+    { name: 'Jean Dupont', email: 'jean.dupont@nxo.fr', role: 'Admin', status: 'Actif', statusType: 'success' },
+    { name: 'Marie Martin', email: 'marie.martin@nxo.fr', role: 'Utilisateur', status: 'Actif', statusType: 'success' },
+    { name: 'Pierre Durand', email: 'pierre.durand@nxo.fr', role: 'Utilisateur', status: 'Inactif', statusType: 'neutral' }
+  ];
+
+  return (
+    &lt;table className="nxo-table"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Nom&lt;/th&gt;
+          &lt;th&gt;Email&lt;/th&gt;
+          &lt;th&gt;Role&lt;/th&gt;
+          &lt;th&gt;Statut&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        {users.map((user, index) =&gt; (
+          &lt;tr key={index}&gt;
+            &lt;td&gt;{user.name}&lt;/td&gt;
+            &lt;td&gt;{user.email}&lt;/td&gt;
+            &lt;td&gt;{user.role}&lt;/td&gt;
+            &lt;td&gt;
+              &lt;span className={`nxo-badge nxo-badge-${user.statusType}`}&gt;
+                {user.status}
+              &lt;/span&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        ))}
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec classes NXO (compatible Angular Material)
+// Les tables HTML natives avec classes NXO fonctionnent parfaitement
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-basic-table',
+  template: `
+    &lt;table class="nxo-table"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Nom&lt;/th&gt;
+          &lt;th&gt;Email&lt;/th&gt;
+          &lt;th&gt;Role&lt;/th&gt;
+          &lt;th&gt;Statut&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr *ngFor="let user of users"&gt;
+          &lt;td&gt;{{ user.name }}&lt;/td&gt;
+          &lt;td&gt;{{ user.email }}&lt;/td&gt;
+          &lt;td&gt;{{ user.role }}&lt;/td&gt;
+          &lt;td&gt;
+            &lt;span [class]="'nxo-badge nxo-badge-' + user.statusType"&gt;
+              {{ user.status }}
+            &lt;/span&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  `
+})
+export class BasicTableComponent {
+  users = [
+    { name: 'Jean Dupont', email: 'jean.dupont@nxo.fr', role: 'Admin', status: 'Actif', statusType: 'success' },
+    { name: 'Marie Martin', email: 'marie.martin@nxo.fr', role: 'Utilisateur', status: 'Actif', statusType: 'success' },
+    { name: 'Pierre Durand', email: 'pierre.durand@nxo.fr', role: 'Utilisateur', status: 'Inactif', statusType: 'neutral' }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{% set users = [
+  { name: 'Jean Dupont', email: 'jean.dupont@nxo.fr', role: 'Admin', status: 'Actif', statusType: 'success' },
+  { name: 'Marie Martin', email: 'marie.martin@nxo.fr', role: 'Utilisateur', status: 'Actif', statusType: 'success' },
+  { name: 'Pierre Durand', email: 'pierre.durand@nxo.fr', role: 'Utilisateur', status: 'Inactif', statusType: 'neutral' }
+] %}
+
+&lt;table class="nxo-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nom&lt;/th&gt;
+      &lt;th&gt;Email&lt;/th&gt;
+      &lt;th&gt;Role&lt;/th&gt;
+      &lt;th&gt;Statut&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    {% for user in users %}
+    &lt;tr&gt;
+      &lt;td&gt;{{ user.name }}&lt;/td&gt;
+      &lt;td&gt;{{ user.email }}&lt;/td&gt;
+      &lt;td&gt;{{ user.role }}&lt;/td&gt;
+      &lt;td&gt;
+        &lt;span class="nxo-badge nxo-badge-{{ user.statusType }}"&gt;
+          {{ user.status }}
+        &lt;/span&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    {% endfor %}
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tableau striped -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tableau avec lignes alternees</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <table class="nxo-table nxo-table-striped">
+                <thead>
+                  <tr>
+                    <th>Produit</th>
+                    <th>Categorie</th>
+                    <th>Prix</th>
+                    <th>Stock</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Routeur Pro X1</td>
+                    <td>Reseau</td>
+                    <td>299,00 EUR</td>
+                    <td>45</td>
+                  </tr>
+                  <tr>
+                    <td>Switch 24 ports</td>
+                    <td>Reseau</td>
+                    <td>189,00 EUR</td>
+                    <td>23</td>
+                  </tr>
+                  <tr>
+                    <td>Firewall UTM</td>
+                    <td>Securite</td>
+                    <td>599,00 EUR</td>
+                    <td>12</td>
+                  </tr>
+                  <tr>
+                    <td>Access Point WiFi 6</td>
+                    <td>Reseau</td>
+                    <td>149,00 EUR</td>
+                    <td>67</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;table class="nxo-table nxo-table-striped"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Produit&lt;/th&gt;
+      &lt;th&gt;Categorie&lt;/th&gt;
+      &lt;th&gt;Prix&lt;/th&gt;
+      &lt;th&gt;Stock&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Routeur Pro X1&lt;/td&gt;
+      &lt;td&gt;Reseau&lt;/td&gt;
+      &lt;td&gt;299,00 EUR&lt;/td&gt;
+      &lt;td&gt;45&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Switch 24 ports&lt;/td&gt;
+      &lt;td&gt;Reseau&lt;/td&gt;
+      &lt;td&gt;189,00 EUR&lt;/td&gt;
+      &lt;td&gt;23&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Firewall UTM&lt;/td&gt;
+      &lt;td&gt;Securite&lt;/td&gt;
+      &lt;td&gt;599,00 EUR&lt;/td&gt;
+      &lt;td&gt;12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Access Point WiFi 6&lt;/td&gt;
+      &lt;td&gt;Reseau&lt;/td&gt;
+      &lt;td&gt;149,00 EUR&lt;/td&gt;
+      &lt;td&gt;67&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec classes NXO (compatible React/Material UI)
+
+const StripedTable = () =&gt; {
+  const products = [
+    { product: 'Routeur Pro X1', category: 'Reseau', price: '299,00 EUR', stock: 45 },
+    { product: 'Switch 24 ports', category: 'Reseau', price: '189,00 EUR', stock: 23 },
+    { product: 'Firewall UTM', category: 'Securite', price: '599,00 EUR', stock: 12 },
+    { product: 'Access Point WiFi 6', category: 'Reseau', price: '149,00 EUR', stock: 67 }
+  ];
+
+  return (
+    &lt;table className="nxo-table nxo-table-striped"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Produit&lt;/th&gt;
+          &lt;th&gt;Categorie&lt;/th&gt;
+          &lt;th&gt;Prix&lt;/th&gt;
+          &lt;th&gt;Stock&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        {products.map((item, index) =&gt; (
+          &lt;tr key={index}&gt;
+            &lt;td&gt;{item.product}&lt;/td&gt;
+            &lt;td&gt;{item.category}&lt;/td&gt;
+            &lt;td&gt;{item.price}&lt;/td&gt;
+            &lt;td&gt;{item.stock}&lt;/td&gt;
+          &lt;/tr&gt;
+        ))}
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec classes NXO (compatible Angular Material)
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-striped-table',
+  template: `
+    &lt;table class="nxo-table nxo-table-striped"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Produit&lt;/th&gt;
+          &lt;th&gt;Categorie&lt;/th&gt;
+          &lt;th&gt;Prix&lt;/th&gt;
+          &lt;th&gt;Stock&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr *ngFor="let item of products"&gt;
+          &lt;td&gt;{{ item.product }}&lt;/td&gt;
+          &lt;td&gt;{{ item.category }}&lt;/td&gt;
+          &lt;td&gt;{{ item.price }}&lt;/td&gt;
+          &lt;td&gt;{{ item.stock }}&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  `
+})
+export class StripedTableComponent {
+  products = [
+    { product: 'Routeur Pro X1', category: 'Reseau', price: '299,00 EUR', stock: 45 },
+    { product: 'Switch 24 ports', category: 'Reseau', price: '189,00 EUR', stock: 23 },
+    { product: 'Firewall UTM', category: 'Securite', price: '599,00 EUR', stock: 12 },
+    { product: 'Access Point WiFi 6', category: 'Reseau', price: '149,00 EUR', stock: 67 }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{% set products = [
+  { product: 'Routeur Pro X1', category: 'Reseau', price: '299,00 EUR', stock: 45 },
+  { product: 'Switch 24 ports', category: 'Reseau', price: '189,00 EUR', stock: 23 },
+  { product: 'Firewall UTM', category: 'Securite', price: '599,00 EUR', stock: 12 },
+  { product: 'Access Point WiFi 6', category: 'Reseau', price: '149,00 EUR', stock: 67 }
+] %}
+
+&lt;table class="nxo-table nxo-table-striped"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Produit&lt;/th&gt;
+      &lt;th&gt;Categorie&lt;/th&gt;
+      &lt;th&gt;Prix&lt;/th&gt;
+      &lt;th&gt;Stock&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    {% for item in products %}
+    &lt;tr&gt;
+      &lt;td&gt;{{ item.product }}&lt;/td&gt;
+      &lt;td&gt;{{ item.category }}&lt;/td&gt;
+      &lt;td&gt;{{ item.price }}&lt;/td&gt;
+      &lt;td&gt;{{ item.stock }}&lt;/td&gt;
+    &lt;/tr&gt;
+    {% endfor %}
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tableau avec actions -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tableau avec actions</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <table class="nxo-table">
+                <thead>
+                  <tr>
+                    <th>Ticket</th>
+                    <th>Sujet</th>
+                    <th>Priorite</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#1234</td>
+                    <td>Probleme de connexion VPN</td>
+                    <td><span class="nxo-badge nxo-badge-error">Urgent</span></td>
+                    <td>
+                      <div style="display: flex; gap: 4px;">
+                        <button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"><i class="fa-solid fa-eye"></i></button>
+                        <button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"><i class="fa-solid fa-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>#1235</td>
+                    <td>Demande de nouveau materiel</td>
+                    <td><span class="nxo-badge nxo-badge-warning">Moyen</span></td>
+                    <td>
+                      <div style="display: flex; gap: 4px;">
+                        <button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"><i class="fa-solid fa-eye"></i></button>
+                        <button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"><i class="fa-solid fa-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;table class="nxo-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Ticket&lt;/th&gt;
+      &lt;th&gt;Sujet&lt;/th&gt;
+      &lt;th&gt;Priorite&lt;/th&gt;
+      &lt;th&gt;Actions&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;#1234&lt;/td&gt;
+      &lt;td&gt;Probleme de connexion VPN&lt;/td&gt;
+      &lt;td&gt;&lt;span class="nxo-badge nxo-badge-error"&gt;Urgent&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;
+        &lt;div style="display: flex; gap: 4px;"&gt;
+          &lt;button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"&gt;
+            &lt;i class="fa-solid fa-eye"&gt;&lt;/i&gt;
+          &lt;/button&gt;
+          &lt;button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"&gt;
+            &lt;i class="fa-solid fa-pencil"&gt;&lt;/i&gt;
+          &lt;/button&gt;
+          &lt;button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"&gt;
+            &lt;i class="fa-solid fa-trash"&gt;&lt;/i&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec classes NXO + Material UI
+
+import { IconButton } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faPencil, faTrash } from '@fortawesome/free-solid-svg-icons';
+
+const ActionTable = () =&gt; {
+  const tickets = [
+    { id: '#1234', subject: 'Probleme de connexion VPN', priority: 'Urgent', priorityType: 'error' },
+    { id: '#1235', subject: 'Demande de nouveau materiel', priority: 'Moyen', priorityType: 'warning' }
+  ];
+
+  const handleView = (id) =&gt; console.log('View', id);
+  const handleEdit = (id) =&gt; console.log('Edit', id);
+  const handleDelete = (id) =&gt; console.log('Delete', id);
+
+  return (
+    &lt;table className="nxo-table"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Ticket&lt;/th&gt;
+          &lt;th&gt;Sujet&lt;/th&gt;
+          &lt;th&gt;Priorite&lt;/th&gt;
+          &lt;th&gt;Actions&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        {tickets.map((ticket) =&gt; (
+          &lt;tr key={ticket.id}&gt;
+            &lt;td&gt;{ticket.id}&lt;/td&gt;
+            &lt;td&gt;{ticket.subject}&lt;/td&gt;
+            &lt;td&gt;
+              &lt;span className={`nxo-badge nxo-badge-${ticket.priorityType}`}&gt;
+                {ticket.priority}
+              &lt;/span&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+              &lt;div style={{ display: 'flex', gap: '4px' }}&gt;
+                &lt;button
+                  className="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"
+                  onClick={() =&gt; handleView(ticket.id)}
+                &gt;
+                  &lt;i className="fa-solid fa-eye"&gt;&lt;/i&gt;
+                &lt;/button&gt;
+                &lt;button
+                  className="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"
+                  onClick={() =&gt; handleEdit(ticket.id)}
+                &gt;
+                  &lt;i className="fa-solid fa-pencil"&gt;&lt;/i&gt;
+                &lt;/button&gt;
+                &lt;button
+                  className="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"
+                  onClick={() =&gt; handleDelete(ticket.id)}
+                &gt;
+                  &lt;i className="fa-solid fa-trash"&gt;&lt;/i&gt;
+                &lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        ))}
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+@Component({
+  selector: 'app-action-table',
+  template: `
+    &lt;table class="nxo-table"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Ticket&lt;/th&gt;
+          &lt;th&gt;Sujet&lt;/th&gt;
+          &lt;th&gt;Priorite&lt;/th&gt;
+          &lt;th&gt;Actions&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr *ngFor="let ticket of tickets"&gt;
+          &lt;td&gt;{{ ticket.id }}&lt;/td&gt;
+          &lt;td&gt;{{ ticket.subject }}&lt;/td&gt;
+          &lt;td&gt;
+            &lt;span [class]="'nxo-badge nxo-badge-' + ticket.priorityType"&gt;
+              {{ ticket.priority }}
+            &lt;/span&gt;
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;div style="display: flex; gap: 4px;"&gt;
+              &lt;button mat-icon-button
+                class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"
+                (click)="handleView(ticket.id)"&gt;
+                &lt;fa-icon icon="eye"&gt;&lt;/fa-icon&gt;
+              &lt;/button&gt;
+              &lt;button mat-icon-button
+                class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"
+                (click)="handleEdit(ticket.id)"&gt;
+                &lt;fa-icon icon="pencil"&gt;&lt;/fa-icon&gt;
+              &lt;/button&gt;
+              &lt;button mat-icon-button
+                class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"
+                (click)="handleDelete(ticket.id)"&gt;
+                &lt;fa-icon icon="trash"&gt;&lt;/fa-icon&gt;
+              &lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  `
+})
+export class ActionTableComponent {
+  tickets = [
+    { id: '#1234', subject: 'Probleme de connexion VPN', priority: 'Urgent', priorityType: 'error' },
+    { id: '#1235', subject: 'Demande de nouveau materiel', priority: 'Moyen', priorityType: 'warning' }
+  ];
+
+  handleView(id: string) {
+    console.log('View', id);
+  }
+
+  handleEdit(id: string) {
+    console.log('Edit', id);
+  }
+
+  handleDelete(id: string) {
+    console.log('Delete', id);
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{% set tickets = [
+  { id: '#1234', subject: 'Probleme de connexion VPN', priority: 'Urgent', priorityType: 'error' },
+  { id: '#1235', subject: 'Demande de nouveau materiel', priority: 'Moyen', priorityType: 'warning' }
+] %}
+
+&lt;table class="nxo-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Ticket&lt;/th&gt;
+      &lt;th&gt;Sujet&lt;/th&gt;
+      &lt;th&gt;Priorite&lt;/th&gt;
+      &lt;th&gt;Actions&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    {% for ticket in tickets %}
+    &lt;tr&gt;
+      &lt;td&gt;{{ ticket.id }}&lt;/td&gt;
+      &lt;td&gt;{{ ticket.subject }}&lt;/td&gt;
+      &lt;td&gt;
+        &lt;span class="nxo-badge nxo-badge-{{ ticket.priorityType }}"&gt;
+          {{ ticket.priority }}
+        &lt;/span&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;div style="display: flex; gap: 4px;"&gt;
+          &lt;button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"&gt;
+            &lt;i class="fa-solid fa-eye"&gt;&lt;/i&gt;
+          &lt;/button&gt;
+          &lt;button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"&gt;
+            &lt;i class="fa-solid fa-pencil"&gt;&lt;/i&gt;
+          &lt;/button&gt;
+          &lt;button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-btn-sm"&gt;
+            &lt;i class="fa-solid fa-trash"&gt;&lt;/i&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    {% endfor %}
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            Les tableaux utilisent un wrapper <code>.nxo-table-responsive</code> pour activer le scroll horizontal sur mobile. Les colonnes conservent leur largeur naturelle.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 768px</code></td>
+                <td>Le wrapper <code>.nxo-table-responsive</code> active <code>overflow-x: auto</code> — le tableau scrolle horizontalement. Largeur minimale du tableau : <code>600px</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

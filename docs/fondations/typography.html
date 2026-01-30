@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typographie - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+  <style>
+    .doc-tokens__var {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .doc-token__copy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 6px;
+      font-size: 10px;
+      font-family: 'Monaco', 'Menlo', monospace;
+      background: white;
+      border: 1px solid var(--nxo-border-color);
+      border-radius: 4px;
+      color: var(--nxo-text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      opacity: 0;
+    }
+    .doc-tokens__var:hover .doc-token__copy,
+    tr:hover .doc-token__copy {
+      opacity: 1;
+    }
+    .doc-token__copy:hover {
+      background: var(--fayat-blue);
+      border-color: var(--fayat-blue);
+      color: white;
+    }
+    .doc-token__copy.copied {
+      opacity: 1;
+      background: var(--nxo-color-success);
+      border-color: var(--nxo-color-success);
+      color: white;
+    }
+    [data-theme="dark"] .doc-token__copy {
+      background: var(--nxo-surface);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link active"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-font"></i> Typographie</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Police officielle: <strong>Montserrat</strong>. Echelle typographique coherente pour tous les portails NXO.
+        </p>
+
+        <!-- Apercu -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Apercu</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <h1 class="nxo-h1">Titre H1 - 40px Bold</h1>
+              <h2 class="nxo-h2">Titre H2 - 32px Bold</h2>
+              <h3 class="nxo-h3">Titre H3 - 24px Semibold</h3>
+              <h4 class="nxo-h4">Titre H4 - 20px Semibold</h4>
+              <p class="nxo-text">Corps de texte - 16px Regular</p>
+              <p class="nxo-text nxo-text-sm">Texte secondaire - 14px</p>
+              <p class="nxo-text nxo-text-xs nxo-text-muted">Labels - 12px</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tailles -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tailles de police</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead>
+                  <tr><th>Variable</th><th>Valeur</th><th>Apercu</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-size-xs <button class="doc-token__copy" data-copy="--nxo-font-size-xs">var</button></code></td>
+                    <td>12px (0.75rem) <button class="doc-token__copy" data-copy="0.75rem">val</button></td>
+                    <td><span style="font-size: 12px;">Labels, legendes</span></td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-size-sm <button class="doc-token__copy" data-copy="--nxo-font-size-sm">var</button></code></td>
+                    <td>14px (0.875rem) <button class="doc-token__copy" data-copy="0.875rem">val</button></td>
+                    <td><span style="font-size: 14px;">Texte secondaire</span></td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-size-base <button class="doc-token__copy" data-copy="--nxo-font-size-base">var</button></code></td>
+                    <td>16px (1rem) <button class="doc-token__copy" data-copy="1rem">val</button></td>
+                    <td><span style="font-size: 16px;">Corps de texte</span></td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-size-lg <button class="doc-token__copy" data-copy="--nxo-font-size-lg">var</button></code></td>
+                    <td>20px (1.25rem) <button class="doc-token__copy" data-copy="1.25rem">val</button></td>
+                    <td><span style="font-size: 20px;">Texte large</span></td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-size-xl <button class="doc-token__copy" data-copy="--nxo-font-size-xl">var</button></code></td>
+                    <td>24px (1.5rem) <button class="doc-token__copy" data-copy="1.5rem">val</button></td>
+                    <td><span style="font-size: 24px;">H3</span></td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-size-2xl <button class="doc-token__copy" data-copy="--nxo-font-size-2xl">var</button></code></td>
+                    <td>32px (2rem) <button class="doc-token__copy" data-copy="2rem">val</button></td>
+                    <td><span style="font-size: 32px;">H2</span></td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-size-3xl <button class="doc-token__copy" data-copy="--nxo-font-size-3xl">var</button></code></td>
+                    <td>40px (2.5rem) <button class="doc-token__copy" data-copy="2.5rem">val</button></td>
+                    <td><span style="font-size: 40px;">H1</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Graisses -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Graisses</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead>
+                  <tr><th>Variable</th><th>Valeur</th><th>Apercu</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-weight-light <button class="doc-token__copy" data-copy="--nxo-font-weight-light">var</button></code></td>
+                    <td>300 <button class="doc-token__copy" data-copy="300">val</button></td>
+                    <td><span style="font-weight: 300; font-size: 18px;">Light 300</span></td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-weight-regular <button class="doc-token__copy" data-copy="--nxo-font-weight-regular">var</button></code></td>
+                    <td>400 <button class="doc-token__copy" data-copy="400">val</button></td>
+                    <td><span style="font-weight: 400; font-size: 18px;">Regular 400</span></td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-weight-medium <button class="doc-token__copy" data-copy="--nxo-font-weight-medium">var</button></code></td>
+                    <td>500 <button class="doc-token__copy" data-copy="500">val</button></td>
+                    <td><span style="font-weight: 500; font-size: 18px;">Medium 500</span></td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-weight-semibold <button class="doc-token__copy" data-copy="--nxo-font-weight-semibold">var</button></code></td>
+                    <td>600 <button class="doc-token__copy" data-copy="600">val</button></td>
+                    <td><span style="font-weight: 600; font-size: 18px;">Semibold 600</span></td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">--nxo-font-weight-bold <button class="doc-token__copy" data-copy="--nxo-font-weight-bold">var</button></code></td>
+                    <td>700 <button class="doc-token__copy" data-copy="700">val</button></td>
+                    <td><span style="font-weight: 700; font-size: 18px;">Bold 700</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Classes utilitaires -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Classes utilitaires</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead>
+                  <tr><th>Classe</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">.nxo-h1 <button class="doc-token__copy" data-copy="nxo-h1">copier</button></code></td><td>Titre H1 (40px bold)</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-h2 <button class="doc-token__copy" data-copy="nxo-h2">copier</button></code></td><td>Titre H2 (32px bold)</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-h3 <button class="doc-token__copy" data-copy="nxo-h3">copier</button></code></td><td>Titre H3 (24px semibold)</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-h4 <button class="doc-token__copy" data-copy="nxo-h4">copier</button></code></td><td>Titre H4 (20px semibold)</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-text <button class="doc-token__copy" data-copy="nxo-text">copier</button></code></td><td>Corps de texte (16px)</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-text-sm <button class="doc-token__copy" data-copy="nxo-text-sm">copier</button></code></td><td>Texte petit (14px)</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-text-xs <button class="doc-token__copy" data-copy="nxo-text-xs">copier</button></code></td><td>Texte tres petit (12px)</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-text-muted <button class="doc-token__copy" data-copy="nxo-text-muted">copier</button></code></td><td>Texte grise</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Token copy buttons
+    document.querySelectorAll('.doc-token__copy').forEach(btn => {
+      btn.addEventListener('click', async function(e) {
+        e.stopPropagation();
+        const value = this.dataset.copy;
+        try {
+          await navigator.clipboard.writeText(value);
+          const originalText = this.textContent;
+          this.innerHTML = '<i class="fa-solid fa-check"></i>';
+          this.classList.add('copied');
+          setTimeout(() => {
+            this.textContent = originalText;
+            this.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+{
+  "NXO Design System": {
+    "colors": {
+      "fayat": {
+        "blue": {
+          "value": "#0055a0",
+          "type": "color",
+          "description": "Bleu Fayat - Header, titres"
+        },
+        "yellow": {
+          "value": "#ffd800",
+          "type": "color",
+          "description": "Jaune Fayat - Accent"
+        },
+        "gray": {
+          "value": "#66757e",
+          "type": "color",
+          "description": "Gris Fayat - Labels"
+        }
+      },
+      "nxo": {
+        "blue-dark": {
+          "value": "#002f60",
+          "type": "color",
+          "description": "Couleur principale - Boutons primaires"
+        },
+        "blue-light": {
+          "value": "#5692ce",
+          "type": "color",
+          "description": "Hover, accents"
+        },
+        "blue-very-light": {
+          "value": "#b4dfe7",
+          "type": "color",
+          "description": "Etats disabled, fonds clairs"
+        },
+        "gray": {
+          "value": "#cfd1d2",
+          "type": "color",
+          "description": "Bordures, lignes selectionnees"
+        },
+        "green": {
+          "value": "#00a486",
+          "type": "color",
+          "description": "Succes, validation"
+        },
+        "teal": {
+          "value": "#008a9b",
+          "type": "color",
+          "description": "Information"
+        },
+        "yellow": {
+          "value": "#ffd300",
+          "type": "color",
+          "description": "Warning, attention"
+        },
+        "orange": {
+          "value": "#e95e3f",
+          "type": "color",
+          "description": "Alerte"
+        },
+        "red": {
+          "value": "#e53138",
+          "type": "color",
+          "description": "Erreur, danger"
+        }
+      },
+      "semantic": {
+        "primary": {
+          "value": "{colors.nxo.blue-dark}",
+          "type": "color"
+        },
+        "primary-hover": {
+          "value": "{colors.nxo.blue-light}",
+          "type": "color"
+        },
+        "secondary": {
+          "value": "{colors.fayat.blue}",
+          "type": "color"
+        },
+        "success": {
+          "value": "{colors.nxo.green}",
+          "type": "color"
+        },
+        "info": {
+          "value": "{colors.nxo.teal}",
+          "type": "color"
+        },
+        "warning": {
+          "value": "{colors.nxo.yellow}",
+          "type": "color"
+        },
+        "danger": {
+          "value": "{colors.nxo.red}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "heading": {
+          "value": "{colors.fayat.blue}",
+          "type": "color",
+          "description": "Titres - Bleu Fayat"
+        },
+        "body": {
+          "value": "#333333",
+          "type": "color",
+          "description": "Corps de texte - A valider"
+        },
+        "muted": {
+          "value": "#6c757d",
+          "type": "color",
+          "description": "Texte secondaire - A valider"
+        },
+        "on-primary": {
+          "value": "#ffffff",
+          "type": "color"
+        },
+        "on-dark": {
+          "value": "#ffffff",
+          "type": "color"
+        }
+      },
+      "background": {
+        "page": {
+          "value": "#ffffff",
+          "type": "color",
+          "description": "Fond de page - A valider"
+        },
+        "surface": {
+          "value": "#f5f5f5",
+          "type": "color",
+          "description": "Cartes, surfaces elevees"
+        },
+        "selected": {
+          "value": "{colors.nxo.gray}",
+          "type": "color",
+          "description": "Lignes selectionnees"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{colors.nxo.gray}",
+          "type": "color",
+          "description": "Bordures standards"
+        },
+        "light": {
+          "value": "#e0e0e0",
+          "type": "color"
+        }
+      }
+    },
+    "typography": {
+      "fontFamilies": {
+        "primary": {
+          "value": "Montserrat",
+          "type": "fontFamilies",
+          "description": "Police principale - En attente validation (Krub vs Montserrat)"
+        },
+        "alternative": {
+          "value": "Krub",
+          "type": "fontFamilies",
+          "description": "Police charte FAYAT - A valider avec marketing"
+        }
+      },
+      "fontSize": {
+        "xs": {
+          "value": "12",
+          "type": "fontSizes"
+        },
+        "sm": {
+          "value": "14",
+          "type": "fontSizes"
+        },
+        "base": {
+          "value": "16",
+          "type": "fontSizes"
+        },
+        "md": {
+          "value": "18",
+          "type": "fontSizes"
+        },
+        "lg": {
+          "value": "20",
+          "type": "fontSizes"
+        },
+        "xl": {
+          "value": "24",
+          "type": "fontSizes"
+        },
+        "2xl": {
+          "value": "32",
+          "type": "fontSizes"
+        },
+        "3xl": {
+          "value": "40",
+          "type": "fontSizes"
+        },
+        "4xl": {
+          "value": "48",
+          "type": "fontSizes"
+        }
+      },
+      "fontWeight": {
+        "light": {
+          "value": "300",
+          "type": "fontWeights"
+        },
+        "regular": {
+          "value": "400",
+          "type": "fontWeights"
+        },
+        "medium": {
+          "value": "500",
+          "type": "fontWeights"
+        },
+        "semibold": {
+          "value": "600",
+          "type": "fontWeights"
+        },
+        "bold": {
+          "value": "700",
+          "type": "fontWeights"
+        }
+      },
+      "lineHeight": {
+        "tight": {
+          "value": "1.2",
+          "type": "lineHeights"
+        },
+        "normal": {
+          "value": "1.5",
+          "type": "lineHeights"
+        },
+        "relaxed": {
+          "value": "1.75",
+          "type": "lineHeights"
+        }
+      },
+      "letterSpacing": {
+        "tight": {
+          "value": "-0.5",
+          "type": "letterSpacing"
+        },
+        "normal": {
+          "value": "0",
+          "type": "letterSpacing"
+        },
+        "wide": {
+          "value": "0.5",
+          "type": "letterSpacing"
+        }
+      }
+    },
+    "spacing": {
+      "xs": {
+        "value": "4",
+        "type": "spacing"
+      },
+      "sm": {
+        "value": "8",
+        "type": "spacing"
+      },
+      "md": {
+        "value": "16",
+        "type": "spacing"
+      },
+      "lg": {
+        "value": "24",
+        "type": "spacing"
+      },
+      "xl": {
+        "value": "32",
+        "type": "spacing"
+      },
+      "2xl": {
+        "value": "48",
+        "type": "spacing"
+      },
+      "3xl": {
+        "value": "64",
+        "type": "spacing"
+      }
+    },
+    "borderRadius": {
+      "none": {
+        "value": "0",
+        "type": "borderRadius"
+      },
+      "sm": {
+        "value": "4",
+        "type": "borderRadius",
+        "description": "Boutons, inputs"
+      },
+      "md": {
+        "value": "8",
+        "type": "borderRadius",
+        "description": "Cards"
+      },
+      "lg": {
+        "value": "12",
+        "type": "borderRadius",
+        "description": "Modales"
+      },
+      "xl": {
+        "value": "16",
+        "type": "borderRadius"
+      },
+      "full": {
+        "value": "9999",
+        "type": "borderRadius",
+        "description": "Capsule/Pill - Forme autorisee charte"
+      }
+    },
+    "borderWidth": {
+      "none": {
+        "value": "0",
+        "type": "borderWidth"
+      },
+      "thin": {
+        "value": "1",
+        "type": "borderWidth"
+      },
+      "medium": {
+        "value": "2",
+        "type": "borderWidth"
+      }
+    },
+    "boxShadow": {
+      "sm": {
+        "value": {
+          "x": 0,
+          "y": 1,
+          "blur": 2,
+          "spread": 0,
+          "color": "rgba(0, 0, 0, 0.05)",
+          "type": "dropShadow"
+        },
+        "type": "boxShadow"
+      },
+      "md": {
+        "value": {
+          "x": 0,
+          "y": 4,
+          "blur": 6,
+          "spread": 0,
+          "color": "rgba(0, 0, 0, 0.1)",
+          "type": "dropShadow"
+        },
+        "type": "boxShadow"
+      },
+      "lg": {
+        "value": {
+          "x": 0,
+          "y": 10,
+          "blur": 15,
+          "spread": 0,
+          "color": "rgba(0, 0, 0, 0.1)",
+          "type": "dropShadow"
+        },
+        "type": "boxShadow"
+      },
+      "modal": {
+        "value": {
+          "x": 0,
+          "y": 25,
+          "blur": 50,
+          "spread": 0,
+          "color": "rgba(0, 0, 0, 0.25)",
+          "type": "dropShadow"
+        },
+        "type": "boxShadow",
+        "description": "Fenetres modales - Charte NXO"
+      }
+    },
+    "sizing": {
+      "header-height": {
+        "value": "60",
+        "type": "sizing"
+      },
+      "button-height": {
+        "value": "40",
+        "type": "sizing"
+      },
+      "button-height-sm": {
+        "value": "32",
+        "type": "sizing"
+      },
+      "button-height-lg": {
+        "value": "48",
+        "type": "sizing"
+      },
+      "input-height": {
+        "value": "40",
+        "type": "sizing"
+      },
+      "icon-sm": {
+        "value": "16",
+        "type": "sizing"
+      },
+      "icon-md": {
+        "value": "20",
+        "type": "sizing"
+      },
+      "icon-lg": {
+        "value": "24",
+        "type": "sizing"
+      }
+    }
+  }
+}

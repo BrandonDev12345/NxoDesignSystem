@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toasts - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link active"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-comment"></i> Toasts</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Notifications temporaires pour informer les utilisateurs.
+        </p>
+
+        <!-- Toast variantes -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Variantes</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+                <div class="nxo-toast nxo-toast-success">
+                  <i class="fa-solid fa-check-circle nxo-toast-icon"></i>
+                  <div class="nxo-toast-content">
+                    <div class="nxo-toast-title">Succes!</div>
+                    <div class="nxo-toast-message">Votre fichier a ete enregistre.</div>
+                  </div>
+                  <button class="nxo-toast-close"><i class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="nxo-toast nxo-toast-error">
+                  <i class="fa-solid fa-exclamation-circle nxo-toast-icon"></i>
+                  <div class="nxo-toast-content">
+                    <div class="nxo-toast-title">Erreur</div>
+                    <div class="nxo-toast-message">Une erreur est survenue.</div>
+                  </div>
+                  <button class="nxo-toast-close"><i class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="nxo-toast nxo-toast-warning">
+                  <i class="fa-solid fa-exclamation-triangle nxo-toast-icon"></i>
+                  <div class="nxo-toast-content">
+                    <div class="nxo-toast-title">Attention</div>
+                    <div class="nxo-toast-message">Cette action est irreversible.</div>
+                  </div>
+                  <button class="nxo-toast-close"><i class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="nxo-toast nxo-toast-info">
+                  <i class="fa-solid fa-info-circle nxo-toast-icon"></i>
+                  <div class="nxo-toast-content">
+                    <div class="nxo-toast-title">Information</div>
+                    <div class="nxo-toast-message">Mise a jour disponible.</div>
+                  </div>
+                  <button class="nxo-toast-close"><i class="fa-solid fa-times"></i></button>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-toast nxo-toast-success"&gt;
+  &lt;i class="fa-solid fa-check-circle nxo-toast-icon"&gt;&lt;/i&gt;
+  &lt;div class="nxo-toast-content"&gt;
+    &lt;div class="nxo-toast-title"&gt;Succes!&lt;/div&gt;
+    &lt;div class="nxo-toast-message"&gt;Votre fichier a ete enregistre.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="nxo-toast-close"&gt;&lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-toast nxo-toast-error"&gt;
+  &lt;i class="fa-solid fa-exclamation-circle nxo-toast-icon"&gt;&lt;/i&gt;
+  &lt;div class="nxo-toast-content"&gt;
+    &lt;div class="nxo-toast-title"&gt;Erreur&lt;/div&gt;
+    &lt;div class="nxo-toast-message"&gt;Une erreur est survenue.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="nxo-toast-close"&gt;&lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-toast nxo-toast-warning"&gt;
+  &lt;i class="fa-solid fa-exclamation-triangle nxo-toast-icon"&gt;&lt;/i&gt;
+  &lt;div class="nxo-toast-content"&gt;
+    &lt;div class="nxo-toast-title"&gt;Attention&lt;/div&gt;
+    &lt;div class="nxo-toast-message"&gt;Cette action est irreversible.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="nxo-toast-close"&gt;&lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-toast nxo-toast-info"&gt;
+  &lt;i class="fa-solid fa-info-circle nxo-toast-icon"&gt;&lt;/i&gt;
+  &lt;div class="nxo-toast-content"&gt;
+    &lt;div class="nxo-toast-title"&gt;Information&lt;/div&gt;
+    &lt;div class="nxo-toast-message"&gt;Mise a jour disponible.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="nxo-toast-close"&gt;&lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import React, { useState } from 'react';
+import { Snackbar, Alert } from '@mui/material';
+
+function MyComponent() {
+  const [toasts, setToasts] = useState([
+    { id: 1, severity: 'success', message: 'Votre fichier a ete enregistre.' },
+    { id: 2, severity: 'error', message: 'Une erreur est survenue.' },
+    { id: 3, severity: 'warning', message: 'Cette action est irreversible.' },
+    { id: 4, severity: 'info', message: 'Mise a jour disponible.' }
+  ]);
+
+  const handleClose = (id) => {
+    setToasts(toasts.filter(t =&gt; t.id !== id));
+  };
+
+  return (
+    &lt;&gt;
+      {toasts.map(toast =&gt; (
+        &lt;Snackbar
+          key={toast.id}
+          open={true}
+          className="nxo-toast"
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        &gt;
+          &lt;Alert
+            severity={toast.severity}
+            className={`nxo-toast-${toast.severity}`}
+            onClose={() =&gt; handleClose(toast.id)}
+          &gt;
+            {toast.message}
+          &lt;/Alert&gt;
+        &lt;/Snackbar&gt;
+      ))}
+    &lt;/&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
+@Component({
+  selector: 'app-my-component',
+  standalone: true,
+  imports: [MatSnackBarModule],
+  template: `
+    &lt;button (click)="showToasts()"&gt;Afficher toasts&lt;/button&gt;
+  `
+})
+export class MyComponent {
+  constructor(private snackBar: MatSnackBar) {}
+
+  showToasts() {
+    this.snackBar.open('Votre fichier a ete enregistre.', 'Fermer', {
+      duration: 3000,
+      panelClass: ['nxo-toast', 'nxo-toast-success'],
+      horizontalPosition: 'right',
+      verticalPosition: 'top'
+    });
+
+    this.snackBar.open('Une erreur est survenue.', 'Fermer', {
+      duration: 3000,
+      panelClass: ['nxo-toast', 'nxo-toast-error']
+    });
+
+    this.snackBar.open('Cette action est irreversible.', 'Fermer', {
+      duration: 3000,
+      panelClass: ['nxo-toast', 'nxo-toast-warning']
+    });
+
+    this.snackBar.open('Mise a jour disponible.', 'Fermer', {
+      duration: 3000,
+      panelClass: ['nxo-toast', 'nxo-toast-info']
+    });
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/toast.html.twig' with {
+    variant: 'success',
+    title: 'Succes!',
+    message: 'Votre fichier a ete enregistre.',
+    icon: 'check-circle'
+} %}
+
+{% include '@NxoDesignSystem/toast.html.twig' with {
+    variant: 'error',
+    title: 'Erreur',
+    message: 'Une erreur est survenue.',
+    icon: 'exclamation-circle'
+} %}
+
+{% include '@NxoDesignSystem/toast.html.twig' with {
+    variant: 'warning',
+    title: 'Attention',
+    message: 'Cette action est irreversible.',
+    icon: 'exclamation-triangle'
+} %}
+
+{% include '@NxoDesignSystem/toast.html.twig' with {
+    variant: 'info',
+    title: 'Information',
+    message: 'Mise a jour disponible.',
+    icon: 'info-circle'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toast simple -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Toast simple</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-toast">
+                <div class="nxo-toast-content">
+                  <div class="nxo-toast-message">Modifications enregistrees</div>
+                </div>
+                <button class="nxo-toast-close"><i class="fa-solid fa-times"></i></button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-toast"&gt;
+  &lt;div class="nxo-toast-content"&gt;
+    &lt;div class="nxo-toast-message"&gt;Modifications enregistrees&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="nxo-toast-close"&gt;&lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import React, { useState } from 'react';
+import { Snackbar } from '@mui/material';
+
+function MyComponent() {
+  const [open, setOpen] = useState(false);
+
+  const handleSave = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    &lt;Snackbar
+      open={open}
+      autoHideDuration={3000}
+      onClose={handleClose}
+      message="Modifications enregistrees"
+      className="nxo-toast"
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+    /&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
+@Component({
+  selector: 'app-my-component',
+  standalone: true,
+  imports: [MatSnackBarModule],
+  template: `
+    &lt;button (click)="handleSave()"&gt;Enregistrer&lt;/button&gt;
+  `
+})
+export class MyComponent {
+  constructor(private snackBar: MatSnackBar) {}
+
+  handleSave() {
+    this.snackBar.open('Modifications enregistrees', '', {
+      duration: 3000,
+      panelClass: 'nxo-toast',
+      horizontalPosition: 'right',
+      verticalPosition: 'top'
+    });
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/toast.html.twig' with {
+    message: 'Modifications enregistrees'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toast avec action -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec action</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-toast">
+                <div class="nxo-toast-content">
+                  <div class="nxo-toast-message">Element supprime</div>
+                </div>
+                <button class="nxo-btn nxo-btn-sm nxo-btn-ghost" style="margin-left: auto;">Annuler</button>
+                <button class="nxo-toast-close"><i class="fa-solid fa-times"></i></button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-toast"&gt;
+  &lt;div class="nxo-toast-content"&gt;
+    &lt;div class="nxo-toast-message"&gt;Element supprime&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="nxo-btn nxo-btn-sm nxo-btn-ghost" style="margin-left: auto;"&gt;Annuler&lt;/button&gt;
+  &lt;button class="nxo-toast-close"&gt;&lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;&lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import React, { useState } from 'react';
+import { Snackbar, Button } from '@mui/material';
+
+function MyComponent() {
+  const [open, setOpen] = useState(false);
+
+  const handleDelete = () => {
+    setOpen(true);
+  };
+
+  const handleUndo = () => {
+    console.log('Undo action');
+    setOpen(false);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const action = (
+    &lt;Button
+      className="nxo-btn nxo-btn-sm nxo-btn-ghost"
+      onClick={handleUndo}
+    &gt;
+      Annuler
+    &lt;/Button&gt;
+  );
+
+  return (
+    &lt;Snackbar
+      open={open}
+      autoHideDuration={6000}
+      onClose={handleClose}
+      message="Element supprime"
+      action={action}
+      className="nxo-toast"
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+    /&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-my-component',
+  standalone: true,
+  imports: [MatSnackBarModule, MatButtonModule],
+  template: `
+    &lt;button mat-button (click)="handleDelete()"&gt;Supprimer&lt;/button&gt;
+  `
+})
+export class MyComponent {
+  constructor(private snackBar: MatSnackBar) {}
+
+  handleDelete() {
+    const snackBarRef = this.snackBar.open('Element supprime', 'Annuler', {
+      duration: 6000,
+      panelClass: 'nxo-toast',
+      horizontalPosition: 'right',
+      verticalPosition: 'top'
+    });
+
+    snackBarRef.onAction().subscribe(() => {
+      this.handleUndo();
+    });
+  }
+
+  handleUndo() {
+    console.log('Undo action');
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/toast.html.twig' with {
+    message: 'Element supprime',
+    action: {
+        label: 'Annuler',
+        variant: 'ghost',
+        size: 'sm',
+        onclick: 'handleUndo()'
+    }
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Position des toasts -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Positions</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div style="position: relative; width: 100%; height: 200px; background: var(--nxo-bg-page); border-radius: 8px; overflow: hidden;">
+                <div style="position: absolute; top: 16px; right: 16px; font-size: 12px; color: var(--nxo-text-muted);">top-right</div>
+                <div style="position: absolute; top: 16px; left: 16px; font-size: 12px; color: var(--nxo-text-muted);">top-left</div>
+                <div style="position: absolute; bottom: 16px; right: 16px; font-size: 12px; color: var(--nxo-text-muted);">bottom-right</div>
+                <div style="position: absolute; bottom: 16px; left: 16px; font-size: 12px; color: var(--nxo-text-muted);">bottom-left</div>
+                <div style="position: absolute; top: 16px; left: 50%; transform: translateX(-50%); font-size: 12px; color: var(--nxo-text-muted);">top-center</div>
+                <div style="position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); font-size: 12px; color: var(--nxo-text-muted);">bottom-center</div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;!-- Container positionne en top-right --&gt;
+&lt;div class="nxo-toast-container" style="position: fixed; top: 16px; right: 16px; z-index: 9999;"&gt;
+  &lt;div class="nxo-toast"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Container positionne en top-left --&gt;
+&lt;div class="nxo-toast-container" style="position: fixed; top: 16px; left: 16px; z-index: 9999;"&gt;
+  &lt;div class="nxo-toast"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Container positionne en bottom-right --&gt;
+&lt;div class="nxo-toast-container" style="position: fixed; bottom: 16px; right: 16px; z-index: 9999;"&gt;
+  &lt;div class="nxo-toast"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Container positionne en bottom-left --&gt;
+&lt;div class="nxo-toast-container" style="position: fixed; bottom: 16px; left: 16px; z-index: 9999;"&gt;
+  &lt;div class="nxo-toast"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Container positionne en top-center --&gt;
+&lt;div class="nxo-toast-container" style="position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 9999;"&gt;
+  &lt;div class="nxo-toast"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Container positionne en bottom-center --&gt;
+&lt;div class="nxo-toast-container" style="position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 9999;"&gt;
+  &lt;div class="nxo-toast"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import React, { useState } from 'react';
+import { Snackbar, Button } from '@mui/material';
+
+function MyComponent() {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  // Positions disponibles: top-right, top-left, top-center,
+  // bottom-right, bottom-left, bottom-center
+  return (
+    &lt;&gt;
+      &lt;Button onClick={handleClick}&gt;Afficher toast&lt;/Button&gt;
+      &lt;Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        message="Notification"
+        className="nxo-toast"
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      /&gt;
+    &lt;/&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [MatSnackBarModule, MatButtonModule],
+  template: `
+    &lt;button mat-button (click)="showToast()"&gt;Afficher toast&lt;/button&gt;
+  `
+})
+export class AppComponent {
+  constructor(private snackBar: MatSnackBar) {}
+
+  showToast() {
+    // Positions disponibles: top, bottom (vertical)
+    // start, center, end, left, right (horizontal)
+    this.snackBar.open('Notification', 'Fermer', {
+      duration: 3000,
+      panelClass: 'nxo-toast',
+      horizontalPosition: 'right',
+      verticalPosition: 'top'
+    });
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{# Dans votre layout de base #}
+&lt;div class="nxo-toast-container" data-position="top-right"&gt;
+    {% for message in app.flashes('success') %}
+        {% include '@NxoDesignSystem/toast.html.twig' with {
+            variant: 'success',
+            message: message,
+            position: 'top-right'
+        } %}
+    {% endfor %}
+&lt;/div&gt;
+
+{# Dans votre controller #}
+// $this->addFlash('success', 'Operation reussie');
+
+{# Configuration des positions disponibles #}
+{# top-right, top-left, top-center, bottom-right, bottom-left, bottom-center #}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            Les toasts occupent toute la largeur de l'ecran sur mobile pour une meilleure lisibilite.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 768px</code></td>
+                <td>Le <code>.nxo-toast-container</code> s'etend sur toute la largeur. Chaque <code>.nxo-toast</code> passe a <code>width: 100%</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

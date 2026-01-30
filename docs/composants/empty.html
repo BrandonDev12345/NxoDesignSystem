@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empty State - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link active"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-inbox"></i> Empty State</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Etats vides pour les listes, tableaux ou sections sans contenu.
+        </p>
+
+        <!-- Empty state basique -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Empty state basique</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-xl);">
+              <div class="nxo-empty-state">
+                <div class="nxo-empty-state-icon">
+                  <i class="fa-solid fa-inbox"></i>
+                </div>
+                <h3 class="nxo-empty-state-title">Aucun element</h3>
+                <p class="nxo-empty-state-description">Il n'y a pas encore d'elements a afficher dans cette liste.</p>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-empty-state"&gt;
+  &lt;div class="nxo-empty-state-icon"&gt;
+    &lt;i class="fa-solid fa-inbox"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;h3 class="nxo-empty-state-title"&gt;Aucun element&lt;/h3&gt;
+  &lt;p class="nxo-empty-state-description"&gt;Il n'y a pas encore d'elements a afficher dans cette liste.&lt;/p&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Box, Typography } from '@mui/material';
+
+// Empty state basique
+&lt;Box className="nxo-empty-state"&gt;
+  &lt;Box className="nxo-empty-state-icon"&gt;
+    &lt;i className="fa-solid fa-inbox"&gt;&lt;/i&gt;
+  &lt;/Box&gt;
+  &lt;Typography variant="h6" component="h3" className="nxo-empty-state-title"&gt;
+    Aucun element
+  &lt;/Typography&gt;
+  &lt;Typography variant="body2" className="nxo-empty-state-description"&gt;
+    Il n'y a pas encore d'elements a afficher dans cette liste.
+  &lt;/Typography&gt;
+&lt;/Box&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-empty-state-basic',
+  standalone: true,
+  template: `
+    &lt;div class="nxo-empty-state"&gt;
+      &lt;div class="nxo-empty-state-icon"&gt;
+        &lt;i class="fa-solid fa-inbox"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;h3 class="nxo-empty-state-title"&gt;Aucun element&lt;/h3&gt;
+      &lt;p class="nxo-empty-state-description"&gt;
+        Il n'y a pas encore d'elements a afficher dans cette liste.
+      &lt;/p&gt;
+    &lt;/div&gt;
+  `
+})
+export class EmptyStateBasicComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/empty-state.html.twig' with {
+    icon: 'fa-solid fa-inbox',
+    title: 'Aucun element',
+    description: 'Il n\'y a pas encore d\'elements a afficher dans cette liste.'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty state avec action -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec action</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-xl);">
+              <div class="nxo-empty-state">
+                <div class="nxo-empty-state-icon" style="color: var(--fayat-blue);">
+                  <i class="fa-solid fa-folder-open"></i>
+                </div>
+                <h3 class="nxo-empty-state-title">Aucun projet</h3>
+                <p class="nxo-empty-state-description">Vous n'avez pas encore cree de projet. Commencez par en creer un nouveau.</p>
+                <button class="nxo-btn nxo-btn-primary">
+                  <i class="fa-solid fa-plus"></i> Nouveau projet
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-empty-state"&gt;
+  &lt;div class="nxo-empty-state-icon" style="color: var(--fayat-blue);"&gt;
+    &lt;i class="fa-solid fa-folder-open"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;h3 class="nxo-empty-state-title"&gt;Aucun projet&lt;/h3&gt;
+  &lt;p class="nxo-empty-state-description"&gt;Vous n'avez pas encore cree de projet. Commencez par en creer un nouveau.&lt;/p&gt;
+  &lt;button class="nxo-btn nxo-btn-primary"&gt;
+    &lt;i class="fa-solid fa-plus"&gt;&lt;/i&gt; Nouveau projet
+  &lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Box, Typography, Button } from '@mui/material';
+
+// Empty state avec action
+&lt;Box className="nxo-empty-state"&gt;
+  &lt;Box className="nxo-empty-state-icon" sx={{ color: 'var(--fayat-blue)' }}&gt;
+    &lt;i className="fa-solid fa-folder-open"&gt;&lt;/i&gt;
+  &lt;/Box&gt;
+  &lt;Typography variant="h6" component="h3" className="nxo-empty-state-title"&gt;
+    Aucun projet
+  &lt;/Typography&gt;
+  &lt;Typography variant="body2" className="nxo-empty-state-description"&gt;
+    Vous n'avez pas encore cree de projet. Commencez par en creer un nouveau.
+  &lt;/Typography&gt;
+  &lt;Button variant="contained" className="nxo-btn nxo-btn-primary" onClick={handleNewProject}&gt;
+    &lt;i className="fa-solid fa-plus"&gt;&lt;/i&gt; Nouveau projet
+  &lt;/Button&gt;
+&lt;/Box&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-empty-state-with-action',
+  standalone: true,
+  imports: [MatButtonModule],
+  template: `
+    &lt;div class="nxo-empty-state"&gt;
+      &lt;div class="nxo-empty-state-icon" style="color: var(--fayat-blue);"&gt;
+        &lt;i class="fa-solid fa-folder-open"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;h3 class="nxo-empty-state-title"&gt;Aucun projet&lt;/h3&gt;
+      &lt;p class="nxo-empty-state-description"&gt;
+        Vous n'avez pas encore cree de projet. Commencez par en creer un nouveau.
+      &lt;/p&gt;
+      &lt;button mat-raised-button class="nxo-btn nxo-btn-primary" (click)="handleNewProject()"&gt;
+        &lt;i class="fa-solid fa-plus"&gt;&lt;/i&gt; Nouveau projet
+      &lt;/button&gt;
+    &lt;/div&gt;
+  `
+})
+export class EmptyStateWithActionComponent {
+  handleNewProject() {
+    console.log('New project');
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/empty-state.html.twig' with {
+    icon: 'fa-solid fa-folder-open',
+    iconColor: 'var(--fayat-blue)',
+    title: 'Aucun projet',
+    description: 'Vous n\'avez pas encore cree de projet. Commencez par en creer un nouveau.',
+    action: {
+        label: 'Nouveau projet',
+        icon: 'fa-solid fa-plus',
+        variant: 'primary',
+        url: path('project_new')
+    }
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty state recherche -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Aucun resultat de recherche</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-xl);">
+              <div class="nxo-empty-state">
+                <div class="nxo-empty-state-icon" style="color: var(--nxo-text-muted);">
+                  <i class="fa-solid fa-search"></i>
+                </div>
+                <h3 class="nxo-empty-state-title">Aucun resultat</h3>
+                <p class="nxo-empty-state-description">Aucun resultat ne correspond a votre recherche "exemple". Essayez avec d'autres termes.</p>
+                <button class="nxo-btn nxo-btn-secondary">
+                  Effacer la recherche
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-empty-state"&gt;
+  &lt;div class="nxo-empty-state-icon" style="color: var(--nxo-text-muted);"&gt;
+    &lt;i class="fa-solid fa-search"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;h3 class="nxo-empty-state-title"&gt;Aucun resultat&lt;/h3&gt;
+  &lt;p class="nxo-empty-state-description"&gt;Aucun resultat ne correspond a votre recherche "exemple". Essayez avec d'autres termes.&lt;/p&gt;
+  &lt;button class="nxo-btn nxo-btn-secondary"&gt;
+    Effacer la recherche
+  &lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Box, Typography, Button } from '@mui/material';
+
+// Empty state pour recherche vide
+&lt;Box className="nxo-empty-state"&gt;
+  &lt;Box className="nxo-empty-state-icon" sx={{ color: 'var(--nxo-text-muted)' }}&gt;
+    &lt;i className="fa-solid fa-search"&gt;&lt;/i&gt;
+  &lt;/Box&gt;
+  &lt;Typography variant="h6" component="h3" className="nxo-empty-state-title"&gt;
+    Aucun resultat
+  &lt;/Typography&gt;
+  &lt;Typography variant="body2" className="nxo-empty-state-description"&gt;
+    Aucun resultat ne correspond a votre recherche "exemple". Essayez avec d'autres termes.
+  &lt;/Typography&gt;
+  &lt;Button variant="outlined" className="nxo-btn nxo-btn-secondary" onClick={handleClearSearch}&gt;
+    Effacer la recherche
+  &lt;/Button&gt;
+&lt;/Box&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-empty-state-search',
+  standalone: true,
+  imports: [MatButtonModule],
+  template: `
+    &lt;div class="nxo-empty-state"&gt;
+      &lt;div class="nxo-empty-state-icon" style="color: var(--nxo-text-muted);"&gt;
+        &lt;i class="fa-solid fa-search"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;h3 class="nxo-empty-state-title"&gt;Aucun resultat&lt;/h3&gt;
+      &lt;p class="nxo-empty-state-description"&gt;
+        Aucun resultat ne correspond a votre recherche "exemple". Essayez avec d'autres termes.
+      &lt;/p&gt;
+      &lt;button mat-stroked-button class="nxo-btn nxo-btn-secondary" (click)="handleClearSearch()"&gt;
+        Effacer la recherche
+      &lt;/button&gt;
+    &lt;/div&gt;
+  `
+})
+export class EmptyStateSearchComponent {
+  handleClearSearch() {
+    console.log('Clear search');
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/empty-state.html.twig' with {
+    icon: 'fa-solid fa-search',
+    iconColor: 'var(--nxo-text-muted)',
+    title: 'Aucun resultat',
+    description: 'Aucun resultat ne correspond a votre recherche "exemple". Essayez avec d\'autres termes.',
+    action: {
+        label: 'Effacer la recherche',
+        variant: 'secondary',
+        onclick: 'clearSearch()'
+    }
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty state erreur -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Etat d'erreur</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-xl);">
+              <div class="nxo-empty-state">
+                <div class="nxo-empty-state-icon" style="color: var(--nxo-color-error);">
+                  <i class="fa-solid fa-exclamation-triangle"></i>
+                </div>
+                <h3 class="nxo-empty-state-title">Erreur de chargement</h3>
+                <p class="nxo-empty-state-description">Une erreur est survenue lors du chargement des donnees. Veuillez reessayer.</p>
+                <button class="nxo-btn nxo-btn-primary">
+                  <i class="fa-solid fa-refresh"></i> Reessayer
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-empty-state"&gt;
+  &lt;div class="nxo-empty-state-icon" style="color: var(--nxo-color-error);"&gt;
+    &lt;i class="fa-solid fa-exclamation-triangle"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;h3 class="nxo-empty-state-title"&gt;Erreur de chargement&lt;/h3&gt;
+  &lt;p class="nxo-empty-state-description"&gt;Une erreur est survenue lors du chargement des donnees. Veuillez reessayer.&lt;/p&gt;
+  &lt;button class="nxo-btn nxo-btn-primary"&gt;
+    &lt;i class="fa-solid fa-refresh"&gt;&lt;/i&gt; Reessayer
+  &lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Box, Typography, Button } from '@mui/material';
+
+// Empty state pour erreur
+&lt;Box className="nxo-empty-state"&gt;
+  &lt;Box className="nxo-empty-state-icon" sx={{ color: 'var(--nxo-color-error)' }}&gt;
+    &lt;i className="fa-solid fa-exclamation-triangle"&gt;&lt;/i&gt;
+  &lt;/Box&gt;
+  &lt;Typography variant="h6" component="h3" className="nxo-empty-state-title"&gt;
+    Erreur de chargement
+  &lt;/Typography&gt;
+  &lt;Typography variant="body2" className="nxo-empty-state-description"&gt;
+    Une erreur est survenue lors du chargement des donnees. Veuillez reessayer.
+  &lt;/Typography&gt;
+  &lt;Button variant="contained" className="nxo-btn nxo-btn-primary" onClick={handleRetry}&gt;
+    &lt;i className="fa-solid fa-refresh"&gt;&lt;/i&gt; Reessayer
+  &lt;/Button&gt;
+&lt;/Box&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-empty-state-error',
+  standalone: true,
+  imports: [MatButtonModule],
+  template: `
+    &lt;div class="nxo-empty-state"&gt;
+      &lt;div class="nxo-empty-state-icon" style="color: var(--nxo-color-error);"&gt;
+        &lt;i class="fa-solid fa-exclamation-triangle"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;h3 class="nxo-empty-state-title"&gt;Erreur de chargement&lt;/h3&gt;
+      &lt;p class="nxo-empty-state-description"&gt;
+        Une erreur est survenue lors du chargement des donnees. Veuillez reessayer.
+      &lt;/p&gt;
+      &lt;button mat-raised-button class="nxo-btn nxo-btn-primary" (click)="handleRetry()"&gt;
+        &lt;i class="fa-solid fa-refresh"&gt;&lt;/i&gt; Reessayer
+      &lt;/button&gt;
+    &lt;/div&gt;
+  `
+})
+export class EmptyStateErrorComponent {
+  handleRetry() {
+    console.log('Retry');
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/empty-state.html.twig' with {
+    icon: 'fa-solid fa-exclamation-triangle',
+    iconColor: 'var(--nxo-color-error)',
+    title: 'Erreur de chargement',
+    description: 'Une erreur est survenue lors du chargement des donnees. Veuillez reessayer.',
+    action: {
+        label: 'Reessayer',
+        icon: 'fa-solid fa-refresh',
+        variant: 'primary',
+        onclick: 'retryLoad()'
+    }
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            L'etat vide s'adapte sur petit mobile en empilant les boutons d'action verticalement.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 480px</code></td>
+                <td>Les <code>.nxo-empty-state-actions</code> passent en <code>flex-direction: column</code> en pleine largeur</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

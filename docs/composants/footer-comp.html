@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Footer - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link active"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-shoe-prints"></i> Footer</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Pieds de page pour les applications et sites web.
+        </p>
+
+        <!-- Footer simple -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Footer simple</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: 0;">
+              <footer class="nxo-footer" style="position: relative;">
+                <div class="nxo-footer-content">
+                  <p class="nxo-text-sm nxo-text-muted">&copy; 2025 NXO. Tous droits reserves.</p>
+                </div>
+              </footer>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;footer class="nxo-footer"&gt;
+  &lt;div class="nxo-footer-content"&gt;
+    &lt;p&gt;&copy; 2025 NXO. Tous droits reserves.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Box, Typography } from '@mui/material';
+
+// Footer simple avec classes NXO
+&lt;Box component="footer" className="nxo-footer"&gt;
+  &lt;Box className="nxo-footer-content"&gt;
+    &lt;Typography variant="body2"&gt;
+      &copy; 2025 NXO. Tous droits reserves.
+    &lt;/Typography&gt;
+  &lt;/Box&gt;
+&lt;/Box&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-footer',
+  standalone: true,
+  template: `
+    &lt;footer class="nxo-footer"&gt;
+      &lt;div class="nxo-footer-content"&gt;
+        &lt;p&gt;&copy; 2025 NXO. Tous droits reserves.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+  `
+})
+export class FooterComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/footer.html.twig' with {
+    content: '&copy; 2025 NXO. Tous droits reserves.'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer avec liens -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec liens</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: 0;">
+              <footer class="nxo-footer" style="position: relative;">
+                <div class="nxo-footer-content" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                  <p class="nxo-text-sm nxo-text-muted">&copy; 2025 NXO - Groupe FAYAT</p>
+                  <nav class="nxo-footer-nav">
+                    <a href="#" class="nxo-footer-link">Mentions legales</a>
+                    <a href="#" class="nxo-footer-link">Politique de confidentialite</a>
+                    <a href="#" class="nxo-footer-link">Contact</a>
+                  </nav>
+                </div>
+              </footer>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;footer class="nxo-footer"&gt;
+  &lt;div class="nxo-footer-content" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;"&gt;
+    &lt;p&gt;&copy; 2025 NXO - Groupe FAYAT&lt;/p&gt;
+    &lt;nav class="nxo-footer-nav"&gt;
+      &lt;a href="#" class="nxo-footer-link"&gt;Mentions legales&lt;/a&gt;
+      &lt;a href="#" class="nxo-footer-link"&gt;Politique de confidentialite&lt;/a&gt;
+      &lt;a href="#" class="nxo-footer-link"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Box, Typography, Link } from '@mui/material';
+
+// Footer avec liens et classes NXO
+&lt;Box component="footer" className="nxo-footer"&gt;
+  &lt;Box
+    className="nxo-footer-content"
+    sx={{
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      gap: 2
+    }}
+  &gt;
+    &lt;Typography variant="body2"&gt;
+      &copy; 2025 NXO - Groupe FAYAT
+    &lt;/Typography&gt;
+    &lt;Box component="nav" className="nxo-footer-nav"&gt;
+      &lt;Link href="#" className="nxo-footer-link"&gt;Mentions legales&lt;/Link&gt;
+      &lt;Link href="#" className="nxo-footer-link"&gt;Politique de confidentialite&lt;/Link&gt;
+      &lt;Link href="#" className="nxo-footer-link"&gt;Contact&lt;/Link&gt;
+    &lt;/Box&gt;
+  &lt;/Box&gt;
+&lt;/Box&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-footer',
+  standalone: true,
+  template: `
+    &lt;footer class="nxo-footer"&gt;
+      &lt;div
+        class="nxo-footer-content"
+        style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;"
+      &gt;
+        &lt;p&gt;&copy; 2025 NXO - Groupe FAYAT&lt;/p&gt;
+        &lt;nav class="nxo-footer-nav"&gt;
+          &lt;a href="#" class="nxo-footer-link"&gt;Mentions legales&lt;/a&gt;
+          &lt;a href="#" class="nxo-footer-link"&gt;Politique de confidentialite&lt;/a&gt;
+          &lt;a href="#" class="nxo-footer-link"&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+  `
+})
+export class FooterComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/footer.html.twig' with {
+    links: [
+        { label: 'Mentions legales', url: '#' },
+        { label: 'Politique de confidentialite', url: '#' },
+        { label: 'Contact', url: '#' }
+    ],
+    copyright: '&copy; 2025 NXO - Groupe FAYAT'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer complet -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Footer complet</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: 0;">
+              <footer class="nxo-footer nxo-footer-dark" style="position: relative; background: var(--fayat-blue); color: white;">
+                <div class="nxo-footer-content">
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-bottom: 32px;">
+                    <div>
+                      <h4 style="color: white; margin-bottom: 16px;">NXO</h4>
+                      <p class="nxo-text-sm" style="color: rgba(255,255,255,0.7);">
+                        Solutions digitales pour l'infrastructure reseau et cloud.
+                      </p>
+                    </div>
+                    <div>
+                      <h4 style="color: white; margin-bottom: 16px;">Produits</h4>
+                      <nav style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px;">Reseau</a>
+                        <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px;">Cloud</a>
+                        <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px;">Securite</a>
+                      </nav>
+                    </div>
+                    <div>
+                      <h4 style="color: white; margin-bottom: 16px;">Support</h4>
+                      <nav style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px;">Documentation</a>
+                        <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px;">FAQ</a>
+                        <a href="#" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px;">Contact</a>
+                      </nav>
+                    </div>
+                  </div>
+                  <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.2); margin-bottom: 24px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                    <p class="nxo-text-sm" style="color: rgba(255,255,255,0.7);">&copy; 2025 NXO - Groupe FAYAT. Tous droits reserves.</p>
+                    <div style="display: flex; gap: 16px;">
+                      <a href="#" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-linkedin"></i></a>
+                      <a href="#" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-twitter"></i></a>
+                      <a href="#" style="color: rgba(255,255,255,0.7);"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </footer>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;footer class="nxo-footer nxo-footer-dark"&gt;
+  &lt;div class="nxo-footer-content"&gt;
+    &lt;div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-bottom: 32px;"&gt;
+      &lt;div&gt;
+        &lt;h4&gt;NXO&lt;/h4&gt;
+        &lt;p&gt;Solutions digitales pour l'infrastructure reseau et cloud.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;h4&gt;Produits&lt;/h4&gt;
+        &lt;nav&gt;
+          &lt;a href="#"&gt;Reseau&lt;/a&gt;
+          &lt;a href="#"&gt;Cloud&lt;/a&gt;
+          &lt;a href="#"&gt;Securite&lt;/a&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;h4&gt;Support&lt;/h4&gt;
+        &lt;nav&gt;
+          &lt;a href="#"&gt;Documentation&lt;/a&gt;
+          &lt;a href="#"&gt;FAQ&lt;/a&gt;
+          &lt;a href="#"&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;"&gt;
+      &lt;p&gt;&copy; 2025 NXO - Groupe FAYAT. Tous droits reserves.&lt;/p&gt;
+      &lt;div style="display: flex; gap: 16px;"&gt;
+        &lt;a href="#"&gt;&lt;i class="fa-brands fa-linkedin"&gt;&lt;/i&gt;&lt;/a&gt;
+        &lt;a href="#"&gt;&lt;i class="fa-brands fa-twitter"&gt;&lt;/i&gt;&lt;/a&gt;
+        &lt;a href="#"&gt;&lt;i class="fa-brands fa-youtube"&gt;&lt;/i&gt;&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Box, Typography, Link, Grid, Divider, IconButton } from '@mui/material';
+import { LinkedIn, Twitter, YouTube } from '@mui/icons-material';
+
+const FooterComplete = () => {
+  return (
+    &lt;Box component="footer" className="nxo-footer nxo-footer-dark"&gt;
+      &lt;Box className="nxo-footer-content"&gt;
+        &lt;Grid container spacing={4} sx={{ mb: 4 }}&gt;
+          &lt;Grid item xs={12} sm={4}&gt;
+            &lt;Typography variant="h6" gutterBottom&gt;NXO&lt;/Typography&gt;
+            &lt;Typography variant="body2"&gt;
+              Solutions digitales pour l'infrastructure reseau et cloud.
+            &lt;/Typography&gt;
+          &lt;/Grid&gt;
+          &lt;Grid item xs={12} sm={4}&gt;
+            &lt;Typography variant="h6" gutterBottom&gt;Produits&lt;/Typography&gt;
+            &lt;Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}&gt;
+              &lt;Link href="#" className="nxo-footer-link"&gt;Reseau&lt;/Link&gt;
+              &lt;Link href="#" className="nxo-footer-link"&gt;Cloud&lt;/Link&gt;
+              &lt;Link href="#" className="nxo-footer-link"&gt;Securite&lt;/Link&gt;
+            &lt;/Box&gt;
+          &lt;/Grid&gt;
+          &lt;Grid item xs={12} sm={4}&gt;
+            &lt;Typography variant="h6" gutterBottom&gt;Support&lt;/Typography&gt;
+            &lt;Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}&gt;
+              &lt;Link href="#" className="nxo-footer-link"&gt;Documentation&lt;/Link&gt;
+              &lt;Link href="#" className="nxo-footer-link"&gt;FAQ&lt;/Link&gt;
+              &lt;Link href="#" className="nxo-footer-link"&gt;Contact&lt;/Link&gt;
+            &lt;/Box&gt;
+          &lt;/Grid&gt;
+        &lt;/Grid&gt;
+        &lt;Divider sx={{ mb: 3 }} /&gt;
+        &lt;Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}&gt;
+          &lt;Typography variant="body2"&gt;
+            &copy; 2025 NXO - Groupe FAYAT. Tous droits reserves.
+          &lt;/Typography&gt;
+          &lt;Box sx={{ display: 'flex', gap: 2 }}&gt;
+            &lt;IconButton href="#"&gt;&lt;LinkedIn /&gt;&lt;/IconButton&gt;
+            &lt;IconButton href="#"&gt;&lt;Twitter /&gt;&lt;/IconButton&gt;
+            &lt;IconButton href="#"&gt;&lt;YouTube /&gt;&lt;/IconButton&gt;
+          &lt;/Box&gt;
+        &lt;/Box&gt;
+      &lt;/Box&gt;
+    &lt;/Box&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { CommonModule } from '@angular/common';
+
+interface FooterSection {
+  title: string;
+  description?: string;
+  links?: Array&lt;{ label: string; url: string }&gt;;
+}
+
+@Component({
+  selector: 'app-footer-complete',
+  standalone: true,
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatDividerModule],
+  template: `
+    &lt;footer class="nxo-footer nxo-footer-dark"&gt;
+      &lt;div class="nxo-footer-content"&gt;
+        &lt;div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin-bottom: 32px;"&gt;
+          &lt;div *ngFor="let section of footerSections"&gt;
+            &lt;h4&gt;{{ section.title }}&lt;/h4&gt;
+            &lt;p *ngIf="section.description"&gt;{{ section.description }}&lt;/p&gt;
+            &lt;nav *ngIf="section.links" style="display: flex; flex-direction: column; gap: 8px;"&gt;
+              &lt;a *ngFor="let link of section.links" [href]="link.url" class="nxo-footer-link"&gt;
+                {{ link.label }}
+              &lt;/a&gt;
+            &lt;/nav&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;mat-divider&gt;&lt;/mat-divider&gt;
+        &lt;div style="display: flex; justify-content: space-between; align-items: center; margin-top: 24px;"&gt;
+          &lt;p&gt;&copy; 2025 NXO - Groupe FAYAT. Tous droits reserves.&lt;/p&gt;
+          &lt;div style="display: flex; gap: 16px;"&gt;
+            &lt;a href="#" mat-icon-button&gt;&lt;mat-icon&gt;linkedin&lt;/mat-icon&gt;&lt;/a&gt;
+            &lt;a href="#" mat-icon-button&gt;&lt;mat-icon&gt;twitter&lt;/mat-icon&gt;&lt;/a&gt;
+            &lt;a href="#" mat-icon-button&gt;&lt;mat-icon&gt;youtube&lt;/mat-icon&gt;&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+  `
+})
+export class FooterCompleteComponent {
+  footerSections: FooterSection[] = [
+    {
+      title: 'NXO',
+      description: 'Solutions digitales pour l\'infrastructure reseau et cloud.'
+    },
+    {
+      title: 'Produits',
+      links: [
+        { label: 'Reseau', url: '#' },
+        { label: 'Cloud', url: '#' },
+        { label: 'Securite', url: '#' }
+      ]
+    },
+    {
+      title: 'Support',
+      links: [
+        { label: 'Documentation', url: '#' },
+        { label: 'FAQ', url: '#' },
+        { label: 'Contact', url: '#' }
+      ]
+    }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/footer.html.twig' with {
+    variant: 'dark',
+    sections: [
+        {
+            title: 'NXO',
+            description: 'Solutions digitales pour l\'infrastructure reseau et cloud.'
+        },
+        {
+            title: 'Produits',
+            links: [
+                { label: 'Reseau', url: '#' },
+                { label: 'Cloud', url: '#' },
+                { label: 'Securite', url: '#' }
+            ]
+        },
+        {
+            title: 'Support',
+            links: [
+                { label: 'Documentation', url: '#' },
+                { label: 'FAQ', url: '#' },
+                { label: 'Contact', url: '#' }
+            ]
+        }
+    ],
+    socialLinks: [
+        { icon: 'linkedin', url: '#' },
+        { icon: 'twitter', url: '#' },
+        { icon: 'youtube', url: '#' }
+    ],
+    copyright: '&copy; 2025 NXO - Groupe FAYAT. Tous droits reserves.'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            Le footer empile ses liens verticalement et les centre sur mobile.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 768px</code></td>
+                <td><code>.nxo-footer-links</code> passe en <code>flex-direction: column</code> avec <code>text-align: center</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

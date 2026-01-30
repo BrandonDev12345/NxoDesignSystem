@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link active"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-list"></i> List</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Composants de liste pour afficher des collections d'elements.
+        </p>
+
+        <!-- Liste simple -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Liste simple</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <ul class="nxo-list nxo-list-bordered">
+                <li class="nxo-list-item">Element de liste 1</li>
+                <li class="nxo-list-item">Element de liste 2</li>
+                <li class="nxo-list-item">Element de liste 3</li>
+              </ul>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;ul class="nxo-list"&gt;
+  &lt;li class="nxo-list-item"&gt;Element de liste 1&lt;/li&gt;
+  &lt;li class="nxo-list-item"&gt;Element de liste 2&lt;/li&gt;
+  &lt;li class="nxo-list-item"&gt;Element de liste 3&lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { List, ListItem, ListItemText } from '@mui/material';
+
+const SimpleList = () => (
+  &lt;List className="nxo-list"&gt;
+    &lt;ListItem className="nxo-list-item"&gt;
+      &lt;ListItemText primary="Element de liste 1" /&gt;
+    &lt;/ListItem&gt;
+    &lt;ListItem className="nxo-list-item"&gt;
+      &lt;ListItemText primary="Element de liste 2" /&gt;
+    &lt;/ListItem&gt;
+    &lt;ListItem className="nxo-list-item"&gt;
+      &lt;ListItemText primary="Element de liste 3" /&gt;
+    &lt;/ListItem&gt;
+  &lt;/List&gt;
+);</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatListModule } from '@angular/material/list';
+
+@Component({
+  selector: 'app-simple-list',
+  standalone: true,
+  imports: [MatListModule],
+  template: `
+    &lt;mat-list class="nxo-list"&gt;
+      &lt;mat-list-item class="nxo-list-item"&gt;Element de liste 1&lt;/mat-list-item&gt;
+      &lt;mat-list-item class="nxo-list-item"&gt;Element de liste 2&lt;/mat-list-item&gt;
+      &lt;mat-list-item class="nxo-list-item"&gt;Element de liste 3&lt;/mat-list-item&gt;
+    &lt;/mat-list&gt;
+  `
+})
+export class SimpleListComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% set items = [
+    'Element de liste 1',
+    'Element de liste 2',
+    'Element de liste 3'
+] %}
+
+{% include '@NxoDesignSystem/list.html.twig' with {
+    items: items
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Liste avec icones -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Liste avec icones</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <ul class="nxo-list nxo-list-bordered">
+                <li class="nxo-list-item">
+                  <i class="fa-solid fa-check" style="color: var(--nxo-color-success);"></i>
+                  <span>Tache completee</span>
+                </li>
+                <li class="nxo-list-item">
+                  <i class="fa-solid fa-clock" style="color: var(--nxo-color-warning);"></i>
+                  <span>En attente</span>
+                </li>
+                <li class="nxo-list-item">
+                  <i class="fa-solid fa-times" style="color: var(--nxo-color-error);"></i>
+                  <span>Annulee</span>
+                </li>
+              </ul>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;ul class="nxo-list"&gt;
+  &lt;li class="nxo-list-item"&gt;
+    &lt;i class="fa-solid fa-check" style="color: var(--nxo-color-success); margin-right: 8px;"&gt;&lt;/i&gt;
+    Tache completee
+  &lt;/li&gt;
+  &lt;li class="nxo-list-item"&gt;
+    &lt;i class="fa-solid fa-clock" style="color: var(--nxo-color-warning); margin-right: 8px;"&gt;&lt;/i&gt;
+    En attente
+  &lt;/li&gt;
+  &lt;li class="nxo-list-item"&gt;
+    &lt;i class="fa-solid fa-times" style="color: var(--nxo-color-error); margin-right: 8px;"&gt;&lt;/i&gt;
+    Annulee
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { Check, Clock, Close } from '@mui/icons-material';
+
+const IconList = () => (
+  &lt;List className="nxo-list"&gt;
+    &lt;ListItem className="nxo-list-item"&gt;
+      &lt;ListItemIcon sx={{ color: 'var(--nxo-color-success)' }}&gt;
+        &lt;Check /&gt;
+      &lt;/ListItemIcon&gt;
+      &lt;ListItemText primary="Tache completee" /&gt;
+    &lt;/ListItem&gt;
+    &lt;ListItem className="nxo-list-item"&gt;
+      &lt;ListItemIcon sx={{ color: 'var(--nxo-color-warning)' }}&gt;
+        &lt;Clock /&gt;
+      &lt;/ListItemIcon&gt;
+      &lt;ListItemText primary="En attente" /&gt;
+    &lt;/ListItem&gt;
+    &lt;ListItem className="nxo-list-item"&gt;
+      &lt;ListItemIcon sx={{ color: 'var(--nxo-color-error)' }}&gt;
+        &lt;Close /&gt;
+      &lt;/ListItemIcon&gt;
+      &lt;ListItemText primary="Annulee" /&gt;
+    &lt;/ListItem&gt;
+  &lt;/List&gt;
+);</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+
+@Component({
+  selector: 'app-icon-list',
+  standalone: true,
+  imports: [MatListModule, MatIconModule],
+  template: `
+    &lt;mat-list class="nxo-list"&gt;
+      &lt;mat-list-item class="nxo-list-item"&gt;
+        &lt;mat-icon matListItemIcon style="color: var(--nxo-color-success);"&gt;check&lt;/mat-icon&gt;
+        &lt;span matListItemTitle&gt;Tache completee&lt;/span&gt;
+      &lt;/mat-list-item&gt;
+      &lt;mat-list-item class="nxo-list-item"&gt;
+        &lt;mat-icon matListItemIcon style="color: var(--nxo-color-warning);"&gt;schedule&lt;/mat-icon&gt;
+        &lt;span matListItemTitle&gt;En attente&lt;/span&gt;
+      &lt;/mat-list-item&gt;
+      &lt;mat-list-item class="nxo-list-item"&gt;
+        &lt;mat-icon matListItemIcon style="color: var(--nxo-color-error);"&gt;close&lt;/mat-icon&gt;
+        &lt;span matListItemTitle&gt;Annulee&lt;/span&gt;
+      &lt;/mat-list-item&gt;
+    &lt;/mat-list&gt;
+  `
+})
+export class IconListComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% set items = [
+    {
+        icon: 'fa-check',
+        iconColor: 'success',
+        text: 'Tache completee'
+    },
+    {
+        icon: 'fa-clock',
+        iconColor: 'warning',
+        text: 'En attente'
+    },
+    {
+        icon: 'fa-times',
+        iconColor: 'error',
+        text: 'Annulee'
+    }
+] %}
+
+{% include '@NxoDesignSystem/list.html.twig' with {
+    items: items,
+    withIcons: true
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Liste avec avatar -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Liste avec avatar</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <ul class="nxo-list nxo-list-bordered">
+                <li class="nxo-list-item">
+                  <div class="nxo-avatar nxo-avatar-sm" style="background: var(--fayat-blue);">
+                    <span class="nxo-avatar-initials">JD</span>
+                  </div>
+                  <div class="nxo-list-item-content">
+                    <div class="nxo-list-item-title">Jean Dupont</div>
+                    <div class="nxo-list-item-description">jean.dupont@nxo.fr</div>
+                  </div>
+                </li>
+                <li class="nxo-list-item">
+                  <div class="nxo-avatar nxo-avatar-sm" style="background: var(--nxo-color-success);">
+                    <span class="nxo-avatar-initials">ML</span>
+                  </div>
+                  <div class="nxo-list-item-content">
+                    <div class="nxo-list-item-title">Marie Laurent</div>
+                    <div class="nxo-list-item-description">marie.laurent@nxo.fr</div>
+                  </div>
+                </li>
+                <li class="nxo-list-item">
+                  <div class="nxo-avatar nxo-avatar-sm" style="background: var(--nxo-color-warning);">
+                    <span class="nxo-avatar-initials">PK</span>
+                  </div>
+                  <div class="nxo-list-item-content">
+                    <div class="nxo-list-item-title">Pierre Klein</div>
+                    <div class="nxo-list-item-description">pierre.klein@nxo.fr</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;ul class="nxo-list"&gt;
+  &lt;li class="nxo-list-item" style="display: flex; align-items: center; gap: 12px;"&gt;
+    &lt;div class="nxo-avatar nxo-avatar-sm" style="background: var(--fayat-blue);"&gt;
+      &lt;span class="nxo-avatar-initials"&gt;JD&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div class="nxo-text" style="font-weight: 500;"&gt;Jean Dupont&lt;/div&gt;
+      &lt;div class="nxo-text-sm nxo-text-muted"&gt;jean.dupont@nxo.fr&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="nxo-list-item" style="display: flex; align-items: center; gap: 12px;"&gt;
+    &lt;div class="nxo-avatar nxo-avatar-sm" style="background: var(--nxo-color-success);"&gt;
+      &lt;span class="nxo-avatar-initials"&gt;ML&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div class="nxo-text" style="font-weight: 500;"&gt;Marie Laurent&lt;/div&gt;
+      &lt;div class="nxo-text-sm nxo-text-muted"&gt;marie.laurent@nxo.fr&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="nxo-list-item" style="display: flex; align-items: center; gap: 12px;"&gt;
+    &lt;div class="nxo-avatar nxo-avatar-sm" style="background: var(--nxo-color-warning);"&gt;
+      &lt;span class="nxo-avatar-initials"&gt;PK&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div class="nxo-text" style="font-weight: 500;"&gt;Pierre Klein&lt;/div&gt;
+      &lt;div class="nxo-text-sm nxo-text-muted"&gt;pierre.klein@nxo.fr&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { List, ListItem, ListItemAvatar, ListItemText, Avatar } from '@mui/material';
+
+const users = [
+  { initials: 'JD', name: 'Jean Dupont', email: 'jean.dupont@nxo.fr', color: 'var(--fayat-blue)' },
+  { initials: 'ML', name: 'Marie Laurent', email: 'marie.laurent@nxo.fr', color: 'var(--nxo-color-success)' },
+  { initials: 'PK', name: 'Pierre Klein', email: 'pierre.klein@nxo.fr', color: 'var(--nxo-color-warning)' }
+];
+
+const AvatarList = () => (
+  &lt;List className="nxo-list"&gt;
+    {users.map(user => (
+      &lt;ListItem key={user.email} className="nxo-list-item"&gt;
+        &lt;ListItemAvatar&gt;
+          &lt;Avatar
+            className="nxo-avatar nxo-avatar-sm"
+            sx={{ bgcolor: user.color }}
+          &gt;
+            {user.initials}
+          &lt;/Avatar&gt;
+        &lt;/ListItemAvatar&gt;
+        &lt;ListItemText
+          primary={user.name}
+          secondary={user.email}
+          primaryTypographyProps={{ style: { fontWeight: 500 } }}
+          secondaryTypographyProps={{ className: 'nxo-text-sm nxo-text-muted' }}
+        /&gt;
+      &lt;/ListItem&gt;
+    ))}
+  &lt;/List&gt;
+);</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
+
+@Component({
+  selector: 'app-avatar-list',
+  standalone: true,
+  imports: [CommonModule, MatListModule],
+  template: `
+    &lt;mat-list class="nxo-list"&gt;
+      &lt;mat-list-item *ngFor="let user of users" class="nxo-list-item"&gt;
+        &lt;div style="display: flex; align-items: center; gap: 12px;"&gt;
+          &lt;div class="nxo-avatar nxo-avatar-sm" [style.background]="user.color"&gt;
+            &lt;span class="nxo-avatar-initials"&gt;{{ user.initials }}&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;div style="font-weight: 500;"&gt;{{ user.name }}&lt;/div&gt;
+            &lt;div class="nxo-text-sm nxo-text-muted"&gt;{{ user.email }}&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/mat-list-item&gt;
+    &lt;/mat-list&gt;
+  `
+})
+export class AvatarListComponent {
+  users = [
+    { initials: 'JD', name: 'Jean Dupont', email: 'jean.dupont@nxo.fr', color: 'var(--fayat-blue)' },
+    { initials: 'ML', name: 'Marie Laurent', email: 'marie.laurent@nxo.fr', color: 'var(--nxo-color-success)' },
+    { initials: 'PK', name: 'Pierre Klein', email: 'pierre.klein@nxo.fr', color: 'var(--nxo-color-warning)' }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% set users = [
+    {
+        initials: 'JD',
+        name: 'Jean Dupont',
+        email: 'jean.dupont@nxo.fr',
+        color: 'fayat-blue'
+    },
+    {
+        initials: 'ML',
+        name: 'Marie Laurent',
+        email: 'marie.laurent@nxo.fr',
+        color: 'success'
+    },
+    {
+        initials: 'PK',
+        name: 'Pierre Klein',
+        email: 'pierre.klein@nxo.fr',
+        color: 'warning'
+    }
+] %}
+
+{% include '@NxoDesignSystem/list-avatar.html.twig' with {
+    users: users
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Liste interactive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Liste interactive</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <ul class="nxo-list nxo-list-bordered">
+                <li class="nxo-list-item nxo-list-item-interactive" style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>Parametres du compte</span>
+                  <i class="fa-solid fa-chevron-right" style="color: var(--nxo-text-muted);"></i>
+                </li>
+                <li class="nxo-list-item nxo-list-item-interactive" style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>Notifications</span>
+                  <i class="fa-solid fa-chevron-right" style="color: var(--nxo-text-muted);"></i>
+                </li>
+                <li class="nxo-list-item nxo-list-item-interactive" style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>Securite</span>
+                  <i class="fa-solid fa-chevron-right" style="color: var(--nxo-text-muted);"></i>
+                </li>
+              </ul>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;ul class="nxo-list nxo-list-bordered"&gt;
+  &lt;li class="nxo-list-item nxo-list-item-interactive"&gt;
+    &lt;span&gt;Parametres du compte&lt;/span&gt;
+    &lt;i class="fa-solid fa-chevron-right"&gt;&lt;/i&gt;
+  &lt;/li&gt;
+  &lt;li class="nxo-list-item nxo-list-item-interactive"&gt;
+    &lt;span&gt;Notifications&lt;/span&gt;
+    &lt;i class="fa-solid fa-chevron-right"&gt;&lt;/i&gt;
+  &lt;/li&gt;
+  &lt;li class="nxo-list-item nxo-list-item-interactive"&gt;
+    &lt;span&gt;Securite&lt;/span&gt;
+    &lt;i class="fa-solid fa-chevron-right"&gt;&lt;/i&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { ChevronRight } from '@mui/icons-material';
+
+const menuItems = [
+  'Parametres du compte',
+  'Notifications',
+  'Securite'
+];
+
+const InteractiveList = () => (
+  &lt;List className="nxo-list nxo-list-bordered"&gt;
+    {menuItems.map(item => (
+      &lt;ListItem key={item} disablePadding className="nxo-list-item nxo-list-item-interactive"&gt;
+        &lt;ListItemButton onClick={() => console.log(item)}&gt;
+          &lt;ListItemText primary={item} /&gt;
+          &lt;ChevronRight sx={{ color: 'var(--nxo-text-muted)' }} /&gt;
+        &lt;/ListItemButton&gt;
+      &lt;/ListItem&gt;
+    ))}
+  &lt;/List&gt;
+);</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+
+@Component({
+  selector: 'app-interactive-list',
+  standalone: true,
+  imports: [CommonModule, MatListModule, MatIconModule],
+  template: `
+    &lt;mat-nav-list class="nxo-list nxo-list-bordered"&gt;
+      &lt;mat-list-item
+        *ngFor="let item of menuItems"
+        class="nxo-list-item nxo-list-item-interactive"
+        (click)="handleItemClick(item)"
+      &gt;
+        &lt;span matListItemTitle&gt;{{ item }}&lt;/span&gt;
+        &lt;mat-icon matListItemMeta style="color: var(--nxo-text-muted);"&gt;chevron_right&lt;/mat-icon&gt;
+      &lt;/mat-list-item&gt;
+    &lt;/mat-nav-list&gt;
+  `
+})
+export class InteractiveListComponent {
+  menuItems = [
+    'Parametres du compte',
+    'Notifications',
+    'Securite'
+  ];
+
+  handleItemClick(item: string) {
+    console.log(item);
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% set menuItems = [
+    { label: 'Parametres du compte', href: '/account/settings' },
+    { label: 'Notifications', href: '/account/notifications' },
+    { label: 'Securite', href: '/account/security' }
+] %}
+
+{% include '@NxoDesignSystem/list-interactive.html.twig' with {
+    items: menuItems,
+    interactive: true,
+    showChevron: true
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            Les elements de liste reduisent leur padding sur mobile pour maximiser l'espace.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 768px</code></td>
+                <td>Le padding des <code>.nxo-list-item</code> est reduit</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

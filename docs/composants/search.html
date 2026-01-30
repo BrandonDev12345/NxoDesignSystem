@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link active"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-search"></i> Search</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Champs de recherche et composants associes.
+        </p>
+
+        <!-- Search basique -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Search basique</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-search">
+                <i class="fa-solid fa-search nxo-search-icon"></i>
+                <input type="text" class="nxo-search-input" placeholder="Rechercher...">
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-search"&gt;
+  &lt;i class="fa-solid fa-search nxo-search-icon"&gt;&lt;/i&gt;
+  &lt;input type="text" class="nxo-search-input" placeholder="Rechercher..."&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { TextField, InputAdornment } from '@mui/material';
+import { Search as SearchIcon } from '@mui/icons-material';
+
+// Champ de recherche basique
+&lt;TextField
+  placeholder="Rechercher..."
+  className="nxo-search-input"
+  InputProps={{
+    startAdornment: (
+      &lt;InputAdornment position="start"&gt;
+        &lt;SearchIcon className="nxo-search-icon" /&gt;
+      &lt;/InputAdornment&gt;
+    ),
+  }}
+  fullWidth
+/&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+
+@Component({
+  selector: 'app-search-basic',
+  standalone: true,
+  imports: [MatFormFieldModule, MatInputModule, MatIconModule],
+  template: `
+    &lt;mat-form-field appearance="outline" class="nxo-search"&gt;
+      &lt;mat-icon matPrefix class="nxo-search-icon"&gt;search&lt;/mat-icon&gt;
+      &lt;input matInput placeholder="Rechercher..." class="nxo-search-input"&gt;
+    &lt;/mat-form-field&gt;
+  `
+})
+export class SearchBasicComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/search.html.twig' with {
+    placeholder: 'Rechercher...'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search avec bouton -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec bouton</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-search" style="display: flex; gap: 8px;">
+                <div style="flex: 1; position: relative;">
+                  <i class="fa-solid fa-search nxo-search-icon"></i>
+                  <input type="text" class="nxo-search-input" placeholder="Rechercher un produit...">
+                </div>
+                <button class="nxo-btn nxo-btn-primary">Rechercher</button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-search" style="display: flex; gap: 8px;"&gt;
+  &lt;div style="flex: 1; position: relative;"&gt;
+    &lt;i class="fa-solid fa-search nxo-search-icon"&gt;&lt;/i&gt;
+    &lt;input type="text" class="nxo-search-input" placeholder="Rechercher un produit..."&gt;
+  &lt;/div&gt;
+  &lt;button class="nxo-btn nxo-btn-primary"&gt;Rechercher&lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { useState } from 'react';
+import { TextField, InputAdornment, Button } from '@mui/material';
+import { Search as SearchIcon } from '@mui/icons-material';
+
+// Recherche avec bouton
+const SearchWithButton = () =&gt; {
+  const [query, setQuery] = useState('');
+
+  const handleSearch = () =&gt; {
+    console.log('Recherche:', query);
+  };
+
+  return (
+    &lt;div style={{ display: 'flex', gap: '8px' }}&gt;
+      &lt;TextField
+        placeholder="Rechercher un produit..."
+        value={query}
+        onChange={(e) =&gt; setQuery(e.target.value)}
+        className="nxo-search-input"
+        InputProps={{
+          startAdornment: (
+            &lt;InputAdornment position="start"&gt;
+              &lt;SearchIcon className="nxo-search-icon" /&gt;
+            &lt;/InputAdornment&gt;
+          ),
+        }}
+        style={{ flex: 1 }}
+        fullWidth
+      /&gt;
+      &lt;Button variant="contained" className="nxo-btn nxo-btn-primary" onClick={handleSearch}&gt;
+        Rechercher
+      &lt;/Button&gt;
+    &lt;/div&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-search-with-button',
+  standalone: true,
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule],
+  template: `
+    &lt;div style="display: flex; gap: 8px;"&gt;
+      &lt;mat-form-field appearance="outline" class="nxo-search" style="flex: 1"&gt;
+        &lt;mat-icon matPrefix class="nxo-search-icon"&gt;search&lt;/mat-icon&gt;
+        &lt;input matInput placeholder="Rechercher un produit..." [(ngModel)]="query" class="nxo-search-input"&gt;
+      &lt;/mat-form-field&gt;
+      &lt;button mat-raised-button class="nxo-btn nxo-btn-primary" (click)="handleSearch()"&gt;
+        Rechercher
+      &lt;/button&gt;
+    &lt;/div&gt;
+  `
+})
+export class SearchWithButtonComponent {
+  query = '';
+
+  handleSearch() {
+    console.log('Recherche:', this.query);
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+&lt;div style="display: flex; gap: 8px;"&gt;
+  &lt;div style="flex: 1; position: relative;"&gt;
+    {% include '@NxoDesignSystem/search.html.twig' with {
+        placeholder: 'Rechercher un produit...',
+        name: 'search_query'
+    } %}
+  &lt;/div&gt;
+  {% include '@NxoDesignSystem/button.html.twig' with {
+      label: 'Rechercher',
+      variant: 'primary',
+      type: 'submit'
+  } %}
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search avec clear -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec bouton effacer</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-search" style="position: relative;">
+                <i class="fa-solid fa-search nxo-search-icon"></i>
+                <input type="text" class="nxo-search-input" placeholder="Rechercher..." value="Exemple de recherche" style="padding-right: 40px;">
+                <button class="nxo-search-clear" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--nxo-text-muted); cursor: pointer;">
+                  <i class="fa-solid fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-search"&gt;
+  &lt;i class="fa-solid fa-search nxo-search-icon"&gt;&lt;/i&gt;
+  &lt;input type="text" class="nxo-search-input" value="..."&gt;
+  &lt;button class="nxo-search-clear"&gt;
+    &lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { useState } from 'react';
+import { TextField, InputAdornment, IconButton } from '@mui/material';
+import { Search as SearchIcon, Clear } from '@mui/icons-material';
+
+// Recherche avec bouton effacer
+const SearchWithClear = () =&gt; {
+  const [query, setQuery] = useState('Exemple de recherche');
+
+  const handleClear = () =&gt; {
+    setQuery('');
+  };
+
+  return (
+    &lt;TextField
+      placeholder="Rechercher..."
+      value={query}
+      onChange={(e) =&gt; setQuery(e.target.value)}
+      className="nxo-search-input"
+      InputProps={{
+        startAdornment: (
+          &lt;InputAdornment position="start"&gt;
+            &lt;SearchIcon className="nxo-search-icon" /&gt;
+          &lt;/InputAdornment&gt;
+        ),
+        endAdornment: query &amp;&amp; (
+          &lt;InputAdornment position="end"&gt;
+            &lt;IconButton onClick={handleClear} className="nxo-search-clear" size="small"&gt;
+              &lt;Clear /&gt;
+            &lt;/IconButton&gt;
+          &lt;/InputAdornment&gt;
+        ),
+      }}
+      fullWidth
+    /&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+@Component({
+  selector: 'app-search-with-clear',
+  standalone: true,
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule],
+  template: `
+    &lt;mat-form-field appearance="outline" class="nxo-search"&gt;
+      &lt;mat-icon matPrefix class="nxo-search-icon"&gt;search&lt;/mat-icon&gt;
+      &lt;input matInput placeholder="Rechercher..." [(ngModel)]="query" class="nxo-search-input"&gt;
+      &lt;button mat-icon-button matSuffix *ngIf="query" (click)="handleClear()" class="nxo-search-clear"&gt;
+        &lt;mat-icon&gt;close&lt;/mat-icon&gt;
+      &lt;/button&gt;
+    &lt;/mat-form-field&gt;
+  `
+})
+export class SearchWithClearComponent {
+  query = 'Exemple de recherche';
+
+  handleClear() {
+    this.query = '';
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/search.html.twig' with {
+    placeholder: 'Rechercher...',
+    value: 'Exemple de recherche',
+    clearable: true,
+    name: 'search_query'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Search avec raccourci clavier -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec raccourci clavier</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-search" style="position: relative;">
+                <i class="fa-solid fa-search nxo-search-icon"></i>
+                <input type="text" class="nxo-search-input" placeholder="Rechercher..." style="padding-right: 70px;">
+                <div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: flex; gap: 4px;">
+                  <kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 6px; background: var(--nxo-bg-page); border: 1px solid var(--nxo-border-color); border-radius: 4px; font-size: 11px; color: var(--nxo-text-muted);">Ctrl</kbd>
+                  <kbd style="display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 6px; background: var(--nxo-bg-page); border: 1px solid var(--nxo-border-color); border-radius: 4px; font-size: 11px; color: var(--nxo-text-muted);">K</kbd>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-search" style="position: relative;"&gt;
+  &lt;i class="fa-solid fa-search nxo-search-icon"&gt;&lt;/i&gt;
+  &lt;input type="text" class="nxo-search-input" placeholder="Rechercher..." style="padding-right: 70px;"&gt;
+  &lt;div style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: flex; gap: 4px;"&gt;
+    &lt;kbd&gt;Ctrl&lt;/kbd&gt;
+    &lt;kbd&gt;K&lt;/kbd&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { useRef, useEffect } from 'react';
+import { TextField, InputAdornment, Chip } from '@mui/material';
+import { Search as SearchIcon } from '@mui/icons-material';
+
+// Recherche avec raccourci clavier
+const SearchWithShortcut = () =&gt; {
+  const searchRef = useRef(null);
+
+  useEffect(() =&gt; {
+    const handleKeyDown = (e) =&gt; {
+      if ((e.ctrlKey || e.metaKey) &amp;&amp; e.key === 'k') {
+        e.preventDefault();
+        searchRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () =&gt; document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  return (
+    &lt;TextField
+      inputRef={searchRef}
+      placeholder="Rechercher..."
+      className="nxo-search-input"
+      InputProps={{
+        startAdornment: (
+          &lt;InputAdornment position="start"&gt;
+            &lt;SearchIcon className="nxo-search-icon" /&gt;
+          &lt;/InputAdornment&gt;
+        ),
+        endAdornment: (
+          &lt;InputAdornment position="end"&gt;
+            &lt;Chip label="Ctrl" size="small" /&gt;
+            &lt;Chip label="K" size="small" style={{ marginLeft: '4px' }} /&gt;
+          &lt;/InputAdornment&gt;
+        ),
+      }}
+      fullWidth
+    /&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component, ViewChild, ElementRef, OnInit, OnDestroy } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips';
+
+@Component({
+  selector: 'app-search-with-shortcut',
+  standalone: true,
+  imports: [MatFormFieldModule, MatInputModule, MatIconModule, MatChipsModule],
+  template: `
+    &lt;mat-form-field appearance="outline" class="nxo-search"&gt;
+      &lt;mat-icon matPrefix class="nxo-search-icon"&gt;search&lt;/mat-icon&gt;
+      &lt;input #searchInput matInput placeholder="Rechercher..." class="nxo-search-input"&gt;
+      &lt;div matSuffix style="display: flex; gap: 4px;"&gt;
+        &lt;mat-chip&gt;Ctrl&lt;/mat-chip&gt;
+        &lt;mat-chip&gt;K&lt;/mat-chip&gt;
+      &lt;/div&gt;
+    &lt;/mat-form-field&gt;
+  `
+})
+export class SearchWithShortcutComponent implements OnInit, OnDestroy {
+  @ViewChild('searchInput') searchInput!: ElementRef;
+
+  ngOnInit() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  ngOnDestroy() {
+    document.removeEventListener('keydown', this.handleKeyDown);
+  }
+
+  handleKeyDown = (e: KeyboardEvent) =&gt; {
+    if ((e.ctrlKey || e.metaKey) &amp;&amp; e.key === 'k') {
+      e.preventDefault();
+      this.searchInput.nativeElement.focus();
+    }
+  };
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/search.html.twig' with {
+    placeholder: 'Rechercher...',
+    shortcut: ['Ctrl', 'K'],
+    name: 'search_query'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-success nxo-mb-md">
+            <i class="fa-solid fa-check-circle"></i>
+            Le composant Search est <strong>naturellement flexible</strong>. L'input de recherche occupe la largeur disponible et s'adapte au conteneur. Aucune adaptation specifique n'est necessaire.
+          </div>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

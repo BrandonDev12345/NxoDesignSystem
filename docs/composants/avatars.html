@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avatars - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link active"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-user-circle"></i> Avatars</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Composants pour representer des utilisateurs avec des images ou des initiales.
+        </p>
+
+        <!-- Tailles -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tailles</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row" style="align-items: center;">
+                <div class="nxo-avatar nxo-avatar-xs">
+                  <span class="nxo-avatar-initials">JD</span>
+                </div>
+                <div class="nxo-avatar nxo-avatar-sm">
+                  <span class="nxo-avatar-initials">JD</span>
+                </div>
+                <div class="nxo-avatar">
+                  <span class="nxo-avatar-initials">JD</span>
+                </div>
+                <div class="nxo-avatar nxo-avatar-lg">
+                  <span class="nxo-avatar-initials">JD</span>
+                </div>
+                <div class="nxo-avatar nxo-avatar-xl">
+                  <span class="nxo-avatar-initials">JD</span>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-avatar nxo-avatar-xs"&gt;
+  &lt;span class="nxo-avatar-initials"&gt;JD&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar nxo-avatar-sm"&gt;
+  &lt;span class="nxo-avatar-initials"&gt;JD&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar"&gt;
+  &lt;span class="nxo-avatar-initials"&gt;JD&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar nxo-avatar-lg"&gt;
+  &lt;span class="nxo-avatar-initials"&gt;JD&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar nxo-avatar-xl"&gt;
+  &lt;span class="nxo-avatar-initials"&gt;JD&lt;/span&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Avatar } from '@mui/material';
+
+// Tailles disponibles avec MUI: small (24px), medium (40px), large (56px)
+// Pour tailles custom, utilisez sx prop ou classes NXO
+const AvatarSizes = () =&gt; {
+  return (
+    &lt;&gt;
+      &lt;Avatar className="nxo-avatar nxo-avatar-xs" sx={{ width: 24, height: 24, fontSize: 10 }}&gt;JD&lt;/Avatar&gt;
+      &lt;Avatar className="nxo-avatar nxo-avatar-sm" sx={{ width: 32, height: 32, fontSize: 12 }}&gt;JD&lt;/Avatar&gt;
+      &lt;Avatar className="nxo-avatar"&gt;JD&lt;/Avatar&gt;
+      &lt;Avatar className="nxo-avatar nxo-avatar-lg" sx={{ width: 56, height: 56, fontSize: 20 }}&gt;JD&lt;/Avatar&gt;
+      &lt;Avatar className="nxo-avatar nxo-avatar-xl" sx={{ width: 72, height: 72, fontSize: 24 }}&gt;JD&lt;/Avatar&gt;
+    &lt;/&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+// Note: Angular Material n'a pas de composant Avatar natif
+// Utilisez les classes NXO avec un composant personnalise
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'nxo-avatar',
+  template: `
+    &lt;div [class]="getAvatarClass()" [ngStyle]="customStyle"&gt;
+      &lt;span class="nxo-avatar-initials"&gt;{{ initials }}&lt;/span&gt;
+    &lt;/div&gt;
+  `
+})
+export class AvatarComponent {
+  @Input() size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
+  @Input() initials: string = '';
+  @Input() customStyle: any = {};
+
+  getAvatarClass(): string {
+    return this.size !== 'md' ? `nxo-avatar nxo-avatar-${this.size}` : 'nxo-avatar';
+  }
+}
+
+// Usage
+&lt;nxo-avatar size="xs" initials="JD"&gt;&lt;/nxo-avatar&gt;
+&lt;nxo-avatar size="sm" initials="JD"&gt;&lt;/nxo-avatar&gt;
+&lt;nxo-avatar initials="JD"&gt;&lt;/nxo-avatar&gt;
+&lt;nxo-avatar size="lg" initials="JD"&gt;&lt;/nxo-avatar&gt;
+&lt;nxo-avatar size="xl" initials="JD"&gt;&lt;/nxo-avatar&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# avatar.html.twig #}
+{% macro avatar(initials, size = 'md', style = null) %}
+  &lt;div class="nxo-avatar{% if size != 'md' %} nxo-avatar-{{ size }}{% endif %}"
+       {% if style %}style="{{ style }}"{% endif %}&gt;
+    &lt;span class="nxo-avatar-initials"&gt;{{ initials }}&lt;/span&gt;
+  &lt;/div&gt;
+{% endmacro %}
+
+{# Usage #}
+{% import 'avatar.html.twig' as avatar_macro %}
+
+{{ avatar_macro.avatar('JD', 'xs') }}
+{{ avatar_macro.avatar('JD', 'sm') }}
+{{ avatar_macro.avatar('JD') }}
+{{ avatar_macro.avatar('JD', 'lg') }}
+{{ avatar_macro.avatar('JD', 'xl') }}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avec initiales -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec initiales</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row">
+                <div class="nxo-avatar" style="background-color: var(--fayat-blue);">
+                  <span class="nxo-avatar-initials">AB</span>
+                </div>
+                <div class="nxo-avatar" style="background-color: var(--nxo-color-success);">
+                  <span class="nxo-avatar-initials">CD</span>
+                </div>
+                <div class="nxo-avatar" style="background-color: var(--nxo-color-warning);">
+                  <span class="nxo-avatar-initials">EF</span>
+                </div>
+                <div class="nxo-avatar" style="background-color: var(--nxo-color-error);">
+                  <span class="nxo-avatar-initials">GH</span>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-avatar" style="background-color: var(--fayat-blue);"&gt;
+  &lt;span class="nxo-avatar-initials"&gt;AB&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar" style="background-color: var(--nxo-color-success);"&gt;
+  &lt;span class="nxo-avatar-initials"&gt;CD&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar" style="background-color: var(--nxo-color-warning);"&gt;
+  &lt;span class="nxo-avatar-initials"&gt;EF&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar" style="background-color: var(--nxo-color-error);"&gt;
+  &lt;span class="nxo-avatar-initials"&gt;GH&lt;/span&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Avatar } from '@mui/material';
+
+const ColoredAvatars = () =&gt; {
+  return (
+    &lt;&gt;
+      &lt;Avatar className="nxo-avatar" sx={{ bgcolor: 'var(--fayat-blue)' }}&gt;AB&lt;/Avatar&gt;
+      &lt;Avatar className="nxo-avatar" sx={{ bgcolor: 'var(--nxo-color-success)' }}&gt;CD&lt;/Avatar&gt;
+      &lt;Avatar className="nxo-avatar" sx={{ bgcolor: 'var(--nxo-color-warning)' }}&gt;EF&lt;/Avatar&gt;
+      &lt;Avatar className="nxo-avatar" sx={{ bgcolor: 'var(--nxo-color-error)' }}&gt;GH&lt;/Avatar&gt;
+    &lt;/&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component, Input } from '@angular/core';
+
+@Component({
+  selector: 'nxo-avatar',
+  template: `&lt;div class="nxo-avatar" [style.background-color]="backgroundColor"&gt;
+    &lt;span class="nxo-avatar-initials"&gt;{{ initials }}&lt;/span&gt;
+  &lt;/div&gt;`
+})
+export class AvatarComponent {
+  @Input() initials: string = '';
+  @Input() backgroundColor: string = '';
+}
+
+// Usage
+&lt;nxo-avatar initials="AB" backgroundColor="var(--fayat-blue)"&gt;&lt;/nxo-avatar&gt;
+&lt;nxo-avatar initials="CD" backgroundColor="var(--nxo-color-success)"&gt;&lt;/nxo-avatar&gt;
+&lt;nxo-avatar initials="EF" backgroundColor="var(--nxo-color-warning)"&gt;&lt;/nxo-avatar&gt;
+&lt;nxo-avatar initials="GH" backgroundColor="var(--nxo-color-error)"&gt;&lt;/nxo-avatar&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# avatar.html.twig #}
+{% macro avatar(initials, backgroundColor = null) %}
+  &lt;div class="nxo-avatar"
+       {% if backgroundColor %}style="background-color: {{ backgroundColor }};"{% endif %}&gt;
+    &lt;span class="nxo-avatar-initials"&gt;{{ initials }}&lt;/span&gt;
+  &lt;/div&gt;
+{% endmacro %}
+
+{# Usage #}
+{% import 'avatar.html.twig' as avatar_macro %}
+
+{{ avatar_macro.avatar('AB', 'var(--fayat-blue)') }}
+{{ avatar_macro.avatar('CD', 'var(--nxo-color-success)') }}
+{{ avatar_macro.avatar('EF', 'var(--nxo-color-warning)') }}
+{{ avatar_macro.avatar('GH', 'var(--nxo-color-error)') }}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avec icone -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec icone</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row">
+                <div class="nxo-avatar">
+                  <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="nxo-avatar" style="background-color: var(--nxo-color-info);">
+                  <i class="fa-solid fa-building"></i>
+                </div>
+                <div class="nxo-avatar" style="background-color: var(--nxo-color-success);">
+                  <i class="fa-solid fa-check"></i>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-avatar"&gt;
+  &lt;i class="fa-solid fa-user"&gt;&lt;/i&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar" style="background-color: var(--nxo-color-info);"&gt;
+  &lt;i class="fa-solid fa-building"&gt;&lt;/i&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar" style="background-color: var(--nxo-color-success);"&gt;
+  &lt;i class="fa-solid fa-check"&gt;&lt;/i&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Avatar } from '@mui/material';
+import { Person, Business, Check } from '@mui/icons-material';
+
+const IconAvatars = () =&gt; {
+  return (
+    &lt;&gt;
+      &lt;Avatar className="nxo-avatar"&gt;&lt;Person /&gt;&lt;/Avatar&gt;
+      &lt;Avatar className="nxo-avatar" sx={{ bgcolor: 'var(--nxo-color-info)' }}&gt;&lt;Business /&gt;&lt;/Avatar&gt;
+      &lt;Avatar className="nxo-avatar" sx={{ bgcolor: 'var(--nxo-color-success)' }}&gt;&lt;Check /&gt;&lt;/Avatar&gt;
+    &lt;/&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component, Input } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+
+@Component({
+  selector: 'nxo-avatar-icon',
+  template: `&lt;div class="nxo-avatar" [style.background-color]="backgroundColor"&gt;
+    &lt;mat-icon&gt;{{ icon }}&lt;/mat-icon&gt;
+  &lt;/div&gt;`
+})
+export class AvatarIconComponent {
+  @Input() icon: string = 'person';
+  @Input() backgroundColor: string = '';
+}
+
+// Usage
+&lt;nxo-avatar-icon icon="person"&gt;&lt;/nxo-avatar-icon&gt;
+&lt;nxo-avatar-icon icon="business" backgroundColor="var(--nxo-color-info)"&gt;&lt;/nxo-avatar-icon&gt;
+&lt;nxo-avatar-icon icon="check" backgroundColor="var(--nxo-color-success)"&gt;&lt;/nxo-avatar-icon&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# avatar-icon.html.twig #}
+{% macro avatar_icon(icon, backgroundColor = null) %}
+  &lt;div class="nxo-avatar"
+       {% if backgroundColor %}style="background-color: {{ backgroundColor }};"{% endif %}&gt;
+    &lt;i class="{{ icon }}"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+{% endmacro %}
+
+{# Usage #}
+{% import 'avatar-icon.html.twig' as avatar_macro %}
+
+{{ avatar_macro.avatar_icon('fa-solid fa-user') }}
+{{ avatar_macro.avatar_icon('fa-solid fa-building', 'var(--nxo-color-info)') }}
+{{ avatar_macro.avatar_icon('fa-solid fa-check', 'var(--nxo-color-success)') }}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avec status -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec indicateur de status</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row">
+                <div class="nxo-avatar-wrapper">
+                  <div class="nxo-avatar">
+                    <span class="nxo-avatar-initials">JD</span>
+                  </div>
+                  <span class="nxo-avatar-status nxo-avatar-status-online"></span>
+                </div>
+                <div class="nxo-avatar-wrapper">
+                  <div class="nxo-avatar">
+                    <span class="nxo-avatar-initials">ML</span>
+                  </div>
+                  <span class="nxo-avatar-status nxo-avatar-status-away"></span>
+                </div>
+                <div class="nxo-avatar-wrapper">
+                  <div class="nxo-avatar">
+                    <span class="nxo-avatar-initials">PK</span>
+                  </div>
+                  <span class="nxo-avatar-status nxo-avatar-status-offline"></span>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-avatar-wrapper"&gt;
+  &lt;div class="nxo-avatar"&gt;
+    &lt;span class="nxo-avatar-initials"&gt;JD&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="nxo-avatar-status nxo-avatar-status-online"&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar-wrapper"&gt;
+  &lt;div class="nxo-avatar"&gt;
+    &lt;span class="nxo-avatar-initials"&gt;ML&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="nxo-avatar-status nxo-avatar-status-away"&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-avatar-wrapper"&gt;
+  &lt;div class="nxo-avatar"&gt;
+    &lt;span class="nxo-avatar-initials"&gt;PK&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="nxo-avatar-status nxo-avatar-status-offline"&gt;&lt;/span&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Avatar, Badge } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
+// Badge stylise pour le status
+const StyledBadge = styled(Badge)(({ theme, status }) =&gt; ({
+  '& .MuiBadge-badge': {
+    backgroundColor: status === 'online' ? '#44b700' : status === 'away' ? '#ffc107' : '#bdbdbd',
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+  },
+}));
+
+const StatusAvatars = () =&gt; {
+  return (
+    &lt;&gt;
+      &lt;StyledBadge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot" status="online"&gt;
+        &lt;Avatar className="nxo-avatar"&gt;JD&lt;/Avatar&gt;
+      &lt;/StyledBadge&gt;
+      &lt;StyledBadge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot" status="away"&gt;
+        &lt;Avatar className="nxo-avatar"&gt;ML&lt;/Avatar&gt;
+      &lt;/StyledBadge&gt;
+      &lt;StyledBadge overlap="circular" anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} variant="dot" status="offline"&gt;
+        &lt;Avatar className="nxo-avatar"&gt;PK&lt;/Avatar&gt;
+      &lt;/StyledBadge&gt;
+    &lt;/&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component, Input } from '@angular/core';
+// Note: Angular Material n'a pas de composant Badge overlay natif pour Avatar
+// Utilisez les classes NXO avec un wrapper
+
+@Component({
+  selector: 'nxo-avatar-status',
+  template: `&lt;div class="nxo-avatar-wrapper"&gt;
+    &lt;div class="nxo-avatar"&gt;&lt;span class="nxo-avatar-initials"&gt;{{ initials }}&lt;/span&gt;&lt;/div&gt;
+    &lt;span [class]="'nxo-avatar-status nxo-avatar-status-' + status"&gt;&lt;/span&gt;
+  &lt;/div&gt;`
+})
+export class AvatarStatusComponent {
+  @Input() initials: string = '';
+  @Input() status: 'online' | 'away' | 'offline' = 'offline';
+}
+
+// Usage
+&lt;nxo-avatar-status initials="JD" status="online"&gt;&lt;/nxo-avatar-status&gt;
+&lt;nxo-avatar-status initials="ML" status="away"&gt;&lt;/nxo-avatar-status&gt;
+&lt;nxo-avatar-status initials="PK" status="offline"&gt;&lt;/nxo-avatar-status&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# avatar-status.html.twig #}
+{% macro avatar_status(initials, status = 'offline') %}
+  &lt;div class="nxo-avatar-wrapper"&gt;
+    &lt;div class="nxo-avatar"&gt;
+      &lt;span class="nxo-avatar-initials"&gt;{{ initials }}&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class="nxo-avatar-status nxo-avatar-status-{{ status }}"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+{% endmacro %}
+
+{# Usage #}
+{% import 'avatar-status.html.twig' as avatar_macro %}
+
+{{ avatar_macro.avatar_status('JD', 'online') }}
+{{ avatar_macro.avatar_status('ML', 'away') }}
+{{ avatar_macro.avatar_status('PK', 'offline') }}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Groupe d'avatars -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Groupe d'avatars</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-avatar-group">
+                <div class="nxo-avatar nxo-avatar-sm" style="background-color: var(--fayat-blue);">
+                  <span class="nxo-avatar-initials">AB</span>
+                </div>
+                <div class="nxo-avatar nxo-avatar-sm" style="background-color: var(--nxo-color-success);">
+                  <span class="nxo-avatar-initials">CD</span>
+                </div>
+                <div class="nxo-avatar nxo-avatar-sm" style="background-color: var(--nxo-color-warning);">
+                  <span class="nxo-avatar-initials">EF</span>
+                </div>
+                <div class="nxo-avatar nxo-avatar-sm" style="background-color: var(--nxo-text-muted);">
+                  <span class="nxo-avatar-initials">+3</span>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-avatar-group"&gt;
+  &lt;div class="nxo-avatar nxo-avatar-sm" style="background-color: var(--fayat-blue);"&gt;
+    &lt;span class="nxo-avatar-initials"&gt;AB&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-avatar nxo-avatar-sm" style="background-color: var(--nxo-color-success);"&gt;
+    &lt;span class="nxo-avatar-initials"&gt;CD&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-avatar nxo-avatar-sm" style="background-color: var(--nxo-color-warning);"&gt;
+    &lt;span class="nxo-avatar-initials"&gt;EF&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-avatar nxo-avatar-sm" style="background-color: var(--nxo-text-muted);"&gt;
+    &lt;span class="nxo-avatar-initials"&gt;+3&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Avatar, AvatarGroup } from '@mui/material';
+
+const AvatarGroupExample = () =&gt; {
+  const users = [
+    { initials: 'AB', bgcolor: 'var(--fayat-blue)' },
+    { initials: 'CD', bgcolor: 'var(--nxo-color-success)' },
+    { initials: 'EF', bgcolor: 'var(--nxo-color-warning)' },
+    { initials: 'GH', bgcolor: 'var(--nxo-color-error)' },
+    { initials: 'IJ', bgcolor: 'var(--nxo-color-info)' },
+    { initials: 'KL', bgcolor: 'var(--fayat-blue)' }
+  ];
+
+  return (
+    &lt;AvatarGroup max={4} className="nxo-avatar-group"&gt;
+      {users.map((user, index) =&gt; (
+        &lt;Avatar key={index} className="nxo-avatar nxo-avatar-sm" sx={{ bgcolor: user.bgcolor, width: 32, height: 32 }}&gt;
+          {user.initials}
+        &lt;/Avatar&gt;
+      ))}
+    &lt;/AvatarGroup&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component, Input } from '@angular/core';
+// Note: Angular Material n'a pas d'AvatarGroup, utilisez les classes NXO
+
+interface AvatarData { initials: string; backgroundColor: string; }
+
+@Component({
+  selector: 'nxo-avatar-group',
+  template: `&lt;div class="nxo-avatar-group"&gt;
+    &lt;div *ngFor="let avatar of displayAvatars" [class]="getAvatarClass()" [style.background-color]="avatar.backgroundColor"&gt;
+      &lt;span class="nxo-avatar-initials"&gt;{{ avatar.initials }}&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div *ngIf="remaining &gt; 0" [class]="getAvatarClass()" style="background-color: var(--nxo-text-muted)"&gt;
+      &lt;span class="nxo-avatar-initials"&gt;+{{ remaining }}&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;`
+})
+export class AvatarGroupComponent {
+  @Input() avatars: AvatarData[] = [];
+  @Input() maxDisplay: number = 3;
+  @Input() size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'sm';
+
+  get displayAvatars() { return this.avatars.slice(0, this.maxDisplay); }
+  get remaining() { return Math.max(0, this.avatars.length - this.maxDisplay); }
+  getAvatarClass() { return this.size !== 'md' ? `nxo-avatar nxo-avatar-${this.size}` : 'nxo-avatar'; }
+}
+
+// Usage
+&lt;nxo-avatar-group [avatars]="users" [maxDisplay]="3" size="sm"&gt;&lt;/nxo-avatar-group&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# avatar-group.html.twig #}
+{% macro avatar_group(avatars, maxDisplay = 3, size = 'sm') %}
+  &lt;div class="nxo-avatar-group"&gt;
+    {% for avatar in avatars|slice(0, maxDisplay) %}
+      &lt;div class="nxo-avatar{% if size != 'md' %} nxo-avatar-{{ size }}{% endif %}"
+           style="background-color: {{ avatar.backgroundColor }};"&gt;
+        &lt;span class="nxo-avatar-initials"&gt;{{ avatar.initials }}&lt;/span&gt;
+      &lt;/div&gt;
+    {% endfor %}
+
+    {% set remaining = avatars|length - maxDisplay %}
+    {% if remaining &gt; 0 %}
+      &lt;div class="nxo-avatar{% if size != 'md' %} nxo-avatar-{{ size }}{% endif %}"
+           style="background-color: var(--nxo-text-muted);"&gt;
+        &lt;span class="nxo-avatar-initials"&gt;+{{ remaining }}&lt;/span&gt;
+      &lt;/div&gt;
+    {% endif %}
+  &lt;/div&gt;
+{% endmacro %}
+
+{# Usage #}
+{% import 'avatar-group.html.twig' as avatar_macro %}
+
+{% set users = [
+  { initials: 'AB', backgroundColor: 'var(--fayat-blue)' },
+  { initials: 'CD', backgroundColor: 'var(--nxo-color-success)' },
+  { initials: 'EF', backgroundColor: 'var(--nxo-color-warning)' }
+] %}
+
+{{ avatar_macro.avatar_group(users, 3, 'sm') }}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-success nxo-mb-md">
+            <i class="fa-solid fa-check-circle"></i>
+            Les Avatars sont <strong>naturellement flexibles</strong>. Leurs dimensions fixes (cercles) s'integrent dans tous les contextes sans adaptation. Aucune adaptation specifique n'est necessaire.
+          </div>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

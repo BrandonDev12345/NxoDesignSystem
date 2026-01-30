@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NXO Design System - Headers Responsive</title>
+
+  <!-- Google Fonts - Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Flag Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../components/components.css">
+
+  <style>
+    /* Demo-only page styles */
+    body {
+      font-family: var(--nxo-font-family);
+      background-color: #1a1a2e;
+      color: #ffffff;
+      padding: 40px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 16px;
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 48px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .header-section {
+      margin-bottom: 48px;
+    }
+
+    .header-label {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .header-wrapper {
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    /* Fixed-width overrides for showcase (not responsive, just visual) */
+    .nxo-header--1920 {
+      width: 1920px;
+      height: 80px;
+    }
+
+    .nxo-header--1920 .nxo-header__zone-left {
+      width: 400px;
+      padding-left: 32px;
+      gap: 48px;
+    }
+
+    .nxo-header--1920 .nxo-header__icon { width: 40px; height: 40px; }
+    .nxo-header--1920 .nxo-header__icon img { width: 24px; height: 24px; }
+    .nxo-header--1920 .nxo-header__logo { height: 40px; }
+    .nxo-header--1920 .nxo-header__service-name { font-size: 16px; display: inline; }
+    .nxo-header--1920 .nxo-header__zone-right { width: 250px; padding-right: 32px; gap: 20px; }
+    .nxo-header--1920 .nxo-header__search { width: 550px; height: 44px; border-radius: 22px; display: flex; }
+    .nxo-header--1920 .nxo-header__search img { width: 18px; height: 18px; }
+    .nxo-header--1920 .nxo-header__search span { font-size: 14px; }
+    .nxo-header--1920 .nxo-header__zone-right .nxo-header__icon img { width: 20px; height: 20px; }
+    .nxo-header--1920 .nxo-header__zone-right .nxo-header__icon--profile img { width: 28px; height: 28px; }
+
+    .nxo-header--1440 {
+      width: 1440px;
+      height: 80px;
+    }
+
+    .nxo-header--1440 .nxo-header__zone-left { width: 350px; padding-left: 20px; gap: 40px; }
+    .nxo-header--1440 .nxo-header__icon { width: 36px; height: 36px; }
+    .nxo-header--1440 .nxo-header__icon img { width: 22px; height: 22px; }
+    .nxo-header--1440 .nxo-header__logo { height: 36px; }
+    .nxo-header--1440 .nxo-header__service-name { font-size: 15px; display: inline; }
+    .nxo-header--1440 .nxo-header__zone-right { width: 220px; padding-right: 24px; gap: 18px; }
+    .nxo-header--1440 .nxo-header__search { width: 450px; height: 42px; border-radius: 21px; display: flex; }
+    .nxo-header--1440 .nxo-header__search img { width: 16px; height: 16px; }
+    .nxo-header--1440 .nxo-header__search span { font-size: 13px; }
+    .nxo-header--1440 .nxo-header__zone-right .nxo-header__icon img { width: 18px; height: 18px; }
+    .nxo-header--1440 .nxo-header__zone-right .nxo-header__icon--profile img { width: 26px; height: 26px; }
+
+    .nxo-header--1024 {
+      width: 1024px;
+      height: 72px;
+    }
+
+    .nxo-header--1024 .nxo-header__zone-left { width: 320px; padding-left: 16px; gap: 24px; }
+    .nxo-header--1024 .nxo-header__icon { width: 32px; height: 32px; }
+    .nxo-header--1024 .nxo-header__icon img { width: 20px; height: 20px; }
+    .nxo-header--1024 .nxo-header__logo { height: 32px; }
+    .nxo-header--1024 .nxo-header__service-name { font-size: 14px; display: inline; }
+    .nxo-header--1024 .nxo-header__zone-right { width: 160px; padding-right: 16px; gap: 12px; }
+    .nxo-header--1024 .nxo-header__search { width: 280px; height: 38px; border-radius: 19px; display: flex; }
+    .nxo-header--1024 .nxo-header__search img { width: 14px; height: 14px; }
+    .nxo-header--1024 .nxo-header__search span { font-size: 12px; }
+    .nxo-header--1024 .nxo-header__zone-right .nxo-header__icon img { width: 16px; height: 16px; }
+    .nxo-header--1024 .nxo-header__zone-right .nxo-header__icon--profile img { width: 22px; height: 22px; }
+
+    .nxo-header--768 {
+      width: 768px;
+      height: 64px;
+    }
+
+    .nxo-header--768 .nxo-header__zone-left { width: 200px; padding-left: 12px; gap: 16px; }
+    .nxo-header--768 .nxo-header__icon { width: 28px; height: 28px; }
+    .nxo-header--768 .nxo-header__icon img { width: 18px; height: 18px; }
+    .nxo-header--768 .nxo-header__logo { height: 28px; }
+    .nxo-header--768 .nxo-header__service-name { display: none; }
+    .nxo-header--768 .nxo-header__search { display: none; }
+    .nxo-header--768 .nxo-header__zone-right { width: 180px; padding-right: 12px; gap: 8px; }
+    .nxo-header--768 .nxo-header__zone-right .nxo-header__icon { width: 32px; height: 32px; }
+    .nxo-header--768 .nxo-header__zone-right .nxo-header__icon img { width: 16px; height: 16px; }
+    .nxo-header--768 .nxo-header__zone-right .nxo-header__icon--search img { width: 18px; height: 18px; }
+    .nxo-header--768 .nxo-header__zone-right .nxo-header__icon--profile img { width: 22px; height: 22px; }
+
+    .nxo-header--375 {
+      width: 375px;
+      height: 56px;
+    }
+
+    .nxo-header--375 .nxo-header__zone-left { width: 50px; padding-left: 12px; gap: 0; }
+    .nxo-header--375 .nxo-header__icon { width: 28px; height: 28px; }
+    .nxo-header--375 .nxo-header__icon img { width: 20px; height: 20px; }
+    .nxo-header--375 .nxo-header__zone-center .nxo-header__logo { height: 28px; }
+    .nxo-header--375 .nxo-header__zone-right { width: 90px; padding-right: 12px; gap: 8px; }
+    .nxo-header--375 .nxo-header__zone-right .nxo-header__icon { width: 28px; height: 28px; }
+    .nxo-header--375 .nxo-header__zone-right .nxo-header__icon img { width: 16px; height: 16px; }
+    .nxo-header--375 .nxo-header__zone-right .nxo-header__icon--profile img { width: 20px; height: 20px; }
+
+    .demo-footer {
+      margin-top: 64px;
+      text-align: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Headers NXO Responsive</h1>
+  <p class="intro">5 variantes responsive du header unifié pour l'Espace Client (scroll horizontal pour voir en entier)</p>
+
+  <!-- Header 1920 -->
+  <section class="header-section">
+    <div class="header-label">Desktop XL - 1920 x 80</div>
+    <div class="header-wrapper">
+      <header class="nxo-header nxo-header--1920">
+        <div class="nxo-header__zone-left">
+          <button class="nxo-header__icon" aria-label="Applications">
+            <img src="../assets/icons/grip-vertical-solid-full.svg" alt="Apps">
+          </button>
+          <div class="nxo-header__logo">
+            <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO">
+          </div>
+          <span class="nxo-header__service-name">Nom Service</span>
+        </div>
+        <div class="nxo-header__zone-center">
+          <div class="nxo-header__search">
+            <img src="../assets/icons/magnifying-glass-solid-full.svg" alt="Rechercher">
+            <span>Rechercher...</span>
+          </div>
+        </div>
+        <div class="nxo-header__zone-right">
+          <button class="nxo-header__lang-btn" aria-label="Langue">
+            <span class="nxo-header__lang-flag fi fi-fr"></span>
+            <span class="nxo-header__lang-code">FR</span>
+          </button>
+          <button class="nxo-header__icon" aria-label="Plein écran">
+            <img src="../assets/icons/expand-solid-full.svg" alt="Expand">
+          </button>
+          <button class="nxo-header__icon" aria-label="Aide">
+            <img src="../assets/icons/question-solid-full.svg" alt="Aide">
+          </button>
+          <button class="nxo-header__icon nxo-header__icon--profile" aria-label="Profil">
+            <img src="../assets/icons/circle-user-regular-full.svg" alt="Profil">
+          </button>
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <!-- Header 1440 -->
+  <section class="header-section">
+    <div class="header-label">Desktop - 1440 x 80</div>
+    <div class="header-wrapper">
+      <header class="nxo-header nxo-header--1440">
+        <div class="nxo-header__zone-left">
+          <button class="nxo-header__icon" aria-label="Applications">
+            <img src="../assets/icons/grip-vertical-solid-full.svg" alt="Apps">
+          </button>
+          <div class="nxo-header__logo">
+            <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO">
+          </div>
+          <span class="nxo-header__service-name">Nom Service</span>
+        </div>
+        <div class="nxo-header__zone-center">
+          <div class="nxo-header__search">
+            <img src="../assets/icons/magnifying-glass-solid-full.svg" alt="Rechercher">
+            <span>Rechercher...</span>
+          </div>
+        </div>
+        <div class="nxo-header__zone-right">
+          <button class="nxo-header__lang-btn" aria-label="Langue">
+            <span class="nxo-header__lang-flag fi fi-fr"></span>
+            <span class="nxo-header__lang-code">FR</span>
+          </button>
+          <button class="nxo-header__icon" aria-label="Plein écran">
+            <img src="../assets/icons/expand-solid-full.svg" alt="Expand">
+          </button>
+          <button class="nxo-header__icon" aria-label="Aide">
+            <img src="../assets/icons/question-solid-full.svg" alt="Aide">
+          </button>
+          <button class="nxo-header__icon nxo-header__icon--profile" aria-label="Profil">
+            <img src="../assets/icons/circle-user-regular-full.svg" alt="Profil">
+          </button>
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <!-- Header 1024 -->
+  <section class="header-section">
+    <div class="header-label">Tablet - 1024 x 72 (avec hamburger)</div>
+    <div class="header-wrapper">
+      <header class="nxo-header nxo-header--1024">
+        <div class="nxo-header__zone-left">
+          <button class="nxo-header__icon" aria-label="Menu">
+            <img src="../assets/icons/bars-solid-full.svg" alt="Menu">
+          </button>
+          <div class="nxo-header__logo">
+            <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO">
+          </div>
+          <span class="nxo-header__service-name">Nom Service</span>
+        </div>
+        <div class="nxo-header__zone-center">
+          <div class="nxo-header__search">
+            <img src="../assets/icons/magnifying-glass-solid-full.svg" alt="Rechercher">
+            <span>Rechercher...</span>
+          </div>
+        </div>
+        <div class="nxo-header__zone-right">
+          <button class="nxo-header__lang-btn" aria-label="Langue">
+            <span class="nxo-header__lang-flag fi fi-fr"></span>
+            <span class="nxo-header__lang-code">FR</span>
+          </button>
+          <button class="nxo-header__icon" aria-label="Plein écran">
+            <img src="../assets/icons/expand-solid-full.svg" alt="Expand">
+          </button>
+          <button class="nxo-header__icon" aria-label="Aide">
+            <img src="../assets/icons/question-solid-full.svg" alt="Aide">
+          </button>
+          <button class="nxo-header__icon nxo-header__icon--profile" aria-label="Profil">
+            <img src="../assets/icons/circle-user-regular-full.svg" alt="Profil">
+          </button>
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <!-- Header 768 -->
+  <section class="header-section">
+    <div class="header-label">Tablet Small - 768 x 64 (sans search bar)</div>
+    <div class="header-wrapper">
+      <header class="nxo-header nxo-header--768">
+        <div class="nxo-header__zone-left">
+          <button class="nxo-header__icon" aria-label="Menu">
+            <img src="../assets/icons/bars-solid-full.svg" alt="Menu">
+          </button>
+          <div class="nxo-header__logo">
+            <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO">
+          </div>
+        </div>
+        <div class="nxo-header__zone-center">
+          <!-- Vide -->
+        </div>
+        <div class="nxo-header__zone-right">
+          <button class="nxo-header__icon nxo-header__icon--search" aria-label="Rechercher">
+            <img src="../assets/icons/magnifying-glass-solid-full.svg" alt="Rechercher">
+          </button>
+          <button class="nxo-header__icon" aria-label="Plein écran">
+            <img src="../assets/icons/expand-solid-full.svg" alt="Expand">
+          </button>
+          <button class="nxo-header__icon" aria-label="Aide">
+            <img src="../assets/icons/question-solid-full.svg" alt="Aide">
+          </button>
+          <button class="nxo-header__icon nxo-header__icon--profile" aria-label="Profil">
+            <img src="../assets/icons/circle-user-regular-full.svg" alt="Profil">
+          </button>
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <!-- Header 375 (Mobile) -->
+  <section class="header-section">
+    <div class="header-label">Mobile - 375 x 56 (logo centré)</div>
+    <div class="header-wrapper">
+      <header class="nxo-header nxo-header--375">
+        <div class="nxo-header__zone-left">
+          <button class="nxo-header__icon" aria-label="Menu">
+            <img src="../assets/icons/bars-solid-full.svg" alt="Menu">
+          </button>
+        </div>
+        <div class="nxo-header__zone-center">
+          <div class="nxo-header__logo">
+            <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO">
+          </div>
+        </div>
+        <div class="nxo-header__zone-right">
+          <button class="nxo-header__icon" aria-label="Aide">
+            <img src="../assets/icons/question-solid-full.svg" alt="Aide">
+          </button>
+          <button class="nxo-header__icon nxo-header__icon--profile" aria-label="Profil">
+            <img src="../assets/icons/circle-user-regular-full.svg" alt="Profil">
+          </button>
+        </div>
+      </header>
+    </div>
+  </section>
+
+  <footer class="demo-footer">
+    <p>NXO Design System - Headers Responsive - 2025</p>
+  </footer>
+
+</body>
+</html>

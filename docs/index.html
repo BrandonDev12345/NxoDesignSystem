@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NXO Design System - Documentation</title>
+
+  <!-- Theme loader -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../components/components.css">
+
+  <!-- Documentation Styles -->
+  <link rel="stylesheet" href="_assets/docs.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <a href="index.html" class="doc-header__logo">
+      <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <!-- Sidebar Overlay -->
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="index.html" class="doc-sidebar__link active"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-home"></i> NXO Design System</h1>
+          <span class="doc-section__badge">v2.0 Valide</span>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Design System officiel pour l'harmonisation des interfaces des portails clients NXO.
+          <strong>Version 2.0 validee par le Marketing - Decembre 2025.</strong>
+        </p>
+
+        <!-- Stats cards -->
+        <div class="doc-grid" style="margin-bottom: var(--nxo-spacing-xl);">
+          <div class="nxo-card">
+            <div class="nxo-card-body" style="text-align: center;">
+              <i class="fa-solid fa-palette" style="font-size: 32px; color: var(--nxo-blue-dark); margin-bottom: 12px;"></i>
+              <h3 class="nxo-h4">31 Composants</h3>
+              <p class="nxo-text-sm nxo-text-muted">Prets a l'emploi</p>
+            </div>
+          </div>
+          <div class="nxo-card">
+            <div class="nxo-card-body" style="text-align: center;">
+              <i class="fa-solid fa-code" style="font-size: 32px; color: var(--nxo-blue-dark); margin-bottom: 12px;"></i>
+              <h3 class="nxo-h4">100+ Tokens</h3>
+              <p class="nxo-text-sm nxo-text-muted">Variables CSS</p>
+            </div>
+          </div>
+          <div class="nxo-card">
+            <div class="nxo-card-body" style="text-align: center;">
+              <i class="fa-solid fa-mobile-screen" style="font-size: 32px; color: var(--nxo-blue-dark); margin-bottom: 12px;"></i>
+              <h3 class="nxo-h4">5 Breakpoints</h3>
+              <p class="nxo-text-sm nxo-text-muted">Full responsive</p>
+            </div>
+          </div>
+          <div class="nxo-card">
+            <div class="nxo-card-body" style="text-align: center;">
+              <i class="fa-solid fa-universal-access" style="font-size: 32px; color: var(--nxo-blue-dark); margin-bottom: 12px;"></i>
+              <h3 class="nxo-h4">WCAG AA</h3>
+              <p class="nxo-text-sm nxo-text-muted">Accessible</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick start -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Demarrage rapide</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__code">
+              <pre><span class="comment">&lt;!-- 1. Importer les fichiers CSS --&gt;</span>
+<span class="property">&lt;link</span> rel="stylesheet" href="<span class="value">tokens/tokens.css</span>"<span class="property">&gt;</span>
+<span class="property">&lt;link</span> rel="stylesheet" href="<span class="value">components/components.css</span>"<span class="property">&gt;</span>
+
+<span class="comment">&lt;!-- 2. Utiliser les composants --&gt;</span>
+<span class="property">&lt;button</span> class="<span class="value">nxo-btn nxo-btn-primary</span>"<span class="property">&gt;</span>Mon bouton<span class="property">&lt;/button&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fichiers -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Fichiers du Design System</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead>
+                  <tr><th>Fichier</th><th>Description</th><th>Taille</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code class="doc-tokens__var">tokens/tokens.css</code></td>
+                    <td>Variables CSS (couleurs, typographie, espacements...)</td>
+                    <td>~8 KB</td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">components/components.css</code></td>
+                    <td>Styles des 31 composants</td>
+                    <td>~45 KB</td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">assets/logos/</code></td>
+                    <td>Logos NXO et Fayat</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td><code class="doc-tokens__var">assets/icons/</code></td>
+                    <td>Icons SVG personnalises</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Principes -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Principes de design</h3>
+          <div class="doc-grid">
+            <div class="nxo-card">
+              <div class="nxo-card-body">
+                <h4 class="nxo-h4" style="color: var(--fayat-blue);"><i class="fa-solid fa-bullseye"></i> Coherence</h4>
+                <p class="nxo-text-sm nxo-text-muted">Une experience unifiee sur tous les portails clients NXO.</p>
+              </div>
+            </div>
+            <div class="nxo-card">
+              <div class="nxo-card-body">
+                <h4 class="nxo-h4" style="color: var(--fayat-blue);"><i class="fa-solid fa-bolt"></i> Efficacite</h4>
+                <p class="nxo-text-sm nxo-text-muted">Composants prets a l'emploi pour accelerer le developpement.</p>
+              </div>
+            </div>
+            <div class="nxo-card">
+              <div class="nxo-card-body">
+                <h4 class="nxo-h4" style="color: var(--fayat-blue);"><i class="fa-solid fa-universal-access"></i> Accessibilite</h4>
+                <p class="nxo-text-sm nxo-text-muted">Conforme WCAG AA avec contrastes et focus visibles.</p>
+              </div>
+            </div>
+            <div class="nxo-card">
+              <div class="nxo-card-body">
+                <h4 class="nxo-h4" style="color: var(--fayat-blue);"><i class="fa-solid fa-moon"></i> Dark Mode</h4>
+                <p class="nxo-text-sm nxo-text-muted">Support natif du theme sombre sur tous les composants.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Responsive -->
+      <section class="doc-section" style="margin-top: var(--nxo-spacing-xl);">
+        <div class="doc-section__header">
+          <h2 class="doc-section__title"><i class="fa-solid fa-mobile-screen"></i> Responsive</h2>
+        </div>
+        <p class="nxo-text nxo-mb-lg">
+          Tous les composants du Design System sont responsive nativement. Deux breakpoints principaux :
+          <strong>768px</strong> (tablette/mobile) et <strong>480px</strong> (petit mobile).
+        </p>
+
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Comportement par composant</h3>
+          <div style="overflow-x: auto;">
+            <table class="nxo-table" style="min-width: 700px;">
+              <thead>
+                <tr>
+                  <th>Composant</th>
+                  <th>768px (tablette)</th>
+                  <th>480px (mobile)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Typographie</strong></td>
+                  <td>h1 passe de 2.5rem a 1.75rem, h2 de 2rem a 1.375rem, h3 reduit</td>
+                  <td>h1 a 1.375rem, h2 a 1.125rem</td>
+                </tr>
+                <tr>
+                  <td><strong>Header</strong></td>
+                  <td>Hauteur reduite (64px), search masque, burger visible</td>
+                  <td>Hauteur 56px, logo mobile, lang masque</td>
+                </tr>
+                <tr>
+                  <td><strong>Sidebar</strong></td>
+                  <td colspan="2">Masquee, slide-in via <code>.nxo-sidebar-toggle</code> + <code>.nxo-sidebar-overlay</code> + classe <code>.open</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Cards</strong></td>
+                  <td>Padding header/body/footer reduit</td>
+                  <td>Padding minimal (spacing-sm)</td>
+                </tr>
+                <tr>
+                  <td><strong>Tables</strong></td>
+                  <td colspan="2">Encapsuler avec <code>.nxo-table-responsive</code> pour activer le scroll horizontal</td>
+                </tr>
+                <tr>
+                  <td><strong>Modales</strong></td>
+                  <td colspan="2">Plein ecran, border-radius 0, boutons du footer empiles en colonne</td>
+                </tr>
+                <tr>
+                  <td><strong>Tabs</strong></td>
+                  <td colspan="2">Scroll horizontal automatique, pas de retour a la ligne</td>
+                </tr>
+                <tr>
+                  <td><strong>Toasts</strong></td>
+                  <td colspan="2">Pleine largeur, positionnement en haut de l'ecran</td>
+                </tr>
+                <tr>
+                  <td><strong>Footer</strong></td>
+                  <td colspan="2">Liens empiles verticalement, padding reduit, texte centre</td>
+                </tr>
+                <tr>
+                  <td><strong>Pagination</strong></td>
+                  <td>Items wrappent, taille reduite (32px)</td>
+                  <td>Les ellipsis (<code>.nxo-pagination-ellipsis</code>) sont masques</td>
+                </tr>
+                <tr>
+                  <td><strong>Breadcrumb</strong></td>
+                  <td colspan="2">Scroll horizontal, pas de retour a la ligne</td>
+                </tr>
+                <tr>
+                  <td><strong>Stepper</strong></td>
+                  <td colspan="2">Passe automatiquement en orientation verticale</td>
+                </tr>
+                <tr>
+                  <td><strong>Nav</strong></td>
+                  <td colspan="2">Scroll horizontal automatique</td>
+                </tr>
+                <tr>
+                  <td><strong>Accordion</strong></td>
+                  <td colspan="2">Padding reduit (header et contenu)</td>
+                </tr>
+                <tr>
+                  <td><strong>Alerts</strong></td>
+                  <td colspan="2">Padding reduit, gap plus compact</td>
+                </tr>
+                <tr>
+                  <td><strong>Formulaires</strong></td>
+                  <td>Inchanges (deja full-width)</td>
+                  <td>Hauteur tactile 44px, font-size 16px (pas de zoom iOS)</td>
+                </tr>
+                <tr>
+                  <td><strong>Dropzone</strong></td>
+                  <td colspan="2">Taille et padding reduits, icone plus petite</td>
+                </tr>
+                <tr>
+                  <td><strong>Empty State</strong></td>
+                  <td>Padding reduit, icone plus petite</td>
+                  <td>Boutons d'actions empiles en colonne</td>
+                </tr>
+                <tr>
+                  <td><strong>Boutons</strong></td>
+                  <td><code>.nxo-btn-group</code> wrappable</td>
+                  <td><code>.nxo-btn-group</code> empile en colonne, full width</td>
+                </tr>
+                <tr>
+                  <td><strong>Timeline</strong></td>
+                  <td>Inchangee</td>
+                  <td>Markers et padding reduits</td>
+                </tr>
+                <tr>
+                  <td><strong>List</strong></td>
+                  <td colspan="2">Padding reduit sur les items</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tables responsive</h3>
+          <p class="nxo-text nxo-mb-md">
+            Pour activer le scroll horizontal sur les tables en mobile, encapsulez la table dans un conteneur <code>.nxo-table-responsive</code> :
+          </p>
+          <div class="doc-demo">
+            <div class="doc-demo__code">
+              <pre>&lt;div class="nxo-table-responsive"&gt;
+  &lt;table class="nxo-table"&gt;
+    ...
+  &lt;/table&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Sidebar responsive</h3>
+          <p class="nxo-text nxo-mb-md">
+            La sidebar necessite un bouton hamburger, un overlay et un peu de JavaScript.
+            Voir la <a href="composants/sidebar-comp.html" class="nxo-link">documentation Sidebar</a> pour le code complet.
+          </p>
+          <div class="doc-demo">
+            <div class="doc-demo__code">
+              <pre>&lt;!-- Ajouter dans votre HTML --&gt;
+&lt;button class="nxo-sidebar-toggle" id="sidebarToggle"&gt;
+  &lt;i class="fa-solid fa-bars"&gt;&lt;/i&gt;
+&lt;/button&gt;
+&lt;div class="nxo-sidebar-overlay" id="sidebarOverlay"&gt;&lt;/div&gt;
+&lt;aside class="nxo-sidebar" id="sidebar"&gt;...&lt;/aside&gt;
+
+&lt;script&gt;
+  const toggle = document.getElementById('sidebarToggle');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  toggle.addEventListener('click', () =&gt; {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  });
+  overlay.addEventListener('click', () =&gt; {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+  });
+&lt;/script&gt;</pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Bonnes pratiques</h3>
+          <div class="doc-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div class="nxo-alert nxo-alert-success">
+              <div class="nxo-alert-icon"><i class="fa-solid fa-check"></i></div>
+              <div class="nxo-alert-content">
+                <div class="nxo-alert-title">Faire</div>
+                <div class="nxo-alert-message">
+                  Toujours ajouter <code>&lt;meta name="viewport"&gt;</code> dans le &lt;head&gt;.
+                  Utiliser <code>.nxo-table-responsive</code> autour des tables larges.
+                  Tester sur un vrai mobile.
+                </div>
+              </div>
+            </div>
+            <div class="nxo-alert nxo-alert-danger">
+              <div class="nxo-alert-icon"><i class="fa-solid fa-xmark"></i></div>
+              <div class="nxo-alert-content">
+                <div class="nxo-alert-title">Eviter</div>
+                <div class="nxo-alert-message">
+                  Largeurs fixes en pixels sur les conteneurs.
+                  Desactiver le zoom utilisateur.
+                  Utiliser des font-size < 16px sur les inputs (zoom iOS).
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Footer -->
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">
+          NXO Design System v2.0 - Valide Marketing Decembre 2025
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- Scroll to top -->
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    // Mobile sidebar
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    // Scroll to top
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="_assets/docs-search.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

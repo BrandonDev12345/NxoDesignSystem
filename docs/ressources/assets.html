@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assets - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link active"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-image"></i> Assets</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Logos, icones et ressources graphiques officielles NXO / Fayat.
+        </p>
+
+        <!-- Logos -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Logos NXO</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Logos officiels pour les differents contextes d'utilisation.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px;">
+                <!-- Logo fond bleu -->
+                <div style="text-align: center;">
+                  <div style="background: var(--fayat-blue); padding: 24px; border-radius: 8px; margin-bottom: 12px;">
+                    <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO Logo fond bleu" style="max-height: 60px;">
+                  </div>
+                  <p class="nxo-text-sm nxo-text-muted">Fond bleu (principal)</p>
+                  <code class="doc-tokens__var" style="font-size: 11px;">nxo-fayat-logo.png</code>
+                </div>
+                <!-- Logo fond blanc -->
+                <div style="text-align: center;">
+                  <div style="background: white; padding: 24px; border-radius: 8px; margin-bottom: 12px; border: 1px solid var(--nxo-border-color);">
+                    <img src="../../assets/logos/NXO-Fayat-fond-blanc.svg" alt="NXO Logo fond blanc" style="max-height: 60px;" onerror="this.src='../assets/logos/nxo-fayat-logo.png'">
+                  </div>
+                  <p class="nxo-text-sm nxo-text-muted">Fond blanc</p>
+                  <code class="doc-tokens__var" style="font-size: 11px;">NXO-Fayat-fond-blanc.svg</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regles d'utilisation -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Regles d'utilisation du logo</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+                <!-- Do -->
+                <div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <span style="width: 24px; height: 24px; background: var(--nxo-success); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fa-solid fa-check" style="color: white; font-size: 12px;"></i>
+                    </span>
+                    <span style="font-weight: 600; color: var(--nxo-success);">A faire</span>
+                  </div>
+                  <ul style="margin: 0; padding-left: 20px; color: var(--nxo-text-color);">
+                    <li style="margin-bottom: 8px;">Utiliser le logo sur fond bleu NXO</li>
+                    <li style="margin-bottom: 8px;">Respecter les zones de protection</li>
+                    <li style="margin-bottom: 8px;">Utiliser les fichiers sources fournis</li>
+                    <li>Taille minimale: 32px de hauteur</li>
+                  </ul>
+                </div>
+                <!-- Don't -->
+                <div>
+                  <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <span style="width: 24px; height: 24px; background: var(--nxo-danger); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                      <i class="fa-solid fa-times" style="color: white; font-size: 12px;"></i>
+                    </span>
+                    <span style="font-weight: 600; color: var(--nxo-danger);">A eviter</span>
+                  </div>
+                  <ul style="margin: 0; padding-left: 20px; color: var(--nxo-text-color);">
+                    <li style="margin-bottom: 8px;">Modifier les couleurs du logo</li>
+                    <li style="margin-bottom: 8px;">Deformer ou etirer le logo</li>
+                    <li style="margin-bottom: 8px;">Ajouter des effets (ombre, contour)</li>
+                    <li>Utiliser sur fond charge ou colore</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Icones -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Icones</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Nous utilisons Font Awesome 6 pour toutes les icones.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 16px; text-align: center;">
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-home fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-home</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-user fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-user</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-cog fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-cog</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-bell fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-bell</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-search fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-search</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-plus fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-plus</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-trash fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-trash</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-pencil fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-pencil</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-check fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-check</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-times fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-times</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-download fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-download</p>
+                </div>
+                <div style="padding: 16px; background: var(--nxo-hover-bg); border-radius: 8px;">
+                  <i class="fa-solid fa-upload fa-lg" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-upload</p>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code">
+              <pre><span class="comment">&lt;!-- Inclure Font Awesome --&gt;</span>
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"&gt;
+
+<span class="comment">&lt;!-- Utilisation --&gt;</span>
+&lt;i class="<span class="value">fa-solid fa-home</span>"&gt;&lt;/i&gt;
+&lt;i class="<span class="value">fa-solid fa-user</span>"&gt;&lt;/i&gt;
+&lt;i class="<span class="value">fa-regular fa-bell</span>"&gt;&lt;/i&gt;  <span class="comment">&lt;!-- Version outline --&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tailles icones -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tailles d'icones</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="display: flex; align-items: flex-end; gap: 24px;">
+                <div style="text-align: center;">
+                  <i class="fa-solid fa-star fa-xs" style="color: var(--fayat-blue);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-xs</p>
+                </div>
+                <div style="text-align: center;">
+                  <i class="fa-solid fa-star fa-sm" style="color: var(--fayat-blue);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-sm</p>
+                </div>
+                <div style="text-align: center;">
+                  <i class="fa-solid fa-star" style="color: var(--fayat-blue);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">default</p>
+                </div>
+                <div style="text-align: center;">
+                  <i class="fa-solid fa-star fa-lg" style="color: var(--fayat-blue);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-lg</p>
+                </div>
+                <div style="text-align: center;">
+                  <i class="fa-solid fa-star fa-xl" style="color: var(--fayat-blue);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-xl</p>
+                </div>
+                <div style="text-align: center;">
+                  <i class="fa-solid fa-star fa-2x" style="color: var(--fayat-blue);"></i>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">fa-2x</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avatars -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avatars</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Representation visuelle des utilisateurs.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="display: flex; align-items: center; gap: 16px;">
+                <!-- XS -->
+                <div style="text-align: center;">
+                  <div style="width: 24px; height: 24px; border-radius: 50%; background: var(--fayat-blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 600;">J</div>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">24px</p>
+                </div>
+                <!-- SM -->
+                <div style="text-align: center;">
+                  <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--fayat-blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; font-weight: 600;">JD</div>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">32px</p>
+                </div>
+                <!-- MD -->
+                <div style="text-align: center;">
+                  <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--fayat-blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600;">JD</div>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">40px</p>
+                </div>
+                <!-- LG -->
+                <div style="text-align: center;">
+                  <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--fayat-blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 600;">JD</div>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">56px</p>
+                </div>
+                <!-- XL -->
+                <div style="text-align: center;">
+                  <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--fayat-blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: 600;">JD</div>
+                  <p class="nxo-text-xs nxo-text-muted" style="margin: 8px 0 0;">80px</p>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code">
+              <pre>&lt;div class="<span class="value">nxo-avatar nxo-avatar-md</span>"&gt;JD&lt;/div&gt;
+&lt;div class="<span class="value">nxo-avatar nxo-avatar-lg</span>"&gt;JD&lt;/div&gt;</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Couleurs avatars -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Couleurs d'avatars</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="display: flex; gap: 12px;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--fayat-blue); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600;">AB</div>
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--nxo-success); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600;">CD</div>
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--nxo-warning); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600;">EF</div>
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--nxo-danger); display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600;">GH</div>
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: #9333ea; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600;">IJ</div>
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: #ec4899; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; font-weight: 600;">KL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telechargements -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Telechargements</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                <a href="../assets/logos/nxo-fayat-logo.png" download class="nxo-btn nxo-btn-outline">
+                  <i class="fa-solid fa-download"></i> Logo PNG
+                </a>
+                <a href="../../tokens/tokens.css" download class="nxo-btn nxo-btn-outline">
+                  <i class="fa-solid fa-download"></i> Tokens CSS
+                </a>
+                <a href="../../components/components.css" download class="nxo-btn nxo-btn-outline">
+                  <i class="fa-solid fa-download"></i> Components CSS
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+</body>
+</html>

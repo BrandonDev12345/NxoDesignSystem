@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demarrage - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../components/components.css">
+  <link rel="stylesheet" href="_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="index.html" class="doc-header__logo">
+      <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="getting-started.html" class="doc-sidebar__link active"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-rocket"></i> Demarrage</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Guide d'installation et d'utilisation du NXO Design System dans vos projets.
+        </p>
+
+        <!-- Installation -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Installation</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Ajoutez les fichiers CSS du Design System a votre projet.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__code">
+              <pre><span class="comment">&lt;!-- 1. Police Montserrat --&gt;</span>
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;
+&lt;link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"&gt;
+
+<span class="comment">&lt;!-- 2. Font Awesome pour les icones --&gt;</span>
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"&gt;
+
+<span class="comment">&lt;!-- 3. Design System CSS --&gt;</span>
+&lt;link rel="stylesheet" href="<span class="value">tokens/tokens.css</span>"&gt;
+&lt;link rel="stylesheet" href="<span class="value">components/components.css</span>"&gt;</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Structure des fichiers -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Structure des fichiers</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__code">
+              <pre>nxo-design-system/
+├── tokens/
+│   └── <span class="value">tokens.css</span>       <span class="comment"># Variables CSS (couleurs, espacements, etc.)</span>
+├── components/
+│   └── <span class="value">components.css</span>   <span class="comment"># Styles des composants</span>
+├── assets/
+│   ├── logos/              <span class="comment"># Logos NXO / Fayat</span>
+│   └── icons/              <span class="comment"># Icones SVG</span>
+└── docs/
+    └── *.html              <span class="comment"># Documentation</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Utilisation basique -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Utilisation basique</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Exemple de page HTML utilisant le Design System.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__code">
+              <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Mon Application NXO&lt;/title&gt;
+
+  <span class="comment">&lt;!-- Design System --&gt;</span>
+  &lt;link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"&gt;
+  &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"&gt;
+  &lt;link rel="stylesheet" href="tokens/tokens.css"&gt;
+  &lt;link rel="stylesheet" href="components/components.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header class="<span class="value">nxo-header</span>"&gt;
+    &lt;img src="assets/logos/logo.png" alt="NXO"&gt;
+    &lt;h1&gt;Mon Application&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;main style="padding: var(--nxo-spacing-xl);"&gt;
+    &lt;div class="<span class="value">nxo-card</span>"&gt;
+      &lt;h2 class="nxo-h3"&gt;Bienvenue&lt;/h2&gt;
+      &lt;p class="nxo-text"&gt;Votre contenu ici...&lt;/p&gt;
+      &lt;button class="<span class="value">nxo-btn nxo-btn-primary</span>"&gt;Action&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/main&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Variables CSS -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Utilisation des variables CSS</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Utilisez les tokens pour personnaliser vos composants.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__code">
+              <pre><span class="comment">/* Utiliser les couleurs */</span>
+.mon-element {
+  background: <span class="value">var(--fayat-blue)</span>;
+  color: <span class="value">var(--fayat-yellow)</span>;
+}
+
+<span class="comment">/* Utiliser les espacements */</span>
+.mon-conteneur {
+  padding: <span class="value">var(--nxo-spacing-lg)</span>;
+  gap: <span class="value">var(--nxo-spacing-md)</span>;
+}
+
+<span class="comment">/* Utiliser la typographie */</span>
+.mon-titre {
+  font-size: <span class="value">var(--nxo-font-size-2xl)</span>;
+  font-weight: <span class="value">var(--nxo-font-weight-bold)</span>;
+}
+
+<span class="comment">/* Utiliser les radius */</span>
+.ma-carte {
+  border-radius: <span class="value">var(--nxo-radius-lg)</span>;
+}</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dark Mode -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Mode sombre</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Le Design System supporte le mode sombre nativement.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__code">
+              <pre><span class="comment">&lt;!-- Ajouter ce script dans &lt;head&gt; pour eviter le flash --&gt;</span>
+&lt;script&gt;
+  (function() {
+    var theme = localStorage.getItem('nxo-theme');
+    if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+&lt;/script&gt;
+
+<span class="comment">&lt;!-- Bouton pour basculer le theme --&gt;</span>
+&lt;button onclick="toggleTheme()"&gt;Changer de theme&lt;/button&gt;
+
+&lt;script&gt;
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+}
+&lt;/script&gt;</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Classes utilitaires -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Classes utilitaires</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">Classes CSS pret-a-l'emploi pour un developpement rapide.</p>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead>
+                  <tr><th>Classe</th><th>Description</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">.nxo-h1</code> - <code class="doc-tokens__var">.nxo-h4</code></td><td>Styles de titres</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-text</code></td><td>Corps de texte standard</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-text-sm</code></td><td>Texte petit (14px)</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-text-xs</code></td><td>Texte tres petit (12px)</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-text-muted</code></td><td>Texte grise</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-mb-xs</code> - <code class="doc-tokens__var">.nxo-mb-2xl</code></td><td>Margin bottom</td></tr>
+                  <tr><td><code class="doc-tokens__var">.nxo-mt-xs</code> - <code class="doc-tokens__var">.nxo-mt-2xl</code></td><td>Margin top</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bonnes pratiques -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Bonnes pratiques</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                <div class="nxo-card" style="border-left: 4px solid var(--nxo-success);">
+                  <h4 class="nxo-h4 nxo-mb-sm"><i class="fa-solid fa-check" style="color: var(--nxo-success);"></i> A faire</h4>
+                  <ul style="margin: 0; padding-left: 20px; color: var(--nxo-text-color);">
+                    <li style="margin-bottom: 8px;">Utiliser les variables CSS du Design System</li>
+                    <li style="margin-bottom: 8px;">Respecter les espacements definis</li>
+                    <li style="margin-bottom: 8px;">Utiliser les composants existants</li>
+                    <li>Tester en mode clair ET sombre</li>
+                  </ul>
+                </div>
+                <div class="nxo-card" style="border-left: 4px solid var(--nxo-danger);">
+                  <h4 class="nxo-h4 nxo-mb-sm"><i class="fa-solid fa-times" style="color: var(--nxo-danger);"></i> A eviter</h4>
+                  <ul style="margin: 0; padding-left: 20px; color: var(--nxo-text-color);">
+                    <li style="margin-bottom: 8px;">Coder des valeurs en dur (couleurs, tailles)</li>
+                    <li style="margin-bottom: 8px;">Modifier les tokens globalement</li>
+                    <li style="margin-bottom: 8px;">Ignorer l'accessibilite</li>
+                    <li>Creer des composants non documentes</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Support -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Navigateurs supportes</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                <div style="text-align: center;">
+                  <i class="fa-brands fa-chrome fa-2x" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-sm nxo-text-muted" style="margin: 8px 0 0;">Chrome 90+</p>
+                </div>
+                <div style="text-align: center;">
+                  <i class="fa-brands fa-firefox-browser fa-2x" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-sm nxo-text-muted" style="margin: 8px 0 0;">Firefox 88+</p>
+                </div>
+                <div style="text-align: center;">
+                  <i class="fa-brands fa-safari fa-2x" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-sm nxo-text-muted" style="margin: 8px 0 0;">Safari 14+</p>
+                </div>
+                <div style="text-align: center;">
+                  <i class="fa-brands fa-edge fa-2x" style="color: var(--nxo-text-color);"></i>
+                  <p class="nxo-text-sm nxo-text-muted" style="margin: 8px 0 0;">Edge 90+</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="_assets/docs-search.js"></script>
+
+</body>
+</html>

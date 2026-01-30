@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutons - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link active"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-square"></i> Boutons</h1>
+          <div style="display: flex; gap: 8px; align-items: center;">
+            <span class="doc-a11y-badge"><i class="fa-solid fa-universal-access"></i> WCAG AA</span>
+            <span class="doc-spec">Capsule - radius: 9999px</span>
+          </div>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Boutons avec forme capsule (full radius) et 3 variantes principales. Tous les boutons ont un focus visible accessible.
+        </p>
+
+        <!-- Variantes principales -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Variantes principales</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row">
+                <button class="nxo-btn nxo-btn-primary">Primary</button>
+                <button class="nxo-btn nxo-btn-secondary">Secondary</button>
+                <button class="nxo-btn nxo-btn-outline">Outline</button>
+                <button class="nxo-btn nxo-btn-ghost">Ghost</button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;button class="nxo-btn nxo-btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="nxo-btn nxo-btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="nxo-btn nxo-btn-outline"&gt;Outline&lt;/button&gt;
+&lt;button class="nxo-btn nxo-btn-ghost"&gt;Ghost&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ @nxo/design-system est un exemple fictif
+// Utilisez les classes CSS NXO avec vos composants MUI
+
+import { Button } from '@mui/material';
+import '@nxo/tokens/tokens.css'; // Importez les tokens CSS
+
+// Variantes avec Material UI + classes NXO
+&lt;Button className="nxo-btn nxo-btn-primary"&gt;Primary&lt;/Button&gt;
+&lt;Button className="nxo-btn nxo-btn-secondary"&gt;Secondary&lt;/Button&gt;
+&lt;Button variant="outlined" className="nxo-btn nxo-btn-outline"&gt;Outline&lt;/Button&gt;
+&lt;Button variant="text" className="nxo-btn nxo-btn-ghost"&gt;Ghost&lt;/Button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ @nxo/design-system est un exemple fictif
+// Utilisez les classes CSS NXO avec Angular Material
+
+import { MatButtonModule } from '@angular/material/button';
+// Importez tokens.css dans angular.json ou styles.scss
+
+// Dans le template avec Angular Material + classes NXO
+&lt;button mat-button class="nxo-btn nxo-btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button mat-button class="nxo-btn nxo-btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button mat-stroked-button class="nxo-btn nxo-btn-outline"&gt;Outline&lt;/button&gt;
+&lt;button mat-button class="nxo-btn nxo-btn-ghost"&gt;Ghost&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Primary',
+    variant: 'primary'
+} %}
+
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Secondary',
+    variant: 'secondary'
+} %}
+
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Outline',
+    variant: 'outline'
+} %}
+
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Ghost',
+    variant: 'ghost'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tailles -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tailles</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row">
+                <button class="nxo-btn nxo-btn-primary nxo-btn-sm">Small</button>
+                <button class="nxo-btn nxo-btn-primary">Default</button>
+                <button class="nxo-btn nxo-btn-primary nxo-btn-lg">Large</button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;button class="nxo-btn nxo-btn-primary nxo-btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="nxo-btn nxo-btn-primary"&gt;Default&lt;/button&gt;
+&lt;button class="nxo-btn nxo-btn-primary nxo-btn-lg"&gt;Large&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+
+import { Button } from '@mui/material';
+
+// Tailles de boutons
+&lt;Button className="nxo-btn nxo-btn-primary nxo-btn-sm"&gt;Small&lt;/Button&gt;
+&lt;Button className="nxo-btn nxo-btn-primary"&gt;Default&lt;/Button&gt;
+&lt;Button className="nxo-btn nxo-btn-primary nxo-btn-lg"&gt;Large&lt;/Button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { MatButtonModule } from '@angular/material/button';
+
+// Dans le template
+&lt;button mat-button class="nxo-btn nxo-btn-primary nxo-btn-sm"&gt;Small&lt;/button&gt;
+&lt;button mat-button class="nxo-btn nxo-btn-primary"&gt;Default&lt;/button&gt;
+&lt;button mat-button class="nxo-btn nxo-btn-primary nxo-btn-lg"&gt;Large&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Small',
+    variant: 'primary',
+    size: 'sm'
+} %}
+
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Default',
+    variant: 'primary'
+} %}
+
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Large',
+    variant: 'primary',
+    size: 'lg'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avec icones -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec icones</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row">
+                <button class="nxo-btn nxo-btn-primary">
+                  <i class="fa-solid fa-plus"></i> Ajouter
+                </button>
+                <button class="nxo-btn nxo-btn-secondary">
+                  <i class="fa-solid fa-download"></i> Telecharger
+                </button>
+                <button class="nxo-btn nxo-btn-outline">
+                  Suivant <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;button class="nxo-btn nxo-btn-primary"&gt;
+  &lt;i class="fa-solid fa-plus"&gt;&lt;/i&gt; Ajouter
+&lt;/button&gt;
+
+&lt;button class="nxo-btn nxo-btn-secondary"&gt;
+  &lt;i class="fa-solid fa-download"&gt;&lt;/i&gt; Telecharger
+&lt;/button&gt;
+
+&lt;button class="nxo-btn nxo-btn-outline"&gt;
+  Suivant &lt;i class="fa-solid fa-arrow-right"&gt;&lt;/i&gt;
+&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+
+import { Button } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faDownload, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
+// Boutons avec icones
+&lt;Button className="nxo-btn nxo-btn-primary"&gt;
+  &lt;FontAwesomeIcon icon={faPlus} /&gt; Ajouter
+&lt;/Button&gt;
+&lt;Button className="nxo-btn nxo-btn-secondary"&gt;
+  &lt;FontAwesomeIcon icon={faDownload} /&gt; Telecharger
+&lt;/Button&gt;
+&lt;Button className="nxo-btn nxo-btn-outline"&gt;
+  Suivant &lt;FontAwesomeIcon icon={faArrowRight} /&gt;
+&lt;/Button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { MatButtonModule } from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+// Dans le template
+&lt;button mat-button class="nxo-btn nxo-btn-primary"&gt;
+  &lt;fa-icon icon="plus"&gt;&lt;/fa-icon&gt; Ajouter
+&lt;/button&gt;
+
+&lt;button mat-button class="nxo-btn nxo-btn-secondary"&gt;
+  &lt;fa-icon icon="download"&gt;&lt;/fa-icon&gt; Telecharger
+&lt;/button&gt;
+
+&lt;button mat-stroked-button class="nxo-btn nxo-btn-outline"&gt;
+  Suivant &lt;fa-icon icon="arrow-right"&gt;&lt;/fa-icon&gt;
+&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Ajouter',
+    variant: 'primary',
+    icon: 'plus',
+    iconPosition: 'left'
+} %}
+
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Telecharger',
+    variant: 'secondary',
+    icon: 'download',
+    iconPosition: 'left'
+} %}
+
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Suivant',
+    variant: 'outline',
+    icon: 'arrow-right',
+    iconPosition: 'right'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boutons icone seule -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Boutons icone seule</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row">
+                <button class="nxo-btn nxo-btn-icon nxo-btn-primary">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+                <button class="nxo-btn nxo-btn-icon nxo-btn-secondary">
+                  <i class="fa-solid fa-pencil"></i>
+                </button>
+                <button class="nxo-btn nxo-btn-icon nxo-btn-outline">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+                <button class="nxo-btn nxo-btn-icon nxo-btn-ghost">
+                  <i class="fa-solid fa-ellipsis-v"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;button class="nxo-btn nxo-btn-icon nxo-btn-primary"&gt;
+  &lt;i class="fa-solid fa-plus"&gt;&lt;/i&gt;
+&lt;/button&gt;
+
+&lt;button class="nxo-btn nxo-btn-icon nxo-btn-secondary"&gt;
+  &lt;i class="fa-solid fa-pencil"&gt;&lt;/i&gt;
+&lt;/button&gt;
+
+&lt;button class="nxo-btn nxo-btn-icon nxo-btn-outline"&gt;
+  &lt;i class="fa-solid fa-trash"&gt;&lt;/i&gt;
+&lt;/button&gt;
+
+&lt;button class="nxo-btn nxo-btn-icon nxo-btn-ghost"&gt;
+  &lt;i class="fa-solid fa-ellipsis-v"&gt;&lt;/i&gt;
+&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+
+import { IconButton } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faPencil, faTrash, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+
+// Boutons icone seule
+&lt;IconButton className="nxo-btn nxo-btn-icon nxo-btn-primary" aria-label="Ajouter"&gt;
+  &lt;FontAwesomeIcon icon={faPlus} /&gt;
+&lt;/IconButton&gt;
+&lt;IconButton className="nxo-btn nxo-btn-icon nxo-btn-secondary" aria-label="Modifier"&gt;
+  &lt;FontAwesomeIcon icon={faPencil} /&gt;
+&lt;/IconButton&gt;
+&lt;IconButton className="nxo-btn nxo-btn-icon nxo-btn-outline" aria-label="Supprimer"&gt;
+  &lt;FontAwesomeIcon icon={faTrash} /&gt;
+&lt;/IconButton&gt;
+&lt;IconButton className="nxo-btn nxo-btn-icon nxo-btn-ghost" aria-label="Options"&gt;
+  &lt;FontAwesomeIcon icon={faEllipsisV} /&gt;
+&lt;/IconButton&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { MatIconButton } from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+// Dans le template
+&lt;button mat-icon-button class="nxo-btn nxo-btn-icon nxo-btn-primary" aria-label="Ajouter"&gt;
+  &lt;fa-icon icon="plus"&gt;&lt;/fa-icon&gt;
+&lt;/button&gt;
+
+&lt;button mat-icon-button class="nxo-btn nxo-btn-icon nxo-btn-secondary" aria-label="Modifier"&gt;
+  &lt;fa-icon icon="pencil"&gt;&lt;/fa-icon&gt;
+&lt;/button&gt;
+
+&lt;button mat-icon-button class="nxo-btn nxo-btn-icon nxo-btn-outline" aria-label="Supprimer"&gt;
+  &lt;fa-icon icon="trash"&gt;&lt;/fa-icon&gt;
+&lt;/button&gt;
+
+&lt;button mat-icon-button class="nxo-btn nxo-btn-icon nxo-btn-ghost" aria-label="Options"&gt;
+  &lt;fa-icon icon="ellipsis-v"&gt;&lt;/fa-icon&gt;
+&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/icon-button.html.twig' with {
+    icon: 'plus',
+    variant: 'primary',
+    ariaLabel: 'Ajouter'
+} %}
+
+{% include '@NxoDesignSystem/icon-button.html.twig' with {
+    icon: 'pencil',
+    variant: 'secondary',
+    ariaLabel: 'Modifier'
+} %}
+
+{% include '@NxoDesignSystem/icon-button.html.twig' with {
+    icon: 'trash',
+    variant: 'outline',
+    ariaLabel: 'Supprimer'
+} %}
+
+{% include '@NxoDesignSystem/icon-button.html.twig' with {
+    icon: 'ellipsis-v',
+    variant: 'ghost',
+    ariaLabel: 'Options'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Etats -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Etats</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row">
+                <button class="nxo-btn nxo-btn-primary">Normal</button>
+                <button class="nxo-btn nxo-btn-primary" disabled>Disabled</button>
+                <button class="nxo-btn nxo-btn-primary nxo-btn-loading">
+                  <span class="nxo-spinner nxo-spinner--sm nxo-spinner--white"></span>
+                  Loading
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;!-- Normal --&gt;
+&lt;button class="nxo-btn nxo-btn-primary"&gt;Normal&lt;/button&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;button class="nxo-btn nxo-btn-primary" disabled&gt;Disabled&lt;/button&gt;
+
+&lt;!-- Loading --&gt;
+&lt;button class="nxo-btn nxo-btn-primary nxo-btn-loading"&gt;
+  &lt;span class="nxo-spinner nxo-spinner--sm nxo-spinner--white"&gt;&lt;/span&gt;
+  Loading
+&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+
+import { Button, CircularProgress } from '@mui/material';
+
+// Etats des boutons
+&lt;Button className="nxo-btn nxo-btn-primary"&gt;Normal&lt;/Button&gt;
+&lt;Button className="nxo-btn nxo-btn-primary" disabled&gt;Disabled&lt;/Button&gt;
+&lt;Button className="nxo-btn nxo-btn-primary nxo-btn-loading"&gt;
+  &lt;CircularProgress size={16} color="inherit" /&gt; Loading
+&lt;/Button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+// Dans le template
+&lt;button mat-button class="nxo-btn nxo-btn-primary"&gt;Normal&lt;/button&gt;
+&lt;button mat-button class="nxo-btn nxo-btn-primary" disabled&gt;Disabled&lt;/button&gt;
+&lt;button mat-button class="nxo-btn nxo-btn-primary nxo-btn-loading"&gt;
+  &lt;mat-spinner diameter="16"&gt;&lt;/mat-spinner&gt; Loading
+&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{# Normal #}
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Normal',
+    variant: 'primary'
+} %}
+
+{# Disabled #}
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Disabled',
+    variant: 'primary',
+    disabled: true
+} %}
+
+{# Loading #}
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Loading',
+    variant: 'primary',
+    loading: true
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Couleurs semantiques -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Couleurs semantiques</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="doc-row">
+                <button class="nxo-btn nxo-btn-success">
+                  <i class="fa-solid fa-check"></i> Valider
+                </button>
+                <button class="nxo-btn nxo-btn-danger">
+                  <i class="fa-solid fa-trash"></i> Supprimer
+                </button>
+                <button class="nxo-btn nxo-btn-warning">
+                  <i class="fa-solid fa-exclamation-triangle"></i> Attention
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;button class="nxo-btn nxo-btn-success"&gt;
+  &lt;i class="fa-solid fa-check"&gt;&lt;/i&gt; Valider
+&lt;/button&gt;
+
+&lt;button class="nxo-btn nxo-btn-danger"&gt;
+  &lt;i class="fa-solid fa-trash"&gt;&lt;/i&gt; Supprimer
+&lt;/button&gt;
+
+&lt;button class="nxo-btn nxo-btn-warning"&gt;
+  &lt;i class="fa-solid fa-exclamation-triangle"&gt;&lt;/i&gt; Attention
+&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+
+import { Button } from '@mui/material';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faTrash, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+
+// Couleurs semantiques
+&lt;Button className="nxo-btn nxo-btn-success"&gt;
+  &lt;FontAwesomeIcon icon={faCheck} /&gt; Valider
+&lt;/Button&gt;
+&lt;Button className="nxo-btn nxo-btn-danger"&gt;
+  &lt;FontAwesomeIcon icon={faTrash} /&gt; Supprimer
+&lt;/Button&gt;
+&lt;Button className="nxo-btn nxo-btn-warning"&gt;
+  &lt;FontAwesomeIcon icon={faExclamationTriangle} /&gt; Attention
+&lt;/Button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { MatButtonModule } from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+// Dans le template
+&lt;button mat-button class="nxo-btn nxo-btn-success"&gt;
+  &lt;fa-icon icon="check"&gt;&lt;/fa-icon&gt; Valider
+&lt;/button&gt;
+
+&lt;button mat-button class="nxo-btn nxo-btn-danger"&gt;
+  &lt;fa-icon icon="trash"&gt;&lt;/fa-icon&gt; Supprimer
+&lt;/button&gt;
+
+&lt;button mat-button class="nxo-btn nxo-btn-warning"&gt;
+  &lt;fa-icon icon="exclamation-triangle"&gt;&lt;/fa-icon&gt; Attention
+&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Valider',
+    variant: 'success',
+    icon: 'check'
+} %}
+
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Supprimer',
+    variant: 'danger',
+    icon: 'trash'
+} %}
+
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Attention',
+    variant: 'warning',
+    icon: 'exclamation-triangle'
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bouton full width -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Pleine largeur</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <button class="nxo-btn nxo-btn-primary nxo-btn-block">Bouton pleine largeur</button>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;button class="nxo-btn nxo-btn-primary nxo-btn-block"&gt;
+  Bouton pleine largeur
+&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+
+import { Button } from '@mui/material';
+
+// Bouton pleine largeur
+&lt;Button fullWidth className="nxo-btn nxo-btn-primary nxo-btn-block"&gt;
+  Bouton pleine largeur
+&lt;/Button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+
+import { MatButtonModule } from '@angular/material/button';
+
+// Dans le template
+&lt;button mat-button class="nxo-btn nxo-btn-primary nxo-btn-block"&gt;
+  Bouton pleine largeur
+&lt;/button&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Symfony/Twig #}
+{% include '@NxoDesignSystem/button.html.twig' with {
+    label: 'Bouton pleine largeur',
+    variant: 'primary',
+    fullWidth: true
+} %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            Les boutons s'adaptent automatiquement sur mobile. Les groupes de boutons (<code>.nxo-btn-group</code>) passent en retour a la ligne puis en colonne sur petit ecran.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 768px</code></td>
+                <td><code>.nxo-btn-group</code> passe en <code>flex-wrap: wrap</code> — les boutons retournent a la ligne si necessaire</td>
+              </tr>
+              <tr>
+                <td><code>&le; 480px</code></td>
+                <td><code>.nxo-btn-group</code> passe en <code>flex-direction: column</code> — boutons empiles en pleine largeur</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

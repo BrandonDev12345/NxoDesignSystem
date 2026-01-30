@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokens CSS - NXO Design System</title>
+
+  <!-- Theme loader -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+
+  <!-- Documentation Styles -->
+  <link rel="stylesheet" href="../_assets/docs.css">
+  <style>
+    .doc-tokens__var {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .doc-token__copy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 6px;
+      font-size: 10px;
+      font-family: 'Monaco', 'Menlo', monospace;
+      background: white;
+      border: 1px solid var(--nxo-border-color);
+      border-radius: 4px;
+      color: var(--nxo-text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      opacity: 0;
+    }
+    .doc-tokens__var:hover .doc-token__copy,
+    tr:hover .doc-token__copy {
+      opacity: 1;
+    }
+    .doc-token__copy:hover {
+      background: var(--fayat-blue);
+      border-color: var(--fayat-blue);
+      color: white;
+    }
+    .doc-token__copy.copied {
+      opacity: 1;
+      background: var(--nxo-color-success);
+      border-color: var(--nxo-color-success);
+      color: white;
+    }
+    [data-theme="dark"] .doc-token__copy {
+      background: var(--nxo-surface);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <!-- Sidebar Overlay -->
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link active"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-code"></i> Tous les Tokens CSS</h1>
+          <a href="../../tokens/tokens.css" class="nxo-btn nxo-btn-secondary nxo-btn-sm" target="_blank">
+            <i class="fa-solid fa-download"></i> tokens.css
+          </a>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Reference complete des 100+ variables CSS du Design System. Fichier: <code class="doc-spec">tokens/tokens.css</code> - Version 2.0.0
+        </p>
+
+        <!-- Couleurs Fayat -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Couleurs Fayat (Groupe parent)</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead><tr><th>Variable</th><th>Valeur</th><th>Apercu</th></tr></thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">--fayat-blue <button class="doc-token__copy" data-copy="--fayat-blue">var</button></code></td><td>#0055a0 <button class="doc-token__copy" data-copy="#0055a0">hex</button></td><td><span class="doc-tokens__swatch" style="background:#0055a0"></span></td></tr>
+                  <tr><td><code class="doc-tokens__var">--fayat-yellow <button class="doc-token__copy" data-copy="--fayat-yellow">var</button></code></td><td>#ffd800 <button class="doc-token__copy" data-copy="#ffd800">hex</button></td><td><span class="doc-tokens__swatch" style="background:#ffd800"></span></td></tr>
+                  <tr><td><code class="doc-tokens__var">--fayat-gray <button class="doc-token__copy" data-copy="--fayat-gray">var</button></code></td><td>#66757e <button class="doc-token__copy" data-copy="#66757e">hex</button></td><td><span class="doc-tokens__swatch" style="background:#66757e"></span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Couleurs NXO Corporate -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Couleurs NXO Corporate</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead><tr><th>Variable</th><th>Valeur</th><th>Apercu</th></tr></thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">--nxo-blue-dark <button class="doc-token__copy" data-copy="--nxo-blue-dark">var</button></code></td><td>#002f60 <button class="doc-token__copy" data-copy="#002f60">hex</button></td><td><span class="doc-tokens__swatch" style="background:#002f60"></span></td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-blue-light <button class="doc-token__copy" data-copy="--nxo-blue-light">var</button></code></td><td>#5692ce <button class="doc-token__copy" data-copy="#5692ce">hex</button></td><td><span class="doc-tokens__swatch" style="background:#5692ce"></span></td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-gray <button class="doc-token__copy" data-copy="--nxo-gray">var</button></code></td><td>#cfd1d2 <button class="doc-token__copy" data-copy="#cfd1d2">hex</button></td><td><span class="doc-tokens__swatch" style="background:#cfd1d2"></span></td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-blue-very-light <button class="doc-token__copy" data-copy="--nxo-blue-very-light">var</button></code></td><td>#b4dfe7 <button class="doc-token__copy" data-copy="#b4dfe7">hex</button></td><td><span class="doc-tokens__swatch" style="background:#b4dfe7"></span></td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-green <button class="doc-token__copy" data-copy="--nxo-green">var</button></code></td><td>#00a486 <button class="doc-token__copy" data-copy="#00a486">hex</button></td><td><span class="doc-tokens__swatch" style="background:#00a486"></span></td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-teal <button class="doc-token__copy" data-copy="--nxo-teal">var</button></code></td><td>#008a9b <button class="doc-token__copy" data-copy="#008a9b">hex</button></td><td><span class="doc-tokens__swatch" style="background:#008a9b"></span></td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-yellow <button class="doc-token__copy" data-copy="--nxo-yellow">var</button></code></td><td>#ffd300 <button class="doc-token__copy" data-copy="#ffd300">hex</button></td><td><span class="doc-tokens__swatch" style="background:#ffd300"></span></td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-orange <button class="doc-token__copy" data-copy="--nxo-orange">var</button></code></td><td>#e95e3f <button class="doc-token__copy" data-copy="#e95e3f">hex</button></td><td><span class="doc-tokens__swatch" style="background:#e95e3f"></span></td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-red <button class="doc-token__copy" data-copy="--nxo-red">var</button></code></td><td>#e53138 <button class="doc-token__copy" data-copy="#e53138">hex</button></td><td><span class="doc-tokens__swatch" style="background:#e53138"></span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Typographie -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Typographie</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead><tr><th>Variable</th><th>Valeur</th><th>Usage</th></tr></thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-family <button class="doc-token__copy" data-copy="--nxo-font-family">var</button></code></td><td>'Montserrat', sans-serif</td><td>Police principale</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-size-xs <button class="doc-token__copy" data-copy="--nxo-font-size-xs">var</button></code></td><td>0.75rem (12px) <button class="doc-token__copy" data-copy="0.75rem">val</button></td><td>Labels, legendes</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-size-sm <button class="doc-token__copy" data-copy="--nxo-font-size-sm">var</button></code></td><td>0.875rem (14px) <button class="doc-token__copy" data-copy="0.875rem">val</button></td><td>Texte secondaire</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-size-base <button class="doc-token__copy" data-copy="--nxo-font-size-base">var</button></code></td><td>1rem (16px) <button class="doc-token__copy" data-copy="1rem">val</button></td><td>Corps de texte</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-size-md <button class="doc-token__copy" data-copy="--nxo-font-size-md">var</button></code></td><td>1.125rem (18px) <button class="doc-token__copy" data-copy="1.125rem">val</button></td><td>-</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-size-lg <button class="doc-token__copy" data-copy="--nxo-font-size-lg">var</button></code></td><td>1.25rem (20px) <button class="doc-token__copy" data-copy="1.25rem">val</button></td><td>-</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-size-xl <button class="doc-token__copy" data-copy="--nxo-font-size-xl">var</button></code></td><td>1.5rem (24px) <button class="doc-token__copy" data-copy="1.5rem">val</button></td><td>H3</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-size-2xl <button class="doc-token__copy" data-copy="--nxo-font-size-2xl">var</button></code></td><td>2rem (32px) <button class="doc-token__copy" data-copy="2rem">val</button></td><td>H2</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-size-3xl <button class="doc-token__copy" data-copy="--nxo-font-size-3xl">var</button></code></td><td>2.5rem (40px) <button class="doc-token__copy" data-copy="2.5rem">val</button></td><td>H1</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-size-4xl <button class="doc-token__copy" data-copy="--nxo-font-size-4xl">var</button></code></td><td>3rem (48px) <button class="doc-token__copy" data-copy="3rem">val</button></td><td>-</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-weight-light <button class="doc-token__copy" data-copy="--nxo-font-weight-light">var</button></code></td><td>300 <button class="doc-token__copy" data-copy="300">val</button></td><td>-</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-weight-regular <button class="doc-token__copy" data-copy="--nxo-font-weight-regular">var</button></code></td><td>400 <button class="doc-token__copy" data-copy="400">val</button></td><td>Corps de texte</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-weight-medium <button class="doc-token__copy" data-copy="--nxo-font-weight-medium">var</button></code></td><td>500 <button class="doc-token__copy" data-copy="500">val</button></td><td>Boutons, labels</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-weight-semibold <button class="doc-token__copy" data-copy="--nxo-font-weight-semibold">var</button></code></td><td>600 <button class="doc-token__copy" data-copy="600">val</button></td><td>Sous-titres</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-font-weight-bold <button class="doc-token__copy" data-copy="--nxo-font-weight-bold">var</button></code></td><td>700 <button class="doc-token__copy" data-copy="700">val</button></td><td>Titres</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-line-height-tight <button class="doc-token__copy" data-copy="--nxo-line-height-tight">var</button></code></td><td>1.2 <button class="doc-token__copy" data-copy="1.2">val</button></td><td>Titres</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-line-height-normal <button class="doc-token__copy" data-copy="--nxo-line-height-normal">var</button></code></td><td>1.5 <button class="doc-token__copy" data-copy="1.5">val</button></td><td>Corps de texte</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-line-height-relaxed <button class="doc-token__copy" data-copy="--nxo-line-height-relaxed">var</button></code></td><td>1.75 <button class="doc-token__copy" data-copy="1.75">val</button></td><td>Paragraphes longs</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Espacements -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Espacements</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead><tr><th>Variable</th><th>Valeur</th><th>Usage</th></tr></thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">--nxo-spacing-xs <button class="doc-token__copy" data-copy="--nxo-spacing-xs">var</button></code></td><td>4px <button class="doc-token__copy" data-copy="4px">val</button></td><td>Entre icone et texte</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-spacing-sm <button class="doc-token__copy" data-copy="--nxo-spacing-sm">var</button></code></td><td>8px <button class="doc-token__copy" data-copy="8px">val</button></td><td>Elements proches</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-spacing-md <button class="doc-token__copy" data-copy="--nxo-spacing-md">var</button></code></td><td>16px <button class="doc-token__copy" data-copy="16px">val</button></td><td>Padding standard</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-spacing-lg <button class="doc-token__copy" data-copy="--nxo-spacing-lg">var</button></code></td><td>24px <button class="doc-token__copy" data-copy="24px">val</button></td><td>Entre sections</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-spacing-xl <button class="doc-token__copy" data-copy="--nxo-spacing-xl">var</button></code></td><td>32px <button class="doc-token__copy" data-copy="32px">val</button></td><td>Grands espaces</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-spacing-2xl <button class="doc-token__copy" data-copy="--nxo-spacing-2xl">var</button></code></td><td>48px <button class="doc-token__copy" data-copy="48px">val</button></td><td>Blocs majeurs</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rayons de bordure -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Rayons de bordure</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead><tr><th>Variable</th><th>Valeur</th><th>Usage</th></tr></thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">--nxo-radius-sm <button class="doc-token__copy" data-copy="--nxo-radius-sm">var</button></code></td><td>4px <button class="doc-token__copy" data-copy="4px">val</button></td><td>Badges, tags</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-radius-md <button class="doc-token__copy" data-copy="--nxo-radius-md">var</button></code></td><td>8px <button class="doc-token__copy" data-copy="8px">val</button></td><td>Cards, inputs</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-radius-lg <button class="doc-token__copy" data-copy="--nxo-radius-lg">var</button></code></td><td>12px <button class="doc-token__copy" data-copy="12px">val</button></td><td>Modales</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-radius-xl <button class="doc-token__copy" data-copy="--nxo-radius-xl">var</button></code></td><td>16px <button class="doc-token__copy" data-copy="16px">val</button></td><td>Grands conteneurs</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-radius-full <button class="doc-token__copy" data-copy="--nxo-radius-full">var</button></code></td><td>9999px <button class="doc-token__copy" data-copy="9999px">val</button></td><td>Boutons, pills</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ombres -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Ombres</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead><tr><th>Variable</th><th>Valeur</th><th>Usage</th></tr></thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">--nxo-shadow-sm <button class="doc-token__copy" data-copy="--nxo-shadow-sm">var</button></code></td><td>0 1px 2px rgba(0,0,0,0.05) <button class="doc-token__copy" data-copy="0 1px 2px rgba(0,0,0,0.05)">val</button></td><td>Elevation legere</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-shadow-md <button class="doc-token__copy" data-copy="--nxo-shadow-md">var</button></code></td><td>0 4px 6px rgba(0,0,0,0.1) <button class="doc-token__copy" data-copy="0 4px 6px rgba(0,0,0,0.1)">val</button></td><td>Cards</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-shadow-lg <button class="doc-token__copy" data-copy="--nxo-shadow-lg">var</button></code></td><td>0 10px 15px rgba(0,0,0,0.1) <button class="doc-token__copy" data-copy="0 10px 15px rgba(0,0,0,0.1)">val</button></td><td>Dropdowns</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-shadow-xl <button class="doc-token__copy" data-copy="--nxo-shadow-xl">var</button></code></td><td>0 20px 25px rgba(0,0,0,0.15) <button class="doc-token__copy" data-copy="0 20px 25px rgba(0,0,0,0.15)">val</button></td><td>Modales</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transitions -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Transitions</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead><tr><th>Variable</th><th>Valeur</th><th>Usage</th></tr></thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">--nxo-transition-fast <button class="doc-token__copy" data-copy="--nxo-transition-fast">var</button></code></td><td>0.15s ease <button class="doc-token__copy" data-copy="0.15s ease">val</button></td><td>Hover, focus</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-transition-normal <button class="doc-token__copy" data-copy="--nxo-transition-normal">var</button></code></td><td>0.3s ease <button class="doc-token__copy" data-copy="0.3s ease">val</button></td><td>Ouverture/fermeture</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-transition-slow <button class="doc-token__copy" data-copy="--nxo-transition-slow">var</button></code></td><td>0.5s ease <button class="doc-token__copy" data-copy="0.5s ease">val</button></td><td>Animations complexes</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Couleurs semantiques -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Couleurs semantiques</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead><tr><th>Variable</th><th>Valeur</th><th>Apercu</th><th>Usage</th></tr></thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">--nxo-color-success <button class="doc-token__copy" data-copy="--nxo-color-success">var</button></code></td><td>#22c55e <button class="doc-token__copy" data-copy="#22c55e">hex</button></td><td><span class="doc-tokens__swatch" style="background:#22c55e"></span></td><td>Succes, validation</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-color-warning <button class="doc-token__copy" data-copy="--nxo-color-warning">var</button></code></td><td>#f59e0b <button class="doc-token__copy" data-copy="#f59e0b">hex</button></td><td><span class="doc-tokens__swatch" style="background:#f59e0b"></span></td><td>Attention</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-color-error <button class="doc-token__copy" data-copy="--nxo-color-error">var</button></code></td><td>#ef4444 <button class="doc-token__copy" data-copy="#ef4444">hex</button></td><td><span class="doc-tokens__swatch" style="background:#ef4444"></span></td><td>Erreur</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-color-info <button class="doc-token__copy" data-copy="--nxo-color-info">var</button></code></td><td>#3b82f6 <button class="doc-token__copy" data-copy="#3b82f6">hex</button></td><td><span class="doc-tokens__swatch" style="background:#3b82f6"></span></td><td>Information</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Z-index -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Z-index</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__preview">
+              <table class="doc-tokens">
+                <thead><tr><th>Variable</th><th>Valeur</th><th>Usage</th></tr></thead>
+                <tbody>
+                  <tr><td><code class="doc-tokens__var">--nxo-z-dropdown <button class="doc-token__copy" data-copy="--nxo-z-dropdown">var</button></code></td><td>1000 <button class="doc-token__copy" data-copy="1000">val</button></td><td>Menus deroulants</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-z-sticky <button class="doc-token__copy" data-copy="--nxo-z-sticky">var</button></code></td><td>1020 <button class="doc-token__copy" data-copy="1020">val</button></td><td>Elements sticky</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-z-fixed <button class="doc-token__copy" data-copy="--nxo-z-fixed">var</button></code></td><td>1030 <button class="doc-token__copy" data-copy="1030">val</button></td><td>Headers fixes</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-z-modal-backdrop <button class="doc-token__copy" data-copy="--nxo-z-modal-backdrop">var</button></code></td><td>1040 <button class="doc-token__copy" data-copy="1040">val</button></td><td>Backdrop modales</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-z-modal <button class="doc-token__copy" data-copy="--nxo-z-modal">var</button></code></td><td>1050 <button class="doc-token__copy" data-copy="1050">val</button></td><td>Contenu modales</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-z-tooltip <button class="doc-token__copy" data-copy="--nxo-z-tooltip">var</button></code></td><td>1060 <button class="doc-token__copy" data-copy="1060">val</button></td><td>Tooltips</td></tr>
+                  <tr><td><code class="doc-tokens__var">--nxo-z-toast <button class="doc-token__copy" data-copy="--nxo-z-toast">var</button></code></td><td>1070 <button class="doc-token__copy" data-copy="1070">val</button></td><td>Notifications toast</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Footer -->
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">
+          NXO Design System v2.0 - Valide Marketing Decembre 2025
+        </p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- Scroll to top -->
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    // Mobile sidebar
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    // Scroll to top
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Copy functionality -->
+  <script>
+    document.querySelectorAll('.doc-token__copy').forEach(btn => {
+      btn.addEventListener('click', async function() {
+        const value = this.dataset.copy;
+        try {
+          await navigator.clipboard.writeText(value);
+          const originalHTML = this.innerHTML;
+          this.innerHTML = '<i class="fa-solid fa-check"></i>';
+          this.classList.add('copied');
+          setTimeout(() => {
+            this.innerHTML = originalHTML;
+            this.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

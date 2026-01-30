@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NXO Design System - Démo</title>
+
+  <!-- Google Fonts - Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../components/components.css">
+
+  <!-- Demo Styles (page-specific layout only) -->
+  <link rel="stylesheet" href="css/demo.css">
+</head>
+<body>
+
+  <!-- Header Démo -->
+  <header class="demo-header">
+    <h1>NXO Design System</h1>
+    <p>Démo interactive des tokens et composants</p>
+  </header>
+
+  <main class="demo-main">
+
+    <!-- Section Couleurs -->
+    <section class="demo-section">
+      <h2>Couleurs</h2>
+
+      <h3>Couleurs FAYAT</h3>
+      <div class="color-grid">
+        <div class="color-swatch" style="background-color: var(--fayat-blue);">
+          <span class="color-name">Bleu Fayat</span>
+          <span class="color-value">#0055a0</span>
+        </div>
+        <div class="color-swatch" style="background-color: var(--fayat-yellow); color: #333;">
+          <span class="color-name">Jaune Fayat</span>
+          <span class="color-value">#ffd800</span>
+        </div>
+        <div class="color-swatch" style="background-color: var(--fayat-gray);">
+          <span class="color-name">Gris Fayat</span>
+          <span class="color-value">#66757e</span>
+        </div>
+      </div>
+
+      <h3>Couleurs NXO Corporate</h3>
+      <div class="color-grid">
+        <div class="color-swatch" style="background-color: var(--nxo-blue-dark);">
+          <span class="color-name">Bleu foncé</span>
+          <span class="color-value">#002f60</span>
+        </div>
+        <div class="color-swatch" style="background-color: var(--nxo-blue-light);">
+          <span class="color-name">Bleu clair</span>
+          <span class="color-value">#5692ce</span>
+        </div>
+        <div class="color-swatch" style="background-color: var(--nxo-gray); color: #333;">
+          <span class="color-name">Gris NXO</span>
+          <span class="color-value">#cfd1d2</span>
+        </div>
+      </div>
+
+      <h3>Couleurs d'accompagnement</h3>
+      <div class="color-grid">
+        <div class="color-swatch" style="background-color: var(--nxo-blue-very-light); color: #333;">
+          <span class="color-name">Bleu très clair</span>
+          <span class="color-value">#b4dfe7</span>
+        </div>
+        <div class="color-swatch" style="background-color: var(--nxo-green);">
+          <span class="color-name">Vert</span>
+          <span class="color-value">#00a486</span>
+        </div>
+        <div class="color-swatch" style="background-color: var(--nxo-teal);">
+          <span class="color-name">Teal</span>
+          <span class="color-value">#008a9b</span>
+        </div>
+        <div class="color-swatch" style="background-color: var(--nxo-yellow); color: #333;">
+          <span class="color-name">Jaune</span>
+          <span class="color-value">#ffd300</span>
+        </div>
+        <div class="color-swatch" style="background-color: var(--nxo-orange);">
+          <span class="color-name">Orange</span>
+          <span class="color-value">#e95e3f</span>
+        </div>
+        <div class="color-swatch" style="background-color: var(--nxo-red);">
+          <span class="color-name">Rouge</span>
+          <span class="color-value">#e53138</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Typographie -->
+    <section class="demo-section">
+      <h2>Typographie</h2>
+
+      <div class="typo-demo">
+        <p class="typo-sample" style="font-size: var(--nxo-font-size-4xl);">Montserrat 4xl (48px)</p>
+        <p class="typo-sample" style="font-size: var(--nxo-font-size-3xl);">Montserrat 3xl (40px)</p>
+        <p class="typo-sample" style="font-size: var(--nxo-font-size-2xl);">Montserrat 2xl (32px)</p>
+        <p class="typo-sample" style="font-size: var(--nxo-font-size-xl);">Montserrat xl (24px)</p>
+        <p class="typo-sample" style="font-size: var(--nxo-font-size-lg);">Montserrat lg (20px)</p>
+        <p class="typo-sample" style="font-size: var(--nxo-font-size-base);">Montserrat base (16px)</p>
+        <p class="typo-sample" style="font-size: var(--nxo-font-size-sm);">Montserrat sm (14px)</p>
+        <p class="typo-sample" style="font-size: var(--nxo-font-size-xs);">Montserrat xs (12px)</p>
+      </div>
+
+      <h3>Graisses</h3>
+      <div class="typo-demo">
+        <p class="typo-sample" style="font-weight: var(--nxo-font-weight-light);">Light (300)</p>
+        <p class="typo-sample" style="font-weight: var(--nxo-font-weight-regular);">Regular (400)</p>
+        <p class="typo-sample" style="font-weight: var(--nxo-font-weight-medium);">Medium (500)</p>
+        <p class="typo-sample" style="font-weight: var(--nxo-font-weight-semibold);">Semibold (600)</p>
+        <p class="typo-sample" style="font-weight: var(--nxo-font-weight-bold);">Bold (700)</p>
+      </div>
+
+      <h3>Règles de casse</h3>
+      <div class="typo-demo">
+        <p class="typo-sample" style="text-transform: uppercase; letter-spacing: 0.05em;">MENU NAVIGATION (Majuscules)</p>
+        <p class="typo-sample">Contenu de page (minuscules)</p>
+      </div>
+    </section>
+
+    <!-- Section Boutons -->
+    <section class="demo-section">
+      <h2>Boutons</h2>
+
+      <h3>Types de boutons</h3>
+      <div class="buttons-demo">
+        <button class="nxo-btn nxo-btn-primary">Primaire</button>
+        <button class="nxo-btn nxo-btn-secondary">Secondaire</button>
+        <button class="nxo-btn nxo-btn-tertiary">Tertiaire</button>
+      </div>
+
+      <h3>États du bouton primaire</h3>
+      <div class="buttons-demo">
+        <button class="nxo-btn nxo-btn-primary">Default</button>
+        <button class="nxo-btn nxo-btn-primary" style="background-color: var(--nxo-btn-primary-hover-bg);">Hover</button>
+        <button class="nxo-btn nxo-btn-primary" disabled>Disabled</button>
+      </div>
+
+      <h3>Avec icônes</h3>
+      <div class="buttons-demo">
+        <button class="nxo-btn nxo-btn-primary">
+          <i class="fa-solid fa-check"></i> Enregistrer
+        </button>
+        <button class="nxo-btn nxo-btn-secondary">
+          <i class="fa-solid fa-xmark"></i> Annuler
+        </button>
+        <button class="nxo-btn nxo-btn-tertiary">
+          <i class="fa-solid fa-arrow-right"></i> En savoir plus
+        </button>
+      </div>
+
+      <h3>Ordre correct dans une fenêtre</h3>
+      <div class="buttons-demo buttons-dialog">
+        <button class="nxo-btn nxo-btn-tertiary">En savoir plus</button>
+        <button class="nxo-btn nxo-btn-secondary">Annuler</button>
+        <button class="nxo-btn nxo-btn-primary">Suivant</button>
+      </div>
+    </section>
+
+    <!-- Section Icônes -->
+    <section class="demo-section">
+      <h2>Icônes (Font Awesome)</h2>
+
+      <h3>Tronc commun</h3>
+      <div class="icons-grid">
+        <div class="icon-item">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Recherche</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-gear"></i>
+          <span>Admin</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-user"></i>
+          <span>Profil</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-house"></i>
+          <span>Accueil</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-grip"></i>
+          <span>Apps</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-expand"></i>
+          <span>Plein écran</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-filter"></i>
+          <span>Filtrer</span>
+        </div>
+        <div class="icon-item">
+          <i class="fa-solid fa-circle-question"></i>
+          <span>Aide</span>
+        </div>
+      </div>
+
+      <h3>États et alertes</h3>
+      <div class="icons-grid">
+        <div class="icon-item icon-success">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Succès</span>
+        </div>
+        <div class="icon-item icon-info">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>Info</span>
+        </div>
+        <div class="icon-item icon-warning">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>Warning</span>
+        </div>
+        <div class="icon-item icon-danger">
+          <i class="fa-solid fa-circle-xmark"></i>
+          <span>Erreur</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Header -->
+    <section class="demo-section">
+      <h2>Header</h2>
+      <p style="margin-bottom: 16px; color: var(--nxo-text-muted);">
+        Voir <a href="headers.html" style="color: var(--fayat-blue);">la page headers</a> pour toutes les variantes responsive.
+      </p>
+
+      <div class="header-demo" style="overflow-x: auto;">
+        <header class="nxo-header" style="min-width: 800px; height: 80px; padding: 0; gap: 0;">
+          <!-- Zone Left -->
+          <div style="display: flex; align-items: center; width: 350px; padding-left: 24px; gap: 32px; height: 100%;">
+            <button class="nxo-header__icon" aria-label="Applications" style="width: 40px; height: 40px;">
+              <i class="fa-solid fa-grip" style="font-size: 20px;"></i>
+            </button>
+            <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 36px; width: auto;">
+            <span style="color: rgba(255,255,255,0.9); font-weight: 600; font-size: 15px;">Nom Service</span>
+          </div>
+          <!-- Zone Center -->
+          <div style="flex: 1; display: flex; align-items: center; justify-content: center; height: 100%;">
+            <div style="display: flex; align-items: center; background: rgba(255,255,255,0.15); width: 400px; height: 42px; border-radius: 21px; padding: 0 16px; gap: 12px;">
+              <i class="fa-solid fa-magnifying-glass" style="color: rgba(255,255,255,0.7); font-size: 14px;"></i>
+              <span style="color: rgba(255,255,255,0.5); font-size: 13px;">Rechercher...</span>
+            </div>
+          </div>
+          <!-- Zone Right -->
+          <div style="display: flex; align-items: center; justify-content: flex-end; width: 200px; padding-right: 24px; gap: 16px; height: 100%;">
+            <button class="nxo-header__icon" aria-label="Plein ecran" style="width: 36px; height: 36px;">
+              <i class="fa-solid fa-expand" style="font-size: 16px;"></i>
+            </button>
+            <button class="nxo-header__icon" aria-label="Aide" style="width: 36px; height: 36px;">
+              <i class="fa-solid fa-question" style="font-size: 16px;"></i>
+            </button>
+            <button class="nxo-header__icon" aria-label="Profil" style="width: 36px; height: 36px;">
+              <i class="fa-regular fa-circle-user" style="font-size: 22px;"></i>
+            </button>
+          </div>
+        </header>
+      </div>
+    </section>
+
+    <!-- Section Espacements -->
+    <section class="demo-section">
+      <h2>Espacements</h2>
+
+      <div class="spacing-demo">
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: var(--nxo-spacing-xs); height: var(--nxo-spacing-xs);"></div>
+          <span>xs (4px)</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: var(--nxo-spacing-sm); height: var(--nxo-spacing-sm);"></div>
+          <span>sm (8px)</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: var(--nxo-spacing-md); height: var(--nxo-spacing-md);"></div>
+          <span>md (16px)</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: var(--nxo-spacing-lg); height: var(--nxo-spacing-lg);"></div>
+          <span>lg (24px)</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: var(--nxo-spacing-xl); height: var(--nxo-spacing-xl);"></div>
+          <span>xl (32px)</span>
+        </div>
+        <div class="spacing-item">
+          <div class="spacing-box" style="width: var(--nxo-spacing-2xl); height: var(--nxo-spacing-2xl);"></div>
+          <span>2xl (48px)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Border Radius -->
+    <section class="demo-section">
+      <h2>Border Radius</h2>
+
+      <div class="radius-demo">
+        <div class="radius-item" style="border-radius: var(--nxo-radius-none);">
+          <span>none</span>
+        </div>
+        <div class="radius-item" style="border-radius: var(--nxo-radius-sm);">
+          <span>sm (4px)</span>
+        </div>
+        <div class="radius-item" style="border-radius: var(--nxo-radius-md);">
+          <span>md (8px)</span>
+        </div>
+        <div class="radius-item" style="border-radius: var(--nxo-radius-lg);">
+          <span>lg (12px)</span>
+        </div>
+        <div class="radius-item" style="border-radius: var(--nxo-radius-xl);">
+          <span>xl (16px)</span>
+        </div>
+        <div class="radius-item radius-pill" style="border-radius: var(--nxo-radius-full);">
+          <span>full (pill)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Ombres -->
+    <section class="demo-section">
+      <h2>Ombres</h2>
+
+      <div class="shadow-demo">
+        <div class="shadow-item" style="box-shadow: var(--nxo-shadow-sm);">
+          <span>shadow-sm</span>
+        </div>
+        <div class="shadow-item" style="box-shadow: var(--nxo-shadow-md);">
+          <span>shadow-md</span>
+        </div>
+        <div class="shadow-item" style="box-shadow: var(--nxo-shadow-lg);">
+          <span>shadow-lg</span>
+        </div>
+        <div class="shadow-item" style="box-shadow: var(--nxo-shadow-xl);">
+          <span>shadow-xl</span>
+        </div>
+        <div class="shadow-item" style="box-shadow: var(--nxo-shadow-modal);">
+          <span>shadow-modal</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Dark Mode -->
+    <section class="demo-section">
+      <h2>Dark Mode</h2>
+      <p style="margin-bottom: 16px; color: var(--nxo-text-muted);">
+        Le dark mode est inclus dans le theme. Il suffit d'ajouter <code style="background: var(--nxo-card-border); padding: 2px 6px; border-radius: 4px;">data-theme="dark"</code> sur la balise <code style="background: var(--nxo-card-border); padding: 2px 6px; border-radius: 4px;">&lt;html&gt;</code> pour que tous les composants basculent automatiquement.
+      </p>
+
+      <!-- Toggle demo -->
+      <div style="margin-bottom: 24px;">
+        <button class="nxo-btn nxo-btn-primary" onclick="toggleDarkMode()" id="darkModeToggle">
+          <i class="fa-solid fa-moon"></i> Basculer en Dark Mode
+        </button>
+      </div>
+
+      <!-- Implementation guide -->
+      <div class="nxo-card" style="margin-bottom: 24px;">
+        <div class="nxo-card-header">
+          <h3 class="nxo-card-title"><i class="fa-solid fa-code"></i> Implementation</h3>
+        </div>
+        <div class="nxo-card-body">
+
+          <h4 style="margin-bottom: 8px; color: var(--nxo-text-heading); font-size: 14px; font-weight: 600;">1. Imports (inchanges)</h4>
+          <pre style="background: var(--nxo-bg-page); border: 1px solid var(--nxo-border-color); border-radius: 8px; padding: 16px; font-size: 13px; overflow-x: auto; margin-bottom: 24px; color: var(--nxo-text-body);"><code>&lt;link rel="stylesheet" href="tokens/tokens.css"&gt;
+&lt;link rel="stylesheet" href="components/components.css"&gt;</code></pre>
+
+          <h4 style="margin-bottom: 8px; color: var(--nxo-text-heading); font-size: 14px; font-weight: 600;">2. Script de chargement (dans le &lt;head&gt;, avant le CSS)</h4>
+          <p style="margin-bottom: 8px; font-size: 13px; color: var(--nxo-text-muted);">Evite le flash blanc au chargement en dark mode :</p>
+          <pre style="background: var(--nxo-bg-page); border: 1px solid var(--nxo-border-color); border-radius: 8px; padding: 16px; font-size: 13px; overflow-x: auto; margin-bottom: 24px; color: var(--nxo-text-body);"><code>&lt;script&gt;
+(function() {
+  var theme = localStorage.getItem('nxo-theme');
+  if (theme === 'dark' || (!theme &amp;&amp;
+      window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+&lt;/script&gt;</code></pre>
+
+          <h4 style="margin-bottom: 8px; color: var(--nxo-text-heading); font-size: 14px; font-weight: 600;">3. Fonction de toggle</h4>
+          <pre style="background: var(--nxo-bg-page); border: 1px solid var(--nxo-border-color); border-radius: 8px; padding: 16px; font-size: 13px; overflow-x: auto; margin-bottom: 24px; color: var(--nxo-text-body);"><code>function toggleDarkMode() {
+  const html = document.documentElement;
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    localStorage.setItem('nxo-theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('nxo-theme', 'dark');
+  }
+}</code></pre>
+
+          <h4 style="margin-bottom: 8px; color: var(--nxo-text-heading); font-size: 14px; font-weight: 600;">4. (Optionnel) Ecouter le changement systeme</h4>
+          <pre style="background: var(--nxo-bg-page); border: 1px solid var(--nxo-border-color); border-radius: 8px; padding: 16px; font-size: 13px; overflow-x: auto; color: var(--nxo-text-body);"><code>window.matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', function(e) {
+    if (!localStorage.getItem('nxo-theme')) {
+      if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    }
+  });</code></pre>
+
+        </div>
+      </div>
+
+      <!-- Preview cards in dark mode context -->
+      <h3>Apercu des composants</h3>
+      <p style="margin-bottom: 16px; font-size: 13px; color: var(--nxo-text-muted);">Clique sur le bouton ci-dessus pour voir tous les composants de cette page basculer en dark mode.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+        <!-- Card preview -->
+        <div class="nxo-card">
+          <div class="nxo-card-header">
+            <h3 class="nxo-card-title">Card</h3>
+          </div>
+          <div class="nxo-card-body">
+            <p style="margin: 0; font-size: 14px;">Le fond, les bordures et le texte s'adaptent automatiquement.</p>
+          </div>
+        </div>
+
+        <!-- Alert preview -->
+        <div>
+          <div class="nxo-alert nxo-alert-info" style="margin-bottom: 8px;">
+            <div class="nxo-alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+            <div class="nxo-alert-content">
+              <div class="nxo-alert-title">Info</div>
+              <div class="nxo-alert-message">Les alertes adaptent leurs couleurs.</div>
+            </div>
+          </div>
+          <div class="nxo-alert nxo-alert-success">
+            <div class="nxo-alert-icon"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="nxo-alert-content">
+              <div class="nxo-alert-title">Succes</div>
+              <div class="nxo-alert-message">Fond semi-transparent en dark.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input preview -->
+        <div>
+          <div class="nxo-form-group">
+            <label class="nxo-label">Champ texte</label>
+            <input class="nxo-input" type="text" placeholder="Placeholder...">
+          </div>
+          <div class="nxo-form-group" style="margin-bottom: 0;">
+            <label class="nxo-label">Select</label>
+            <select class="nxo-select">
+              <option>Option 1</option>
+              <option>Option 2</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="demo-footer">
+    <p>NXO Design System - Version 2.0.0 - 2025</p>
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    function toggleDarkMode() {
+      var html = document.documentElement;
+      var btn = document.getElementById('darkModeToggle');
+      if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('nxo-theme', 'light');
+        btn.innerHTML = '<i class="fa-solid fa-moon"></i> Basculer en Dark Mode';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('nxo-theme', 'dark');
+        btn.innerHTML = '<i class="fa-solid fa-sun"></i> Basculer en Light Mode';
+      }
+    }
+
+    // Load saved preference
+    (function() {
+      var saved = localStorage.getItem('nxo-theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        var btn = document.getElementById('darkModeToggle');
+        if (btn) btn.innerHTML = '<i class="fa-solid fa-sun"></i> Basculer en Light Mode';
+      }
+    })();
+
+    // Listen for system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (!localStorage.getItem('nxo-theme')) {
+        var btn = document.getElementById('darkModeToggle');
+        if (e.matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          if (btn) btn.innerHTML = '<i class="fa-solid fa-sun"></i> Basculer en Light Mode';
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+          if (btn) btn.innerHTML = '<i class="fa-solid fa-moon"></i> Basculer en Dark Mode';
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NXO Design System - Preview Composants v2.0</title>
+
+  <!-- Google Fonts - Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="components.css">
+
+  <style>
+    /* Preview specific styles */
+    .preview-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--nxo-spacing-xl);
+    }
+
+    .preview-header {
+      text-align: center;
+      margin-bottom: var(--nxo-spacing-2xl);
+      padding-bottom: var(--nxo-spacing-xl);
+      border-bottom: 1px solid var(--nxo-border-color);
+    }
+
+    .preview-header h1 {
+      color: var(--nxo-text-heading);
+      margin-bottom: var(--nxo-spacing-sm);
+    }
+
+    .preview-header p {
+      color: var(--nxo-text-muted);
+    }
+
+    .preview-section {
+      margin-bottom: var(--nxo-spacing-2xl);
+    }
+
+    .preview-section-title {
+      font-size: var(--nxo-font-size-xl);
+      font-weight: var(--nxo-font-weight-bold);
+      color: var(--nxo-text-heading);
+      margin-bottom: var(--nxo-spacing-lg);
+      padding-bottom: var(--nxo-spacing-sm);
+      border-bottom: 2px solid var(--nxo-border-color);
+    }
+
+    .preview-subsection {
+      margin-bottom: var(--nxo-spacing-lg);
+    }
+
+    .preview-subsection-title {
+      font-size: var(--nxo-font-size-base);
+      font-weight: var(--nxo-font-weight-semibold);
+      color: var(--nxo-text-muted);
+      margin-bottom: var(--nxo-spacing-md);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .preview-box {
+      background: var(--nxo-card-bg);
+      border: 1px solid var(--nxo-border-color);
+      border-radius: var(--nxo-radius-md);
+      padding: var(--nxo-spacing-lg);
+      margin-bottom: var(--nxo-spacing-md);
+    }
+
+    .preview-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--nxo-spacing-md);
+      align-items: center;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--nxo-spacing-md);
+    }
+
+    .preview-code {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 12px;
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #e91e63;
+    }
+
+    .preview-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 220px;
+      height: 100vh;
+      background: var(--nxo-card-bg);
+      border-right: 1px solid var(--nxo-border-color);
+      padding: var(--nxo-spacing-lg);
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .preview-nav-title {
+      font-weight: var(--nxo-font-weight-bold);
+      color: var(--nxo-text-heading);
+      margin-bottom: var(--nxo-spacing-md);
+    }
+
+    .preview-nav a {
+      display: block;
+      padding: var(--nxo-spacing-xs) 0;
+      color: var(--nxo-text-body);
+      text-decoration: none;
+      font-size: var(--nxo-font-size-sm);
+    }
+
+    .preview-nav a:hover {
+      color: var(--nxo-link-color);
+    }
+
+    .preview-main {
+      margin-left: 240px;
+    }
+
+    @media (max-width: 768px) {
+      .preview-nav {
+        display: none;
+      }
+      .preview-main {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="preview-nav">
+    <div class="preview-nav-title">Composants v2.0</div>
+    <a href="#typography">Typographie</a>
+    <a href="#buttons">Boutons</a>
+    <a href="#forms">Formulaires</a>
+    <a href="#toggle">Toggle/Switch</a>
+    <a href="#cards">Cards</a>
+    <a href="#tables">Tableaux</a>
+    <a href="#badges">Badges</a>
+    <a href="#chips">Chips/Tags</a>
+    <a href="#alerts">Alertes</a>
+    <a href="#modals">Modales</a>
+    <a href="#tooltips">Tooltips</a>
+    <a href="#breadcrumb">Breadcrumb</a>
+    <a href="#pagination">Pagination</a>
+    <a href="#tabs">Tabs</a>
+    <a href="#nav">Navigation</a>
+    <a href="#avatars">Avatars</a>
+    <a href="#spinners">Spinners</a>
+    <a href="#progress">Progress</a>
+    <a href="#stepper">Stepper</a>
+    <a href="#accordion">Accordion</a>
+    <a href="#skeleton">Skeleton</a>
+    <a href="#empty">Empty State</a>
+    <a href="#list">List</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#search">Search</a>
+    <a href="#fileupload">File Upload</a>
+    <a href="#divider">Divider</a>
+    <a href="#toasts">Toasts</a>
+    <a href="#sidebar">Sidebar</a>
+    <a href="#dropdown">Dropdown</a>
+    <a href="#footer">Footer</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="preview-main">
+    <div class="preview-container">
+
+      <!-- Header -->
+      <header class="preview-header">
+        <h1 class="nxo-h1">NXO Design System</h1>
+        <p class="nxo-text">Version 2.0 - Composants CSS valides par le Marketing - Decembre 2025</p>
+      </header>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           TYPOGRAPHIE
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="typography" class="preview-section">
+        <h2 class="preview-section-title">Typographie</h2>
+
+        <div class="preview-box">
+          <h1 class="nxo-h1">Titre H1 - 40px Bold</h1>
+          <h2 class="nxo-h2">Titre H2 - 32px Bold</h2>
+          <h3 class="nxo-h3">Titre H3 - 24px Semibold</h3>
+          <h4 class="nxo-h4">Titre H4 - 20px Semibold</h4>
+          <p class="nxo-text">Corps de texte standard - 16px Regular. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p class="nxo-text nxo-text-sm">Texte secondaire - 14px</p>
+          <p class="nxo-text nxo-text-xs nxo-text-muted">Labels et legendes - 12px</p>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Liens</h3>
+          <div class="preview-box">
+            <p class="nxo-text">Voici un <a href="#" class="nxo-link">lien souligne en bleu Fayat</a> dans un paragraphe.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           BOUTONS
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="buttons" class="preview-section">
+        <h2 class="preview-section-title">Boutons <span class="preview-code">Capsule - radius: 9999px</span></h2>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Variantes</h3>
+          <div class="preview-box">
+            <div class="preview-row">
+              <button class="nxo-btn nxo-btn-primary">Primaire</button>
+              <button class="nxo-btn nxo-btn-secondary">Secondaire</button>
+              <button class="nxo-btn nxo-btn-tertiary">Tertiaire</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Tailles</h3>
+          <div class="preview-box">
+            <div class="preview-row">
+              <button class="nxo-btn nxo-btn-primary nxo-btn-sm">Petit (32px)</button>
+              <button class="nxo-btn nxo-btn-primary">Standard (40px)</button>
+              <button class="nxo-btn nxo-btn-primary nxo-btn-lg">Grand (48px)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Avec icones</h3>
+          <div class="preview-box">
+            <div class="preview-row">
+              <button class="nxo-btn nxo-btn-primary">
+                <i class="fa-solid fa-plus"></i> Ajouter
+              </button>
+              <button class="nxo-btn nxo-btn-secondary">
+                <i class="fa-solid fa-download"></i> Telecharger
+              </button>
+              <button class="nxo-btn nxo-btn-primary nxo-btn-icon">
+                <i class="fa-solid fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Etats</h3>
+          <div class="preview-box">
+            <div class="preview-row">
+              <button class="nxo-btn nxo-btn-primary">Normal</button>
+              <button class="nxo-btn nxo-btn-primary" disabled>Desactive</button>
+              <button class="nxo-btn nxo-btn-secondary">Normal</button>
+              <button class="nxo-btn nxo-btn-secondary" disabled>Desactive</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Variantes semantiques</h3>
+          <div class="preview-box">
+            <div class="preview-row">
+              <button class="nxo-btn nxo-btn-success">Succes</button>
+              <button class="nxo-btn nxo-btn-danger">Danger</button>
+              <button class="nxo-btn nxo-btn-warning">Attention</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           FORMULAIRES
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="forms" class="preview-section">
+        <h2 class="preview-section-title">Formulaires <span class="preview-code">radius: 8px, bordure: #e0e0e0</span></h2>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Inputs</h3>
+          <div class="preview-box">
+            <div class="preview-grid">
+              <div class="nxo-form-group">
+                <label class="nxo-label">Label du champ</label>
+                <input type="text" class="nxo-input" placeholder="Placeholder...">
+              </div>
+              <div class="nxo-form-group">
+                <label class="nxo-label">Champ en erreur</label>
+                <input type="text" class="nxo-input nxo-input-error" value="Valeur invalide">
+                <span class="nxo-error-message">Ce champ est requis</span>
+              </div>
+              <div class="nxo-form-group">
+                <label class="nxo-label">Champ desactive</label>
+                <input type="text" class="nxo-input" value="Non modifiable" disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Select</h3>
+          <div class="preview-box">
+            <div style="max-width: 300px;">
+              <label class="nxo-label">Choisir une option</label>
+              <select class="nxo-select">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Textarea</h3>
+          <div class="preview-box">
+            <div style="max-width: 500px;">
+              <label class="nxo-label">Description</label>
+              <textarea class="nxo-textarea" placeholder="Entrez votre texte..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Checkbox & Radio</h3>
+          <div class="preview-box">
+            <div class="preview-row" style="gap: 32px;">
+              <div>
+                <label class="nxo-checkbox">
+                  <input type="checkbox">
+                  <span class="nxo-checkbox-mark"></span>
+                  Option 1
+                </label>
+              </div>
+              <div>
+                <label class="nxo-checkbox">
+                  <input type="checkbox" checked>
+                  <span class="nxo-checkbox-mark"></span>
+                  Option 2 (cochee)
+                </label>
+              </div>
+              <div>
+                <label class="nxo-radio">
+                  <input type="radio" name="radio-demo">
+                  <span class="nxo-radio-mark"></span>
+                  Choix A
+                </label>
+              </div>
+              <div>
+                <label class="nxo-radio">
+                  <input type="radio" name="radio-demo" checked>
+                  <span class="nxo-radio-mark"></span>
+                  Choix B (selectionne)
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           TOGGLE / SWITCH
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="toggle" class="preview-section">
+        <h2 class="preview-section-title">Toggle / Switch <span class="preview-code">Capsule (valide)</span></h2>
+
+        <div class="preview-box">
+          <div class="preview-row" style="gap: 48px;">
+            <label class="nxo-toggle">
+              <input type="checkbox">
+              <span class="nxo-toggle-track">
+                <span class="nxo-toggle-thumb"></span>
+              </span>
+              <span class="nxo-toggle-label">Desactive</span>
+            </label>
+            <label class="nxo-toggle">
+              <input type="checkbox" checked>
+              <span class="nxo-toggle-track">
+                <span class="nxo-toggle-thumb"></span>
+              </span>
+              <span class="nxo-toggle-label">Active</span>
+            </label>
+            <label class="nxo-toggle nxo-toggle-sm">
+              <input type="checkbox" checked>
+              <span class="nxo-toggle-track">
+                <span class="nxo-toggle-thumb"></span>
+              </span>
+              <span class="nxo-toggle-label">Petit</span>
+            </label>
+            <label class="nxo-toggle">
+              <input type="checkbox" disabled>
+              <span class="nxo-toggle-track">
+                <span class="nxo-toggle-thumb"></span>
+              </span>
+              <span class="nxo-toggle-label">Desactive</span>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           CARDS
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="cards" class="preview-section">
+        <h2 class="preview-section-title">Cards <span class="preview-code">Avec bordure, sans ombre</span></h2>
+
+        <div class="preview-grid">
+          <div class="nxo-card">
+            <div class="nxo-card-header">
+              <h3 class="nxo-card-title">
+                <i class="fa-solid fa-info-circle" style="color: var(--nxo-color-info);"></i>
+                Titre de la carte
+              </h3>
+            </div>
+            <div class="nxo-card-body">
+              <p class="nxo-text">Contenu de la carte avec du texte explicatif.</p>
+            </div>
+            <div class="nxo-card-footer">
+              <button class="nxo-btn nxo-btn-primary nxo-btn-sm">Action</button>
+            </div>
+          </div>
+
+          <div class="nxo-card nxo-card-interactive">
+            <div class="nxo-card-body">
+              <h3 class="nxo-card-title">Carte interactive</h3>
+              <p class="nxo-text nxo-text-sm nxo-text-muted">Survol pour voir l'effet</p>
+            </div>
+          </div>
+
+          <div class="nxo-card">
+            <div class="nxo-card-body">
+              <h3 class="nxo-card-title">Carte simple</h3>
+              <p class="nxo-text">Sans header ni footer.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           TABLEAUX
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="tables" class="preview-section">
+        <h2 class="preview-section-title">Tableaux <span class="preview-code">Header gris #f5f5f5 + texte bleu Fayat</span></h2>
+
+        <div class="preview-box" style="overflow-x: auto;">
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Statut</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ticket #1234</td>
+                <td><span class="nxo-badge nxo-badge-success">Resolu</span></td>
+                <td>12/12/2025</td>
+                <td><a href="#" class="nxo-link">Voir</a></td>
+              </tr>
+              <tr>
+                <td>Ticket #1235</td>
+                <td><span class="nxo-badge nxo-badge-warning">En cours</span></td>
+                <td>11/12/2025</td>
+                <td><a href="#" class="nxo-link">Voir</a></td>
+              </tr>
+              <tr>
+                <td>Ticket #1236</td>
+                <td><span class="nxo-badge nxo-badge-danger">Urgent</span></td>
+                <td>10/12/2025</td>
+                <td><a href="#" class="nxo-link">Voir</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           BADGES
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="badges" class="preview-section">
+        <h2 class="preview-section-title">Badges <span class="preview-code">Carre - radius: 4px (pas capsule)</span></h2>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Variantes</h3>
+          <div class="preview-box">
+            <div class="preview-row">
+              <span class="nxo-badge nxo-badge-primary">Primary</span>
+              <span class="nxo-badge nxo-badge-secondary">Secondary</span>
+              <span class="nxo-badge nxo-badge-success">Success</span>
+              <span class="nxo-badge nxo-badge-warning">Warning</span>
+              <span class="nxo-badge nxo-badge-danger">Danger</span>
+              <span class="nxo-badge nxo-badge-info">Info</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Outline</h3>
+          <div class="preview-box">
+            <div class="preview-row">
+              <span class="nxo-badge nxo-badge-outline nxo-badge-primary">Primary</span>
+              <span class="nxo-badge nxo-badge-outline nxo-badge-success">Success</span>
+              <span class="nxo-badge nxo-badge-outline nxo-badge-danger">Danger</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           CHIPS / TAGS
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="chips" class="preview-section">
+        <h2 class="preview-section-title">Chips / Tags</h2>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Basique</h3>
+          <div class="preview-box">
+            <div class="nxo-chip-group">
+              <span class="nxo-chip">Tag simple</span>
+              <span class="nxo-chip nxo-chip-clickable">Cliquable</span>
+              <span class="nxo-chip nxo-chip-selected">Selectionne</span>
+              <span class="nxo-chip">
+                Avec suppression
+                <button class="nxo-chip-remove">&times;</button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Outline</h3>
+          <div class="preview-box">
+            <div class="nxo-chip-group">
+              <span class="nxo-chip nxo-chip-outline">Outline</span>
+              <span class="nxo-chip nxo-chip-outline nxo-chip-selected">Selectionne</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           ALERTES
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="alerts" class="preview-section">
+        <h2 class="preview-section-title">Alertes</h2>
+
+        <div class="nxo-alert nxo-alert-info nxo-mb-md">
+          <i class="fa-solid fa-circle-info nxo-alert-icon"></i>
+          <div class="nxo-alert-content">
+            <div class="nxo-alert-title">Information</div>
+            <div class="nxo-alert-message">Ceci est un message d'information.</div>
+          </div>
+        </div>
+
+        <div class="nxo-alert nxo-alert-success nxo-mb-md">
+          <i class="fa-solid fa-circle-check nxo-alert-icon"></i>
+          <div class="nxo-alert-content">
+            <div class="nxo-alert-title">Succes</div>
+            <div class="nxo-alert-message">L'operation a ete effectuee avec succes.</div>
+          </div>
+        </div>
+
+        <div class="nxo-alert nxo-alert-warning nxo-mb-md">
+          <i class="fa-solid fa-triangle-exclamation nxo-alert-icon"></i>
+          <div class="nxo-alert-content">
+            <div class="nxo-alert-title">Attention</div>
+            <div class="nxo-alert-message">Veuillez verifier les informations.</div>
+          </div>
+        </div>
+
+        <div class="nxo-alert nxo-alert-danger">
+          <i class="fa-solid fa-circle-xmark nxo-alert-icon"></i>
+          <div class="nxo-alert-content">
+            <div class="nxo-alert-title">Erreur</div>
+            <div class="nxo-alert-message">Une erreur s'est produite.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           MODALES
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="modals" class="preview-section">
+        <h2 class="preview-section-title">Modales <span class="preview-code">radius: 12px</span></h2>
+
+        <div class="preview-box" style="background: rgba(0,0,0,0.5); padding: 40px;">
+          <div class="nxo-modal" style="position: relative; margin: 0 auto;">
+            <div class="nxo-modal-header">
+              <h3 class="nxo-modal-title">Titre de la modale</h3>
+              <button class="nxo-modal-close">&times;</button>
+            </div>
+            <div class="nxo-modal-body">
+              <p class="nxo-text">Contenu de la fenetre modale. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="nxo-modal-footer">
+              <button class="nxo-btn nxo-btn-secondary">Annuler</button>
+              <button class="nxo-btn nxo-btn-primary">Confirmer</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           TOOLTIPS
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="tooltips" class="preview-section">
+        <h2 class="preview-section-title">Tooltips <span class="preview-code">Sombre / Clair (pas bleu)</span></h2>
+
+        <div class="preview-box">
+          <div class="preview-row" style="gap: 48px;">
+            <div class="nxo-tooltip nxo-tooltip-dark">
+              <button class="nxo-btn nxo-btn-secondary">Survol (sombre)</button>
+              <span class="nxo-tooltip-content">Tooltip sombre</span>
+            </div>
+            <div class="nxo-tooltip nxo-tooltip-light">
+              <button class="nxo-btn nxo-btn-secondary">Survol (clair)</button>
+              <span class="nxo-tooltip-content">Tooltip clair</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           BREADCRUMB
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="breadcrumb" class="preview-section">
+        <h2 class="preview-section-title">Breadcrumb <span class="preview-code">Separateur: chevron ›</span></h2>
+
+        <div class="preview-box">
+          <nav class="nxo-breadcrumb">
+            <span class="nxo-breadcrumb-item"><a href="#">Accueil</a></span>
+            <span class="nxo-breadcrumb-item"><a href="#">Tickets</a></span>
+            <span class="nxo-breadcrumb-item active">Ticket #1234</span>
+          </nav>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           PAGINATION
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="pagination" class="preview-section">
+        <h2 class="preview-section-title">Pagination</h2>
+
+        <div class="preview-box">
+          <nav class="nxo-pagination">
+            <span class="nxo-pagination-item disabled">
+              <a href="#" class="nxo-pagination-link"><i class="fa-solid fa-chevron-left"></i></a>
+            </span>
+            <span class="nxo-pagination-item">
+              <a href="#" class="nxo-pagination-link">1</a>
+            </span>
+            <span class="nxo-pagination-item active">
+              <a href="#" class="nxo-pagination-link">2</a>
+            </span>
+            <span class="nxo-pagination-item">
+              <a href="#" class="nxo-pagination-link">3</a>
+            </span>
+            <span class="nxo-pagination-item">
+              <a href="#" class="nxo-pagination-link">4</a>
+            </span>
+            <span class="nxo-pagination-item">
+              <a href="#" class="nxo-pagination-link"><i class="fa-solid fa-chevron-right"></i></a>
+            </span>
+          </nav>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           TABS
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="tabs" class="preview-section">
+        <h2 class="preview-section-title">Tabs / Onglets</h2>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Style ligne</h3>
+          <div class="preview-box">
+            <div class="nxo-tabs">
+              <button class="nxo-tab active">Onglet 1</button>
+              <button class="nxo-tab">Onglet 2</button>
+              <button class="nxo-tab">Onglet 3</button>
+            </div>
+            <div class="nxo-tab-content">
+              Contenu de l'onglet selectionne...
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Style pills</h3>
+          <div class="preview-box">
+            <div class="nxo-tabs-pills">
+              <button class="nxo-tab active">Actif</button>
+              <button class="nxo-tab">Onglet 2</button>
+              <button class="nxo-tab">Onglet 3</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           NAV / MENU HORIZONTAL
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="nav" class="preview-section">
+        <h2 class="preview-section-title">Navigation horizontale</h2>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Standard</h3>
+          <div class="preview-box">
+            <ul class="nxo-nav">
+              <li class="nxo-nav-item"><a href="#" class="nxo-nav-link active">Accueil</a></li>
+              <li class="nxo-nav-item"><a href="#" class="nxo-nav-link">Produits</a></li>
+              <li class="nxo-nav-item"><a href="#" class="nxo-nav-link">Services</a></li>
+              <li class="nxo-nav-item"><a href="#" class="nxo-nav-link">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Pills</h3>
+          <div class="preview-box">
+            <ul class="nxo-nav nxo-nav-pills">
+              <li class="nxo-nav-item"><a href="#" class="nxo-nav-link active">Accueil</a></li>
+              <li class="nxo-nav-item"><a href="#" class="nxo-nav-link">Produits</a></li>
+              <li class="nxo-nav-item"><a href="#" class="nxo-nav-link">Services</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Underline</h3>
+          <div class="preview-box">
+            <ul class="nxo-nav nxo-nav-underline">
+              <li class="nxo-nav-item"><a href="#" class="nxo-nav-link active">Accueil</a></li>
+              <li class="nxo-nav-item"><a href="#" class="nxo-nav-link">Produits</a></li>
+              <li class="nxo-nav-item"><a href="#" class="nxo-nav-link">Services</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           AVATARS
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="avatars" class="preview-section">
+        <h2 class="preview-section-title">Avatars <span class="preview-code">Rond, 32px par defaut</span></h2>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Tailles</h3>
+          <div class="preview-box">
+            <div class="preview-row">
+              <div style="text-align: center;">
+                <div class="nxo-avatar">JD</div>
+                <div class="nxo-text-xs nxo-text-muted nxo-mt-xs">32px (defaut)</div>
+              </div>
+              <div style="text-align: center;">
+                <div class="nxo-avatar nxo-avatar-md">JD</div>
+                <div class="nxo-text-xs nxo-text-muted nxo-mt-xs">40px</div>
+              </div>
+              <div style="text-align: center;">
+                <div class="nxo-avatar nxo-avatar-lg">JD</div>
+                <div class="nxo-text-xs nxo-text-muted nxo-mt-xs">56px</div>
+              </div>
+              <div style="text-align: center;">
+                <div class="nxo-avatar nxo-avatar-xl">JD</div>
+                <div class="nxo-text-xs nxo-text-muted nxo-mt-xs">80px</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Groupe</h3>
+          <div class="preview-box">
+            <div class="nxo-avatar-group">
+              <div class="nxo-avatar" style="background: var(--nxo-blue-dark);">AB</div>
+              <div class="nxo-avatar" style="background: var(--nxo-color-success);">CD</div>
+              <div class="nxo-avatar" style="background: var(--nxo-orange);">EF</div>
+              <div class="nxo-avatar" style="background: var(--nxo-teal);">+3</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           SPINNERS
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="spinners" class="preview-section">
+        <h2 class="preview-section-title">Spinners <span class="preview-code">Bleu Fayat #0055a0</span></h2>
+
+        <div class="preview-box">
+          <div class="preview-row">
+            <div style="text-align: center;">
+              <div class="nxo-spinner nxo-spinner-sm"></div>
+              <div class="nxo-text-xs nxo-text-muted nxo-mt-sm">Small</div>
+            </div>
+            <div style="text-align: center;">
+              <div class="nxo-spinner"></div>
+              <div class="nxo-text-xs nxo-text-muted nxo-mt-sm">Default</div>
+            </div>
+            <div style="text-align: center;">
+              <div class="nxo-spinner nxo-spinner-lg"></div>
+              <div class="nxo-text-xs nxo-text-muted nxo-mt-sm">Large</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-box">
+          <div class="nxo-loading">
+            <div class="nxo-spinner"></div>
+            <span>Chargement en cours...</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           PROGRESS BAR
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="progress" class="preview-section">
+        <h2 class="preview-section-title">Progress Bar</h2>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Basique</h3>
+          <div class="preview-box">
+            <div class="nxo-progress nxo-mb-md">
+              <div class="nxo-progress-bar" style="width: 25%;"></div>
+            </div>
+            <div class="nxo-progress nxo-mb-md">
+              <div class="nxo-progress-bar" style="width: 50%;"></div>
+            </div>
+            <div class="nxo-progress">
+              <div class="nxo-progress-bar" style="width: 75%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Avec label</h3>
+          <div class="preview-box">
+            <div class="nxo-progress-labeled">
+              <div class="nxo-progress">
+                <div class="nxo-progress-bar" style="width: 65%;"></div>
+              </div>
+              <span class="nxo-progress-label">65%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Variantes</h3>
+          <div class="preview-box">
+            <div class="nxo-progress nxo-mb-md">
+              <div class="nxo-progress-bar nxo-progress-bar-success" style="width: 80%;"></div>
+            </div>
+            <div class="nxo-progress nxo-mb-md">
+              <div class="nxo-progress-bar nxo-progress-bar-warning" style="width: 60%;"></div>
+            </div>
+            <div class="nxo-progress">
+              <div class="nxo-progress-bar nxo-progress-bar-danger" style="width: 40%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Tailles</h3>
+          <div class="preview-box">
+            <div class="nxo-progress nxo-progress-sm nxo-mb-md">
+              <div class="nxo-progress-bar" style="width: 50%;"></div>
+            </div>
+            <div class="nxo-progress nxo-mb-md">
+              <div class="nxo-progress-bar" style="width: 50%;"></div>
+            </div>
+            <div class="nxo-progress nxo-progress-lg">
+              <div class="nxo-progress-bar" style="width: 50%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Indetermine</h3>
+          <div class="preview-box">
+            <div class="nxo-progress nxo-progress-indeterminate">
+              <div class="nxo-progress-bar"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           STEPPER
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="stepper" class="preview-section">
+        <h2 class="preview-section-title">Stepper</h2>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Horizontal</h3>
+          <div class="preview-box">
+            <div class="nxo-stepper">
+              <div class="nxo-stepper-step completed">
+                <div class="nxo-stepper-indicator"></div>
+                <div class="nxo-stepper-label">Informations</div>
+              </div>
+              <div class="nxo-stepper-step active">
+                <div class="nxo-stepper-indicator">2</div>
+                <div class="nxo-stepper-label">Paiement</div>
+              </div>
+              <div class="nxo-stepper-step">
+                <div class="nxo-stepper-indicator">3</div>
+                <div class="nxo-stepper-label">Confirmation</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="preview-subsection">
+          <h3 class="preview-subsection-title">Vertical</h3>
+          <div class="preview-box">
+            <div class="nxo-stepper nxo-stepper-vertical">
+              <div class="nxo-stepper-step completed">
+                <div class="nxo-stepper-indicator"></div>
+                <div class="nxo-stepper-label">Etape 1 terminee</div>
+              </div>
+              <div class="nxo-stepper-step active">
+                <div class="nxo-stepper-indicator">2</div>
+                <div class="nxo-stepper-label">Etape 2 en cours</div>
+              </div>
+              <div class="nxo-stepper-step">
+                <div class="nxo-stepper-indicator">3</div>
+                <div class="nxo-stepper-label">Etape 3 a venir</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           ACCORDION
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="accordion" class="preview-section">
+        <h2 class="preview-section-title">Accordion</h2>
+
+        <div class="preview-box">
+          <div class="nxo-accordion">
+            <div class="nxo-accordion-item open">
+              <button class="nxo-accordion-header">
+                <span>Question 1 : Comment fonctionne le support ?</span>
+                <i class="fa-solid fa-chevron-down nxo-accordion-icon"></i>
+              </button>
+              <div class="nxo-accordion-content" style="max-height: 200px;">
+                <div class="nxo-accordion-body">
+                  Notre equipe de support est disponible 24h/24 et 7j/7 pour repondre a toutes vos questions. Vous pouvez nous contacter par telephone, email ou chat.
+                </div>
+              </div>
+            </div>
+            <div class="nxo-accordion-item">
+              <button class="nxo-accordion-header">
+                <span>Question 2 : Quels sont les delais de livraison ?</span>
+                <i class="fa-solid fa-chevron-down nxo-accordion-icon"></i>
+              </button>
+              <div class="nxo-accordion-content">
+                <div class="nxo-accordion-body">
+                  Les delais de livraison varient selon votre localisation...
+                </div>
+              </div>
+            </div>
+            <div class="nxo-accordion-item">
+              <button class="nxo-accordion-header">
+                <span>Question 3 : Comment retourner un produit ?</span>
+                <i class="fa-solid fa-chevron-down nxo-accordion-icon"></i>
+              </button>
+              <div class="nxo-accordion-content">
+                <div class="nxo-accordion-body">
+                  Vous disposez de 30 jours pour retourner un produit...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           SKELETON LOADER
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="skeleton" class="preview-section">
+        <h2 class="preview-section-title">Skeleton Loader</h2>
+
+        <div class="preview-grid">
+          <div class="preview-box">
+            <h3 class="preview-subsection-title">Texte</h3>
+            <div class="nxo-skeleton nxo-skeleton-title"></div>
+            <div class="nxo-skeleton nxo-skeleton-text"></div>
+            <div class="nxo-skeleton nxo-skeleton-text"></div>
+            <div class="nxo-skeleton nxo-skeleton-text"></div>
+          </div>
+
+          <div class="preview-box">
+            <h3 class="preview-subsection-title">Card</h3>
+            <div class="nxo-skeleton nxo-skeleton-image nxo-mb-md"></div>
+            <div class="nxo-skeleton nxo-skeleton-title"></div>
+            <div class="nxo-skeleton nxo-skeleton-text"></div>
+          </div>
+
+          <div class="preview-box">
+            <h3 class="preview-subsection-title">Profil</h3>
+            <div class="nxo-flex nxo-gap-md" style="align-items: center;">
+              <div class="nxo-skeleton nxo-skeleton-avatar"></div>
+              <div style="flex: 1;">
+                <div class="nxo-skeleton nxo-skeleton-text" style="width: 60%;"></div>
+                <div class="nxo-skeleton nxo-skeleton-text" style="width: 40%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           EMPTY STATE
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="empty" class="preview-section">
+        <h2 class="preview-section-title">Empty State</h2>
+
+        <div class="preview-box">
+          <div class="nxo-empty-state">
+            <div class="nxo-empty-state-icon">
+              <i class="fa-regular fa-folder-open"></i>
+            </div>
+            <h3 class="nxo-empty-state-title">Aucun resultat</h3>
+            <p class="nxo-empty-state-description">
+              Aucun element ne correspond a votre recherche. Essayez de modifier vos filtres ou d'effectuer une nouvelle recherche.
+            </p>
+            <div class="nxo-empty-state-actions">
+              <button class="nxo-btn nxo-btn-primary">Nouvelle recherche</button>
+              <button class="nxo-btn nxo-btn-secondary">Effacer les filtres</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           LIST
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="list" class="preview-section">
+        <h2 class="preview-section-title">List</h2>
+
+        <div class="preview-box">
+          <ul class="nxo-list nxo-list-bordered">
+            <li class="nxo-list-item nxo-list-item-interactive">
+              <span class="nxo-list-item-icon"><i class="fa-solid fa-file-pdf"></i></span>
+              <div class="nxo-list-item-content">
+                <div class="nxo-list-item-title">Document important.pdf</div>
+                <div class="nxo-list-item-description">2.4 MB - Modifie le 12/12/2025</div>
+              </div>
+              <span class="nxo-list-item-action">
+                <button class="nxo-btn nxo-btn-secondary nxo-btn-sm">Telecharger</button>
+              </span>
+            </li>
+            <li class="nxo-list-item nxo-list-item-interactive">
+              <span class="nxo-list-item-icon"><i class="fa-solid fa-file-excel"></i></span>
+              <div class="nxo-list-item-content">
+                <div class="nxo-list-item-title">Rapport annuel.xlsx</div>
+                <div class="nxo-list-item-description">1.8 MB - Modifie le 10/12/2025</div>
+              </div>
+              <span class="nxo-list-item-action">
+                <button class="nxo-btn nxo-btn-secondary nxo-btn-sm">Telecharger</button>
+              </span>
+            </li>
+            <li class="nxo-list-item nxo-list-item-interactive">
+              <span class="nxo-list-item-icon"><i class="fa-solid fa-file-image"></i></span>
+              <div class="nxo-list-item-content">
+                <div class="nxo-list-item-title">Logo.png</div>
+                <div class="nxo-list-item-description">156 KB - Modifie le 08/12/2025</div>
+              </div>
+              <span class="nxo-list-item-action">
+                <button class="nxo-btn nxo-btn-secondary nxo-btn-sm">Telecharger</button>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           TIMELINE
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="timeline" class="preview-section">
+        <h2 class="preview-section-title">Timeline</h2>
+
+        <div class="preview-box">
+          <ul class="nxo-timeline">
+            <li class="nxo-timeline-item">
+              <div class="nxo-timeline-marker nxo-timeline-marker-success"></div>
+              <div class="nxo-timeline-content">
+                <div class="nxo-timeline-time">12 Decembre 2025 - 14:30</div>
+                <h4 class="nxo-timeline-title">Ticket resolu</h4>
+                <p class="nxo-timeline-description">Le probleme a ete resolu par l'equipe technique.</p>
+              </div>
+            </li>
+            <li class="nxo-timeline-item">
+              <div class="nxo-timeline-marker"></div>
+              <div class="nxo-timeline-content">
+                <div class="nxo-timeline-time">12 Decembre 2025 - 10:15</div>
+                <h4 class="nxo-timeline-title">En cours de traitement</h4>
+                <p class="nxo-timeline-description">Un technicien a ete assigne au ticket.</p>
+              </div>
+            </li>
+            <li class="nxo-timeline-item">
+              <div class="nxo-timeline-marker nxo-timeline-marker-warning"></div>
+              <div class="nxo-timeline-content">
+                <div class="nxo-timeline-time">11 Decembre 2025 - 16:45</div>
+                <h4 class="nxo-timeline-title">Ticket cree</h4>
+                <p class="nxo-timeline-description">Le ticket a ete cree par le client.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           SEARCH INPUT
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="search" class="preview-section">
+        <h2 class="preview-section-title">Search Input</h2>
+
+        <div class="preview-box">
+          <div style="max-width: 400px;">
+            <div class="nxo-search">
+              <i class="fa-solid fa-search nxo-search-icon"></i>
+              <input type="text" class="nxo-search-input" placeholder="Rechercher...">
+              <button class="nxo-search-clear">
+                <i class="fa-solid fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           FILE UPLOAD
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="fileupload" class="preview-section">
+        <h2 class="preview-section-title">File Upload</h2>
+
+        <div class="preview-box">
+          <div class="nxo-file-upload">
+            <div class="nxo-file-dropzone">
+              <div class="nxo-file-dropzone-icon">
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+              </div>
+              <div class="nxo-file-dropzone-text">Glissez vos fichiers ici ou cliquez pour parcourir</div>
+              <div class="nxo-file-dropzone-hint">PNG, JPG, PDF jusqu'a 10 MB</div>
+            </div>
+
+            <ul class="nxo-file-list">
+              <li class="nxo-file-item">
+                <span class="nxo-file-item-icon"><i class="fa-solid fa-file-pdf"></i></span>
+                <div class="nxo-file-item-info">
+                  <div class="nxo-file-item-name">document.pdf</div>
+                  <div class="nxo-file-item-size">2.4 MB</div>
+                </div>
+                <button class="nxo-file-item-remove"><i class="fa-solid fa-times"></i></button>
+              </li>
+              <li class="nxo-file-item">
+                <span class="nxo-file-item-icon"><i class="fa-solid fa-file-image"></i></span>
+                <div class="nxo-file-item-info">
+                  <div class="nxo-file-item-name">image.png</div>
+                  <div class="nxo-file-item-size">856 KB</div>
+                </div>
+                <button class="nxo-file-item-remove"><i class="fa-solid fa-times"></i></button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           DIVIDER
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="divider" class="preview-section">
+        <h2 class="preview-section-title">Divider</h2>
+
+        <div class="preview-box">
+          <p class="nxo-text">Contenu au-dessus du separateur</p>
+          <hr class="nxo-divider">
+          <p class="nxo-text">Contenu en-dessous du separateur</p>
+        </div>
+
+        <div class="preview-box">
+          <p class="nxo-text-sm nxo-text-muted">Divider avec texte</p>
+          <div class="nxo-divider-text">
+            <span>OU</span>
+          </div>
+          <p class="nxo-text-sm nxo-text-muted">Autre contenu</p>
+        </div>
+
+        <div class="preview-box">
+          <div class="nxo-flex" style="align-items: center; height: 40px;">
+            <span>Element 1</span>
+            <span class="nxo-divider-vertical"></span>
+            <span>Element 2</span>
+            <span class="nxo-divider-vertical"></span>
+            <span>Element 3</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           TOASTS
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="toasts" class="preview-section">
+        <h2 class="preview-section-title">Toasts</h2>
+
+        <div class="preview-grid">
+          <div class="nxo-toast nxo-toast-success">
+            <i class="fa-solid fa-circle-check nxo-toast-icon"></i>
+            <div class="nxo-toast-content">
+              <div class="nxo-toast-title">Succes</div>
+              <div class="nxo-toast-message">Votre action a ete effectuee.</div>
+            </div>
+            <button class="nxo-toast-close">&times;</button>
+          </div>
+
+          <div class="nxo-toast nxo-toast-danger">
+            <i class="fa-solid fa-circle-xmark nxo-toast-icon"></i>
+            <div class="nxo-toast-content">
+              <div class="nxo-toast-title">Erreur</div>
+              <div class="nxo-toast-message">Une erreur s'est produite.</div>
+            </div>
+            <button class="nxo-toast-close">&times;</button>
+          </div>
+
+          <div class="nxo-toast nxo-toast-info">
+            <i class="fa-solid fa-circle-info nxo-toast-icon"></i>
+            <div class="nxo-toast-content">
+              <div class="nxo-toast-title">Information</div>
+              <div class="nxo-toast-message">Nouvelle mise a jour disponible.</div>
+            </div>
+            <button class="nxo-toast-close">&times;</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           SIDEBAR
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="sidebar" class="preview-section">
+        <h2 class="preview-section-title">Sidebar</h2>
+
+        <div class="preview-grid">
+          <!-- Sidebar claire -->
+          <div>
+            <h3 class="preview-subsection-title">Version claire</h3>
+            <div style="height: 300px; overflow: hidden; border-radius: 8px; border: 1px solid var(--nxo-border-color);">
+              <div class="nxo-sidebar" style="position: relative; height: 100%;">
+                <ul class="nxo-sidebar-nav">
+                  <li><a href="#" class="nxo-sidebar-item active"><i class="fa-solid fa-house"></i> Accueil</a></li>
+                  <li><a href="#" class="nxo-sidebar-item"><i class="fa-solid fa-ticket"></i> Tickets</a></li>
+                  <li><a href="#" class="nxo-sidebar-item"><i class="fa-solid fa-chart-line"></i> Rapports</a></li>
+                  <li><a href="#" class="nxo-sidebar-item"><i class="fa-solid fa-gear"></i> Parametres</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar sombre -->
+          <div>
+            <h3 class="preview-subsection-title">Version sombre</h3>
+            <div style="height: 300px; overflow: hidden; border-radius: 8px;">
+              <div class="nxo-sidebar nxo-sidebar-dark" style="position: relative; height: 100%;">
+                <ul class="nxo-sidebar-nav">
+                  <li><a href="#" class="nxo-sidebar-item active"><i class="fa-solid fa-house"></i> Accueil</a></li>
+                  <li><a href="#" class="nxo-sidebar-item"><i class="fa-solid fa-ticket"></i> Tickets</a></li>
+                  <li><a href="#" class="nxo-sidebar-item"><i class="fa-solid fa-chart-line"></i> Rapports</a></li>
+                  <li><a href="#" class="nxo-sidebar-item"><i class="fa-solid fa-gear"></i> Parametres</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           DROPDOWN
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="dropdown" class="preview-section">
+        <h2 class="preview-section-title">Dropdown</h2>
+
+        <div class="preview-box">
+          <div class="nxo-dropdown open" style="display: inline-block;">
+            <button class="nxo-btn nxo-btn-secondary">
+              Menu <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="nxo-dropdown-menu" style="position: relative; opacity: 1; visibility: visible; transform: none; margin-top: 8px;">
+              <a href="#" class="nxo-dropdown-item"><i class="fa-solid fa-user"></i> Profil</a>
+              <a href="#" class="nxo-dropdown-item"><i class="fa-solid fa-gear"></i> Parametres</a>
+              <div class="nxo-dropdown-divider"></div>
+              <a href="#" class="nxo-dropdown-item"><i class="fa-solid fa-right-from-bracket"></i> Deconnexion</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="footer" class="preview-section">
+        <h2 class="preview-section-title">Footer <span class="preview-code">Bleu Fayat #0055a0, pas d'arrondi</span></h2>
+
+        <footer class="nxo-footer">
+          <div class="nxo-footer-content">
+            <ul class="nxo-footer-links">
+              <li><a href="#">Mentions legales</a></li>
+              <li><a href="#">Politique de confidentialite</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Aide</a></li>
+            </ul>
+            <p class="nxo-footer-copyright">&copy; 2025 NXO - Groupe FAYAT. Tous droits reserves.</p>
+          </div>
+        </footer>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link active"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-caret-down"></i> Dropdown</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Menus deroulants pour les actions et les selections.
+        </p>
+
+        <!-- Dropdown menu -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Dropdown menu</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="min-height: 250px;">
+              <div class="nxo-dropdown">
+                <button class="nxo-btn nxo-btn-secondary nxo-dropdown-trigger">
+                  Options <i class="fa-solid fa-chevron-down" style="margin-left: 8px;"></i>
+                </button>
+                <div class="nxo-dropdown-menu">
+                  <a href="#" class="nxo-dropdown-item">
+                    <i class="fa-solid fa-eye"></i> Voir
+                  </a>
+                  <a href="#" class="nxo-dropdown-item">
+                    <i class="fa-solid fa-edit"></i> Modifier
+                  </a>
+                  <a href="#" class="nxo-dropdown-item">
+                    <i class="fa-solid fa-copy"></i> Dupliquer
+                  </a>
+                  <hr class="nxo-dropdown-divider">
+                  <a href="#" class="nxo-dropdown-item nxo-dropdown-item-danger">
+                    <i class="fa-solid fa-trash"></i> Supprimer
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-dropdown"&gt;
+  &lt;button class="nxo-btn nxo-btn-secondary"&gt;
+    Options &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div class="nxo-dropdown-menu"&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-eye"&gt;&lt;/i&gt; Voir
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-edit"&gt;&lt;/i&gt; Modifier
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-copy"&gt;&lt;/i&gt; Dupliquer
+    &lt;/a&gt;
+    &lt;hr class="nxo-dropdown-divider"&gt;
+    &lt;a href="#" class="nxo-dropdown-item nxo-dropdown-item-danger"&gt;
+      &lt;i class="fa-solid fa-trash"&gt;&lt;/i&gt; Supprimer
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import React, { useState } from 'react';
+import { Button, Menu, MenuItem, Divider } from '@mui/material';
+import { Visibility, Edit, ContentCopy, Delete, KeyboardArrowDown } from '@mui/icons-material';
+
+function Dropdown() {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    &lt;div className="nxo-dropdown"&gt;
+      &lt;Button
+        variant="outlined"
+        className="nxo-btn-secondary"
+        onClick={handleClick}
+        endIcon={&lt;KeyboardArrowDown /&gt;}
+      &gt;
+        Options
+      &lt;/Button&gt;
+      &lt;Menu
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        className="nxo-dropdown-menu"
+      &gt;
+        &lt;MenuItem onClick={handleClose} className="nxo-dropdown-item"&gt;
+          &lt;Visibility fontSize="small" sx={{ mr: 1 }} /&gt; Voir
+        &lt;/MenuItem&gt;
+        &lt;MenuItem onClick={handleClose} className="nxo-dropdown-item"&gt;
+          &lt;Edit fontSize="small" sx={{ mr: 1 }} /&gt; Modifier
+        &lt;/MenuItem&gt;
+        &lt;MenuItem onClick={handleClose} className="nxo-dropdown-item"&gt;
+          &lt;ContentCopy fontSize="small" sx={{ mr: 1 }} /&gt; Dupliquer
+        &lt;/MenuItem&gt;
+        &lt;Divider className="nxo-dropdown-divider" /&gt;
+        &lt;MenuItem onClick={handleClose} className="nxo-dropdown-item nxo-dropdown-item-danger"&gt;
+          &lt;Delete fontSize="small" sx={{ mr: 1 }} /&gt; Supprimer
+        &lt;/MenuItem&gt;
+      &lt;/Menu&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+
+@Component({
+  selector: 'nxo-dropdown',
+  standalone: true,
+  imports: [MatButtonModule, MatMenuModule, MatIconModule, MatDividerModule],
+  template: `
+    &lt;div class="nxo-dropdown"&gt;
+      &lt;button
+        mat-stroked-button
+        class="nxo-btn-secondary"
+        [matMenuTriggerFor]="menu"&gt;
+        Options
+        &lt;mat-icon iconPositionEnd&gt;keyboard_arrow_down&lt;/mat-icon&gt;
+      &lt;/button&gt;
+      &lt;mat-menu #menu="matMenu" class="nxo-dropdown-menu"&gt;
+        &lt;button mat-menu-item class="nxo-dropdown-item"&gt;
+          &lt;mat-icon&gt;visibility&lt;/mat-icon&gt;
+          &lt;span&gt;Voir&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button mat-menu-item class="nxo-dropdown-item"&gt;
+          &lt;mat-icon&gt;edit&lt;/mat-icon&gt;
+          &lt;span&gt;Modifier&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button mat-menu-item class="nxo-dropdown-item"&gt;
+          &lt;mat-icon&gt;content_copy&lt;/mat-icon&gt;
+          &lt;span&gt;Dupliquer&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;mat-divider class="nxo-dropdown-divider"&gt;&lt;/mat-divider&gt;
+        &lt;button mat-menu-item class="nxo-dropdown-item nxo-dropdown-item-danger"&gt;
+          &lt;mat-icon&gt;delete&lt;/mat-icon&gt;
+          &lt;span&gt;Supprimer&lt;/span&gt;
+        &lt;/button&gt;
+      &lt;/mat-menu&gt;
+    &lt;/div&gt;
+  `
+})
+export class DropdownComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# dropdown.html.twig #}
+&lt;div class="nxo-dropdown" data-dropdown&gt;
+  &lt;button class="nxo-btn nxo-btn-secondary" data-dropdown-trigger&gt;
+    Options &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div class="nxo-dropdown-menu" data-dropdown-menu&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-eye"&gt;&lt;/i&gt; Voir
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-edit"&gt;&lt;/i&gt; Modifier
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-copy"&gt;&lt;/i&gt; Dupliquer
+    &lt;/a&gt;
+    &lt;hr class="nxo-dropdown-divider"&gt;
+    &lt;a href="#" class="nxo-dropdown-item nxo-dropdown-item-danger"&gt;
+      &lt;i class="fa-solid fa-trash"&gt;&lt;/i&gt; Supprimer
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+{# JavaScript for dropdown functionality #}
+&lt;script&gt;
+document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
+  const trigger = dropdown.querySelector('[data-dropdown-trigger]');
+  const menu = dropdown.querySelector('[data-dropdown-menu]');
+
+  trigger.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      menu.classList.remove('show');
+    }
+  });
+});
+&lt;/script&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dropdown avec header -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec header</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="min-height: 280px;">
+              <div class="nxo-dropdown">
+                <button class="nxo-btn nxo-btn-primary nxo-dropdown-trigger">
+                  Mon compte <i class="fa-solid fa-chevron-down" style="margin-left: 8px;"></i>
+                </button>
+                <div class="nxo-dropdown-menu" style="min-width: 220px;">
+                  <div class="nxo-dropdown-header">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                      <div class="nxo-avatar nxo-avatar-sm" style="background: var(--fayat-blue);">
+                        <span class="nxo-avatar-initials">JD</span>
+                      </div>
+                      <div>
+                        <div style="font-weight: 500;">Jean Dupont</div>
+                        <div class="nxo-text-sm nxo-text-muted">jean@nxo.fr</div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="nxo-dropdown-divider">
+                  <a href="#" class="nxo-dropdown-item"><i class="fa-solid fa-user"></i> Mon profil</a>
+                  <a href="#" class="nxo-dropdown-item"><i class="fa-solid fa-cog"></i> Parametres</a>
+                  <hr class="nxo-dropdown-divider">
+                  <a href="#" class="nxo-dropdown-item"><i class="fa-solid fa-sign-out-alt"></i> Deconnexion</a>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-dropdown"&gt;
+  &lt;button class="nxo-btn nxo-btn-primary"&gt;
+    Mon compte &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div class="nxo-dropdown-menu"&gt;
+    &lt;div class="nxo-dropdown-header"&gt;
+      &lt;div style="display: flex; align-items: center; gap: 12px;"&gt;
+        &lt;div class="nxo-avatar nxo-avatar-sm"&gt;
+          &lt;span class="nxo-avatar-initials"&gt;JD&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div style="font-weight: 500;"&gt;Jean Dupont&lt;/div&gt;
+          &lt;div class="nxo-text-sm nxo-text-muted"&gt;jean@nxo.fr&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr class="nxo-dropdown-divider"&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-user"&gt;&lt;/i&gt; Mon profil
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-cog"&gt;&lt;/i&gt; Parametres
+    &lt;/a&gt;
+    &lt;hr class="nxo-dropdown-divider"&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-sign-out-alt"&gt;&lt;/i&gt; Deconnexion
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>import { useState, useRef, useEffect } from 'react';
+
+function UserDropdown({ user }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    &lt;div className="nxo-dropdown" ref={dropdownRef}&gt;
+      &lt;button
+        className="nxo-btn nxo-btn-primary"
+        onClick={() =&gt; setIsOpen(!isOpen)}
+      &gt;
+        Mon compte &lt;i className="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      {isOpen && (
+        &lt;div className="nxo-dropdown-menu"&gt;
+          &lt;div className="nxo-dropdown-header"&gt;
+            &lt;div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}&gt;
+              &lt;div className="nxo-avatar nxo-avatar-sm"&gt;
+                &lt;span className="nxo-avatar-initials"&gt;{user.initials}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;div&gt;
+                &lt;div style={{ fontWeight: 500 }}&gt;{user.name}&lt;/div&gt;
+                &lt;div className="nxo-text-sm nxo-text-muted"&gt;{user.email}&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;hr className="nxo-dropdown-divider" /&gt;
+          &lt;a href="#" className="nxo-dropdown-item"&gt;
+            &lt;i className="fa-solid fa-user"&gt;&lt;/i&gt; Mon profil
+          &lt;/a&gt;
+          &lt;a href="#" className="nxo-dropdown-item"&gt;
+            &lt;i className="fa-solid fa-cog"&gt;&lt;/i&gt; Parametres
+          &lt;/a&gt;
+          &lt;hr className="nxo-dropdown-divider" /&gt;
+          &lt;a href="#" className="nxo-dropdown-item"&gt;
+            &lt;i className="fa-solid fa-sign-out-alt"&gt;&lt;/i&gt; Deconnexion
+          &lt;/a&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// user-dropdown.component.ts
+import { Component, Input, HostListener, ElementRef } from '@angular/core';
+
+interface User {
+  initials: string;
+  name: string;
+  email: string;
+}
+
+@Component({
+  selector: 'nxo-user-dropdown',
+  templateUrl: './user-dropdown.component.html',
+  styleUrls: ['./user-dropdown.component.css']
+})
+export class UserDropdownComponent {
+  @Input() user: User;
+  isOpen = false;
+
+  constructor(private elementRef: ElementRef) {}
+
+  toggleDropdown() {
+    this.isOpen = !this.isOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.isOpen = false;
+    }
+  }
+}
+
+// user-dropdown.component.html
+&lt;div class="nxo-dropdown"&gt;
+  &lt;button
+    class="nxo-btn nxo-btn-primary"
+    (click)="toggleDropdown()"&gt;
+    Mon compte &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div class="nxo-dropdown-menu" *ngIf="isOpen"&gt;
+    &lt;div class="nxo-dropdown-header"&gt;
+      &lt;div style="display: flex; align-items: center; gap: 12px;"&gt;
+        &lt;div class="nxo-avatar nxo-avatar-sm"&gt;
+          &lt;span class="nxo-avatar-initials"&gt;{{ user.initials }}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div style="font-weight: 500;"&gt;{{ user.name }}&lt;/div&gt;
+          &lt;div class="nxo-text-sm nxo-text-muted"&gt;{{ user.email }}&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr class="nxo-dropdown-divider"&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-user"&gt;&lt;/i&gt; Mon profil
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-cog"&gt;&lt;/i&gt; Parametres
+    &lt;/a&gt;
+    &lt;hr class="nxo-dropdown-divider"&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-sign-out-alt"&gt;&lt;/i&gt; Deconnexion
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# user-dropdown.html.twig #}
+&lt;div class="nxo-dropdown" data-dropdown&gt;
+  &lt;button class="nxo-btn nxo-btn-primary" data-dropdown-trigger&gt;
+    Mon compte &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div class="nxo-dropdown-menu" data-dropdown-menu&gt;
+    &lt;div class="nxo-dropdown-header"&gt;
+      &lt;div style="display: flex; align-items: center; gap: 12px;"&gt;
+        &lt;div class="nxo-avatar nxo-avatar-sm"&gt;
+          &lt;span class="nxo-avatar-initials"&gt;{{ user.initials }}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;div style="font-weight: 500;"&gt;{{ user.name }}&lt;/div&gt;
+          &lt;div class="nxo-text-sm nxo-text-muted"&gt;{{ user.email }}&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;hr class="nxo-dropdown-divider"&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-user"&gt;&lt;/i&gt; Mon profil
+    &lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-cog"&gt;&lt;/i&gt; Parametres
+    &lt;/a&gt;
+    &lt;hr class="nxo-dropdown-divider"&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;
+      &lt;i class="fa-solid fa-sign-out-alt"&gt;&lt;/i&gt; Deconnexion
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+{# JavaScript for dropdown functionality #}
+&lt;script&gt;
+document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
+  const trigger = dropdown.querySelector('[data-dropdown-trigger]');
+  const menu = dropdown.querySelector('[data-dropdown-menu]');
+
+  trigger.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      menu.classList.remove('show');
+    }
+  });
+});
+&lt;/script&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Icon button dropdown -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Bouton icone</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="min-height: 200px;">
+              <div class="nxo-dropdown" style="display: inline-block;">
+                <button class="nxo-btn nxo-btn-icon nxo-btn-ghost nxo-dropdown-trigger">
+                  <i class="fa-solid fa-ellipsis-v"></i>
+                </button>
+                <div class="nxo-dropdown-menu" style="right: 0; left: auto;">
+                  <a href="#" class="nxo-dropdown-item">Editer</a>
+                  <a href="#" class="nxo-dropdown-item">Archiver</a>
+                  <a href="#" class="nxo-dropdown-item nxo-dropdown-item-danger">Supprimer</a>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-dropdown"&gt;
+  &lt;button class="nxo-btn nxo-btn-icon nxo-btn-ghost"&gt;
+    &lt;i class="fa-solid fa-ellipsis-v"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div class="nxo-dropdown-menu" style="right: 0;"&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;Editer&lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;Archiver&lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item nxo-dropdown-item-danger"&gt;Supprimer&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>import { useState, useRef, useEffect } from 'react';
+
+function IconDropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    &lt;div className="nxo-dropdown" ref={dropdownRef}&gt;
+      &lt;button
+        className="nxo-btn nxo-btn-icon nxo-btn-ghost"
+        onClick={() =&gt; setIsOpen(!isOpen)}
+        aria-label="Options"
+      &gt;
+        &lt;i className="fa-solid fa-ellipsis-v"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      {isOpen && (
+        &lt;div className="nxo-dropdown-menu" style={{ right: 0 }}&gt;
+          &lt;a href="#" className="nxo-dropdown-item"&gt;Editer&lt;/a&gt;
+          &lt;a href="#" className="nxo-dropdown-item"&gt;Archiver&lt;/a&gt;
+          &lt;a href="#" className="nxo-dropdown-item nxo-dropdown-item-danger"&gt;
+            Supprimer
+          &lt;/a&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// icon-dropdown.component.ts
+import { Component, HostListener, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'nxo-icon-dropdown',
+  templateUrl: './icon-dropdown.component.html',
+  styleUrls: ['./icon-dropdown.component.css']
+})
+export class IconDropdownComponent {
+  isOpen = false;
+
+  constructor(private elementRef: ElementRef) {}
+
+  toggleDropdown() {
+    this.isOpen = !this.isOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: Event) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.isOpen = false;
+    }
+  }
+}
+
+// icon-dropdown.component.html
+&lt;div class="nxo-dropdown"&gt;
+  &lt;button
+    class="nxo-btn nxo-btn-icon nxo-btn-ghost"
+    (click)="toggleDropdown()"
+    aria-label="Options"&gt;
+    &lt;i class="fa-solid fa-ellipsis-v"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div class="nxo-dropdown-menu" *ngIf="isOpen" style="right: 0;"&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;Editer&lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;Archiver&lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item nxo-dropdown-item-danger"&gt;
+      Supprimer
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# icon-dropdown.html.twig #}
+&lt;div class="nxo-dropdown" data-dropdown&gt;
+  &lt;button
+    class="nxo-btn nxo-btn-icon nxo-btn-ghost"
+    data-dropdown-trigger
+    aria-label="Options"&gt;
+    &lt;i class="fa-solid fa-ellipsis-v"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+  &lt;div class="nxo-dropdown-menu" data-dropdown-menu style="right: 0;"&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;Editer&lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item"&gt;Archiver&lt;/a&gt;
+    &lt;a href="#" class="nxo-dropdown-item nxo-dropdown-item-danger"&gt;Supprimer&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+{# JavaScript for dropdown functionality #}
+&lt;script&gt;
+document.querySelectorAll('[data-dropdown]').forEach(dropdown => {
+  const trigger = dropdown.querySelector('[data-dropdown-trigger]');
+  const menu = dropdown.querySelector('[data-dropdown-menu]');
+
+  trigger.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      menu.classList.remove('show');
+    }
+  });
+});
+&lt;/script&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-success nxo-mb-md">
+            <i class="fa-solid fa-check-circle"></i>
+            Le composant Dropdown est <strong>naturellement flexible</strong>. Le menu deroulant se positionne de maniere absolue et s'adapte au contenu. Aucune adaptation specifique n'est necessaire.
+          </div>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Dropdown functionality
+    document.querySelectorAll('.nxo-dropdown').forEach(dropdown => {
+      const trigger = dropdown.querySelector('.nxo-dropdown-trigger');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Close other dropdowns
+        document.querySelectorAll('.nxo-dropdown.open').forEach(d => {
+          if (d !== dropdown) d.classList.remove('open');
+        });
+        // Toggle current dropdown
+        dropdown.classList.toggle('open');
+      });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nxo-dropdown.open').forEach(d => {
+        d.classList.remove('open');
+      });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

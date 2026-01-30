@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link active"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-folder"></i> Tabs</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Onglets pour organiser le contenu en sections navigables.
+        </p>
+
+        <!-- Tabs basiques -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tabs basiques</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-lg);">
+              <div class="nxo-tabs">
+                <button class="nxo-tab active">Onglet 1</button>
+                <button class="nxo-tab">Onglet 2</button>
+                <button class="nxo-tab">Onglet 3</button>
+                <button class="nxo-tab" disabled>Desactive</button>
+              </div>
+              <div class="nxo-tab-content" style="padding: var(--nxo-spacing-md); border: 1px solid var(--nxo-border-color); border-top: none; background: white;">
+                <p class="nxo-text">Contenu de l'onglet actif.</p>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-tabs"&gt;
+  &lt;button class="nxo-tab active"&gt;Onglet 1&lt;/button&gt;
+  &lt;button class="nxo-tab"&gt;Onglet 2&lt;/button&gt;
+  &lt;button class="nxo-tab"&gt;Onglet 3&lt;/button&gt;
+  &lt;button class="nxo-tab" disabled&gt;Desactive&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="nxo-tab-content"&gt;
+  &lt;p class="nxo-text"&gt;Contenu de l'onglet actif.&lt;/p&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Tabs, Tab, Box, Typography } from '@mui/material';
+import { useState } from 'react';
+
+function BasicTabs() {
+  const [value, setValue] = useState(0);
+
+  const tabs = [
+    { label: 'Onglet 1', content: 'Contenu de l\'onglet actif.' },
+    { label: 'Onglet 2', content: 'Contenu de l\'onglet 2.' },
+    { label: 'Onglet 3', content: 'Contenu de l\'onglet 3.' }
+  ];
+
+  return (
+    &lt;Box className="nxo-tabs-container"&gt;
+      &lt;Tabs value={value} onChange={(e, newValue) =&gt; setValue(newValue)} className="nxo-tabs"&gt;
+        {tabs.map((tab, index) =&gt; (
+          &lt;Tab key={index} label={tab.label} className="nxo-tab" /&gt;
+        ))}
+        &lt;Tab label="Desactive" disabled className="nxo-tab" /&gt;
+      &lt;/Tabs&gt;
+      &lt;Box className="nxo-tab-content" sx={{ p: 2, border: 1, borderColor: 'divider', borderTop: 0 }}&gt;
+        &lt;Typography className="nxo-text"&gt;{tabs[value].content}&lt;/Typography&gt;
+      &lt;/Box&gt;
+    &lt;/Box&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatTabsModule } from '@angular/material/tabs';
+
+@Component({
+  selector: 'app-basic-tabs',
+  template: `
+    &lt;mat-tab-group class="nxo-tabs" (selectedTabChange)="onTabChange($event)"&gt;
+      &lt;mat-tab *ngFor="let tab of tabs" [label]="tab.label" class="nxo-tab"&gt;
+        &lt;div class="nxo-tab-content"&gt;
+          &lt;p class="nxo-text"&gt;{{ tab.content }}&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/mat-tab&gt;
+      &lt;mat-tab label="Desactive" disabled class="nxo-tab"&gt;&lt;/mat-tab&gt;
+    &lt;/mat-tab-group&gt;
+  `
+})
+export class BasicTabsComponent {
+  tabs = [
+    { label: 'Onglet 1', content: 'Contenu de l\'onglet actif.' },
+    { label: 'Onglet 2', content: 'Contenu de l\'onglet 2.' },
+    { label: 'Onglet 3', content: 'Contenu de l\'onglet 3.' }
+  ];
+
+  onTabChange(event: any) {
+    console.log('Tab changed:', event.index);
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# tabs.html.twig #}
+{% set active_tab = active_tab|default(0) %}
+{% set tabs = [
+  { label: 'Onglet 1', content: 'Contenu de l\'onglet actif.' },
+  { label: 'Onglet 2', content: 'Contenu de l\'onglet 2.' },
+  { label: 'Onglet 3', content: 'Contenu de l\'onglet 3.' }
+] %}
+
+&lt;div class="nxo-tabs"&gt;
+  {% for index, tab in tabs %}
+    &lt;button class="nxo-tab {% if active_tab == index %}active{% endif %}"&gt;
+      {{ tab.label }}
+    &lt;/button&gt;
+  {% endfor %}
+  &lt;button class="nxo-tab" disabled&gt;Desactive&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="nxo-tab-content"&gt;
+  &lt;p class="nxo-text"&gt;{{ tabs[active_tab].content }}&lt;/p&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs avec icones -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tabs avec icones</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-lg);">
+              <div class="nxo-tabs">
+                <button class="nxo-tab active"><i class="fa-solid fa-user"></i> Profil</button>
+                <button class="nxo-tab"><i class="fa-solid fa-cog"></i> Parametres</button>
+                <button class="nxo-tab"><i class="fa-solid fa-bell"></i> Notifications</button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-tabs"&gt;
+  &lt;button class="nxo-tab active"&gt;&lt;i class="fa-solid fa-user"&gt;&lt;/i&gt; Profil&lt;/button&gt;
+  &lt;button class="nxo-tab"&gt;&lt;i class="fa-solid fa-cog"&gt;&lt;/i&gt; Parametres&lt;/button&gt;
+  &lt;button class="nxo-tab"&gt;&lt;i class="fa-solid fa-bell"&gt;&lt;/i&gt; Notifications&lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Tabs, Tab } from '@mui/material';
+import { Person, Settings, Notifications } from '@mui/icons-material';
+import { useState } from 'react';
+
+function IconTabs() {
+  const [value, setValue] = useState(0);
+
+  return (
+    &lt;Tabs value={value} onChange={(e, v) =&gt; setValue(v)} className="nxo-tabs"&gt;
+      &lt;Tab icon={&lt;Person /&gt;} label="Profil" iconPosition="start" className="nxo-tab" /&gt;
+      &lt;Tab icon={&lt;Settings /&gt;} label="Parametres" iconPosition="start" className="nxo-tab" /&gt;
+      &lt;Tab icon={&lt;Notifications /&gt;} label="Notifications" iconPosition="start" className="nxo-tab" /&gt;
+    &lt;/Tabs&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+
+@Component({
+  selector: 'app-icon-tabs',
+  template: `
+    &lt;mat-tab-group class="nxo-tabs"&gt;
+      &lt;mat-tab class="nxo-tab"&gt;
+        &lt;ng-template mat-tab-label&gt;
+          &lt;mat-icon&gt;person&lt;/mat-icon&gt; Profil
+        &lt;/ng-template&gt;
+      &lt;/mat-tab&gt;
+      &lt;mat-tab class="nxo-tab"&gt;
+        &lt;ng-template mat-tab-label&gt;
+          &lt;mat-icon&gt;settings&lt;/mat-icon&gt; Parametres
+        &lt;/ng-template&gt;
+      &lt;/mat-tab&gt;
+      &lt;mat-tab class="nxo-tab"&gt;
+        &lt;ng-template mat-tab-label&gt;
+          &lt;mat-icon&gt;notifications&lt;/mat-icon&gt; Notifications
+        &lt;/ng-template&gt;
+      &lt;/mat-tab&gt;
+    &lt;/mat-tab-group&gt;
+  `
+})
+export class IconTabsComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# icon-tabs.html.twig #}
+{% set active_tab = active_tab|default(0) %}
+{% set tabs = [
+  { icon: 'fa-user', label: 'Profil' },
+  { icon: 'fa-cog', label: 'Parametres' },
+  { icon: 'fa-bell', label: 'Notifications' }
+] %}
+
+&lt;div class="nxo-tabs"&gt;
+  {% for index, tab in tabs %}
+    &lt;button class="nxo-tab {% if active_tab == index %}active{% endif %}"&gt;
+      &lt;i class="fa-solid {{ tab.icon }}"&gt;&lt;/i&gt; {{ tab.label }}
+    &lt;/button&gt;
+  {% endfor %}
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs avec badge -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tabs avec compteur</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-lg);">
+              <div class="nxo-tabs">
+                <button class="nxo-tab active">Tous <span class="nxo-badge nxo-badge-neutral" style="margin-left: 8px;">42</span></button>
+                <button class="nxo-tab">En attente <span class="nxo-badge nxo-badge-warning" style="margin-left: 8px;">5</span></button>
+                <button class="nxo-tab">Valides <span class="nxo-badge nxo-badge-success" style="margin-left: 8px;">37</span></button>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-tabs"&gt;
+  &lt;button class="nxo-tab active"&gt;
+    Tous &lt;span class="nxo-badge nxo-badge-neutral"&gt;42&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class="nxo-tab"&gt;
+    En attente &lt;span class="nxo-badge nxo-badge-warning"&gt;5&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;button class="nxo-tab"&gt;
+    Valides &lt;span class="nxo-badge nxo-badge-success"&gt;37&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Tabs, Tab, Badge, Chip } from '@mui/material';
+import { useState } from 'react';
+
+function BadgeTabs() {
+  const [value, setValue] = useState(0);
+
+  const tabs = [
+    { label: 'Tous', count: 42, variant: 'default' },
+    { label: 'En attente', count: 5, variant: 'warning' },
+    { label: 'Valides', count: 37, variant: 'success' }
+  ];
+
+  return (
+    &lt;Tabs value={value} onChange={(e, v) =&gt; setValue(v)} className="nxo-tabs"&gt;
+      {tabs.map((tab, index) =&gt; (
+        &lt;Tab
+          key={index}
+          className="nxo-tab"
+          label={
+            &lt;&gt;
+              {tab.label}
+              &lt;Chip size="small" label={tab.count} className={`nxo-badge nxo-badge-${tab.variant}`} sx={{ ml: 1 }} /&gt;
+            &lt;/&gt;
+          }
+        /&gt;
+      ))}
+    &lt;/Tabs&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatChipsModule } from '@angular/material/chips';
+
+@Component({
+  selector: 'app-badge-tabs',
+  template: `
+    &lt;mat-tab-group class="nxo-tabs"&gt;
+      &lt;mat-tab *ngFor="let tab of tabs" class="nxo-tab"&gt;
+        &lt;ng-template mat-tab-label&gt;
+          {{ tab.label }}
+          &lt;mat-chip [ngClass]="'nxo-badge nxo-badge-' + tab.variant" style="margin-left: 8px;"&gt;
+            {{ tab.count }}
+          &lt;/mat-chip&gt;
+        &lt;/ng-template&gt;
+      &lt;/mat-tab&gt;
+    &lt;/mat-tab-group&gt;
+  `
+})
+export class BadgeTabsComponent {
+  tabs = [
+    { label: 'Tous', count: 42, variant: 'neutral' },
+    { label: 'En attente', count: 5, variant: 'warning' },
+    { label: 'Valides', count: 37, variant: 'success' }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# badge-tabs.html.twig #}
+{% set active_tab = active_tab|default(0) %}
+{% set tabs = [
+  { label: 'Tous', count: 42, variant: 'neutral' },
+  { label: 'En attente', count: 5, variant: 'warning' },
+  { label: 'Valides', count: 37, variant: 'success' }
+] %}
+
+&lt;div class="nxo-tabs"&gt;
+  {% for index, tab in tabs %}
+    &lt;button class="nxo-tab {% if active_tab == index %}active{% endif %}"&gt;
+      {{ tab.label }}
+      &lt;span class="nxo-badge nxo-badge-{{ tab.variant }}" style="margin-left: 8px;"&gt;
+        {{ tab.count }}
+      &lt;/span&gt;
+    &lt;/button&gt;
+  {% endfor %}
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            Les onglets deviennent scrollables horizontalement sur mobile. La barre de scroll est masquee pour un rendu propre.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 768px</code></td>
+                <td><code>.nxo-tabs</code> active <code>overflow-x: auto</code> avec scrollbar masquee. Chaque <code>.nxo-tab</code> garde sa largeur naturelle (<code>flex-shrink: 0</code>)</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

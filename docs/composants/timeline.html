@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link active"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-clock"></i> Timeline</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Composant pour afficher des evenements chronologiques.
+        </p>
+
+        <!-- Timeline basique -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Timeline basique</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-lg);">
+              <div class="nxo-timeline">
+                <div class="nxo-timeline-item">
+                  <div class="nxo-timeline-marker"></div>
+                  <div class="nxo-timeline-content">
+                    <div class="nxo-timeline-title">Commande creee</div>
+                    <div class="nxo-timeline-time">10 Dec 2025, 09:00</div>
+                  </div>
+                </div>
+                <div class="nxo-timeline-item">
+                  <div class="nxo-timeline-marker"></div>
+                  <div class="nxo-timeline-content">
+                    <div class="nxo-timeline-title">Paiement recu</div>
+                    <div class="nxo-timeline-time">10 Dec 2025, 09:15</div>
+                  </div>
+                </div>
+                <div class="nxo-timeline-item">
+                  <div class="nxo-timeline-marker"></div>
+                  <div class="nxo-timeline-content">
+                    <div class="nxo-timeline-title">En preparation</div>
+                    <div class="nxo-timeline-time">10 Dec 2025, 10:00</div>
+                  </div>
+                </div>
+                <div class="nxo-timeline-item">
+                  <div class="nxo-timeline-marker nxo-timeline-marker-empty"></div>
+                  <div class="nxo-timeline-content">
+                    <div class="nxo-timeline-title" style="color: var(--nxo-text-muted);">Expedition</div>
+                    <div class="nxo-timeline-time">En attente</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-timeline"&gt;
+  &lt;div class="nxo-timeline-item"&gt;
+    &lt;div class="nxo-timeline-marker"&gt;&lt;/div&gt;
+    &lt;div class="nxo-timeline-content"&gt;
+      &lt;div class="nxo-timeline-title"&gt;Commande creee&lt;/div&gt;
+      &lt;div class="nxo-timeline-time"&gt;10 Dec 2025, 09:00&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-timeline-item"&gt;
+    &lt;div class="nxo-timeline-marker"&gt;&lt;/div&gt;
+    &lt;div class="nxo-timeline-content"&gt;
+      &lt;div class="nxo-timeline-title"&gt;Paiement recu&lt;/div&gt;
+      &lt;div class="nxo-timeline-time"&gt;10 Dec 2025, 09:15&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-timeline-item"&gt;
+    &lt;div class="nxo-timeline-marker nxo-timeline-marker-empty"&gt;&lt;/div&gt;
+    &lt;div class="nxo-timeline-content"&gt;
+      &lt;div class="nxo-timeline-title"&gt;Expedition&lt;/div&gt;
+      &lt;div class="nxo-timeline-time"&gt;En attente&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Timeline, TimelineItem, TimelineSeparator, TimelineDot, TimelineConnector, TimelineContent } from '@mui/lab';
+
+const TimelineBasic = () =&gt; {
+  const events = [
+    { title: 'Commande creee', time: '10 Dec 2025, 09:00', completed: true },
+    { title: 'Paiement recu', time: '10 Dec 2025, 09:15', completed: true },
+    { title: 'Expedition', time: 'En attente', completed: false }
+  ];
+
+  return (
+    &lt;Timeline className="nxo-timeline"&gt;
+      {events.map((event, index) =&gt; (
+        &lt;TimelineItem key={index} className="nxo-timeline-item"&gt;
+          &lt;TimelineSeparator&gt;
+            &lt;TimelineDot className={`nxo-timeline-marker ${!event.completed ? 'nxo-timeline-marker-empty' : ''}`} /&gt;
+            {index &lt; events.length - 1 &amp;&amp; &lt;TimelineConnector /&gt;}
+          &lt;/TimelineSeparator&gt;
+          &lt;TimelineContent className="nxo-timeline-content"&gt;
+            &lt;div className="nxo-timeline-title"&gt;{event.title}&lt;/div&gt;
+            &lt;div className="nxo-timeline-time"&gt;{event.time}&lt;/div&gt;
+          &lt;/TimelineContent&gt;
+        &lt;/TimelineItem&gt;
+      ))}
+    &lt;/Timeline&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-timeline',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    &lt;div class="nxo-timeline"&gt;
+      &lt;div *ngFor="let event of events" class="nxo-timeline-item"&gt;
+        &lt;div [class]="'nxo-timeline-marker' + (!event.completed ? ' nxo-timeline-marker-empty' : '')"&gt;&lt;/div&gt;
+        &lt;div class="nxo-timeline-content"&gt;
+          &lt;div class="nxo-timeline-title"&gt;{{ event.title }}&lt;/div&gt;
+          &lt;div class="nxo-timeline-time"&gt;{{ event.time }}&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class TimelineComponent {
+  events = [
+    { title: 'Commande creee', time: '10 Dec 2025, 09:00', completed: true },
+    { title: 'Paiement recu', time: '10 Dec 2025, 09:15', completed: true },
+    { title: 'Expedition', time: 'En attente', completed: false }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Twig Template #}
+{% set events = [
+  { title: 'Commande creee', time: '10 Dec 2025, 09:00', completed: true },
+  { title: 'Paiement recu', time: '10 Dec 2025, 09:15', completed: true },
+  { title: 'Expedition', time: 'En attente', completed: false }
+] %}
+
+&lt;div class="nxo-timeline"&gt;
+  {% for event in events %}
+    &lt;div class="nxo-timeline-item"&gt;
+      &lt;div class="nxo-timeline-marker{{ not event.completed ? ' nxo-timeline-marker-empty' : '' }}"&gt;&lt;/div&gt;
+      &lt;div class="nxo-timeline-content"&gt;
+        &lt;div class="nxo-timeline-title"&gt;{{ event.title }}&lt;/div&gt;
+        &lt;div class="nxo-timeline-time"&gt;{{ event.time }}&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  {% endfor %}
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline avec icones -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec icones</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-lg);">
+              <div class="nxo-timeline">
+                <div class="nxo-timeline-item has-icon">
+                  <div class="nxo-timeline-marker nxo-timeline-marker-icon nxo-timeline-marker-success">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <div class="nxo-timeline-content">
+                    <div class="nxo-timeline-title">Compte cree</div>
+                    <div class="nxo-timeline-description">Votre compte a ete cree avec succes</div>
+                    <div class="nxo-timeline-time">Il y a 2 jours</div>
+                  </div>
+                </div>
+                <div class="nxo-timeline-item has-icon">
+                  <div class="nxo-timeline-marker nxo-timeline-marker-icon nxo-timeline-marker-success">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <div class="nxo-timeline-content">
+                    <div class="nxo-timeline-title">Email verifie</div>
+                    <div class="nxo-timeline-description">Votre adresse email a ete verifiee</div>
+                    <div class="nxo-timeline-time">Il y a 1 jour</div>
+                  </div>
+                </div>
+                <div class="nxo-timeline-item has-icon">
+                  <div class="nxo-timeline-marker nxo-timeline-marker-icon" style="background-color: var(--fayat-blue);">
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                  </div>
+                  <div class="nxo-timeline-content">
+                    <div class="nxo-timeline-title">Profil en cours</div>
+                    <div class="nxo-timeline-description">Completez votre profil pour continuer</div>
+                    <div class="nxo-timeline-time">Maintenant</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-timeline"&gt;
+  &lt;div class="nxo-timeline-item has-icon"&gt;
+    &lt;div class="nxo-timeline-marker nxo-timeline-marker-icon nxo-timeline-marker-success"&gt;
+      &lt;i class="fa-solid fa-check"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class="nxo-timeline-content"&gt;
+      &lt;div class="nxo-timeline-title"&gt;Compte cree&lt;/div&gt;
+      &lt;div class="nxo-timeline-description"&gt;Votre compte a ete cree avec succes&lt;/div&gt;
+      &lt;div class="nxo-timeline-time"&gt;Il y a 2 jours&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-timeline-item has-icon"&gt;
+    &lt;div class="nxo-timeline-marker nxo-timeline-marker-icon" style="background-color: var(--fayat-blue);"&gt;
+      &lt;i class="fa-solid fa-spinner fa-spin"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class="nxo-timeline-content"&gt;
+      &lt;div class="nxo-timeline-title"&gt;Profil en cours&lt;/div&gt;
+      &lt;div class="nxo-timeline-description"&gt;Completez votre profil&lt;/div&gt;
+      &lt;div class="nxo-timeline-time"&gt;Maintenant&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Timeline, TimelineItem, TimelineSeparator, TimelineDot, TimelineConnector, TimelineContent } from '@mui/lab';
+import { Check, Loop } from '@mui/icons-material';
+
+const TimelineWithIcons = () =&gt; {
+  const events = [
+    { title: 'Compte cree', description: 'Votre compte a ete cree', time: 'Il y a 2 jours', icon: &lt;Check /&gt;, color: 'success' },
+    { title: 'Profil en cours', description: 'Completez votre profil', time: 'Maintenant', icon: &lt;Loop className="fa-spin" /&gt;, color: 'primary' }
+  ];
+
+  return (
+    &lt;Timeline className="nxo-timeline"&gt;
+      {events.map((event, index) =&gt; (
+        &lt;TimelineItem key={index} className="nxo-timeline-item has-icon"&gt;
+          &lt;TimelineSeparator&gt;
+            &lt;TimelineDot className={`nxo-timeline-marker nxo-timeline-marker-icon nxo-timeline-marker-${event.color}`}&gt;
+              {event.icon}
+            &lt;/TimelineDot&gt;
+            {index &lt; events.length - 1 &amp;&amp; &lt;TimelineConnector /&gt;}
+          &lt;/TimelineSeparator&gt;
+          &lt;TimelineContent className="nxo-timeline-content"&gt;
+            &lt;div className="nxo-timeline-title"&gt;{event.title}&lt;/div&gt;
+            &lt;div className="nxo-timeline-description"&gt;{event.description}&lt;/div&gt;
+            &lt;div className="nxo-timeline-time"&gt;{event.time}&lt;/div&gt;
+          &lt;/TimelineContent&gt;
+        &lt;/TimelineItem&gt;
+      ))}
+    &lt;/Timeline&gt;
+  );
+};</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-timeline-icons',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    &lt;div class="nxo-timeline"&gt;
+      &lt;div *ngFor="let event of events" class="nxo-timeline-item has-icon"&gt;
+        &lt;div [class]="'nxo-timeline-marker nxo-timeline-marker-icon nxo-timeline-marker-' + event.color"&gt;
+          &lt;i [class]="'fa-solid ' + event.icon + (event.spinning ? ' fa-spin' : '')"&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class="nxo-timeline-content"&gt;
+          &lt;div class="nxo-timeline-title"&gt;{{ event.title }}&lt;/div&gt;
+          &lt;div class="nxo-timeline-description"&gt;{{ event.description }}&lt;/div&gt;
+          &lt;div class="nxo-timeline-time"&gt;{{ event.time }}&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class TimelineIconsComponent {
+  events = [
+    { title: 'Compte cree', description: 'Votre compte a ete cree', time: 'Il y a 2 jours', icon: 'fa-check', color: 'success' },
+    { title: 'Profil en cours', description: 'Completez votre profil', time: 'Maintenant', icon: 'fa-spinner', color: 'primary', spinning: true }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Twig Template #}
+{% set events = [
+  { title: 'Compte cree', description: 'Votre compte a ete cree', time: 'Il y a 2 jours', icon: 'fa-check', color: 'success' },
+  { title: 'Profil en cours', description: 'Completez votre profil', time: 'Maintenant', icon: 'fa-spinner', color: 'primary', spinning: true }
+] %}
+
+&lt;div class="nxo-timeline"&gt;
+  {% for event in events %}
+    &lt;div class="nxo-timeline-item has-icon"&gt;
+      &lt;div class="nxo-timeline-marker nxo-timeline-marker-icon nxo-timeline-marker-{{ event.color }}"&gt;
+        &lt;i class="fa-solid {{ event.icon }}{{ event.spinning ? ' fa-spin' : '' }}"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;div class="nxo-timeline-content"&gt;
+        &lt;div class="nxo-timeline-title"&gt;{{ event.title }}&lt;/div&gt;
+        &lt;div class="nxo-timeline-description"&gt;{{ event.description }}&lt;/div&gt;
+        &lt;div class="nxo-timeline-time"&gt;{{ event.time }}&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  {% endfor %}
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            La timeline reduit son espacement sur petit mobile pour optimiser l'affichage.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 480px</code></td>
+                <td>Le padding du <code>.nxo-timeline-content</code> passe a <code>spacing-sm</code>. Le <code>padding-left</code> des items passe a <code>36px</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

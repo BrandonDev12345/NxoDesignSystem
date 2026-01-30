@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stepper - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link active"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-shoe-prints"></i> Stepper</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Indicateur d'etapes pour les processus multi-etapes.
+        </p>
+
+        <!-- Stepper horizontal -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Stepper horizontal</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <button class="doc-demo__flip-btn" title="Voir le code"><i class="fa-solid fa-code"></i></button>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-lg);">
+              <div class="nxo-stepper">
+                <div class="nxo-stepper-item completed">
+                  <div class="nxo-stepper-indicator"><i class="fa-solid fa-check"></i></div>
+                  <div class="nxo-stepper-label">Informations</div>
+                </div>
+                <div class="nxo-stepper-item active">
+                  <div class="nxo-stepper-indicator">2</div>
+                  <div class="nxo-stepper-label">Verification</div>
+                </div>
+                <div class="nxo-stepper-item">
+                  <div class="nxo-stepper-indicator">3</div>
+                  <div class="nxo-stepper-label">Paiement</div>
+                </div>
+                <div class="nxo-stepper-item">
+                  <div class="nxo-stepper-indicator">4</div>
+                  <div class="nxo-stepper-label">Confirmation</div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html">HTML</button>
+                <button class="doc-code-tab" data-lang="react">React</button>
+                <button class="doc-code-tab" data-lang="angular">Angular</button>
+                <button class="doc-code-tab" data-lang="php">PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+                <pre>&lt;div class="nxo-stepper"&gt;
+  &lt;div class="nxo-stepper-item completed"&gt;
+    &lt;div class="nxo-stepper-indicator"&gt;&lt;i class="fa-solid fa-check"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="nxo-stepper-label"&gt;Informations&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-stepper-item active"&gt;
+    &lt;div class="nxo-stepper-indicator"&gt;2&lt;/div&gt;
+    &lt;div class="nxo-stepper-label"&gt;Verification&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-stepper-item"&gt;
+    &lt;div class="nxo-stepper-indicator"&gt;3&lt;/div&gt;
+    &lt;div class="nxo-stepper-label"&gt;Paiement&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-stepper-item"&gt;
+    &lt;div class="nxo-stepper-indicator"&gt;4&lt;/div&gt;
+    &lt;div class="nxo-stepper-label"&gt;Confirmation&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+                <pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Stepper, Step, StepLabel } from '@mui/material';
+
+const steps = ['Informations', 'Verification', 'Paiement', 'Confirmation'];
+
+const HorizontalStepper = () =&gt; {
+  const activeStep = 1; // 0-indexed, so step 2 is active
+
+  return (
+    &lt;Stepper activeStep={activeStep} className="nxo-stepper"&gt;
+      {steps.map((label) =&gt; (
+        &lt;Step key={label}&gt;
+          &lt;StepLabel className="nxo-stepper-label"&gt;{label}&lt;/StepLabel&gt;
+        &lt;/Step&gt;
+      ))}
+    &lt;/Stepper&gt;
+  );
+};
+
+export default HorizontalStepper;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+                <pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatStepperModule } from '@angular/material/stepper';
+
+@Component({
+  selector: 'app-horizontal-stepper',
+  standalone: true,
+  imports: [MatStepperModule],
+  template: `
+    &lt;mat-horizontal-stepper [selectedIndex]="1" class="nxo-stepper"&gt;
+      &lt;mat-step label="Informations"&gt;&lt;/mat-step&gt;
+      &lt;mat-step label="Verification"&gt;&lt;/mat-step&gt;
+      &lt;mat-step label="Paiement"&gt;&lt;/mat-step&gt;
+      &lt;mat-step label="Confirmation"&gt;&lt;/mat-step&gt;
+    &lt;/mat-horizontal-stepper&gt;
+  `
+})
+export class HorizontalStepperComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+                <pre>{# Twig Template #}
+{% set steps = ['Informations', 'Verification', 'Paiement', 'Confirmation'] %}
+{% set currentStep = 2 %}
+
+&lt;div class="nxo-stepper"&gt;
+  {% for step in steps %}
+    {% set stepNumber = loop.index %}
+    {% set isCompleted = stepNumber &lt; currentStep %}
+    {% set isActive = stepNumber == currentStep %}
+
+    &lt;div class="nxo-stepper-item {{ isCompleted ? 'completed' : '' }} {{ isActive ? 'active' : '' }}"&gt;
+      &lt;div class="nxo-stepper-indicator"&gt;
+        {% if isCompleted %}
+          &lt;i class="fa-solid fa-check"&gt;&lt;/i&gt;
+        {% else %}
+          {{ stepNumber }}
+        {% endif %}
+      &lt;/div&gt;
+      &lt;div class="nxo-stepper-label"&gt;{{ step }}&lt;/div&gt;
+    &lt;/div&gt;
+  {% endfor %}
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stepper avec description -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec description</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <button class="doc-demo__flip-btn" title="Voir le code"><i class="fa-solid fa-code"></i></button>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-lg);">
+              <div class="nxo-stepper">
+                <div class="nxo-stepper-item completed">
+                  <div class="nxo-stepper-indicator"><i class="fa-solid fa-check"></i></div>
+                  <div class="nxo-stepper-content">
+                    <div class="nxo-stepper-label">Compte</div>
+                    <div class="nxo-stepper-description">Creer votre compte</div>
+                  </div>
+                </div>
+                <div class="nxo-stepper-item active">
+                  <div class="nxo-stepper-indicator">2</div>
+                  <div class="nxo-stepper-content">
+                    <div class="nxo-stepper-label">Profil</div>
+                    <div class="nxo-stepper-description">Completer votre profil</div>
+                  </div>
+                </div>
+                <div class="nxo-stepper-item">
+                  <div class="nxo-stepper-indicator">3</div>
+                  <div class="nxo-stepper-content">
+                    <div class="nxo-stepper-label">Termine</div>
+                    <div class="nxo-stepper-description">Confirmation</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html">HTML</button>
+                <button class="doc-code-tab" data-lang="react">React</button>
+                <button class="doc-code-tab" data-lang="angular">Angular</button>
+                <button class="doc-code-tab" data-lang="php">PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+                <pre>&lt;div class="nxo-stepper"&gt;
+  &lt;div class="nxo-stepper-item completed"&gt;
+    &lt;div class="nxo-stepper-indicator"&gt;&lt;i class="fa-solid fa-check"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="nxo-stepper-content"&gt;
+      &lt;div class="nxo-stepper-label"&gt;Compte&lt;/div&gt;
+      &lt;div class="nxo-stepper-description"&gt;Creer votre compte&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-stepper-item active"&gt;
+    &lt;div class="nxo-stepper-indicator"&gt;2&lt;/div&gt;
+    &lt;div class="nxo-stepper-content"&gt;
+      &lt;div class="nxo-stepper-label"&gt;Profil&lt;/div&gt;
+      &lt;div class="nxo-stepper-description"&gt;Completer votre profil&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-stepper-item"&gt;
+    &lt;div class="nxo-stepper-indicator"&gt;3&lt;/div&gt;
+    &lt;div class="nxo-stepper-content"&gt;
+      &lt;div class="nxo-stepper-label"&gt;Termine&lt;/div&gt;
+      &lt;div class="nxo-stepper-description"&gt;Confirmation&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+                <pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Stepper, Step, StepLabel, StepContent, Typography } from '@mui/material';
+
+const steps = [
+  { label: 'Compte', description: 'Creer votre compte' },
+  { label: 'Profil', description: 'Completer votre profil' },
+  { label: 'Termine', description: 'Confirmation' }
+];
+
+const StepperWithDescription = () =&gt; {
+  const activeStep = 1;
+
+  return (
+    &lt;Stepper activeStep={activeStep} orientation="horizontal" className="nxo-stepper"&gt;
+      {steps.map((step) =&gt; (
+        &lt;Step key={step.label}&gt;
+          &lt;StepLabel
+            optional={&lt;Typography variant="caption" className="nxo-stepper-description"&gt;{step.description}&lt;/Typography&gt;}
+            className="nxo-stepper-label"
+          &gt;
+            {step.label}
+          &lt;/StepLabel&gt;
+        &lt;/Step&gt;
+      ))}
+    &lt;/Stepper&gt;
+  );
+};
+
+export default StepperWithDescription;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+                <pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatStepperModule } from '@angular/material/stepper';
+
+@Component({
+  selector: 'app-stepper-description',
+  standalone: true,
+  imports: [MatStepperModule],
+  template: `
+    &lt;mat-horizontal-stepper [selectedIndex]="1" class="nxo-stepper"&gt;
+      @for (step of steps; track step.label) {
+        &lt;mat-step [label]="step.label"&gt;
+          &lt;ng-template matStepLabel&gt;
+            &lt;div class="nxo-stepper-content"&gt;
+              &lt;div class="nxo-stepper-label"&gt;{{ step.label }}&lt;/div&gt;
+              &lt;div class="nxo-stepper-description"&gt;{{ step.description }}&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/ng-template&gt;
+        &lt;/mat-step&gt;
+      }
+    &lt;/mat-horizontal-stepper&gt;
+  `
+})
+export class StepperDescriptionComponent {
+  steps = [
+    { label: 'Compte', description: 'Creer votre compte' },
+    { label: 'Profil', description: 'Completer votre profil' },
+    { label: 'Termine', description: 'Confirmation' }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+                <pre>{# Twig Template #}
+{% set steps = [
+  { label: 'Compte', description: 'Creer votre compte' },
+  { label: 'Profil', description: 'Completer votre profil' },
+  { label: 'Termine', description: 'Confirmation' }
+] %}
+{% set currentStep = 2 %}
+
+&lt;div class="nxo-stepper"&gt;
+  {% for step in steps %}
+    {% set stepNumber = loop.index %}
+    {% set isCompleted = stepNumber &lt; currentStep %}
+    {% set isActive = stepNumber == currentStep %}
+
+    &lt;div class="nxo-stepper-item {{ isCompleted ? 'completed' : '' }} {{ isActive ? 'active' : '' }}"&gt;
+      &lt;div class="nxo-stepper-indicator"&gt;
+        {% if isCompleted %}
+          &lt;i class="fa-solid fa-check"&gt;&lt;/i&gt;
+        {% else %}
+          {{ stepNumber }}
+        {% endif %}
+      &lt;/div&gt;
+      &lt;div class="nxo-stepper-content"&gt;
+        &lt;div class="nxo-stepper-label"&gt;{{ step.label }}&lt;/div&gt;
+        &lt;div class="nxo-stepper-description"&gt;{{ step.description }}&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  {% endfor %}
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stepper erreur -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec erreur</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <button class="doc-demo__flip-btn" title="Voir le code"><i class="fa-solid fa-code"></i></button>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-lg);">
+              <div class="nxo-stepper">
+                <div class="nxo-stepper-item completed">
+                  <div class="nxo-stepper-indicator"><i class="fa-solid fa-check"></i></div>
+                  <div class="nxo-stepper-label">Etape 1</div>
+                </div>
+                <div class="nxo-stepper-item error">
+                  <div class="nxo-stepper-indicator"><i class="fa-solid fa-exclamation"></i></div>
+                  <div class="nxo-stepper-label">Etape 2</div>
+                </div>
+                <div class="nxo-stepper-item">
+                  <div class="nxo-stepper-indicator">3</div>
+                  <div class="nxo-stepper-label">Etape 3</div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html">HTML</button>
+                <button class="doc-code-tab" data-lang="react">React</button>
+                <button class="doc-code-tab" data-lang="angular">Angular</button>
+                <button class="doc-code-tab" data-lang="php">PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+                <pre>&lt;div class="nxo-stepper"&gt;
+  &lt;div class="nxo-stepper-item completed"&gt;
+    &lt;div class="nxo-stepper-indicator"&gt;&lt;i class="fa-solid fa-check"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="nxo-stepper-label"&gt;Etape 1&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-stepper-item error"&gt;
+    &lt;div class="nxo-stepper-indicator"&gt;&lt;i class="fa-solid fa-exclamation"&gt;&lt;/i&gt;&lt;/div&gt;
+    &lt;div class="nxo-stepper-label"&gt;Etape 2&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-stepper-item"&gt;
+    &lt;div class="nxo-stepper-indicator"&gt;3&lt;/div&gt;
+    &lt;div class="nxo-stepper-label"&gt;Etape 3&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+                <pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Stepper, Step, StepLabel } from '@mui/material';
+import ErrorIcon from '@mui/icons-material/Error';
+
+const steps = ['Etape 1', 'Etape 2', 'Etape 3'];
+
+const StepperWithError = () =&gt; {
+  const activeStep = 1;
+  const errorStep = 1; // 0-indexed
+
+  return (
+    &lt;Stepper activeStep={activeStep} className="nxo-stepper"&gt;
+      {steps.map((label, index) =&gt; {
+        const isError = index === errorStep;
+        return (
+          &lt;Step key={label}&gt;
+            &lt;StepLabel
+              error={isError}
+              StepIconComponent={isError ? () =&gt; &lt;ErrorIcon color="error" /&gt; : undefined}
+              className={`nxo-stepper-label ${isError ? 'error' : ''}`}
+            &gt;
+              {label}
+            &lt;/StepLabel&gt;
+          &lt;/Step&gt;
+        );
+      })}
+    &lt;/Stepper&gt;
+  );
+};
+
+export default StepperWithError;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+                <pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatStepperModule, STEPPER_GLOBAL_OPTIONS } from '@angular/material/stepper';
+import { MatIconModule } from '@angular/material/icon';
+
+@Component({
+  selector: 'app-stepper-error',
+  standalone: true,
+  imports: [MatStepperModule, MatIconModule],
+  providers: [
+    { provide: STEPPER_GLOBAL_OPTIONS, useValue: { showError: true } }
+  ],
+  template: `
+    &lt;mat-horizontal-stepper [selectedIndex]="1" class="nxo-stepper"&gt;
+      @for (step of steps; track step; let i = $index) {
+        &lt;mat-step [hasError]="i === errorStep" [label]="step"&gt;
+          &lt;ng-template matStepperIcon="error"&gt;
+            &lt;mat-icon&gt;error&lt;/mat-icon&gt;
+          &lt;/ng-template&gt;
+        &lt;/mat-step&gt;
+      }
+    &lt;/mat-horizontal-stepper&gt;
+  `
+})
+export class StepperErrorComponent {
+  steps = ['Etape 1', 'Etape 2', 'Etape 3'];
+  errorStep = 1;
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+                <pre>{# Twig Template #}
+{% set steps = ['Etape 1', 'Etape 2', 'Etape 3'] %}
+{% set currentStep = 2 %}
+{% set errorStep = 2 %}
+
+&lt;div class="nxo-stepper"&gt;
+  {% for step in steps %}
+    {% set stepNumber = loop.index %}
+    {% set isCompleted = stepNumber &lt; currentStep and stepNumber != errorStep %}
+    {% set isActive = stepNumber == currentStep %}
+    {% set hasError = stepNumber == errorStep %}
+
+    &lt;div class="nxo-stepper-item {{ isCompleted ? 'completed' : '' }} {{ isActive ? 'active' : '' }} {{ hasError ? 'error' : '' }}"&gt;
+      &lt;div class="nxo-stepper-indicator"&gt;
+        {% if isCompleted %}
+          &lt;i class="fa-solid fa-check"&gt;&lt;/i&gt;
+        {% elseif hasError %}
+          &lt;i class="fa-solid fa-exclamation"&gt;&lt;/i&gt;
+        {% else %}
+          {{ stepNumber }}
+        {% endif %}
+      &lt;/div&gt;
+      &lt;div class="nxo-stepper-label"&gt;{{ step }}&lt;/div&gt;
+    &lt;/div&gt;
+  {% endfor %}
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            Le stepper passe automatiquement en disposition verticale sur mobile pour une meilleure lisibilite.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 768px</code></td>
+                <td><code>.nxo-stepper</code> passe en <code>flex-direction: column</code>. Chaque etape s'affiche en ligne (icone + texte) au lieu d'en colonne</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

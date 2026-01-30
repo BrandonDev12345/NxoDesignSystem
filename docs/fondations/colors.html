@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Couleurs - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+  <style>
+    .doc-color {
+      position: relative;
+    }
+    .doc-color__actions {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      display: flex;
+      gap: 4px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      z-index: 10;
+    }
+    .doc-color:hover .doc-color__actions {
+      opacity: 1;
+    }
+    .doc-color__copy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-family: 'Monaco', 'Menlo', monospace;
+      background: white;
+      border: 1px solid var(--nxo-border-color);
+      border-radius: 4px;
+      color: var(--nxo-text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      gap: 4px;
+    }
+    .doc-color__copy:hover {
+      background: var(--fayat-blue);
+      border-color: var(--fayat-blue);
+      color: white;
+    }
+    .doc-color__copy.copied {
+      background: var(--nxo-color-success);
+      border-color: var(--nxo-color-success);
+      color: white;
+    }
+    [data-theme="dark"] .doc-color__copy {
+      background: var(--nxo-surface);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link active"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-palette"></i> Couleurs</h1>
+          <span class="doc-a11y-badge"><i class="fa-solid fa-universal-access"></i> WCAG AA</span>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Palette de couleurs officielle NXO, derivee de la charte Fayat. Toutes les couleurs sont accessibles WCAG AA.
+        </p>
+
+        <!-- Couleurs Fayat -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Couleurs Fayat (Groupe parent)</h3>
+          <div class="doc-grid doc-grid-3">
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #0055a0;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Bleu Fayat</div>
+                <div class="doc-color__value">--fayat-blue: #0055a0</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--fayat-blue" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#0055a0" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #ffd800;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Jaune Fayat</div>
+                <div class="doc-color__value">--fayat-yellow: #ffd800</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--fayat-yellow" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#ffd800" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #66757e;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Gris Fayat</div>
+                <div class="doc-color__value">--fayat-gray: #66757e</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--fayat-gray" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#66757e" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Couleurs NXO -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Couleurs NXO Corporate</h3>
+          <div class="doc-grid doc-grid-3">
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #002f60;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Bleu Dark</div>
+                <div class="doc-color__value">--nxo-blue-dark: #002f60</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-blue-dark" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#002f60" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #5692ce;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Bleu Light</div>
+                <div class="doc-color__value">--nxo-blue-light: #5692ce</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-blue-light" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#5692ce" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #b4dfe7;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Bleu Very Light</div>
+                <div class="doc-color__value">--nxo-blue-very-light: #b4dfe7</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-blue-very-light" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#b4dfe7" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #00a486;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Vert</div>
+                <div class="doc-color__value">--nxo-green: #00a486</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-green" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#00a486" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #008a9b;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Teal</div>
+                <div class="doc-color__value">--nxo-teal: #008a9b</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-teal" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#008a9b" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #ffd300;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Jaune</div>
+                <div class="doc-color__value">--nxo-yellow: #ffd300</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-yellow" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#ffd300" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #e95e3f;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Orange</div>
+                <div class="doc-color__value">--nxo-orange: #e95e3f</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-orange" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#e95e3f" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #e53138;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Rouge</div>
+                <div class="doc-color__value">--nxo-red: #e53138</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-red" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#e53138" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #cfd1d2;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Gris</div>
+                <div class="doc-color__value">--nxo-gray: #cfd1d2</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-gray" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#cfd1d2" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Couleurs semantiques -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Couleurs semantiques</h3>
+          <div class="doc-grid doc-grid-4">
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #22c55e;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Success</div>
+                <div class="doc-color__value">--nxo-color-success</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-color-success" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#22c55e" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #f59e0b;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Warning</div>
+                <div class="doc-color__value">--nxo-color-warning</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-color-warning" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#f59e0b" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #ef4444;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Error</div>
+                <div class="doc-color__value">--nxo-color-error</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-color-error" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#ef4444" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+            <div class="doc-color">
+              <div class="doc-color__swatch" style="background: #3b82f6;"></div>
+              <div class="doc-color__info">
+                <div class="doc-color__name">Info</div>
+                <div class="doc-color__value">--nxo-color-info</div>
+              </div>
+              <div class="doc-color__actions">
+                <button class="doc-color__copy" data-copy="--nxo-color-info" title="Copier la variable">var</button>
+                <button class="doc-color__copy" data-copy="#3b82f6" title="Copier le code hex">hex</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Usage -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Usage en CSS</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__code">
+              <pre><span class="comment">/* Utiliser les variables CSS */</span>
+.mon-element {
+  background-color: <span class="value">var(--fayat-blue)</span>;
+  color: <span class="value">var(--nxo-color-success)</span>;
+  border-color: <span class="value">var(--nxo-blue-dark)</span>;
+}</pre>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Color copy buttons
+    document.querySelectorAll('.doc-color__copy').forEach(btn => {
+      btn.addEventListener('click', async function() {
+        const varName = this.dataset.copy;
+        try {
+          await navigator.clipboard.writeText(varName);
+          const originalHTML = this.innerHTML;
+          this.innerHTML = '<i class="fa-solid fa-check"></i>';
+          this.classList.add('copied');
+          setTimeout(() => {
+            this.innerHTML = originalHTML;
+            this.classList.remove('copied');
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy:', err);
+        }
+      });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+</body>
+</html>

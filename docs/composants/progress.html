@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link active"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-tasks"></i> Progress</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Barres de progression pour indiquer l'avancement d'une tache.
+        </p>
+
+        <!-- Progress basique -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Progress basique</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+                <div class="nxo-progress">
+                  <div class="nxo-progress-bar" style="width: 25%;"></div>
+                </div>
+                <div class="nxo-progress">
+                  <div class="nxo-progress-bar" style="width: 50%;"></div>
+                </div>
+                <div class="nxo-progress">
+                  <div class="nxo-progress-bar" style="width: 75%;"></div>
+                </div>
+                <div class="nxo-progress">
+                  <div class="nxo-progress-bar" style="width: 100%;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-progress"&gt;
+  &lt;div class="nxo-progress-bar" style="width: 25%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-progress"&gt;
+  &lt;div class="nxo-progress-bar" style="width: 50%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-progress"&gt;
+  &lt;div class="nxo-progress-bar" style="width: 75%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="nxo-progress"&gt;
+  &lt;div class="nxo-progress-bar" style="width: 100%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import React from 'react';
+import { LinearProgress } from '@mui/material';
+
+const ProgressExample = () =&gt; {
+  return (
+    &lt;&gt;
+      &lt;LinearProgress className="nxo-progress" variant="determinate" value={25} /&gt;
+      &lt;LinearProgress className="nxo-progress" variant="determinate" value={50} /&gt;
+      &lt;LinearProgress className="nxo-progress" variant="determinate" value={75} /&gt;
+      &lt;LinearProgress className="nxo-progress" variant="determinate" value={100} /&gt;
+    &lt;/&gt;
+  );
+};
+
+export default ProgressExample;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+@Component({
+  selector: 'app-progress-example',
+  standalone: true,
+  imports: [MatProgressBarModule],
+  template: `
+    &lt;mat-progress-bar class="nxo-progress" mode="determinate" [value]="25"&gt;&lt;/mat-progress-bar&gt;
+    &lt;mat-progress-bar class="nxo-progress" mode="determinate" [value]="50"&gt;&lt;/mat-progress-bar&gt;
+    &lt;mat-progress-bar class="nxo-progress" mode="determinate" [value]="75"&gt;&lt;/mat-progress-bar&gt;
+    &lt;mat-progress-bar class="nxo-progress" mode="determinate" [value]="100"&gt;&lt;/mat-progress-bar&gt;
+  `
+})
+export class ProgressExampleComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Twig Template #}
+{% set progressValues = [25, 50, 75, 100] %}
+
+{% for value in progressValues %}
+  &lt;div class="nxo-progress"&gt;
+    &lt;div class="nxo-progress-bar" style="width: {{ value }}%;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+{% endfor %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Couleurs -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Variantes de couleur</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+                <div class="nxo-progress">
+                  <div class="nxo-progress-bar nxo-progress-bar-primary" style="width: 60%;"></div>
+                </div>
+                <div class="nxo-progress">
+                  <div class="nxo-progress-bar nxo-progress-bar-success" style="width: 80%;"></div>
+                </div>
+                <div class="nxo-progress">
+                  <div class="nxo-progress-bar nxo-progress-bar-warning" style="width: 45%;"></div>
+                </div>
+                <div class="nxo-progress">
+                  <div class="nxo-progress-bar nxo-progress-bar-error" style="width: 30%;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;!-- Primary --&gt;
+&lt;div class="nxo-progress"&gt;
+  &lt;div class="nxo-progress-bar nxo-progress-bar-primary" style="width: 60%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Success --&gt;
+&lt;div class="nxo-progress"&gt;
+  &lt;div class="nxo-progress-bar nxo-progress-bar-success" style="width: 80%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Warning --&gt;
+&lt;div class="nxo-progress"&gt;
+  &lt;div class="nxo-progress-bar nxo-progress-bar-warning" style="width: 45%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Error --&gt;
+&lt;div class="nxo-progress"&gt;
+  &lt;div class="nxo-progress-bar nxo-progress-bar-error" style="width: 30%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import React from 'react';
+import { LinearProgress } from '@mui/material';
+
+const ProgressVariants = () =&gt; {
+  return (
+    &lt;&gt;
+      {/* Primary */}
+      &lt;LinearProgress className="nxo-progress nxo-progress-bar-primary" variant="determinate" value={60} color="primary" /&gt;
+
+      {/* Success */}
+      &lt;LinearProgress className="nxo-progress nxo-progress-bar-success" variant="determinate" value={80} color="success" /&gt;
+
+      {/* Warning */}
+      &lt;LinearProgress className="nxo-progress nxo-progress-bar-warning" variant="determinate" value={45} color="warning" /&gt;
+
+      {/* Error */}
+      &lt;LinearProgress className="nxo-progress nxo-progress-bar-error" variant="determinate" value={30} color="error" /&gt;
+    &lt;/&gt;
+  );
+};
+
+export default ProgressVariants;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
+@Component({
+  selector: 'app-progress-variants',
+  standalone: true,
+  imports: [MatProgressBarModule],
+  template: `
+    &lt;!-- Primary --&gt;
+    &lt;mat-progress-bar class="nxo-progress nxo-progress-bar-primary" mode="determinate" [value]="60" color="primary"&gt;&lt;/mat-progress-bar&gt;
+
+    &lt;!-- Success --&gt;
+    &lt;mat-progress-bar class="nxo-progress nxo-progress-bar-success" mode="determinate" [value]="80" color="accent"&gt;&lt;/mat-progress-bar&gt;
+
+    &lt;!-- Warning --&gt;
+    &lt;mat-progress-bar class="nxo-progress nxo-progress-bar-warning" mode="determinate" [value]="45" color="warn"&gt;&lt;/mat-progress-bar&gt;
+
+    &lt;!-- Error --&gt;
+    &lt;mat-progress-bar class="nxo-progress nxo-progress-bar-error" mode="determinate" [value]="30" color="warn"&gt;&lt;/mat-progress-bar&gt;
+  `
+})
+export class ProgressVariantsComponent {}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Twig Template #}
+{% set variants = [
+  { type: 'primary', width: 60 },
+  { type: 'success', width: 80 },
+  { type: 'warning', width: 45 },
+  { type: 'error', width: 30 }
+] %}
+
+{% for variant in variants %}
+  &lt;div class="nxo-progress"&gt;
+    &lt;div class="nxo-progress-bar nxo-progress-bar-{{ variant.type }}"
+         style="width: {{ variant.width }}%;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+{% endfor %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Avec label -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec label</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span class="nxo-text-sm">Progression</span>
+                    <span class="nxo-text-sm nxo-text-muted">65%</span>
+                  </div>
+                  <div class="nxo-progress">
+                    <div class="nxo-progress-bar" style="width: 65%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span class="nxo-text-sm">Telechargement</span>
+                    <span class="nxo-text-sm nxo-text-muted">2.4 GB / 4 GB</span>
+                  </div>
+                  <div class="nxo-progress">
+                    <div class="nxo-progress-bar nxo-progress-bar-success" style="width: 60%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div&gt;
+  &lt;div style="display: flex; justify-content: space-between; margin-bottom: 4px;"&gt;
+    &lt;span class="nxo-text-sm"&gt;Progression&lt;/span&gt;
+    &lt;span class="nxo-text-sm nxo-text-muted"&gt;65%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-progress"&gt;
+    &lt;div class="nxo-progress-bar" style="width: 65%;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;div style="display: flex; justify-content: space-between; margin-bottom: 4px;"&gt;
+    &lt;span class="nxo-text-sm"&gt;Telechargement&lt;/span&gt;
+    &lt;span class="nxo-text-sm nxo-text-muted"&gt;2.4 GB / 4 GB&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-progress"&gt;
+    &lt;div class="nxo-progress-bar nxo-progress-bar-success" style="width: 60%;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>import React from 'react';
+
+const ProgressWithLabel = () =&gt; {
+  const [progress1, setProgress1] = React.useState(65);
+  const [progress2, setProgress2] = React.useState({ current: 2.4, total: 4 });
+
+  return (
+    &lt;&gt;
+      &lt;div&gt;
+        &lt;div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}&gt;
+          &lt;span className="nxo-text-sm"&gt;Progression&lt;/span&gt;
+          &lt;span className="nxo-text-sm nxo-text-muted"&gt;{progress1}%&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div className="nxo-progress"&gt;
+          &lt;div className="nxo-progress-bar" style={{ width: `${progress1}%` }}&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        &lt;div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}&gt;
+          &lt;span className="nxo-text-sm"&gt;Telechargement&lt;/span&gt;
+          &lt;span className="nxo-text-sm nxo-text-muted"&gt;
+            {progress2.current} GB / {progress2.total} GB
+          &lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div className="nxo-progress"&gt;
+          &lt;div className="nxo-progress-bar nxo-progress-bar-success"
+               style={{ width: `${(progress2.current / progress2.total) * 100}%` }}&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/&gt;
+  );
+};
+
+export default ProgressWithLabel;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-progress-with-label',
+  template: `
+    &lt;div&gt;
+      &lt;div style="display: flex; justify-content: space-between; margin-bottom: 4px;"&gt;
+        &lt;span class="nxo-text-sm"&gt;Progression&lt;/span&gt;
+        &lt;span class="nxo-text-sm nxo-text-muted"&gt;{{ progress1 }}%&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="nxo-progress"&gt;
+        &lt;div class="nxo-progress-bar" [style.width.%]="progress1"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+      &lt;div style="display: flex; justify-content: space-between; margin-bottom: 4px;"&gt;
+        &lt;span class="nxo-text-sm"&gt;Telechargement&lt;/span&gt;
+        &lt;span class="nxo-text-sm nxo-text-muted"&gt;
+          {{ downloadCurrent }} GB / {{ downloadTotal }} GB
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="nxo-progress"&gt;
+        &lt;div class="nxo-progress-bar nxo-progress-bar-success"
+             [style.width.%]="downloadPercentage"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class ProgressWithLabelComponent {
+  progress1 = 65;
+  downloadCurrent = 2.4;
+  downloadTotal = 4;
+
+  get downloadPercentage(): number {
+    return (this.downloadCurrent / this.downloadTotal) * 100;
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Twig Template #}
+{% set progress1 = 65 %}
+{% set downloadCurrent = 2.4 %}
+{% set downloadTotal = 4 %}
+
+&lt;div&gt;
+  &lt;div style="display: flex; justify-content: space-between; margin-bottom: 4px;"&gt;
+    &lt;span class="nxo-text-sm"&gt;Progression&lt;/span&gt;
+    &lt;span class="nxo-text-sm nxo-text-muted"&gt;{{ progress1 }}%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-progress"&gt;
+    &lt;div class="nxo-progress-bar" style="width: {{ progress1 }}%;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div&gt;
+  &lt;div style="display: flex; justify-content: space-between; margin-bottom: 4px;"&gt;
+    &lt;span class="nxo-text-sm"&gt;Telechargement&lt;/span&gt;
+    &lt;span class="nxo-text-sm nxo-text-muted"&gt;
+      {{ downloadCurrent }} GB / {{ downloadTotal }} GB
+    &lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-progress"&gt;
+    &lt;div class="nxo-progress-bar nxo-progress-bar-success"
+         style="width: {{ (downloadCurrent / downloadTotal * 100)|round }}%;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tailles -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tailles</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+                <div class="nxo-progress nxo-progress-sm">
+                  <div class="nxo-progress-bar" style="width: 50%;"></div>
+                </div>
+                <div class="nxo-progress">
+                  <div class="nxo-progress-bar" style="width: 50%;"></div>
+                </div>
+                <div class="nxo-progress nxo-progress-lg">
+                  <div class="nxo-progress-bar" style="width: 50%;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;!-- Small (4px) --&gt;
+&lt;div class="nxo-progress nxo-progress-sm"&gt;
+  &lt;div class="nxo-progress-bar" style="width: 50%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Default (8px) --&gt;
+&lt;div class="nxo-progress"&gt;
+  &lt;div class="nxo-progress-bar" style="width: 50%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Large (16px) --&gt;
+&lt;div class="nxo-progress nxo-progress-lg"&gt;
+  &lt;div class="nxo-progress-bar" style="width: 50%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>import React from 'react';
+
+const ProgressSizes = () =&gt; {
+  const progress = 50;
+
+  return (
+    &lt;&gt;
+      {/* Small (4px) */}
+      &lt;div className="nxo-progress nxo-progress-sm"&gt;
+        &lt;div className="nxo-progress-bar" style={{ width: `${progress}%` }}&gt;&lt;/div&gt;
+      &lt;/div&gt;
+
+      {/* Default (8px) */}
+      &lt;div className="nxo-progress"&gt;
+        &lt;div className="nxo-progress-bar" style={{ width: `${progress}%` }}&gt;&lt;/div&gt;
+      &lt;/div&gt;
+
+      {/* Large (16px) */}
+      &lt;div className="nxo-progress nxo-progress-lg"&gt;
+        &lt;div className="nxo-progress-bar" style={{ width: `${progress}%` }}&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/&gt;
+  );
+};
+
+export default ProgressSizes;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-progress-sizes',
+  template: `
+    &lt;!-- Small (4px) --&gt;
+    &lt;div class="nxo-progress nxo-progress-sm"&gt;
+      &lt;div class="nxo-progress-bar" [style.width.%]="progress"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Default (8px) --&gt;
+    &lt;div class="nxo-progress"&gt;
+      &lt;div class="nxo-progress-bar" [style.width.%]="progress"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Large (16px) --&gt;
+    &lt;div class="nxo-progress nxo-progress-lg"&gt;
+      &lt;div class="nxo-progress-bar" [style.width.%]="progress"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class ProgressSizesComponent {
+  progress = 50;
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Twig Template #}
+{% set progress = 50 %}
+
+{# Small (4px) #}
+&lt;div class="nxo-progress nxo-progress-sm"&gt;
+  &lt;div class="nxo-progress-bar" style="width: {{ progress }}%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+{# Default (8px) #}
+&lt;div class="nxo-progress"&gt;
+  &lt;div class="nxo-progress-bar" style="width: {{ progress }}%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+{# Large (16px) #}
+&lt;div class="nxo-progress nxo-progress-lg"&gt;
+  &lt;div class="nxo-progress-bar" style="width: {{ progress }}%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-success nxo-mb-md">
+            <i class="fa-solid fa-check-circle"></i>
+            Les barres de progression sont <strong>naturellement flexibles</strong>. Elles occupent 100% de la largeur du conteneur parent. Aucune adaptation specifique n'est necessaire.
+          </div>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>

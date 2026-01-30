@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link active"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-chevron-down"></i> Accordion</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Composant pliable pour organiser le contenu en sections extensibles.
+        </p>
+
+        <!-- Accordion basique -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Accordion basique</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__header-title">Preview</span>
+              <button class="doc-demo__flip-btn" aria-label="Toggle code view">
+                <i class="fa-solid fa-code"></i>
+              </button>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-lg);">
+              <div class="nxo-accordion">
+                <div class="nxo-accordion-item">
+                  <button class="nxo-accordion-header">
+                    <span>Qu'est-ce que NXO Design System ?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </button>
+                  <div class="nxo-accordion-content">
+                    <p class="nxo-text">NXO Design System est une bibliotheque de composants UI pour creer des interfaces coherentes et accessibles.</p>
+                  </div>
+                </div>
+                <div class="nxo-accordion-item">
+                  <button class="nxo-accordion-header">
+                    <span>Comment l'installer ?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </button>
+                  <div class="nxo-accordion-content">
+                    <p class="nxo-text">Incluez simplement les fichiers CSS tokens.css et components.css dans votre projet.</p>
+                  </div>
+                </div>
+                <div class="nxo-accordion-item">
+                  <button class="nxo-accordion-header">
+                    <span>Est-il compatible avec les frameworks ?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </button>
+                  <div class="nxo-accordion-content">
+                    <p class="nxo-text">Oui, NXO est compatible avec Angular, React, Vue et tout autre framework JavaScript.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-accordion"&gt;
+  &lt;div class="nxo-accordion-item"&gt;
+    &lt;button class="nxo-accordion-header"&gt;
+      &lt;span&gt;Qu'est-ce que NXO Design System ?&lt;/span&gt;
+      &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;div class="nxo-accordion-content"&gt;
+      &lt;p class="nxo-text"&gt;NXO Design System est une bibliotheque de composants...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-accordion-item"&gt;
+    &lt;button class="nxo-accordion-header"&gt;
+      &lt;span&gt;Comment l'installer ?&lt;/span&gt;
+      &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;div class="nxo-accordion-content"&gt;
+      &lt;p class="nxo-text"&gt;Incluez simplement les fichiers CSS...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-accordion-item"&gt;
+    &lt;button class="nxo-accordion-header"&gt;
+      &lt;span&gt;Est-il compatible avec les frameworks ?&lt;/span&gt;
+      &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;div class="nxo-accordion-content"&gt;
+      &lt;p class="nxo-text"&gt;Oui, NXO est compatible avec Angular, React, Vue...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+const items = [
+  {
+    title: "Qu'est-ce que NXO Design System ?",
+    content: "NXO Design System est une bibliotheque de composants..."
+  },
+  {
+    title: "Comment l'installer ?",
+    content: "Incluez simplement les fichiers CSS..."
+  },
+  {
+    title: "Est-il compatible avec les frameworks ?",
+    content: "Oui, NXO est compatible avec Angular, React, Vue..."
+  }
+];
+
+const AccordionBasic = () =&gt; {
+  return (
+    &lt;div className="nxo-accordion"&gt;
+      {items.map((item, index) =&gt; (
+        &lt;Accordion key={index} defaultExpanded={index === 0} className="nxo-accordion-item"&gt;
+          &lt;AccordionSummary
+            expandIcon={&lt;ExpandMoreIcon /&gt;}
+            className="nxo-accordion-header"
+          &gt;
+            &lt;Typography&gt;{item.title}&lt;/Typography&gt;
+          &lt;/AccordionSummary&gt;
+          &lt;AccordionDetails className="nxo-accordion-content"&gt;
+            &lt;Typography className="nxo-text"&gt;{item.content}&lt;/Typography&gt;
+          &lt;/AccordionDetails&gt;
+        &lt;/Accordion&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};
+
+export default AccordionBasic;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+@Component({
+  selector: 'app-accordion',
+  standalone: true,
+  imports: [MatExpansionModule],
+  template: `
+    &lt;mat-accordion class="nxo-accordion"&gt;
+      @for (item of items; track item.title; let i = $index) {
+        &lt;mat-expansion-panel [expanded]="i === 0" class="nxo-accordion-item"&gt;
+          &lt;mat-expansion-panel-header class="nxo-accordion-header"&gt;
+            &lt;mat-panel-title&gt;{{ item.title }}&lt;/mat-panel-title&gt;
+          &lt;/mat-expansion-panel-header&gt;
+          &lt;p class="nxo-text"&gt;{{ item.content }}&lt;/p&gt;
+        &lt;/mat-expansion-panel&gt;
+      }
+    &lt;/mat-accordion&gt;
+  `
+})
+export class AccordionComponent {
+  items = [
+    {
+      title: "Qu'est-ce que NXO Design System ?",
+      content: "NXO Design System est une bibliotheque de composants..."
+    },
+    {
+      title: "Comment l'installer ?",
+      content: "Incluez simplement les fichiers CSS..."
+    },
+    {
+      title: "Est-il compatible avec les frameworks ?",
+      content: "Oui, NXO est compatible avec Angular, React, Vue..."
+    }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>&lt;?php
+$accordionItems = [
+    [
+        'title' => "Qu'est-ce que NXO Design System ?",
+        'content' => "NXO Design System est une bibliotheque de composants...",
+        'open' => true
+    ],
+    [
+        'title' => "Comment l'installer ?",
+        'content' => "Incluez simplement les fichiers CSS...",
+        'open' => false
+    ],
+    [
+        'title' => "Est-il compatible avec les frameworks ?",
+        'content' => "Oui, NXO est compatible avec Angular, React, Vue...",
+        'open' => false
+    ]
+];
+?&gt;
+
+&lt;div class="nxo-accordion"&gt;
+  &lt;?php foreach ($accordionItems as $item): ?&gt;
+    &lt;div class="nxo-accordion-item"&gt;
+      &lt;button class="nxo-accordion-header"&gt;
+        &lt;span&gt;&lt;?= htmlspecialchars($item['title']) ?&gt;&lt;/span&gt;
+        &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;div class="nxo-accordion-content" style="display: &lt;?= $item['open'] ? 'block' : 'none' ?&gt;;"&gt;
+        &lt;p class="nxo-text"&gt;&lt;?= htmlspecialchars($item['content']) ?&gt;&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;?php endforeach; ?&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion avec icone -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Avec icones</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__header-title">Preview</span>
+              <button class="doc-demo__flip-btn" aria-label="Toggle code view">
+                <i class="fa-solid fa-code"></i>
+              </button>
+            </div>
+            <div class="doc-demo__preview" style="background: var(--nxo-bg-page); padding: var(--nxo-spacing-lg);">
+              <div class="nxo-accordion">
+                <div class="nxo-accordion-item">
+                  <button class="nxo-accordion-header">
+                    <span><i class="fa-solid fa-user" style="margin-right: 8px; color: var(--fayat-blue);"></i> Informations personnelles</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </button>
+                  <div class="nxo-accordion-content" style="display: block;">
+                    <p class="nxo-text">Gerez vos informations de profil et vos preferences.</p>
+                  </div>
+                </div>
+                <div class="nxo-accordion-item">
+                  <button class="nxo-accordion-header">
+                    <span><i class="fa-solid fa-shield" style="margin-right: 8px; color: var(--nxo-color-success);"></i> Securite</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </button>
+                  <div class="nxo-accordion-content">
+                    <p class="nxo-text">Configurez vos parametres de securite et d'authentification.</p>
+                  </div>
+                </div>
+                <div class="nxo-accordion-item">
+                  <button class="nxo-accordion-header">
+                    <span><i class="fa-solid fa-bell" style="margin-right: 8px; color: var(--nxo-color-warning);"></i> Notifications</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </button>
+                  <div class="nxo-accordion-content">
+                    <p class="nxo-text">Gerez vos preferences de notifications.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-accordion"&gt;
+  &lt;div class="nxo-accordion-item"&gt;
+    &lt;button class="nxo-accordion-header"&gt;
+      &lt;span&gt;
+        &lt;i class="fa-solid fa-user" style="margin-right: 8px; color: var(--fayat-blue);"&gt;&lt;/i&gt;
+        Informations personnelles
+      &lt;/span&gt;
+      &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;div class="nxo-accordion-content"&gt;
+      &lt;p class="nxo-text"&gt;Gerez vos informations de profil et vos preferences.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-accordion-item"&gt;
+    &lt;button class="nxo-accordion-header"&gt;
+      &lt;span&gt;
+        &lt;i class="fa-solid fa-shield" style="margin-right: 8px; color: var(--nxo-color-success);"&gt;&lt;/i&gt;
+        Securite
+      &lt;/span&gt;
+      &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;div class="nxo-accordion-content"&gt;
+      &lt;p class="nxo-text"&gt;Configurez vos parametres de securite et d'authentification.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-accordion-item"&gt;
+    &lt;button class="nxo-accordion-header"&gt;
+      &lt;span&gt;
+        &lt;i class="fa-solid fa-bell" style="margin-right: 8px; color: var(--nxo-color-warning);"&gt;&lt;/i&gt;
+        Notifications
+      &lt;/span&gt;
+      &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+    &lt;div class="nxo-accordion-content"&gt;
+      &lt;p class="nxo-text"&gt;Gerez vos preferences de notifications.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import { Accordion, AccordionSummary, AccordionDetails, Typography, Box } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import PersonIcon from '@mui/icons-material/Person';
+import SecurityIcon from '@mui/icons-material/Security';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+
+const items = [
+  {
+    icon: &lt;PersonIcon sx={{ color: 'var(--fayat-blue)', mr: 1 }} /&gt;,
+    title: "Informations personnelles",
+    content: "Gerez vos informations de profil et vos preferences."
+  },
+  {
+    icon: &lt;SecurityIcon sx={{ color: 'var(--nxo-color-success)', mr: 1 }} /&gt;,
+    title: "Securite",
+    content: "Configurez vos parametres de securite et d'authentification."
+  },
+  {
+    icon: &lt;NotificationsIcon sx={{ color: 'var(--nxo-color-warning)', mr: 1 }} /&gt;,
+    title: "Notifications",
+    content: "Gerez vos preferences de notifications."
+  }
+];
+
+const AccordionWithIcons = () =&gt; {
+  return (
+    &lt;div className="nxo-accordion"&gt;
+      {items.map((item, index) =&gt; (
+        &lt;Accordion key={index} defaultExpanded={index === 0} className="nxo-accordion-item"&gt;
+          &lt;AccordionSummary
+            expandIcon={&lt;ExpandMoreIcon /&gt;}
+            className="nxo-accordion-header"
+          &gt;
+            &lt;Box sx={{ display: 'flex', alignItems: 'center' }}&gt;
+              {item.icon}
+              &lt;Typography&gt;{item.title}&lt;/Typography&gt;
+            &lt;/Box&gt;
+          &lt;/AccordionSummary&gt;
+          &lt;AccordionDetails className="nxo-accordion-content"&gt;
+            &lt;Typography className="nxo-text"&gt;{item.content}&lt;/Typography&gt;
+          &lt;/AccordionDetails&gt;
+        &lt;/Accordion&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};
+
+export default AccordionWithIcons;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component } from '@angular/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+
+@Component({
+  selector: 'app-accordion-with-icons',
+  standalone: true,
+  imports: [MatExpansionModule, MatIconModule],
+  template: `
+    &lt;mat-accordion class="nxo-accordion"&gt;
+      @for (item of items; track item.title; let i = $index) {
+        &lt;mat-expansion-panel [expanded]="i === 0" class="nxo-accordion-item"&gt;
+          &lt;mat-expansion-panel-header class="nxo-accordion-header"&gt;
+            &lt;mat-panel-title&gt;
+              &lt;mat-icon [style.color]="item.color" style="margin-right: 8px;"&gt;{{ item.icon }}&lt;/mat-icon&gt;
+              {{ item.title }}
+            &lt;/mat-panel-title&gt;
+          &lt;/mat-expansion-panel-header&gt;
+          &lt;p class="nxo-text"&gt;{{ item.content }}&lt;/p&gt;
+        &lt;/mat-expansion-panel&gt;
+      }
+    &lt;/mat-accordion&gt;
+  `
+})
+export class AccordionWithIconsComponent {
+  items = [
+    {
+      icon: 'person',
+      color: 'var(--fayat-blue)',
+      title: 'Informations personnelles',
+      content: 'Gerez vos informations de profil et vos preferences.'
+    },
+    {
+      icon: 'security',
+      color: 'var(--nxo-color-success)',
+      title: 'Securite',
+      content: 'Configurez vos parametres de securite et d\'authentification.'
+    },
+    {
+      icon: 'notifications',
+      color: 'var(--nxo-color-warning)',
+      title: 'Notifications',
+      content: 'Gerez vos preferences de notifications.'
+    }
+  ];
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>&lt;?php
+$accordionItems = [
+    [
+        'icon' => 'fa-user',
+        'color' => 'var(--fayat-blue)',
+        'title' => 'Informations personnelles',
+        'content' => 'Gerez vos informations de profil et vos preferences.',
+        'open' => true
+    ],
+    [
+        'icon' => 'fa-shield',
+        'color' => 'var(--nxo-color-success)',
+        'title' => 'Securite',
+        'content' => 'Configurez vos parametres de securite et d\'authentification.',
+        'open' => false
+    ],
+    [
+        'icon' => 'fa-bell',
+        'color' => 'var(--nxo-color-warning)',
+        'title' => 'Notifications',
+        'content' => 'Gerez vos preferences de notifications.',
+        'open' => false
+    ]
+];
+?&gt;
+
+&lt;div class="nxo-accordion"&gt;
+  &lt;?php foreach ($accordionItems as $item): ?&gt;
+    &lt;div class="nxo-accordion-item"&gt;
+      &lt;button class="nxo-accordion-header"&gt;
+        &lt;span&gt;
+          &lt;i class="fa-solid &lt;?= $item['icon'] ?&gt;" style="margin-right: 8px; color: &lt;?= $item['color'] ?&gt;;"&gt;&lt;/i&gt;
+          &lt;?= htmlspecialchars($item['title']) ?&gt;
+        &lt;/span&gt;
+        &lt;i class="fa-solid fa-chevron-down"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+      &lt;div class="nxo-accordion-content" style="display: &lt;?= $item['open'] ? 'block' : 'none' ?&gt;;"&gt;
+        &lt;p class="nxo-text"&gt;&lt;?= htmlspecialchars($item['content']) ?&gt;&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;?php endforeach; ?&gt;
+&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            L'accordion reduit son padding interne sur mobile pour maximiser l'espace de contenu.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 768px</code></td>
+                <td>Le <code>.nxo-accordion-header</code> passe a un padding de <code>spacing-sm spacing-md</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+  <!-- Accordion functionality -->
+  <script>
+    document.querySelectorAll('.nxo-accordion-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.closest('.nxo-accordion-item');
+        const isOpen = item.classList.contains('open');
+
+        // Fermer tous les autres items du même accordion (optionnel - mode exclusif)
+        // const accordion = item.closest('.nxo-accordion');
+        // accordion.querySelectorAll('.nxo-accordion-item').forEach(i => i.classList.remove('open'));
+
+        // Toggle l'item actuel
+        item.classList.toggle('open');
+
+        // Rotation de l'icone chevron
+        const icon = header.querySelector('i');
+        if (icon) {
+          icon.style.transform = item.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+      });
+    });
+
+    // Ouvrir le premier item par défaut
+    const firstItem = document.querySelector('.nxo-accordion-item');
+    if (firstItem) {
+      firstItem.classList.add('open');
+      const icon = firstItem.querySelector('.nxo-accordion-header i');
+      if (icon) icon.style.transform = 'rotate(180deg)';
+    }
+  </script>
+
+</body>
+</html>

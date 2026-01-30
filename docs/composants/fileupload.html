@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload - NXO Design System</title>
+
+  <script>
+    (function() {
+      var theme = localStorage.getItem('nxo-theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../../tokens/tokens.css">
+  <link rel="stylesheet" href="../../components/components.css">
+  <link rel="stylesheet" href="../_assets/docs.css">
+</head>
+<body>
+
+  <header class="doc-header">
+    <button class="doc-header__hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+    <a href="../index.html" class="doc-header__logo">
+      <img src="../../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height: 32px;">
+      <span class="doc-header__title">Design System</span>
+      <span class="doc-header__version">v2.0</span>
+    </a>
+    <div class="doc-header__search">
+      <button class="cmd-trigger" id="cmdTrigger">
+        <i class="fa-solid fa-search"></i>
+        <span class="cmd-trigger__text">Rechercher...</span>
+        <span class="cmd-trigger__kbd"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+      </button>
+    </div>
+    <button class="doc-theme-toggle" id="themeToggle" title="Changer le theme">
+      <i class="fa-solid fa-moon" id="themeIconLight"></i>
+      <i class="fa-solid fa-sun" id="themeIconDark"></i>
+    </button>
+  </header>
+
+  <div class="doc-sidebar-overlay" id="sidebarOverlay"></div>
+
+  <aside class="doc-sidebar" id="sidebar">
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Introduction</div>
+      <a href="../index.html" class="doc-sidebar__link"><i class="fa-solid fa-home"></i> Vue d'ensemble</a>
+      <a href="../getting-started.html" class="doc-sidebar__link"><i class="fa-solid fa-rocket"></i> Demarrage</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Fondations</div>
+      <a href="../fondations/colors.html" class="doc-sidebar__link"><i class="fa-solid fa-palette"></i> Couleurs</a>
+      <a href="../fondations/typography.html" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
+      <a href="../fondations/spacing.html" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
+      <a href="../fondations/tokens.html" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="../fondations/dark-mode.html" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
+      <a href="../fondations/responsive.html" class="doc-sidebar__link"><i class="fa-solid fa-mobile-screen"></i> Responsive</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Composants</div>
+      <a href="../composants/buttons.html" class="doc-sidebar__link"><i class="fa-solid fa-square"></i> Boutons</a>
+      <a href="../composants/forms.html" class="doc-sidebar__link"><i class="fa-solid fa-rectangle-list"></i> Formulaires</a>
+      <a href="../composants/cards.html" class="doc-sidebar__link"><i class="fa-solid fa-id-card"></i> Cards</a>
+      <a href="../composants/tables.html" class="doc-sidebar__link"><i class="fa-solid fa-table"></i> Tableaux</a>
+      <a href="../composants/badges.html" class="doc-sidebar__link"><i class="fa-solid fa-tag"></i> Badges</a>
+      <a href="../composants/alerts.html" class="doc-sidebar__link"><i class="fa-solid fa-bell"></i> Alertes</a>
+      <a href="../composants/modals.html" class="doc-sidebar__link"><i class="fa-solid fa-window-restore"></i> Modales</a>
+      <a href="../composants/breadcrumb.html" class="doc-sidebar__link"><i class="fa-solid fa-ellipsis"></i> Breadcrumb</a>
+      <a href="../composants/pagination.html" class="doc-sidebar__link"><i class="fa-solid fa-list-ol"></i> Pagination</a>
+      <a href="../composants/tabs.html" class="doc-sidebar__link"><i class="fa-solid fa-folder"></i> Tabs</a>
+      <a href="../composants/nav.html" class="doc-sidebar__link"><i class="fa-solid fa-compass"></i> Navigation</a>
+      <a href="../composants/avatars.html" class="doc-sidebar__link"><i class="fa-solid fa-user-circle"></i> Avatars</a>
+      <a href="../composants/spinners.html" class="doc-sidebar__link"><i class="fa-solid fa-spinner"></i> Spinners</a>
+      <a href="../composants/progress.html" class="doc-sidebar__link"><i class="fa-solid fa-tasks"></i> Progress</a>
+      <a href="../composants/stepper.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Stepper</a>
+      <a href="../composants/accordion.html" class="doc-sidebar__link"><i class="fa-solid fa-chevron-down"></i> Accordion</a>
+      <a href="../composants/skeleton.html" class="doc-sidebar__link"><i class="fa-solid fa-bone"></i> Skeleton</a>
+      <a href="../composants/empty.html" class="doc-sidebar__link"><i class="fa-solid fa-inbox"></i> Empty State</a>
+      <a href="../composants/list.html" class="doc-sidebar__link"><i class="fa-solid fa-list"></i> List</a>
+      <a href="../composants/timeline.html" class="doc-sidebar__link"><i class="fa-solid fa-clock"></i> Timeline</a>
+      <a href="../composants/search.html" class="doc-sidebar__link"><i class="fa-solid fa-search"></i> Search</a>
+      <a href="../composants/fileupload.html" class="doc-sidebar__link active"><i class="fa-solid fa-upload"></i> File Upload</a>
+      <a href="../composants/divider.html" class="doc-sidebar__link"><i class="fa-solid fa-minus"></i> Divider</a>
+      <a href="../composants/toasts.html" class="doc-sidebar__link"><i class="fa-solid fa-comment"></i> Toasts</a>
+      <a href="../composants/dropdown.html" class="doc-sidebar__link"><i class="fa-solid fa-caret-down"></i> Dropdown</a>
+      <a href="../composants/sidebar-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-bars"></i> Sidebar</a>
+      <a href="../composants/footer-comp.html" class="doc-sidebar__link"><i class="fa-solid fa-shoe-prints"></i> Footer</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Patterns</div>
+      <a href="../patterns/headers.html" class="doc-sidebar__link"><i class="fa-solid fa-window-maximize"></i> Headers</a>
+      <a href="../patterns/page-patterns.html" class="doc-sidebar__link"><i class="fa-solid fa-layer-group"></i> Page Patterns</a>
+    </div>
+    <div class="doc-sidebar__section">
+      <div class="doc-sidebar__title">Ressources</div>
+      <a href="../ressources/assets.html" class="doc-sidebar__link"><i class="fa-solid fa-image"></i> Assets</a>
+    </div>
+  </aside>
+
+  <main class="doc-main">
+    <div class="doc-content">
+
+      <section class="doc-section">
+        <div class="doc-section__header">
+          <h1 class="doc-section__title"><i class="fa-solid fa-upload"></i> File Upload</h1>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Composants pour le telechargement de fichiers.
+        </p>
+
+        <!-- Dropzone -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Zone de depot (Dropzone)</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-dropzone">
+                <div class="nxo-dropzone-icon">
+                  <i class="fa-solid fa-cloud-upload-alt"></i>
+                </div>
+                <div class="nxo-dropzone-text">
+                  <p><strong>Glissez vos fichiers ici</strong></p>
+                  <p class="nxo-text-sm nxo-text-muted">ou cliquez pour parcourir</p>
+                </div>
+                <input type="file" class="nxo-dropzone-input" multiple>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-dropzone"&gt;
+  &lt;div class="nxo-dropzone-icon"&gt;
+    &lt;i class="fa-solid fa-cloud-upload-alt"&gt;&lt;/i&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-dropzone-text"&gt;
+    &lt;p&gt;&lt;strong&gt;Glissez vos fichiers ici&lt;/strong&gt;&lt;/p&gt;
+    &lt;p class="nxo-text-sm nxo-text-muted"&gt;ou cliquez pour parcourir&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;input type="file" class="nxo-dropzone-input" multiple&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import React, { useRef, useState } from 'react';
+import { Button } from '@mui/material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+
+function Dropzone() {
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef(null);
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const files = e.dataTransfer.files;
+    // Handle files
+    console.log(files);
+  };
+
+  const handleClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (e) => {
+    const files = e.target.files;
+    // Handle files
+    console.log(files);
+  };
+
+  return (
+    &lt;div
+      className={`nxo-dropzone ${isDragging ? 'dragging' : ''}`}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
+      onClick={handleClick}
+    &gt;
+      &lt;div className="nxo-dropzone-icon"&gt;
+        &lt;CloudUploadIcon sx={{ fontSize: 48 }} /&gt;
+      &lt;/div&gt;
+      &lt;div className="nxo-dropzone-text"&gt;
+        &lt;p&gt;&lt;strong&gt;Glissez vos fichiers ici&lt;/strong&gt;&lt;/p&gt;
+        &lt;p className="nxo-text-sm nxo-text-muted"&gt;ou cliquez pour parcourir&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;input
+        type="file"
+        className="nxo-dropzone-input"
+        multiple
+        ref={fileInputRef}
+        onChange={handleFileChange}
+      /&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component, ElementRef, ViewChild } from '@angular/core';
+
+@Component({
+  selector: 'app-dropzone',
+  template: `
+    &lt;div class="nxo-dropzone" [class.dragging]="isDragging"
+         (dragover)="onDragOver($event)" (dragleave)="onDragLeave()"
+         (drop)="onDrop($event)" (click)="onClick()"&gt;
+      &lt;div class="nxo-dropzone-icon"&gt;
+        &lt;i class="fa-solid fa-cloud-upload-alt"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;div class="nxo-dropzone-text"&gt;
+        &lt;p&gt;&lt;strong&gt;Glissez vos fichiers ici&lt;/strong&gt;&lt;/p&gt;
+        &lt;p class="nxo-text-sm nxo-text-muted"&gt;ou cliquez pour parcourir&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;input #fileInput type="file" class="nxo-dropzone-input" multiple (change)="onFileChange($event)"&gt;
+    &lt;/div&gt;
+  `
+})
+export class DropzoneComponent {
+  @ViewChild('fileInput') fileInput!: ElementRef;
+  isDragging = false;
+  // ... event handlers
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Twig Template #}
+{% macro dropzone(name = 'files[]', multiple = true) %}
+  &lt;div class="nxo-dropzone"&gt;
+    &lt;div class="nxo-dropzone-icon"&gt;
+      &lt;i class="fa-solid fa-cloud-upload-alt"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class="nxo-dropzone-text"&gt;
+      &lt;p&gt;&lt;strong&gt;Glissez vos fichiers ici&lt;/strong&gt;&lt;/p&gt;
+      &lt;p class="nxo-text-sm nxo-text-muted"&gt;ou cliquez pour parcourir&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;input type="file" class="nxo-dropzone-input" name="{{ name }}" {{ multiple ? 'multiple' : '' }}&gt;
+  &lt;/div&gt;
+{% endmacro %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Input file simple -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Input file simple</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-file-input-wrapper">
+                <input type="file" id="fileInput" style="display: none;">
+                <button class="nxo-btn nxo-btn-secondary" onclick="document.getElementById('fileInput').click()">
+                  <i class="fa-solid fa-paperclip"></i> Choisir un fichier
+                </button>
+                <span class="nxo-text-sm nxo-text-muted">Aucun fichier selectionne</span>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+<pre>&lt;div class="nxo-file-input-wrapper"&gt;
+  &lt;input type="file" id="fileInput" style="display: none;"&gt;
+  &lt;button class="nxo-btn nxo-btn-secondary" onclick="document.getElementById('fileInput').click()"&gt;
+    &lt;i class="fa-solid fa-paperclip"&gt;&lt;/i&gt; Choisir un fichier
+  &lt;/button&gt;
+  &lt;span class="nxo-text-sm nxo-text-muted"&gt;Aucun fichier selectionne&lt;/span&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+<pre>// ⚠️ Exemple avec Material UI + classes NXO
+import React, { useRef, useState } from 'react';
+import { Button } from '@mui/material';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
+
+function FileInput() {
+  const [fileName, setFileName] = useState('Aucun fichier selectionne');
+  const fileInputRef = useRef(null);
+
+  return (
+    &lt;div className="nxo-file-input"&gt;
+      &lt;input type="file" ref={fileInputRef} style={{ display: 'none' }}
+             onChange={(e) =&gt; setFileName(e.target.files?.[0]?.name || 'Aucun fichier')} /&gt;
+      &lt;Button variant="outlined" className="nxo-btn-secondary"
+              startIcon={&lt;AttachFileIcon /&gt;} onClick={() =&gt; fileInputRef.current?.click()}&gt;
+        Choisir un fichier
+      &lt;/Button&gt;
+      &lt;span className="nxo-text-sm nxo-text-muted" style={{ marginLeft: '12px' }}&gt;{fileName}&lt;/span&gt;
+    &lt;/div&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+<pre>// ⚠️ Exemple avec Angular Material + classes NXO
+import { Component, ElementRef, ViewChild } from '@angular/core';
+
+@Component({
+  selector: 'app-file-input',
+  template: `
+    &lt;div class="nxo-file-input"&gt;
+      &lt;input #fileInput type="file" style="display: none" (change)="onFileChange($event)"&gt;
+      &lt;button class="nxo-btn nxo-btn-secondary" (click)="fileInput.click()"&gt;
+        &lt;i class="fa-solid fa-paperclip"&gt;&lt;/i&gt; Choisir un fichier
+      &lt;/button&gt;
+      &lt;span class="nxo-text-sm nxo-text-muted" style="margin-left: 12px"&gt;{{ fileName }}&lt;/span&gt;
+    &lt;/div&gt;
+  `
+})
+export class FileInputComponent {
+  fileName = 'Aucun fichier selectionne';
+  onFileChange(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (file) this.fileName = file.name;
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+<pre>{# Twig Template #}
+{% macro file_input(id = 'fileInput', name = 'file') %}
+  &lt;div class="nxo-file-input"&gt;
+    &lt;input type="file" id="{{ id }}" style="display: none;" name="{{ name }}"&gt;
+    &lt;button type="button" class="nxo-btn nxo-btn-secondary" onclick="document.getElementById('{{ id }}').click()"&gt;
+      &lt;i class="fa-solid fa-paperclip"&gt;&lt;/i&gt; Choisir un fichier
+    &lt;/button&gt;
+    &lt;span class="nxo-text-sm nxo-text-muted" style="margin-left: 12px;"&gt;Aucun fichier selectionne&lt;/span&gt;
+  &lt;/div&gt;
+{% endmacro %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Liste de fichiers -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Liste de fichiers uploades</h3>
+          <div class="doc-demo">
+            <div class="doc-demo__header">
+              <span class="doc-demo__title">Preview</span>
+              <div class="doc-demo__actions">
+                <button class="doc-demo__flip-btn" title="Voir le code">
+                  <i class="fa-solid fa-code"></i>
+                </button>
+              </div>
+            </div>
+            <div class="doc-demo__preview">
+              <div class="nxo-file-list">
+                <div class="nxo-file-item">
+                  <div class="nxo-file-item-icon" style="color: var(--nxo-color-error);">
+                    <i class="fa-solid fa-file-pdf"></i>
+                  </div>
+                  <div class="nxo-file-item-info">
+                    <div class="nxo-file-item-name">document.pdf</div>
+                    <div class="nxo-file-item-size">2.4 MB</div>
+                  </div>
+                  <button class="nxo-file-item-remove">
+                    <i class="fa-solid fa-times"></i>
+                  </button>
+                </div>
+                <div class="nxo-file-item">
+                  <div class="nxo-file-item-icon" style="color: var(--nxo-color-success);">
+                    <i class="fa-solid fa-file-excel"></i>
+                  </div>
+                  <div class="nxo-file-item-info">
+                    <div class="nxo-file-item-name">rapport.xlsx</div>
+                    <div class="nxo-file-item-size">856 KB</div>
+                  </div>
+                  <button class="nxo-file-item-remove">
+                    <i class="fa-solid fa-times"></i>
+                  </button>
+                </div>
+                <div class="nxo-file-item">
+                  <div class="nxo-file-item-icon" style="color: var(--fayat-blue);">
+                    <i class="fa-solid fa-file-image"></i>
+                  </div>
+                  <div class="nxo-file-item-info">
+                    <div class="nxo-file-item-name">photo.jpg</div>
+                    <div class="nxo-file-item-size">1.2 MB</div>
+                  </div>
+                  <button class="nxo-file-item-remove">
+                    <i class="fa-solid fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="doc-demo__code-panel">
+              <div class="doc-code-tabs">
+                <button class="doc-code-tab active" data-lang="html"><i class="fa-brands fa-html5"></i> HTML</button>
+                <button class="doc-code-tab" data-lang="react"><i class="fa-brands fa-react"></i> React</button>
+                <button class="doc-code-tab" data-lang="angular"><i class="fa-brands fa-angular"></i> Angular</button>
+                <button class="doc-code-tab" data-lang="php"><i class="fa-brands fa-php"></i> PHP/Twig</button>
+                <button class="doc-code-copy" title="Copier le code"><i class="fa-solid fa-copy"></i></button>
+              </div>
+              <div class="doc-code-content active" data-lang="html">
+                <pre>&lt;div class="nxo-file-list"&gt;
+  &lt;div class="nxo-file-item"&gt;
+    &lt;div class="nxo-file-item-icon" style="color: var(--nxo-color-error);"&gt;
+      &lt;i class="fa-solid fa-file-pdf"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class="nxo-file-item-info"&gt;
+      &lt;div class="nxo-file-item-name"&gt;document.pdf&lt;/div&gt;
+      &lt;div class="nxo-file-item-size"&gt;2.4 MB&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="nxo-file-item-remove"&gt;
+      &lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-file-item"&gt;
+    &lt;div class="nxo-file-item-icon" style="color: var(--nxo-color-success);"&gt;
+      &lt;i class="fa-solid fa-file-excel"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class="nxo-file-item-info"&gt;
+      &lt;div class="nxo-file-item-name"&gt;rapport.xlsx&lt;/div&gt;
+      &lt;div class="nxo-file-item-size"&gt;856 KB&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="nxo-file-item-remove"&gt;
+      &lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="nxo-file-item"&gt;
+    &lt;div class="nxo-file-item-icon" style="color: var(--fayat-blue);"&gt;
+      &lt;i class="fa-solid fa-file-image"&gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;div class="nxo-file-item-info"&gt;
+      &lt;div class="nxo-file-item-name"&gt;photo.jpg&lt;/div&gt;
+      &lt;div class="nxo-file-item-size"&gt;1.2 MB&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="nxo-file-item-remove"&gt;
+      &lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+              </div>
+              <div class="doc-code-content" data-lang="react">
+                <pre>import React, { useState } from 'react';
+
+interface FileItem {
+  id: string;
+  name: string;
+  size: string;
+  icon: string;
+  color: string;
+}
+
+function FileList() {
+  const [files, setFiles] = useState&lt;FileItem[]&gt;([
+    { id: '1', name: 'document.pdf', size: '2.4 MB', icon: 'fa-file-pdf', color: 'var(--nxo-color-error)' },
+    { id: '2', name: 'rapport.xlsx', size: '856 KB', icon: 'fa-file-excel', color: 'var(--nxo-color-success)' },
+    { id: '3', name: 'photo.jpg', size: '1.2 MB', icon: 'fa-file-image', color: 'var(--fayat-blue)' }
+  ]);
+
+  const handleRemove = (id: string) => {
+    setFiles(files.filter(file => file.id !== id));
+  };
+
+  return (
+    &lt;div className="nxo-file-list"&gt;
+      {files.map(file => (
+        &lt;div key={file.id} className="nxo-file-item"&gt;
+          &lt;div className="nxo-file-item-icon" style={{ color: file.color }}&gt;
+            &lt;i className={`fa-solid ${file.icon}`}&gt;&lt;/i&gt;
+          &lt;/div&gt;
+          &lt;div className="nxo-file-item-info"&gt;
+            &lt;div className="nxo-file-item-name"&gt;{file.name}&lt;/div&gt;
+            &lt;div className="nxo-file-item-size"&gt;{file.size}&lt;/div&gt;
+          &lt;/div&gt;
+          &lt;button
+            className="nxo-file-item-remove"
+            onClick={() => handleRemove(file.id)}
+          &gt;
+            &lt;i className="fa-solid fa-times"&gt;&lt;/i&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="angular">
+                <pre>import { Component } from '@angular/core';
+
+interface FileItem {
+  id: string;
+  name: string;
+  size: string;
+  icon: string;
+  color: string;
+}
+
+@Component({
+  selector: 'app-file-list',
+  template: `
+    &lt;div class="nxo-file-list"&gt;
+      &lt;div *ngFor="let file of files" class="nxo-file-item"&gt;
+        &lt;div class="nxo-file-item-icon" [style.color]="file.color"&gt;
+          &lt;i [class]="'fa-solid ' + file.icon"&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class="nxo-file-item-info"&gt;
+          &lt;div class="nxo-file-item-name"&gt;{{ file.name }}&lt;/div&gt;
+          &lt;div class="nxo-file-item-size"&gt;{{ file.size }}&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button class="nxo-file-item-remove" (click)="removeFile(file.id)"&gt;
+          &lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+export class FileListComponent {
+  files: FileItem[] = [
+    { id: '1', name: 'document.pdf', size: '2.4 MB', icon: 'fa-file-pdf', color: 'var(--nxo-color-error)' },
+    { id: '2', name: 'rapport.xlsx', size: '856 KB', icon: 'fa-file-excel', color: 'var(--nxo-color-success)' },
+    { id: '3', name: 'photo.jpg', size: '1.2 MB', icon: 'fa-file-image', color: 'var(--fayat-blue)' }
+  ];
+
+  removeFile(id: string): void {
+    this.files = this.files.filter(file => file.id !== id);
+  }
+}</pre>
+              </div>
+              <div class="doc-code-content" data-lang="php">
+                <pre>&lt;div class="nxo-file-list"&gt;
+  &lt;?php foreach ($files as $file): ?&gt;
+    &lt;div class="nxo-file-item"&gt;
+      &lt;div class="nxo-file-item-icon" style="color: &lt;?= $file['color'] ?&gt;;"&gt;
+        &lt;i class="fa-solid &lt;?= $file['icon'] ?&gt;"&gt;&lt;/i&gt;
+      &lt;/div&gt;
+      &lt;div class="nxo-file-item-info"&gt;
+        &lt;div class="nxo-file-item-name"&gt;&lt;?= htmlspecialchars($file['name']) ?&gt;&lt;/div&gt;
+        &lt;div class="nxo-file-item-size"&gt;&lt;?= $file['size'] ?&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;button class="nxo-file-item-remove" onclick="removeFile('&lt;?= $file['id'] ?&gt;')"&gt;
+        &lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;?php endforeach; ?&gt;
+&lt;/div&gt;
+
+&lt;!-- Twig Template --&gt;
+{% macro file_list(files) %}
+  &lt;div class="nxo-file-list"&gt;
+    {% for file in files %}
+      &lt;div class="nxo-file-item"&gt;
+        &lt;div class="nxo-file-item-icon" style="color: {{ file.color }}"&gt;
+          &lt;i class="fa-solid {{ file.icon }}"&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;div class="nxo-file-item-info"&gt;
+          &lt;div class="nxo-file-item-name"&gt;{{ file.name }}&lt;/div&gt;
+          &lt;div class="nxo-file-item-size"&gt;{{ file.size }}&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button class="nxo-file-item-remove" onclick="removeFile('{{ file.id }}')"&gt;
+          &lt;i class="fa-solid fa-times"&gt;&lt;/i&gt;
+        &lt;/button&gt;
+      &lt;/div&gt;
+    {% endfor %}
+  &lt;/div&gt;
+{% endmacro %}</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comportement responsive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-mobile-screen"></i> Comportement responsive</h3>
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            La zone de depot reduit sa taille minimale et son padding sur mobile.
+          </div>
+          <table class="nxo-table">
+            <thead>
+              <tr>
+                <th>Breakpoint</th>
+                <th>Comportement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>&le; 768px</code></td>
+                <td><code>.nxo-file-dropzone</code> / <code>.nxo-dropzone</code> : <code>min-height: 120px</code>, padding reduit a <code>spacing-md</code></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="nxo-text-sm nxo-text-muted nxo-mt-sm">
+            <i class="fa-solid fa-arrow-right"></i> Voir la page <a href="../fondations/responsive.html">Responsive</a> pour tous les details.
+          </p>
+        </div>
+
+      </section>
+
+      <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
+        <p class="nxo-text-sm nxo-text-muted">NXO Design System v2.0 - Valide Marketing Decembre 2025</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <button class="doc-scroll-top" id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('nxo-theme', isDark ? 'light' : 'dark');
+    });
+
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    hamburgerBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      sidebarOverlay.classList.toggle('open');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      sidebarOverlay.classList.remove('open');
+    });
+
+    const scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- Search functionality -->
+  <script src="../_assets/docs-search.js"></script>
+
+  <!-- Code flip functionality -->
+  <script src="../_assets/docs-code-flip.js"></script>
+  <!-- Sidebar functionality -->
+  <script src="../_assets/docs-sidebar.js"></script>
+
+</body>
+</html>
