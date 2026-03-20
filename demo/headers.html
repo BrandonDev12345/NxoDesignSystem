@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <!-- Flag Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
 
@@ -72,7 +75,7 @@
     .nxo-header--1920 .nxo-header__icon img { width: 24px; height: 24px; }
     .nxo-header--1920 .nxo-header__logo { height: 40px; }
     .nxo-header--1920 .nxo-header__service-name { font-size: 16px; display: inline; }
-    .nxo-header--1920 .nxo-header__zone-right { width: 250px; padding-right: 32px; gap: 20px; }
+    .nxo-header--1920 .nxo-header__zone-right { position: relative; width: 320px; padding-right: 32px; gap: 20px; }
     .nxo-header--1920 .nxo-header__search { width: 550px; height: 44px; border-radius: 22px; display: flex; }
     .nxo-header--1920 .nxo-header__search img { width: 18px; height: 18px; }
     .nxo-header--1920 .nxo-header__search span { font-size: 14px; }
@@ -89,7 +92,7 @@
     .nxo-header--1440 .nxo-header__icon img { width: 22px; height: 22px; }
     .nxo-header--1440 .nxo-header__logo { height: 36px; }
     .nxo-header--1440 .nxo-header__service-name { font-size: 15px; display: inline; }
-    .nxo-header--1440 .nxo-header__zone-right { width: 220px; padding-right: 24px; gap: 18px; }
+    .nxo-header--1440 .nxo-header__zone-right { position: relative; width: 290px; padding-right: 24px; gap: 18px; }
     .nxo-header--1440 .nxo-header__search { width: 450px; height: 42px; border-radius: 21px; display: flex; }
     .nxo-header--1440 .nxo-header__search img { width: 16px; height: 16px; }
     .nxo-header--1440 .nxo-header__search span { font-size: 13px; }
@@ -106,12 +109,14 @@
     .nxo-header--1024 .nxo-header__icon img { width: 20px; height: 20px; }
     .nxo-header--1024 .nxo-header__logo { height: 32px; }
     .nxo-header--1024 .nxo-header__service-name { font-size: 14px; display: inline; }
-    .nxo-header--1024 .nxo-header__zone-right { width: 160px; padding-right: 16px; gap: 12px; }
+    .nxo-header--1024 .nxo-header__zone-right { position: relative; width: 220px; padding-right: 16px; gap: 12px; }
     .nxo-header--1024 .nxo-header__search { width: 280px; height: 38px; border-radius: 19px; display: flex; }
     .nxo-header--1024 .nxo-header__search img { width: 14px; height: 14px; }
     .nxo-header--1024 .nxo-header__search span { font-size: 12px; }
     .nxo-header--1024 .nxo-header__zone-right .nxo-header__icon img { width: 16px; height: 16px; }
     .nxo-header--1024 .nxo-header__zone-right .nxo-header__icon--profile img { width: 22px; height: 22px; }
+    .nxo-header--1024 .nxo-header__grid-icon { grid-template-columns: repeat(3, 4px); grid-template-rows: repeat(3, 4px); gap: 2px; }
+    .nxo-header--1024 .nxo-header__grid-icon span { width: 4px; height: 4px; }
 
     .nxo-header--768 {
       width: 768px;
@@ -124,11 +129,13 @@
     .nxo-header--768 .nxo-header__logo { height: 28px; }
     .nxo-header--768 .nxo-header__service-name { display: none; }
     .nxo-header--768 .nxo-header__search { display: none; }
-    .nxo-header--768 .nxo-header__zone-right { width: 180px; padding-right: 12px; gap: 8px; }
+    .nxo-header--768 .nxo-header__zone-right { position: relative; width: 220px; padding-right: 12px; gap: 8px; }
     .nxo-header--768 .nxo-header__zone-right .nxo-header__icon { width: 32px; height: 32px; }
     .nxo-header--768 .nxo-header__zone-right .nxo-header__icon img { width: 16px; height: 16px; }
     .nxo-header--768 .nxo-header__zone-right .nxo-header__icon--search img { width: 18px; height: 18px; }
     .nxo-header--768 .nxo-header__zone-right .nxo-header__icon--profile img { width: 22px; height: 22px; }
+    .nxo-header--768 .nxo-header__grid-icon { grid-template-columns: repeat(3, 4px); grid-template-rows: repeat(3, 4px); gap: 2px; }
+    .nxo-header--768 .nxo-header__grid-icon span { width: 4px; height: 4px; }
 
     .nxo-header--375 {
       width: 375px;
@@ -139,10 +146,12 @@
     .nxo-header--375 .nxo-header__icon { width: 28px; height: 28px; }
     .nxo-header--375 .nxo-header__icon img { width: 20px; height: 20px; }
     .nxo-header--375 .nxo-header__zone-center .nxo-header__logo { height: 28px; }
-    .nxo-header--375 .nxo-header__zone-right { width: 90px; padding-right: 12px; gap: 8px; }
+    .nxo-header--375 .nxo-header__zone-right { position: relative; width: 120px; padding-right: 12px; gap: 8px; }
     .nxo-header--375 .nxo-header__zone-right .nxo-header__icon { width: 28px; height: 28px; }
     .nxo-header--375 .nxo-header__zone-right .nxo-header__icon img { width: 16px; height: 16px; }
     .nxo-header--375 .nxo-header__zone-right .nxo-header__icon--profile img { width: 20px; height: 20px; }
+    .nxo-header--375 .nxo-header__grid-icon { grid-template-columns: repeat(3, 3px); grid-template-rows: repeat(3, 3px); gap: 2px; }
+    .nxo-header--375 .nxo-header__grid-icon span { width: 3px; height: 3px; }
 
     .demo-footer {
       margin-top: 64px;
@@ -159,12 +168,12 @@
 
   <!-- Header 1920 -->
   <section class="header-section">
-    <div class="header-label">Desktop XL - 1920 x 80</div>
+    <div class="header-label">Desktop XL - 1920 x 80 (hamburger a gauche, 9 dots a droite)</div>
     <div class="header-wrapper">
       <header class="nxo-header nxo-header--1920">
         <div class="nxo-header__zone-left">
-          <button class="nxo-header__icon" aria-label="Applications">
-            <img src="../assets/icons/grip-vertical-solid-full.svg" alt="Apps">
+          <button class="nxo-header__icon" aria-label="Menu" onclick="openDemoMobileMenu()">
+            <img src="../assets/icons/bars-solid-full.svg" alt="Menu">
           </button>
           <div class="nxo-header__logo">
             <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO">
@@ -178,6 +187,22 @@
           </div>
         </div>
         <div class="nxo-header__zone-right">
+          <button class="nxo-header__icon nxo-header__icon--apps" aria-label="Applications" onclick="toggleAppLauncher('appLauncher1920')">
+            <div class="nxo-header__grid-icon"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </button>
+          <div class="nxo-header__app-launcher" id="appLauncher1920">
+            <div class="nxo-header__app-launcher-grid">
+              <a href="https://espaceclient.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon"><i class="fa-solid fa-user-shield"></i></div><span class="nxo-header__app-tile-label">Espace client</span></a>
+              <a href="https://support.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--support"><i class="fa-solid fa-headset"></i></div><span class="nxo-header__app-tile-label">Support</span></a>
+              <a href="https://infogerance.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--infog"><i class="fa-solid fa-server"></i></div><span class="nxo-header__app-tile-label">Infogerance</span></a>
+              <a href="https://docs.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--docs"><i class="fa-solid fa-folder-open"></i></div><span class="nxo-header__app-tile-label">Espace doc</span></a>
+              <a href="https://contacts.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--contacts"><i class="fa-solid fa-address-book"></i></div><span class="nxo-header__app-tile-label">Interlocuteurs</span></a>
+              <a href="https://supervision.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--superv"><i class="fa-solid fa-chart-line"></i></div><span class="nxo-header__app-tile-label">Supervision</span></a>
+              <a href="https://commandes.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--shop"><i class="fa-solid fa-cart-shopping"></i></div><span class="nxo-header__app-tile-label">Vente en ligne</span></a>
+              <a href="https://sentinelle.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--sentinel"><i class="fa-solid fa-shield-halved"></i></div><span class="nxo-header__app-tile-label">Vulnerabilites</span></a>
+              <a href="https://maconso.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--conso"><i class="fa-solid fa-gauge"></i></div><span class="nxo-header__app-tile-label">Ma conso</span></a>
+            </div>
+          </div>
           <button class="nxo-header__lang-btn" aria-label="Langue">
             <span class="nxo-header__lang-flag fi fi-fr"></span>
             <span class="nxo-header__lang-code">FR</span>
@@ -198,12 +223,12 @@
 
   <!-- Header 1440 -->
   <section class="header-section">
-    <div class="header-label">Desktop - 1440 x 80</div>
+    <div class="header-label">Desktop - 1440 x 80 (hamburger a gauche, 9 dots a droite)</div>
     <div class="header-wrapper">
       <header class="nxo-header nxo-header--1440">
         <div class="nxo-header__zone-left">
-          <button class="nxo-header__icon" aria-label="Applications">
-            <img src="../assets/icons/grip-vertical-solid-full.svg" alt="Apps">
+          <button class="nxo-header__icon" aria-label="Menu" onclick="openDemoMobileMenu()">
+            <img src="../assets/icons/bars-solid-full.svg" alt="Menu">
           </button>
           <div class="nxo-header__logo">
             <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO">
@@ -217,6 +242,22 @@
           </div>
         </div>
         <div class="nxo-header__zone-right">
+          <button class="nxo-header__icon nxo-header__icon--apps" aria-label="Applications" onclick="toggleAppLauncher('appLauncher1440')">
+            <div class="nxo-header__grid-icon"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </button>
+          <div class="nxo-header__app-launcher" id="appLauncher1440">
+            <div class="nxo-header__app-launcher-grid">
+              <a href="https://espaceclient.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon"><i class="fa-solid fa-user-shield"></i></div><span class="nxo-header__app-tile-label">Espace client</span></a>
+              <a href="https://support.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--support"><i class="fa-solid fa-headset"></i></div><span class="nxo-header__app-tile-label">Support</span></a>
+              <a href="https://infogerance.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--infog"><i class="fa-solid fa-server"></i></div><span class="nxo-header__app-tile-label">Infogerance</span></a>
+              <a href="https://docs.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--docs"><i class="fa-solid fa-folder-open"></i></div><span class="nxo-header__app-tile-label">Espace doc</span></a>
+              <a href="https://contacts.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--contacts"><i class="fa-solid fa-address-book"></i></div><span class="nxo-header__app-tile-label">Interlocuteurs</span></a>
+              <a href="https://supervision.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--superv"><i class="fa-solid fa-chart-line"></i></div><span class="nxo-header__app-tile-label">Supervision</span></a>
+              <a href="https://commandes.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--shop"><i class="fa-solid fa-cart-shopping"></i></div><span class="nxo-header__app-tile-label">Vente en ligne</span></a>
+              <a href="https://sentinelle.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--sentinel"><i class="fa-solid fa-shield-halved"></i></div><span class="nxo-header__app-tile-label">Vulnerabilites</span></a>
+              <a href="https://maconso.nxo.eu" class="nxo-header__app-tile"><div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--conso"><i class="fa-solid fa-gauge"></i></div><span class="nxo-header__app-tile-label">Ma conso</span></a>
+            </div>
+          </div>
           <button class="nxo-header__lang-btn" aria-label="Langue">
             <span class="nxo-header__lang-flag fi fi-fr"></span>
             <span class="nxo-header__lang-code">FR</span>
@@ -237,11 +278,11 @@
 
   <!-- Header 1024 -->
   <section class="header-section">
-    <div class="header-label">Tablet - 1024 x 72 (avec hamburger)</div>
+    <div class="header-label">Tablet - 1024 x 72 (hamburger a gauche, 9 dots a droite)</div>
     <div class="header-wrapper">
       <header class="nxo-header nxo-header--1024">
         <div class="nxo-header__zone-left">
-          <button class="nxo-header__icon" aria-label="Menu">
+          <button class="nxo-header__icon" aria-label="Menu" onclick="openDemoMobileMenu()">
             <img src="../assets/icons/bars-solid-full.svg" alt="Menu">
           </button>
           <div class="nxo-header__logo">
@@ -256,6 +297,9 @@
           </div>
         </div>
         <div class="nxo-header__zone-right">
+          <button class="nxo-header__icon nxo-header__icon--apps" aria-label="Applications">
+            <div class="nxo-header__grid-icon"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </button>
           <button class="nxo-header__lang-btn" aria-label="Langue">
             <span class="nxo-header__lang-flag fi fi-fr"></span>
             <span class="nxo-header__lang-code">FR</span>
@@ -276,11 +320,11 @@
 
   <!-- Header 768 -->
   <section class="header-section">
-    <div class="header-label">Tablet Small - 768 x 64 (sans search bar)</div>
+    <div class="header-label">Tablet Small - 768 x 64 (hamburger a gauche, 9 dots a droite, sans search bar)</div>
     <div class="header-wrapper">
       <header class="nxo-header nxo-header--768">
         <div class="nxo-header__zone-left">
-          <button class="nxo-header__icon" aria-label="Menu">
+          <button class="nxo-header__icon" aria-label="Menu" onclick="openDemoMobileMenu()">
             <img src="../assets/icons/bars-solid-full.svg" alt="Menu">
           </button>
           <div class="nxo-header__logo">
@@ -291,6 +335,9 @@
           <!-- Vide -->
         </div>
         <div class="nxo-header__zone-right">
+          <button class="nxo-header__icon nxo-header__icon--apps" aria-label="Applications">
+            <div class="nxo-header__grid-icon"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </button>
           <button class="nxo-header__icon nxo-header__icon--search" aria-label="Rechercher">
             <img src="../assets/icons/magnifying-glass-solid-full.svg" alt="Rechercher">
           </button>
@@ -310,11 +357,11 @@
 
   <!-- Header 375 (Mobile) -->
   <section class="header-section">
-    <div class="header-label">Mobile - 375 x 56 (logo centré)</div>
+    <div class="header-label">Mobile - 375 x 56 (hamburger a gauche, 9 dots a droite, logo centre)</div>
     <div class="header-wrapper">
       <header class="nxo-header nxo-header--375">
         <div class="nxo-header__zone-left">
-          <button class="nxo-header__icon" aria-label="Menu">
+          <button class="nxo-header__icon" aria-label="Menu" onclick="openDemoMobileMenu()">
             <img src="../assets/icons/bars-solid-full.svg" alt="Menu">
           </button>
         </div>
@@ -324,6 +371,9 @@
           </div>
         </div>
         <div class="nxo-header__zone-right">
+          <button class="nxo-header__icon nxo-header__icon--apps" aria-label="Applications">
+            <div class="nxo-header__grid-icon"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          </button>
           <button class="nxo-header__icon" aria-label="Aide">
             <img src="../assets/icons/question-solid-full.svg" alt="Aide">
           </button>
@@ -338,6 +388,70 @@
   <footer class="demo-footer">
     <p>NXO Design System - Headers Responsive - 2025</p>
   </footer>
+
+  <script>
+    function toggleAppLauncher(id) {
+      // Close all other launchers first
+      document.querySelectorAll('.nxo-header__app-launcher').forEach(function(el) {
+        if (el.id !== id) el.classList.remove('open');
+      });
+      document.getElementById(id).classList.toggle('open');
+    }
+
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nxo-header__icon--apps') && !e.target.closest('.nxo-header__app-launcher')) {
+        document.querySelectorAll('.nxo-header__app-launcher').forEach(function(el) {
+          el.classList.remove('open');
+        });
+      }
+    });
+
+    // Mobile menu
+    function openDemoMobileMenu() {
+      document.getElementById('demoMobileMenu').style.transform = 'translateX(0)';
+      document.getElementById('demoMobileOverlay').style.opacity = '1';
+      document.getElementById('demoMobileOverlay').style.visibility = 'visible';
+    }
+    function closeDemoMobileMenu() {
+      document.getElementById('demoMobileMenu').style.transform = 'translateX(-100%)';
+      document.getElementById('demoMobileOverlay').style.opacity = '0';
+      document.getElementById('demoMobileOverlay').style.visibility = 'hidden';
+    }
+    document.getElementById('demoMobileOverlay').addEventListener('click', closeDemoMobileMenu);
+  </script>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="demoMobileOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9998;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease;"></div>
+
+  <!-- Mobile Menu Sidebar -->
+  <nav id="demoMobileMenu" style="position:fixed;top:0;left:0;width:300px;height:100vh;background:#ffffff;box-shadow:4px 0 20px rgba(0,0,0,0.2);z-index:9999;transform:translateX(-100%);transition:transform 0.3s ease;overflow-y:auto;display:flex;flex-direction:column;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#0055a0;min-height:56px;">
+      <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO" style="height:28px;">
+      <button onclick="closeDemoMobileMenu()" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:none;border:none;cursor:pointer;color:white;font-size:18px;border-radius:4px;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='none'">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div style="flex:1;padding:12px 0;">
+      <div style="padding:4px 20px;">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#999;padding:8px 0;border-bottom:1px solid #e5e5e5;margin-bottom:4px;">Navigation</div>
+        <a href="#" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><i class="fa-solid fa-home" style="width:20px;text-align:center;color:#999;"></i> Accueil</a>
+        <a href="#" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><i class="fa-solid fa-file-lines" style="width:20px;text-align:center;color:#999;"></i> Mes demandes</a>
+        <a href="#" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><i class="fa-solid fa-chart-bar" style="width:20px;text-align:center;color:#999;"></i> Rapports</a>
+      </div>
+      <div style="padding:4px 20px;">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:#999;padding:8px 0;border-bottom:1px solid #e5e5e5;margin-bottom:4px;">Services NXO</div>
+        <a href="https://espaceclient.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#0055a0;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-user-shield"></i></div> Espace client</a>
+        <a href="https://support.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#008a9b;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-headset"></i></div> Support</a>
+        <a href="https://infogerance.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#002f60;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-server"></i></div> Infogerance</a>
+        <a href="https://docs.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#00a486;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-folder-open"></i></div> Espace documentaire</a>
+        <a href="https://contacts.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#5692ce;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-address-book"></i></div> Vos interlocuteurs</a>
+        <a href="https://supervision.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#e95e3f;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-chart-line"></i></div> Supervision</a>
+        <a href="https://commandes.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#ffd300;color:#002f60;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-cart-shopping"></i></div> Vente en ligne</a>
+        <a href="https://sentinelle.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#e53138;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-shield-halved"></i></div> Suivi vulnerabilites</a>
+        <a href="https://maconso.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:#333;font-size:14px;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#66757e;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-gauge"></i></div> Ma conso</a>
+      </div>
+    </div>
+  </nav>
 
 </body>
 </html>

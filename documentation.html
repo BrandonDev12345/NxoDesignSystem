@@ -2260,6 +2260,7 @@
       <a href="#typography" class="doc-sidebar__link"><i class="fa-solid fa-font"></i> Typographie</a>
       <a href="#spacing" class="doc-sidebar__link"><i class="fa-solid fa-arrows-alt"></i> Espacements</a>
       <a href="#tokens" class="doc-sidebar__link"><i class="fa-solid fa-code"></i> Tous les tokens</a>
+      <a href="#darkmode" class="doc-sidebar__link"><i class="fa-solid fa-moon"></i> Dark Mode</a>
     </div>
 
     <div class="doc-sidebar__section">
@@ -4690,7 +4691,6 @@ const { isOpen, open, close } = useModal();
                 </div>
               </div>
             </div>
-            </div>
           </div>
         </div>
       </section>
@@ -5757,9 +5757,9 @@ import { NxoAccordion, NxoAccordionItem } from '@nxo/vue-components';
           <h3 class="doc-subsection__title">Desktop XL - 1920 x 80</h3>
           <div class="doc-demo">
             <div class="doc-demo__preview doc-demo__preview--dark doc-header-demo">
-              <header style="background-color: #0055a0; display: flex; align-items: center; width: 1200px; height: 80px;">
+              <header style="background-color: #0055a0; display: flex; align-items: center; width: 1200px; height: 80px; position: relative;">
                 <div style="display: flex; align-items: center; padding-left: 32px; gap: 48px; width: 350px;">
-                  <button style="background: none; border: none; color: white; font-size: 20px;"><i class="fa-solid fa-grip-vertical"></i></button>
+                  <button style="background: none; border: none; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='none'"><i class="fa-solid fa-bars" style="color: white; font-size: 20px;"></i></button>
                   <img src="assets/logos/nxo-fayat-logo.png" style="height: 40px;" alt="NXO">
                   <span style="color: rgba(255,255,255,0.9); font-weight: 600; font-size: 16px;">Nom Service</span>
                 </div>
@@ -5769,7 +5769,49 @@ import { NxoAccordion, NxoAccordionItem } from '@nxo/vue-components';
                     <span style="color: rgba(255,255,255,0.5); font-size: 14px;">Rechercher...</span>
                   </div>
                 </div>
-                <div style="display: flex; align-items: center; gap: 16px; padding-right: 32px;">
+                <div style="display: flex; align-items: center; gap: 16px; padding-right: 32px; position: relative;">
+                  <button id="docAppLauncherBtn" style="background: none; border: none; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='none'" onclick="var p=document.getElementById('docAppLauncher');p.style.display=p.style.display==='block'?'none':'block'"><div style="display: grid; grid-template-columns: repeat(3, 5px); grid-template-rows: repeat(3, 5px); gap: 3px;"><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span></div></button>
+                  <!-- App Launcher Panel -->
+                  <div id="docAppLauncher" style="display: none; position: absolute; top: 60px; right: 0; background: white; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); padding: 16px; z-index: 100; width: 320px;">
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;">
+                      <a href="https://espaceclient.nxo.eu" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 8px; text-decoration: none; color: #333; text-align: center;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'">
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background: #0055a0; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fa-solid fa-user-shield"></i></div>
+                        <span style="font-size: 11px; font-weight: 500;">Espace client</span>
+                      </a>
+                      <a href="https://support.nxo.eu" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 8px; text-decoration: none; color: #333; text-align: center;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'">
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background: #008a9b; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fa-solid fa-headset"></i></div>
+                        <span style="font-size: 11px; font-weight: 500;">Support</span>
+                      </a>
+                      <a href="https://infogerance.nxo.eu" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 8px; text-decoration: none; color: #333; text-align: center;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'">
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background: #002f60; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fa-solid fa-server"></i></div>
+                        <span style="font-size: 11px; font-weight: 500;">Infogerance</span>
+                      </a>
+                      <a href="https://docs.nxo.eu" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 8px; text-decoration: none; color: #333; text-align: center;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'">
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background: #00a486; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fa-solid fa-folder-open"></i></div>
+                        <span style="font-size: 11px; font-weight: 500;">Espace doc</span>
+                      </a>
+                      <a href="https://contacts.nxo.eu" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 8px; text-decoration: none; color: #333; text-align: center;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'">
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background: #5692ce; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fa-solid fa-address-book"></i></div>
+                        <span style="font-size: 11px; font-weight: 500;">Interlocuteurs</span>
+                      </a>
+                      <a href="https://supervision.nxo.eu" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 8px; text-decoration: none; color: #333; text-align: center;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'">
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background: #e95e3f; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fa-solid fa-chart-line"></i></div>
+                        <span style="font-size: 11px; font-weight: 500;">Supervision</span>
+                      </a>
+                      <a href="https://commandes.nxo.eu" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 8px; text-decoration: none; color: #333; text-align: center;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'">
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background: #ffd300; color: #002f60; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <span style="font-size: 11px; font-weight: 500;">Vente en ligne</span>
+                      </a>
+                      <a href="https://sentinelle.nxo.eu" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 8px; text-decoration: none; color: #333; text-align: center;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'">
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background: #e53138; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fa-solid fa-shield-halved"></i></div>
+                        <span style="font-size: 11px; font-weight: 500;">Vulnerabilites</span>
+                      </a>
+                      <a href="https://maconso.nxo.eu" style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 8px; text-decoration: none; color: #333; text-align: center;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='none'">
+                        <div style="width: 44px; height: 44px; border-radius: 8px; background: #66757e; color: white; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fa-solid fa-gauge"></i></div>
+                        <span style="font-size: 11px; font-weight: 500;">Ma conso</span>
+                      </a>
+                    </div>
+                  </div>
                   <span class="fi fi-fr" style="width: 24px; height: 18px; border-radius: 2px;"></span>
                   <button style="background: none; border: none; color: white;"><i class="fa-solid fa-expand"></i></button>
                   <button style="background: none; border: none; color: white;"><i class="fa-solid fa-question-circle"></i></button>
@@ -5786,12 +5828,13 @@ import { NxoAccordion, NxoAccordionItem } from '@nxo/vue-components';
             <div class="doc-demo__preview doc-demo__preview--dark doc-header-demo">
               <header style="background-color: #0055a0; display: flex; align-items: center; width: 375px; height: 56px;">
                 <div style="padding-left: 12px; width: 50px;">
-                  <button style="background: none; border: none; color: white;"><i class="fa-solid fa-bars"></i></button>
+                  <button style="background: none; border: none; color: white; cursor: pointer;" onclick="openDocMobileMenu()"><i class="fa-solid fa-bars"></i></button>
                 </div>
                 <div style="flex: 1; display: flex; justify-content: center;">
                   <img src="assets/logos/nxo-fayat-logo.png" style="height: 28px;" alt="NXO">
                 </div>
                 <div style="display: flex; align-items: center; gap: 8px; padding-right: 12px;">
+                  <button style="background: none; border: none; cursor: pointer; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;"><div style="display:grid;grid-template-columns:repeat(3,3px);grid-template-rows:repeat(3,3px);gap:2px"><span style="display:block;width:3px;height:3px;border-radius:50%;background:white"></span><span style="display:block;width:3px;height:3px;border-radius:50%;background:white"></span><span style="display:block;width:3px;height:3px;border-radius:50%;background:white"></span><span style="display:block;width:3px;height:3px;border-radius:50%;background:white"></span><span style="display:block;width:3px;height:3px;border-radius:50%;background:white"></span><span style="display:block;width:3px;height:3px;border-radius:50%;background:white"></span><span style="display:block;width:3px;height:3px;border-radius:50%;background:white"></span><span style="display:block;width:3px;height:3px;border-radius:50%;background:white"></span><span style="display:block;width:3px;height:3px;border-radius:50%;background:white"></span></div></button>
                   <button style="background: none; border: none; color: white;"><i class="fa-solid fa-question-circle"></i></button>
                   <button style="background: none; border: none; color: white;"><i class="fa-solid fa-user-circle"></i></button>
                 </div>
@@ -5808,6 +5851,137 @@ import { NxoAccordion, NxoAccordionItem } from '@nxo/vue-components';
             <a href="demo/header-responsive.html" class="nxo-btn nxo-btn-secondary" target="_blank">
               <i class="fa-solid fa-mobile-screen"></i> Demo interactive responsive
             </a>
+          </div>
+        </div>
+
+        <!-- App Launcher -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-grip"></i> App Launcher (Pave 9 services)</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">
+            Le pave a droite du header (<code>.nxo-header__icon--apps</code>) ouvre un panneau avec les 9 services NXO.
+            Le <strong>menu burger</strong> est toujours visible a gauche sur toutes les tailles.
+            Sur tablette/mobile (&le; 1024px), le pave 9 dots est masque et les services sont accessibles via le menu burger lateral.
+          </p>
+
+          <table class="nxo-table nxo-mb-lg" style="font-size: 14px;">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>URL</th>
+                <th>Icone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Espace client</td><td><code>espaceclient.nxo.eu</code></td><td><i class="fa-solid fa-user-shield"></i></td></tr>
+              <tr><td>Support</td><td><code>support.nxo.eu</code></td><td><i class="fa-solid fa-headset"></i></td></tr>
+              <tr><td>Infogerance</td><td><code>infogerance.nxo.eu</code></td><td><i class="fa-solid fa-server"></i></td></tr>
+              <tr><td>Espace documentaire</td><td><code>docs.nxo.eu</code></td><td><i class="fa-solid fa-folder-open"></i></td></tr>
+              <tr><td>Vos interlocuteurs</td><td><code>contacts.nxo.eu</code></td><td><i class="fa-solid fa-address-book"></i></td></tr>
+              <tr><td>Supervision</td><td><code>supervision.nxo.eu</code></td><td><i class="fa-solid fa-chart-line"></i></td></tr>
+              <tr><td>Vente en ligne</td><td><code>commandes.nxo.eu</code></td><td><i class="fa-solid fa-cart-shopping"></i></td></tr>
+              <tr><td>Suivi vulnerabilites</td><td><code>sentinelle.nxo.eu</code></td><td><i class="fa-solid fa-shield-halved"></i></td></tr>
+              <tr><td>Ma conso (a definir)</td><td><code>maconso.nxo.eu</code></td><td><i class="fa-solid fa-gauge"></i></td></tr>
+            </tbody>
+          </table>
+
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            Classes CSS : <code>.nxo-header__app-launcher</code>, <code>.nxo-header__app-launcher-grid</code>, <code>.nxo-header__app-tile</code>, <code>.nxo-header__app-tile-icon</code>, <code>.nxo-header__app-tile-label</code>.
+            Voir la <a href="docs/patterns/headers.html" style="color: inherit; text-decoration: underline;">documentation Headers</a> pour le code complet.
+          </div>
+
+          <!-- Icone 3x3 -->
+          <h4 style="margin-top: 24px; margin-bottom: 12px;">Icone grille 3x3 (CSS custom)</h4>
+          <div class="nxo-alert nxo-alert-warning nxo-mb-md">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <div>
+              <strong>Attention :</strong> L'icone 9 points n'existe pas dans Font Awesome. C'est une icone <strong>CSS custom</strong> incluse dans le theme via la classe <code>.nxo-header__grid-icon</code>.
+            </div>
+          </div>
+          <p class="nxo-text nxo-text-sm nxo-mb-md">Preview :</p>
+          <div class="doc-demo nxo-mb-md">
+            <div class="doc-demo__preview" style="display: flex; align-items: center; gap: 24px;">
+              <div style="background: #0055a0; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                <div style="display:grid;grid-template-columns:repeat(3,5px);grid-template-rows:repeat(3,5px);gap:3px"><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span><span style="display:block;width:5px;height:5px;border-radius:50%;background:white"></span></div>
+              </div>
+              <span class="nxo-text-sm nxo-text-muted"><code>.nxo-header__grid-icon</code> — 9 points en CSS Grid, pas de Font Awesome</span>
+            </div>
+          </div>
+
+          <p class="nxo-text nxo-text-sm nxo-mb-sm"><strong>Code HTML :</strong></p>
+          <div class="doc-demo nxo-mb-md">
+            <div class="doc-demo__code" style="font-size: 13px;">
+              <pre>&lt;button class="nxo-header__icon nxo-header__icon--apps"&gt;
+  &lt;div class="<span class="value">nxo-header__grid-icon</span>"&gt;
+    &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+    &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/button&gt;</pre>
+            </div>
+          </div>
+
+          <p class="nxo-text nxo-text-sm nxo-mb-sm"><strong>CSS (inclus dans components.css) :</strong></p>
+          <div class="doc-demo">
+            <div class="doc-demo__code" style="font-size: 13px;">
+              <pre><span class="comment">/* Grille 3x3 — 9 points blancs */</span>
+.nxo-header__grid-icon {
+  display: grid;
+  grid-template-columns: repeat(3, 5px);
+  grid-template-rows: repeat(3, 5px);
+  gap: 3px;
+}
+
+.nxo-header__grid-icon span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+}</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Menu Mobile (Burger) -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title"><i class="fa-solid fa-bars"></i> Menu Mobile (Burger)</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">
+            Sur tablette/mobile (&le; 1024px), le hamburger ouvre un <strong>menu lateral (sidebar)</strong> qui slide depuis la gauche.
+            Il contient la navigation du service + les 9 services NXO en liste verticale.
+          </p>
+
+          <div class="nxo-alert nxo-alert-info nxo-mb-md">
+            <i class="fa-solid fa-circle-info"></i>
+            Classes CSS : <code>.nxo-header__mobile-menu</code>, <code>.nxo-header__mobile-overlay</code>, <code>.nxo-header__mobile-menu-header</code>,
+            <code>.nxo-header__mobile-menu-body</code>, <code>.nxo-header__mobile-menu-section</code>, <code>.nxo-header__mobile-menu-link</code>,
+            <code>.nxo-header__mobile-menu-link-icon</code>.
+            Voir la <a href="docs/patterns/headers.html" style="color: inherit; text-decoration: underline;">documentation Headers</a> pour le code complet.
+          </div>
+
+          <p class="nxo-text nxo-text-sm nxo-mb-sm"><strong>Structure :</strong></p>
+          <div class="doc-demo nxo-mb-md">
+            <div class="doc-demo__code" style="font-size: 13px;">
+              <pre><span class="comment">&lt;!-- Dans le burger, les services sont en liste verticale --&gt;</span>
+&lt;nav class="<span class="value">nxo-header__mobile-menu</span>"&gt;
+  &lt;div class="nxo-header__mobile-menu-header"&gt;...&lt;/div&gt;
+  &lt;div class="nxo-header__mobile-menu-body"&gt;
+    <span class="comment">&lt;!-- Section navigation du service --&gt;</span>
+    &lt;div class="nxo-header__mobile-menu-section"&gt;
+      &lt;div class="nxo-header__mobile-menu-section-title"&gt;Navigation&lt;/div&gt;
+      &lt;a class="<span class="value">nxo-header__mobile-menu-link</span>"&gt;Accueil&lt;/a&gt;
+    &lt;/div&gt;
+    <span class="comment">&lt;!-- Section services NXO (liste verticale) --&gt;</span>
+    &lt;div class="nxo-header__mobile-menu-section"&gt;
+      &lt;div class="nxo-header__mobile-menu-section-title"&gt;Services NXO&lt;/div&gt;
+      &lt;a class="nxo-header__mobile-menu-link"&gt;
+        &lt;div class="<span class="value">nxo-header__mobile-menu-link-icon</span>"&gt;...&lt;/div&gt;
+        Espace client
+      &lt;/a&gt;
+      <span class="comment">&lt;!-- ... 8 autres services ... --&gt;</span>
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</pre>
+            </div>
           </div>
         </div>
       </section>
@@ -7680,6 +7854,216 @@ export function EmptyState({
 
       </section>
 
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           DARK MODE
+           ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="darkmode" class="doc-section" data-search="dark mode sombre theme nuit night toggle" style="padding-left: 48px;">
+        <div class="doc-section__header">
+          <h2 class="doc-section__title"><i class="fa-solid fa-moon"></i> Dark Mode</h2>
+        </div>
+
+        <p class="nxo-text nxo-mb-lg">
+          Le dark mode est integre au theme NXO. Tous les composants basculent automatiquement
+          via l'attribut <code>data-theme="dark"</code> sur la balise <code>&lt;html&gt;</code>.
+          Aucun fichier CSS supplementaire n'est necessaire.
+        </p>
+
+        <!-- Comment ca marche -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Comment ca marche</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-lg">
+            Le dark mode repose sur le mecanisme CSS natif de surcharge de variables.
+            Quand <code>data-theme="dark"</code> est present sur <code>&lt;html&gt;</code>,
+            les tokens definis dans <code>tokens.css</code> sont remplaces par leurs
+            equivalents sombres. Les composants de <code>components.css</code> utilisent
+            ces memes variables, donc ils s'adaptent automatiquement.
+          </p>
+        </div>
+
+        <!-- Mise en place -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Mise en place</h3>
+
+          <h4 style="margin-bottom: 8px;">1. Imports CSS (inchanges)</h4>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-sm">Les memes deux fichiers que d'habitude. Le dark mode est inclus dedans.</p>
+          <div class="doc-demo nxo-mb-lg">
+            <div class="doc-demo__code">
+              <pre>&lt;link rel="stylesheet" href="<span class="value">tokens/tokens.css</span>"&gt;
+&lt;link rel="stylesheet" href="<span class="value">components/components.css</span>"&gt;</pre>
+            </div>
+          </div>
+
+          <h4 style="margin-bottom: 8px;">2. Script anti-flash (dans le &lt;head&gt;)</h4>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-sm">Place ce script <strong>avant</strong> les liens CSS pour eviter le flash blanc au chargement.</p>
+          <div class="doc-demo nxo-mb-lg">
+            <div class="doc-demo__code">
+              <pre>&lt;script&gt;
+(function() {
+  var theme = localStorage.getItem('nxo-theme');
+  if (theme === 'dark' || (!theme &amp;&amp;
+      window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+&lt;/script&gt;</pre>
+            </div>
+          </div>
+
+          <h4 style="margin-bottom: 8px;">3. Fonction de toggle</h4>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-sm">Ajoute cette fonction et lie-la a un bouton. Elle bascule le theme et sauvegarde le choix dans <code>localStorage</code>.</p>
+          <div class="doc-demo nxo-mb-lg">
+            <div class="doc-demo__code">
+              <pre>function toggleDarkMode() {
+  const html = document.documentElement;
+  if (html.getAttribute('data-theme') === 'dark') {
+    html.removeAttribute('data-theme');
+    localStorage.setItem('nxo-theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('nxo-theme', 'dark');
+  }
+}
+
+<span class="comment">// Exemple de bouton</span>
+&lt;button onclick="toggleDarkMode()"&gt;
+  Changer de theme
+&lt;/button&gt;</pre>
+            </div>
+          </div>
+
+          <h4 style="margin-bottom: 8px;">4. Ecouter le changement systeme (optionnel)</h4>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-sm">Si l'utilisateur n'a pas fait de choix explicite, le theme suit la preference systeme.</p>
+          <div class="doc-demo nxo-mb-lg">
+            <div class="doc-demo__code">
+              <pre>window.matchMedia('(prefers-color-scheme: dark)')
+  .addEventListener('change', function(e) {
+    if (!localStorage.getItem('nxo-theme')) {
+      if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    }
+  });</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo interactive -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Demo interactive</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">
+            Clique sur le bouton pour voir cette page basculer. Tu peux aussi utiliser le toggle
+            <i class="fa-solid fa-moon"></i> / <i class="fa-solid fa-sun"></i> en haut a droite.
+          </p>
+
+          <button class="nxo-btn nxo-btn-primary nxo-mb-lg" onclick="toggleDarkMode()" style="gap: 8px;">
+            <i class="fa-solid fa-moon"></i> Basculer le theme
+          </button>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+            <!-- Card -->
+            <div class="nxo-card">
+              <div class="nxo-card-header">
+                <h3 class="nxo-card-title">Card</h3>
+              </div>
+              <div class="nxo-card-body">
+                <p style="margin: 0; font-size: 14px;">Fond, bordures et texte s'adaptent via les tokens.</p>
+              </div>
+            </div>
+
+            <!-- Alerts -->
+            <div>
+              <div class="nxo-alert nxo-alert-info" style="margin-bottom: 8px;">
+                <div class="nxo-alert-icon"><i class="fa-solid fa-circle-info"></i></div>
+                <div class="nxo-alert-content">
+                  <div class="nxo-alert-title">Info</div>
+                  <div class="nxo-alert-message">Fond semi-transparent adapte.</div>
+                </div>
+              </div>
+              <div class="nxo-alert nxo-alert-success">
+                <div class="nxo-alert-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="nxo-alert-content">
+                  <div class="nxo-alert-title">Succes</div>
+                  <div class="nxo-alert-message">Couleurs ajustees en dark.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <div>
+              <div class="nxo-form-group">
+                <label class="nxo-label">Champ texte</label>
+                <input class="nxo-input" type="text" placeholder="Placeholder...">
+              </div>
+              <div class="nxo-form-group" style="margin-bottom: 0;">
+                <label class="nxo-label">Select</label>
+                <select class="nxo-select">
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Buttons -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <button class="nxo-btn nxo-btn-primary">Primaire</button>
+              <button class="nxo-btn nxo-btn-secondary">Secondaire</button>
+              <button class="nxo-btn nxo-btn-tertiary">Tertiaire</button>
+            </div>
+
+            <!-- Badges -->
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start;">
+              <span class="nxo-badge nxo-badge-primary">Primary</span>
+              <span class="nxo-badge nxo-badge-success">Success</span>
+              <span class="nxo-badge nxo-badge-warning">Warning</span>
+              <span class="nxo-badge nxo-badge-danger">Danger</span>
+              <span class="nxo-badge nxo-badge-neutral">Neutral</span>
+            </div>
+
+            <!-- Table -->
+            <div style="grid-column: 1 / -1;">
+              <table class="nxo-table">
+                <thead>
+                  <tr><th>Nom</th><th>Role</th><th>Statut</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Alice Martin</td><td>Developpeur</td><td><span class="nxo-badge nxo-badge-success">Actif</span></td></tr>
+                  <tr><td>Bob Dupont</td><td>Designer</td><td><span class="nxo-badge nxo-badge-warning">En pause</span></td></tr>
+                  <tr><td>Claire Moreau</td><td>Chef de projet</td><td><span class="nxo-badge nxo-badge-neutral">Hors ligne</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tokens surcharges -->
+        <div class="doc-subsection">
+          <h3 class="doc-subsection__title">Tokens surcharges en dark mode</h3>
+          <p class="nxo-text nxo-text-sm nxo-text-muted nxo-mb-md">
+            Ces tokens sont automatiquement remplaces quand <code>data-theme="dark"</code> est actif.
+          </p>
+
+          <table class="nxo-table" style="font-size: 13px;">
+            <thead>
+              <tr><th>Token</th><th>Light</th><th>Dark</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>--nxo-bg-page</code></td><td>#f8f9fa</td><td>#0f172a</td></tr>
+              <tr><td><code>--nxo-card-bg</code></td><td>#ffffff</td><td>#1e293b</td></tr>
+              <tr><td><code>--nxo-card-border</code></td><td>#e8e8e8</td><td>#334155</td></tr>
+              <tr><td><code>--nxo-text-body</code></td><td>#333333</td><td>#cbd5e1</td></tr>
+              <tr><td><code>--nxo-text-heading</code></td><td>#1a1a1a</td><td>#f1f5f9</td></tr>
+              <tr><td><code>--nxo-text-muted</code></td><td>#666666</td><td>#94a3b8</td></tr>
+              <tr><td><code>--nxo-border-color</code></td><td>#e0e0e0</td><td>#475569</td></tr>
+              <tr><td><code>--nxo-input-bg</code></td><td>#ffffff</td><td>#1e293b</td></tr>
+              <tr><td><code>--nxo-input-border</code></td><td>#d0d0d0</td><td>#475569</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
       <!-- Footer de la doc -->
       <footer style="text-align: center; padding: var(--nxo-spacing-xl) 0; border-top: 1px solid var(--nxo-border-color); margin-top: var(--nxo-spacing-2xl);">
         <p class="nxo-text-sm nxo-text-muted">
@@ -7718,6 +8102,7 @@ export function EmptyState({
       { id: 'typography', title: 'Typographie', category: 'Fondations', icon: 'fa-font', keywords: 'font montserrat text' },
       { id: 'spacing', title: 'Espacements', category: 'Fondations', icon: 'fa-arrows-alt', keywords: 'margin padding gap' },
       { id: 'tokens', title: 'Tous les tokens CSS', category: 'Fondations', icon: 'fa-code', keywords: 'variables css custom properties' },
+      { id: 'darkmode', title: 'Dark Mode', category: 'Fondations', icon: 'fa-moon', keywords: 'dark mode sombre theme nuit night toggle' },
       // Composants
       { id: 'buttons', title: 'Boutons', category: 'Composants', icon: 'fa-square', keywords: 'button btn primary secondary' },
       { id: 'forms', title: 'Formulaires', category: 'Composants', icon: 'fa-keyboard', keywords: 'input select textarea checkbox radio' },
@@ -8258,6 +8643,47 @@ export function EmptyState({
         }
       }
     });
+  </script>
+
+  <!-- Demo Mobile Menu (pour le preview burger dans la section Header) -->
+  <div id="docMobileOverlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9998;opacity:0;visibility:hidden;transition:opacity 0.3s ease,visibility 0.3s ease;" onclick="closeDocMobileMenu()"></div>
+  <nav id="docMobileMenu" style="position:fixed;top:0;left:0;width:300px;height:100vh;background:var(--nxo-card-bg);box-shadow:4px 0 20px rgba(0,0,0,0.2);z-index:9999;transform:translateX(-100%);transition:transform 0.3s ease;overflow-y:auto;display:flex;flex-direction:column;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#0055a0;min-height:56px;">
+      <img src="assets/logos/nxo-fayat-logo.png" alt="NXO" style="height:28px;">
+      <button onclick="closeDocMobileMenu()" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:none;border:none;cursor:pointer;color:white;font-size:18px;border-radius:4px;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='none'"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div style="flex:1;padding:12px 0;">
+      <div style="padding:4px 20px;">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--nxo-text-muted);padding:8px 0;border-bottom:1px solid var(--nxo-border-color);margin-bottom:4px;">Navigation</div>
+        <a href="#" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><i class="fa-solid fa-home" style="width:20px;text-align:center;color:var(--nxo-text-muted);"></i> Accueil</a>
+        <a href="#" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><i class="fa-solid fa-file-lines" style="width:20px;text-align:center;color:var(--nxo-text-muted);"></i> Mes demandes</a>
+        <a href="#" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><i class="fa-solid fa-chart-bar" style="width:20px;text-align:center;color:var(--nxo-text-muted);"></i> Rapports</a>
+      </div>
+      <div style="padding:4px 20px;">
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;color:var(--nxo-text-muted);padding:8px 0;border-bottom:1px solid var(--nxo-border-color);margin-bottom:4px;">Services NXO</div>
+        <a href="https://espaceclient.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#0055a0;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-user-shield"></i></div> Espace client</a>
+        <a href="https://support.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#008a9b;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-headset"></i></div> Support</a>
+        <a href="https://infogerance.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#002f60;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-server"></i></div> Infogerance</a>
+        <a href="https://docs.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#00a486;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-folder-open"></i></div> Espace documentaire</a>
+        <a href="https://contacts.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#5692ce;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-address-book"></i></div> Vos interlocuteurs</a>
+        <a href="https://supervision.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#e95e3f;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-chart-line"></i></div> Supervision</a>
+        <a href="https://commandes.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#ffd300;color:#002f60;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-cart-shopping"></i></div> Vente en ligne</a>
+        <a href="https://sentinelle.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#e53138;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-shield-halved"></i></div> Suivi vulnerabilites</a>
+        <a href="https://maconso.nxo.eu" style="display:flex;align-items:center;gap:10px;padding:8px 4px;border-radius:4px;text-decoration:none;color:var(--nxo-text-body);font-size:14px;" onmouseover="this.style.background='var(--nxo-bg-page)'" onmouseout="this.style.background='none'"><div style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;background:#66757e;color:white;font-size:14px;flex-shrink:0;"><i class="fa-solid fa-gauge"></i></div> Ma conso</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+    function openDocMobileMenu() {
+      document.getElementById('docMobileMenu').style.transform = 'translateX(0)';
+      document.getElementById('docMobileOverlay').style.opacity = '1';
+      document.getElementById('docMobileOverlay').style.visibility = 'visible';
+    }
+    function closeDocMobileMenu() {
+      document.getElementById('docMobileMenu').style.transform = 'translateX(-100%)';
+      document.getElementById('docMobileOverlay').style.opacity = '0';
+      document.getElementById('docMobileOverlay').style.visibility = 'hidden';
+    }
   </script>
 
 </body>

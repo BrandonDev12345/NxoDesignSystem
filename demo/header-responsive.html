@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <!-- Flag Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css">
 
@@ -63,11 +66,7 @@
   <!-- Header NXO Responsive -->
   <header class="nxo-header">
     <div class="nxo-header__zone-left">
-      <!-- App icon (desktop) -->
-      <button class="nxo-header__icon nxo-header__icon--apps" aria-label="Applications">
-        <img src="../assets/icons/grip-vertical-solid-full.svg" alt="Apps">
-      </button>
-      <!-- Burger icon (tablet/mobile) -->
+      <!-- Burger icon (always visible) -->
       <button class="nxo-header__icon nxo-header__icon--burger" aria-label="Menu">
         <img src="../assets/icons/bars-solid-full.svg" alt="Menu">
       </button>
@@ -96,6 +95,51 @@
       <button class="nxo-header__icon nxo-header__icon--search" aria-label="Rechercher">
         <img src="../assets/icons/magnifying-glass-solid-full.svg" alt="Rechercher">
       </button>
+      <!-- App Launcher icon (desktop, hidden on tablet/mobile) -->
+      <button class="nxo-header__icon nxo-header__icon--apps" aria-label="Applications" onclick="toggleAppLauncher()">
+        <div class="nxo-header__grid-icon"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </button>
+      <!-- App Launcher Panel -->
+      <div class="nxo-header__app-launcher" id="appLauncher">
+        <div class="nxo-header__app-launcher-grid">
+          <a href="https://espaceclient.nxo.eu" class="nxo-header__app-tile">
+            <div class="nxo-header__app-tile-icon"><i class="fa-solid fa-user-shield"></i></div>
+            <span class="nxo-header__app-tile-label">Espace client</span>
+          </a>
+          <a href="https://support.nxo.eu" class="nxo-header__app-tile">
+            <div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--support"><i class="fa-solid fa-headset"></i></div>
+            <span class="nxo-header__app-tile-label">Support</span>
+          </a>
+          <a href="https://infogerance.nxo.eu" class="nxo-header__app-tile">
+            <div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--infog"><i class="fa-solid fa-server"></i></div>
+            <span class="nxo-header__app-tile-label">Infogerance</span>
+          </a>
+          <a href="https://docs.nxo.eu" class="nxo-header__app-tile">
+            <div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--docs"><i class="fa-solid fa-folder-open"></i></div>
+            <span class="nxo-header__app-tile-label">Espace documentaire</span>
+          </a>
+          <a href="https://contacts.nxo.eu" class="nxo-header__app-tile">
+            <div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--contacts"><i class="fa-solid fa-address-book"></i></div>
+            <span class="nxo-header__app-tile-label">Vos interlocuteurs</span>
+          </a>
+          <a href="https://supervision.nxo.eu" class="nxo-header__app-tile">
+            <div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--superv"><i class="fa-solid fa-chart-line"></i></div>
+            <span class="nxo-header__app-tile-label">Supervision</span>
+          </a>
+          <a href="https://commandes.nxo.eu" class="nxo-header__app-tile">
+            <div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--shop"><i class="fa-solid fa-cart-shopping"></i></div>
+            <span class="nxo-header__app-tile-label">Vente en ligne</span>
+          </a>
+          <a href="https://sentinelle.nxo.eu" class="nxo-header__app-tile">
+            <div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--sentinel"><i class="fa-solid fa-shield-halved"></i></div>
+            <span class="nxo-header__app-tile-label">Suivi vulnerabilites</span>
+          </a>
+          <a href="https://maconso.nxo.eu" class="nxo-header__app-tile">
+            <div class="nxo-header__app-tile-icon nxo-header__app-tile-icon--conso"><i class="fa-solid fa-gauge"></i></div>
+            <span class="nxo-header__app-tile-label">Ma conso</span>
+          </a>
+        </div>
+      </div>
       <!-- Language selector -->
       <div class="nxo-header__lang">
         <button class="nxo-header__lang-btn" aria-label="Changer de langue" onclick="toggleLangDropdown()">
@@ -132,6 +176,78 @@
     </div>
   </header>
 
+  <!-- Mobile Menu Overlay -->
+  <div class="nxo-header__mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- Mobile Menu Sidebar -->
+  <nav class="nxo-header__mobile-menu" id="mobileMenu">
+    <div class="nxo-header__mobile-menu-header">
+      <img src="../assets/logos/nxo-fayat-logo.png" alt="NXO">
+      <button class="nxo-header__mobile-menu-close" id="mobileMenuClose" aria-label="Fermer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div class="nxo-header__mobile-menu-body">
+      <!-- Navigation du service (exemple) -->
+      <div class="nxo-header__mobile-menu-section">
+        <div class="nxo-header__mobile-menu-section-title">Navigation</div>
+        <a href="#" class="nxo-header__mobile-menu-link">
+          <i class="fa-solid fa-home" style="width: 20px; text-align: center; color: var(--nxo-text-muted);"></i>
+          Accueil
+        </a>
+        <a href="#" class="nxo-header__mobile-menu-link">
+          <i class="fa-solid fa-file-lines" style="width: 20px; text-align: center; color: var(--nxo-text-muted);"></i>
+          Mes demandes
+        </a>
+        <a href="#" class="nxo-header__mobile-menu-link">
+          <i class="fa-solid fa-chart-bar" style="width: 20px; text-align: center; color: var(--nxo-text-muted);"></i>
+          Rapports
+        </a>
+      </div>
+
+      <!-- Services NXO -->
+      <div class="nxo-header__mobile-menu-section">
+        <div class="nxo-header__mobile-menu-section-title">Services NXO</div>
+        <a href="https://espaceclient.nxo.eu" class="nxo-header__mobile-menu-link">
+          <div class="nxo-header__mobile-menu-link-icon"><i class="fa-solid fa-user-shield"></i></div>
+          Espace client
+        </a>
+        <a href="https://support.nxo.eu" class="nxo-header__mobile-menu-link">
+          <div class="nxo-header__mobile-menu-link-icon nxo-header__mobile-menu-link-icon--support"><i class="fa-solid fa-headset"></i></div>
+          Support
+        </a>
+        <a href="https://infogerance.nxo.eu" class="nxo-header__mobile-menu-link">
+          <div class="nxo-header__mobile-menu-link-icon nxo-header__mobile-menu-link-icon--infog"><i class="fa-solid fa-server"></i></div>
+          Infogerance
+        </a>
+        <a href="https://docs.nxo.eu" class="nxo-header__mobile-menu-link">
+          <div class="nxo-header__mobile-menu-link-icon nxo-header__mobile-menu-link-icon--docs"><i class="fa-solid fa-folder-open"></i></div>
+          Espace documentaire
+        </a>
+        <a href="https://contacts.nxo.eu" class="nxo-header__mobile-menu-link">
+          <div class="nxo-header__mobile-menu-link-icon nxo-header__mobile-menu-link-icon--contacts"><i class="fa-solid fa-address-book"></i></div>
+          Vos interlocuteurs
+        </a>
+        <a href="https://supervision.nxo.eu" class="nxo-header__mobile-menu-link">
+          <div class="nxo-header__mobile-menu-link-icon nxo-header__mobile-menu-link-icon--superv"><i class="fa-solid fa-chart-line"></i></div>
+          Supervision
+        </a>
+        <a href="https://commandes.nxo.eu" class="nxo-header__mobile-menu-link">
+          <div class="nxo-header__mobile-menu-link-icon nxo-header__mobile-menu-link-icon--shop"><i class="fa-solid fa-cart-shopping"></i></div>
+          Vente en ligne
+        </a>
+        <a href="https://sentinelle.nxo.eu" class="nxo-header__mobile-menu-link">
+          <div class="nxo-header__mobile-menu-link-icon nxo-header__mobile-menu-link-icon--sentinel"><i class="fa-solid fa-shield-halved"></i></div>
+          Suivi des vulnerabilites
+        </a>
+        <a href="https://maconso.nxo.eu" class="nxo-header__mobile-menu-link">
+          <div class="nxo-header__mobile-menu-link-icon nxo-header__mobile-menu-link-icon--conso"><i class="fa-solid fa-gauge"></i></div>
+          Ma conso
+        </a>
+      </div>
+    </div>
+  </nav>
+
   <!-- Demo content -->
   <main class="demo-content">
     <h1>Header NXO Responsive</h1>
@@ -142,11 +258,11 @@
       <strong>Breakpoints :</strong>
     </p>
     <ul style="color: #666; line-height: 2;">
-      <li><code>&gt; 1440px</code> : Desktop XL - Grip + Logo + Nom + Search bar + 3 icones (80px)</li>
+      <li><code>&gt; 1440px</code> : Desktop XL - App Launcher (9 services) + Logo + Nom + Search bar + 3 icones (80px)</li>
       <li><code>1024px - 1440px</code> : Desktop - Meme layout, tailles reduites (80px)</li>
-      <li><code>768px - 1024px</code> : Tablet - Hamburger + Logo + Nom + Search bar + 3 icones (72px)</li>
-      <li><code>480px - 768px</code> : Tablet Small - Hamburger + Logo + 4 icones (64px)</li>
-      <li><code>&lt; 480px</code> : Mobile - Hamburger + Logo centre + 2 icones (56px)</li>
+      <li><code>768px - 1024px</code> : Tablet - Hamburger (ouvre menu lateral avec services NXO) + Logo + Nom + Search bar (72px)</li>
+      <li><code>480px - 768px</code> : Tablet Small - Hamburger (menu lateral) + Logo + 4 icones (64px)</li>
+      <li><code>&lt; 480px</code> : Mobile - Hamburger (menu lateral) + Logo centre + 2 icones (56px)</li>
     </ul>
 
     <h2 style="margin-top: 40px; margin-bottom: 16px; color: #333;">Comment utiliser</h2>
@@ -197,11 +313,44 @@
       document.getElementById('lang-dropdown').classList.remove('open');
     }
 
-    // Close dropdown when clicking outside
+    // App Launcher toggle
+    function toggleAppLauncher() {
+      const launcher = document.getElementById('appLauncher');
+      launcher.classList.toggle('open');
+      // Close lang dropdown if open
+      document.getElementById('lang-dropdown').classList.remove('open');
+    }
+
+    // Mobile menu toggle
+    const burgerBtn = document.querySelector('.nxo-header__icon--burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      mobileOverlay.classList.add('open');
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+    }
+
+    burgerBtn.addEventListener('click', openMobileMenu);
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+    mobileOverlay.addEventListener('click', closeMobileMenu);
+
+    // Close dropdowns when clicking outside
     document.addEventListener('click', function(e) {
       const langSelector = document.querySelector('.nxo-header__lang');
       if (langSelector && !langSelector.contains(e.target)) {
         document.getElementById('lang-dropdown').classList.remove('open');
+      }
+      const appsBtn = document.querySelector('.nxo-header__icon--apps');
+      const launcher = document.getElementById('appLauncher');
+      if (appsBtn && launcher && !appsBtn.contains(e.target) && !launcher.contains(e.target)) {
+        launcher.classList.remove('open');
       }
     });
   </script>
